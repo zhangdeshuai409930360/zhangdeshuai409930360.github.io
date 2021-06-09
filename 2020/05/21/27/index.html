@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Flink与Spark多方面区别对比 | Handsome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文转载于场景描述：Flink是标准的实时处理引擎，而且Spark的两个模块Spark Streaming和Structured Streaming都是基于微批处理的，不过现在Spark Streaming已经非常稳定基本都没有更新了，然后重点移到spark sql和structured Streaming了 Flink和Spark的区别在编程模型、任务调度、时间机制、Kafka 动态分区的感知、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flink与Spark多方面区别对比">
+<meta property="og:url" content="http://www.zhangshuai.top/2020/05/21/27/index.html">
+<meta property="og:site_name" content="Handsome">
+<meta property="og:description" content="本文转载于场景描述：Flink是标准的实时处理引擎，而且Spark的两个模块Spark Streaming和Structured Streaming都是基于微批处理的，不过现在Spark Streaming已经非常稳定基本都没有更新了，然后重点移到spark sql和structured Streaming了 Flink和Spark的区别在编程模型、任务调度、时间机制、Kafka 动态分区的感知、">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.zhangshuai.top/images/42.png">
+<meta property="og:image" content="http://www.zhangshuai.top/images/35.png">
+<meta property="og:image" content="http://www.zhangshuai.top/images/36.png">
+<meta property="og:image" content="http://www.zhangshuai.top/images/37.png">
+<meta property="og:image" content="http://www.zhangshuai.top/images/38.png">
+<meta property="og:image" content="http://www.zhangshuai.top/images/39.png">
+<meta property="og:image" content="http://www.zhangshuai.top/images/43.png">
+<meta property="article:published_time" content="2020-05-21T08:19:24.000Z">
+<meta property="article:modified_time" content="2020-05-21T07:34:52.000Z">
+<meta property="article:tag" content="Flink,Spark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.zhangshuai.top/images/42.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Handsome" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Handsome</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        <li>友情链接</li>
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/bigdata/">大数据</a></li>
+                        
+                            <li><a  href="/categories/java/">JAVA学习</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    <a target="_blank"  class="main-nav-link switch-friends-link" href="https://my.oschina.net/u/559635">oschina</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">
+                      关于博主
+简介
+90后，大数据开发工程师/JAVA工程师。
+知人不必言尽，留三分余地与人，留些口德与己。
+责人不必苛尽，留三分余地与人，留些肚量与己。
+才能不必傲尽，留三分余地与人，留些内涵与己。
+锋芒不必露尽，留三分余地与人，留些深敛与己。
+有功不必邀尽，留三分余地与人，留些谦让与己。
+2013.10-2016.03 深圳市时讯互联科技有限公司 JAVA/大数据开发工程师
+2016.03-2017.08       深圳市华阳信通发展有限公司/大数据开发工程师
+2017.08-2018.03       深圳市彩讯科技股份有限公司/大数据开发工程师
+2018.03-至今       深圳市加推科技有限公司/大数据开发工程师     
+ </div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Handsome</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Handsome</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/bigdata/">大数据</a></li>
+                
+                    <li><a href="/categories/java/">JAVA学习</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+
+     <div class="body-wrap"><article id="post-27" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/21/27/" class="article-date">
+      <time datetime="2020-05-21T08:19:24.000Z" itemprop="datePublished">2020-05-21</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Flink与Spark多方面区别对比
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink-Spark/" rel="tag">Flink,Spark</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://mp.weixin.qq.com/s?__biz=MzI0NTIxNzE1Ng==&mid=2651218385&idx=1&sn=a885d40c4418d5e26df131fdda847b74&utm_source=tuicool&utm_medium=referral" target="_blank" rel="noopener" title="面试注意点">本文转载于</a><br>场景描述：Flink是标准的实时处理引擎，而且Spark的两个模块Spark Streaming和Structured Streaming都是基于微批处理的，不过现在Spark Streaming已经非常稳定基本都没有更新了，然后重点移到spark sql和structured Streaming了</p>
+<p>Flink和Spark的区别在编程模型、任务调度、时间机制、Kafka 动态分区的感知、容错及处理语义、背压等几个方面存在不同。</p>
+<h3 id="维表join和异步IO"><a href="#维表join和异步IO" class="headerlink" title="维表join和异步IO"></a>维表join和异步IO</h3><p>Structured Streaming不直接支持与维表的join操作，但是可以使用map、flatmap及udf等来实现该功能，所有的这些都是同步算子，不支持异步IO操作。但是Structured Streaming直接与静态数据集的join，可以也可以帮助实现维表的join功能，当然维表要不可变。</p>
+<p>Flink支持与维表进行join操作，除了map，flatmap这些算子之外，flink还有异步IO算子，可以用来实现维表，提升性能。</p>
+<h3 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h3><p>状态维护应该是流处理非常核心的概念了，比如join，分组，聚合等操作都需要维护历史状态。那么flink在这方面很好，structured Streaming也是可以，但是spark Streaming就比较弱了，只有个别状态维护算子upstatebykye等，大部分状态需要用户自己维护，虽然这个对用户来说有更大的可操作性和可以更精细控制但是带来了编程的麻烦。flink和Structured Streaming都支持自己完成了join及聚合的状态维护。</p>
+<p>Structured Streaming有高级的算子，用户可以完成自定义的mapGroupsWithState和flatMapGroupsWithState，可以理解类似Spark Streaming 的upstatebykey等状态算子。</p>
+<p>就拿mapGroupsWithState为例：<br>由于Flink与Structured Streaming的架构的不同，task是常驻运行的，flink不需要状态算子，只需要状态类型的数据结构。</p>
+<p>首先看一下Keyed State下，我们可以用哪些原子状态：<br>ValueState：即类型为T的单值状态。这个状态与对应的key绑定，是最简单的状态了。它可以通过update方法更新状态值，通过value()方法获取状态值。</p>
+<p>ListState：即key上的状态值为一个列表。可以通过add方法往列表中附加值；也可以通过get()方法返回一个Iterable来遍历状态值。</p>
+<p>ReducingState：这种状态通过用户传入的reduceFunction，每次调用add方法添加值的时候，会调用</p>
+<p>reduceFunction，最后合并到一个单一的状态值。</p>
+<p>FoldingState：跟ReducingState有点类似，不过它的状态值类型可以与add方法中传入的元素类型不同（这种状态将会在Flink未来版本中被删除）。</p>
+<p>MapState：即状态值为一个map。用户通过put或putAll方法添加元素。</p>
+<h3 id="Join操作"><a href="#Join操作" class="headerlink" title="Join操作"></a>Join操作</h3><p>Flink的join操作</p>
+<p>flink的join操作没有大的限制，支持种类丰富，比如：</p>
+<p>Inner Equi-join</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Orders INNER JOIN Product ONOrders.productId = Product.id</span><br></pre></td></tr></table></figure>
+
+<p>Outer Equi-join</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Orders LEFT JOIN Product ON Orders.productId =Product.id</span><br><span class="line"></span><br><span class="line">SELECT * FROM Orders RIGHT JOIN Product ON Orders.productId =Product.id</span><br><span class="line"></span><br><span class="line">SELECT * FROM Orders FULL OUTER JOIN Product ONOrders.productId = Product.id</span><br></pre></td></tr></table></figure>
+
+<p>Time-windowed Join</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Oderso,Shipmentss WHEREo.id=s.orderIdAND o.ordertimeBETWEENs.shiptime INTERVAL<span class="string">&#x27;4&#x27;</span>HOURANDs.shiptime</span><br></pre></td></tr></table></figure>
+
+<p>Expanding arrays into a relation</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT users, tag FROM Orders CROSS JOIN UNNEST(tags) AS t (tag)</span><br></pre></td></tr></table></figure>
+
+<p>Join with Table Function</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Inner Join</span><br><span class="line"></span><br><span class="line">A row of the left (outer) table is dropped, <span class="keyword">if</span> its table <span class="keyword">function</span> call returns an empty result.</span><br><span class="line">SELECT users, tag</span><br><span class="line">FROM Orders, LATERAL TABLE(unnest_udtf(tags)) t AS tag</span><br><span class="line"></span><br><span class="line">Left Outer Join</span><br><span class="line">If a table <span class="keyword">function</span> call returns an empty result, the corresponding outer row is preserved and the result padded with null values.</span><br><span class="line"></span><br><span class="line">SELECT users, tag</span><br><span class="line">FROM Orders LEFT JOIN LATERAL TABLE(unnest_udtf(tags)) t AS tag ON TRUE</span><br></pre></td></tr></table></figure>
+
+<p>Join with Temporal Table</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT</span><br><span class="line"> o_amount, r_rate</span><br><span class="line">FROM</span><br><span class="line"> Orders,</span><br><span class="line">LATERAL TABLE (Rates(o_proctime))</span><br><span class="line">WHERE</span><br><span class="line"> r_currency = o_currency</span><br></pre></td></tr></table></figure>
+
+<p>Structured Streaming的join操作<br>Structured Streaming的join限制颇多了，限于篇幅问题在这里只讲一下join的限制<br><img src="/images/42.png" alt="alt"></p>
+<h3 id="容错机制及一致性语义"><a href="#容错机制及一致性语义" class="headerlink" title="容错机制及一致性语义"></a>容错机制及一致性语义</h3><p>Spark Streaming 保证仅一次处理</p>
+<p>对于 Spark Streaming 任务，我们可以设置 checkpoint，然后假如发生故障并重启，我们可以从上次 checkpoint 之处恢复，但是这个行为只能使得数据不丢失，可能会重复处理，不能做到恰一次处理语义。</p>
+<p>对于 Spark Streaming 与 kafka 结合的 direct Stream 可以自己维护 offset 到 zookeeper、kafka 或任何其它外部系统，每次提交完结果之后再提交 offset，这样故障恢复重启可以利用上次提交的 offset 恢复，保证数据不丢失。但是假如故障发生在提交结果之后、提交 offset 之前会导致数据多次处理，这个时候我们需要保证处理结果多次输出不影响正常的业务。</p>
+<p>由此可以分析，假设要保证数据恰一次处理语义，那么结果输出和 offset 提交必须在一个事务内完成。在这里有以下两种做法：<br>repartition(1) Spark Streaming 输出的 action 变成仅一个 partition，这样可以利用事务去做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Dstream.foreachRDD(rdd=&gt;&#123;</span><br><span class="line">   rdd.repartition(1).foreachPartition(partition=&gt;&#123;    //    开启事务</span><br><span class="line">       partition.foreach(each=&gt;&#123;//        提交数据</span><br><span class="line">       &#125;)    //  提交事务</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+<p>将结果和 offset 一起提交</p>
+<p>也就是结果数据包含 offset。这样提交结果和提交 offset 就是一个操作完成，不会数据丢失，也不会重复处理。故障恢复的时候可以利用上次提交结果带的 offset。</p>
+<p>Flink 与 kafka 0.11 保证仅一次处理</p>
+<p>若要 sink 支持仅一次语义，必须以事务的方式写数据到 Kafka，这样当提交事务时两次 checkpoint 间的所有写入操作作为一个事务被提交。这确保了出现故障或崩溃时这些写入操作能够被回滚。</p>
+<p>在一个分布式且含有多个并发执行 sink 的应用中，仅仅执行单次提交或回滚是不够的，因为所有组件都必须对这些提交或回滚达成共识，这样才能保证得到一致性的结果。Flink 使用两阶段提交协议以及预提交(pre-commit)阶段来解决这个问题。</p>
+<p>本例中的 Flink 应用如图所示包含以下组件：</p>
+<p>一个source，从Kafka中读取数据（即KafkaConsumer）</p>
+<p>一个时间窗口化的聚会操作</p>
+<p>一个sink，将结果写回到Kafka（即KafkaProducer）</p>
+<p><img src="/images/35.png" alt="alt"><br>下面详细讲解 flink 的两段提交思路</p>
+<p><img src="/images/36.png" alt="alt"></p>
+<p>Flink checkpointing 开始时便进入到 pre-commit 阶段。具体来说，一旦 checkpoint 开始，Flink 的 JobManager 向输入流中写入一个 checkpoint barrier ，将流中所有消息分割成属于本次 checkpoint 的消息以及属于下次 checkpoint 的，barrier 也会在操作算子间流转。对于每个 operator 来说，该 barrier 会触发 operator 状态后端为该 operator 状态打快照。data source 保存了 Kafka 的 offset，之后把 checkpoint barrier 传递到后续的 operator。</p>
+<p>这种方式仅适用于 operator 仅有它的内部状态。内部状态是指 Flink state backends 保存和管理的内容（如第二个 operator 中 window 聚合算出来的 sum）。</p>
+<p>当一个进程仅有它的内部状态的时候，除了在 checkpoint 之前将需要将数据更改写入到 state backend，不需要在预提交阶段做其他的动作。在 checkpoint 成功的时候，Flink 会正确的提交这些写入，在 checkpoint 失败的时候会终止提交</p>
+<p><img src="/images/37.png" alt="alt"></p>
+<p>当结合外部系统的时候，外部系统必须要支持可与两阶段提交协议捆绑使用的事务。显然本例中的 sink 由于引入了 kafka sink，因此在预提交阶段 data sink 必须预提交外部事务。如下图<br><img src="/images/38.png" alt="alt"><br>当 barrier 在所有的算子中传递一遍，并且触发的快照写入完成，预提交阶段完成。所有的触发状态快照都被视为 checkpoint 的一部分，也可以说 checkpoint 是整个应用程序的状态快照，包括预提交外部状态。出现故障可以从 checkpoint 恢复。下一步就是通知所有的操作算子 checkpoint 成功。该阶段 jobmanager 会为每个 operator 发起 checkpoint 已完成的回调逻辑。</p>
+<p>本例中 data source 和窗口操作无外部状态，因此该阶段，这两个算子无需执行任何逻辑，但是 data sink 是有外部状态的，因此，此时我们必须提交外部事务，如下图：</p>
+<p><img src="/images/39.png" alt="alt"><br>以上就是 flink 实现恰一次处理的基本逻辑。</p>
+<h3 id="背压"><a href="#背压" class="headerlink" title="背压"></a>背压</h3><p>消费者消费的速度低于生产者生产的速度，为了使应用正常，消费者会反馈给生产者来调节生产者生产的速度，以使得消费者需要多少，生产者生产多少。</p>
+<p>Spark Streaming 的背压<br>Spark Streaming 跟 kafka 结合是存在背压机制的，目标是根据当前 job 的处理情况来调节后续批次的获取 kafka 消息的条数。为了达到这个目的，Spark Streaming 在原有的架构上加入了一个 RateController，利用的算法是 PID，需要的反馈数据是任务处理的结束时间、调度时间、处理时间、消息条数，这些数据是通过 SparkListener 体系获得，然后通过 PIDRateEsimator 的 compute 计算得到一个速率，进而可以计算得到一个 offset，然后跟限速设置最大消费条数比较得到一个最终要消费的消息最大 offset</p>
+<p>PIDRateEsimator 的 compute 方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def compute(       </span><br><span class="line">      time: Long, </span><br><span class="line">      // <span class="keyword">in</span> milliseconds  </span><br><span class="line">      numElements: Long,        </span><br><span class="line">      processingDelay: Long, </span><br><span class="line">      // <span class="keyword">in</span> milliseconds  schedulingDelay: Long </span><br><span class="line">      // <span class="keyword">in</span> milliseconds  </span><br><span class="line">      ): Option[Double] = &#123;logTrace(s<span class="string">&quot;\ntime = <span class="variable">$time</span>, # records = <span class="variable">$numElements</span>, &quot;</span> + s<span class="string">&quot;processing time = <span class="variable">$processingDelay</span>, scheduling delay = <span class="variable">$schedulingDelay</span>&quot;</span>)   </span><br><span class="line">      this.synchronized &#123;<span class="keyword">if</span> (time &gt; latestTime &amp;&amp; numElements &gt; 0 &amp;&amp; processingDelay &gt; 0) &#123;</span><br><span class="line">        val delaySinceUpdate = (time - latestTime).toDouble / 1000          </span><br><span class="line">        val processingRate = numElements.toDouble / processingDelay * 1000         </span><br><span class="line">        val error = latestRate - processingRate                 </span><br><span class="line">        val historicalError = schedulingDelay.toDouble * processingRate/ batchIntervalMillis</span><br><span class="line">        // <span class="keyword">in</span> elements/(second ^ 2)        </span><br><span class="line">        val dError = (error - latestError) / delaySinceUpdate        </span><br><span class="line">        val newRate = (latestRate - proportional * error - integral * historicalError - derivative * dError).max(minRate)        </span><br><span class="line">        logTrace(s<span class="string">&quot;&quot;</span><span class="string">&quot; | latestRate = <span class="variable">$latestRate</span>, error = <span class="variable">$error</span> | latestError = <span class="variable">$latestError</span>, historicalError = <span class="variable">$historicalError</span> | delaySinceUpdate = <span class="variable">$delaySinceUpdate</span>, dError = <span class="variable">$dError</span> &quot;</span><span class="string">&quot;&quot;</span>.stripMargin)        </span><br><span class="line">        latestTime = time                 </span><br><span class="line">        <span class="keyword">if</span> (firstRun) &#123; latestRate = processingRate latestError = 0D firstRun = <span class="literal">false</span>  logTrace(<span class="string">&quot;First run, rate estimation skipped&quot;</span>) None  &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123; latestRate = newRate  latestError = error logTrace(s<span class="string">&quot;New rate = <span class="variable">$newRate</span>&quot;</span>)  Some(newRate)       &#125;     &#125; </span><br><span class="line">      <span class="keyword">else</span> &#123;       logTrace(<span class="string">&quot;Rate estimation skipped&quot;</span>)               None     &#125;   &#125; &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>Flink 的背压<br>与 Spark Streaming 的背压不同的是，Flink 背压是 jobmanager 针对每一个 task 每 50ms 触发 100 次 Thread.getStackTrace() 调用，求出阻塞的占比。过程如图 16 所示：</p>
+<p><img src="/images/43.png" alt="alt"><br>阻塞占比在 web 上划分了三个等级：</p>
+<p>OK: 0 &lt;= Ratio &lt;= 0.10，表示状态良好；<br>LOW: 0.10 &lt; Ratio &lt;= 0.5，表示有待观察；<br>HIGH: 0.5 &lt; Ratio &lt;= 1，表示要处理了。</p>
+<h3 id="表管理"><a href="#表管理" class="headerlink" title="表管理"></a>表管理</h3><p>flink和structured streaming都可以讲流注册成一张表，然后使用sql进行分析，不过两者之间区别还是有些的。<br>Structured Streaming将流注册成临时表，然后用sql进行查询，操作也是很简单跟静态的dataset/dataframe一样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.createOrReplaceTempView(<span class="string">&quot;updates&quot;</span>)</span><br><span class="line">spark.sql(<span class="string">&quot;select count(*) from updates&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>其实，此处回想Spark Streaming 如何注册临时表呢？在foreachRDD里，讲rdd转换为dataset/dataframe，然后将其注册成临时表，该临时表特点是代表当前批次的数据，而不是全量数据。Structured Streaming注册的临时表就是流表，针对整个实时流的。Sparksession.sql执行结束后，返回的是一个流dataset/dataframe,当然这个很像spark sql的sql文本执行，所以为了区别一个dataframe/dataset是否是流式数据，可以df.isStreaming来判断。</p>
+<p>当然，flink也支持直接注册流表，然后写sql分析，sql文本在flink中使用有两种形式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1). tableEnv.sqlQuery(<span class="string">&quot;SELECT product,amount FROM Orders WHERE product LIKE &#x27;%Rubber%&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line">2). tableEnv.sqlUpdate(</span><br><span class="line"><span class="string">&quot;INSERT INTO RubberOrders SELECT product, amount FROM Orders WHEREproduct LIKE &#x27;%Rubber%&#x27;&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<p>对于第一种形式，sqlQuery执行结束之后会返回一张表也即是Table对象,然后可以进行后续操作或者直接输出，如：result.writeAsCsv(“”);。<br>而sqlUpdate是直接将结果输出到了tablesink，所以要首先注册tablesink，方式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TableSink csvSink = newCsvTableSink(<span class="string">&quot;/path/to/file&quot;</span>, ...);</span><br><span class="line"></span><br><span class="line">String[] fieldNames = &#123;<span class="string">&quot;product&quot;</span>,<span class="string">&quot;amount&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">TypeInformation[] fieldTypes =&#123;Types.STRING, Types.INT&#125;;</span><br><span class="line"></span><br><span class="line">tableEnv.registerTableSink(<span class="string">&quot;RubberOrders&quot;</span>,fieldNames, fieldTypes, csvSink);</span><br></pre></td></tr></table></figure>
+
+<p>flink注册表的形式比较多，直接用数据源注册表，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableEnv.registerExternalCatalog();</span><br><span class="line">tableEnv.registerTableSource();</span><br></pre></td></tr></table></figure>
+<p>也可以从datastream转换成表，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableEnv.registerDataStream(<span class="string">&quot;Orders&quot;</span>,ds, <span class="string">&quot;user, product, amount&quot;</span>);</span><br><span class="line">Table table = tableEnv.fromDataStream(ds,<span class="string">&quot;user, product, amount&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/05/21/27/">Flink与Spark多方面区别对比</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
+        <p><span>发布时间:</span>2020年05月21日 - 16时19分</p>
+        <p><span>最后更新:</span>2020年05月21日 - 15时34分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/21/27/" title="Flink与Spark多方面区别对比">http://www.zhangshuai.top/2020/05/21/27/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.zhangshuai.top/2020/05/21/27/　　作者: " title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2020/06/05/29/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Hive内置函数速查表
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2020/05/20/26/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flink端到端状态一致性EXACTLY_ONCE实现</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#维表join和异步IO"><span class="toc-number">1.</span> <span class="toc-text">维表join和异步IO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#状态管理"><span class="toc-number">2.</span> <span class="toc-text">状态管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Join操作"><span class="toc-number">3.</span> <span class="toc-text">Join操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容错机制及一致性语义"><span class="toc-number">4.</span> <span class="toc-text">容错机制及一致性语义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#背压"><span class="toc-number">5.</span> <span class="toc-text">背压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表管理"><span class="toc-number">6.</span> <span class="toc-text">表管理</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox bdshare-button-style2-24">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2020/06/05/29/" title="上一篇: Hive内置函数速查表">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/05/20/26/" title="下一篇: Flink端到端状态一致性EXACTLY_ONCE实现">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/05/11/35/">Apache Hudi的写时复制和读时合并</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/06/34/">Hive严格模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/33/">Apache Atlas安装数据治理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/27/32/">SQL优化技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/25/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/04/31/">Datax3.0简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/30/">大数据架构师毕生所学</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/29/">Hive内置函数速查表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/21/27/">Flink与Spark多方面区别对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/20/26/">Flink端到端状态一致性EXACTLY_ONCE实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/25/">Flink使用assignAscendingTimestamps 生成水印的三个重载方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/24/">Flink使用SQL操作几种类型的window</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/23/">AppendStreamTableSink、RetractStreamTableSink、UpsertStreamTableSink</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/27/22/">Kafka to Flink - HDFS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/21/">Druid原理和架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/20/">Kafka 是如何保证数据可靠性和一致性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/19/">Python数据质量检测</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/02/oozie/">Oozie常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/01/18/">深入理解Kafka副本机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/2/">APP数据统计-用户活跃统计周活跃，月活跃(不是按照自然周计算,每天的前７天　前３０天)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/1/">Spark FastJson 解析SDK上报日期</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/14/28/">Spark Yarn 的提交二种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/10/">ELK日志采集logstash output -> elasticsearch 数据写入性能优化。</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/23/13/">SparkStructured StreamExecution：持续查询的运转引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/5/">通过BulkLoad(MR)快速将海量数据导入到Hbase</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/02/7/">Spring mvc 框架定时刷新kerberos认证票据</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/3/">Spark Scala 获取自然日 属于每周的第一天和每周的最后一天，每月的第一天和每月的最后一天</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/8/">Spark1.X操作DataFrame示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/9/">Kafka HA Kafka一致性重要机制之ISR(kafka replica)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/02/4/">Spark scala 抽取mysql数据 导入Hive</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/16/">Kafka生产者详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/17/">Kafka消费者详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/6/">Oozie任务调度使用详细代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/12/">Apache Kylin</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/15/">Spark 累加器与广播变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/11/">python用map-reduce(IP地址库匹配省份和城市)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/14/">HDFS 常用 shell 命令</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2021 
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/zhangdeshuai409930360" target="_blank">Blog</a> by handsomezhangshuai
+            </div>
+        </div>
+        
+            <div class="visit">
+            © 2015-2020 zhangdeshuai 粤ICP备15075505号
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+           </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
