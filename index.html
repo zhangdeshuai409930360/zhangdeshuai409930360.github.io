@@ -282,76 +282,6 @@
 
      <div class="body-wrap">
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2023/02/17/hello-world/" class="article-date">
-      <time datetime="2023-02-17T01:11:47.156Z" itemprop="datePublished">2023-02-17</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2023/02/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
     <article id="post-35" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1316,6 +1246,89 @@ Hive Meta Data import was successful!!!</code></pre>
 <p>A. 这里需要配置下，因为它默认的是AT_LEAST_ONCE；</p>
 <p>B. 对于外部kafka读取的消费者的隔离级别，默认是read_on_commited，如果默认是可以读未提交的数据，就相当于整个一致性还没得到保证（未提交的数据没有最终确认那边就可以读了，相当于那边已经消费数据了，事务就是假的了）  所以需要修改kafka的隔离级别；</p>
 <p>C. timeout超时问题，flink和kafka 默认sink是超时1h，而kafak集群中配置的tranctraction事务的默认超时时间是15min，flink-kafak这边的连接器的时间长，这边还在等着做操作 ，kafak那边等checkpoint等的时间太长直接关闭了。所以两边的超时时间最起码前边要比后边的小</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-25" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/13/25/" class="article-date">
+      <time datetime="2020-05-13T06:12:55.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/13/25/">Flink使用assignAscendingTimestamps 生成水印的三个重载方法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="先简单介绍一下Timestamp-和Watermark-的概念"><a href="#先简单介绍一下Timestamp-和Watermark-的概念" class="headerlink" title="先简单介绍一下Timestamp 和Watermark 的概念:"></a>先简单介绍一下Timestamp 和Watermark 的概念:</h3><ol>
+<li>Timestamp和Watermark都是基于事件的时间字段生成的</li>
+<li>Timestamp和Watermark是两个不同的东西，并且一旦生成都跟事件数据没有关系了（所有即使事件中不再包含生成Timestamp和Watermark的字段也没关系）</li>
+<li>事件数据和 Timestamp 一一对应（事件在流中传递以StreamRecord对象表示，value 和 timestamp 是它的两个成员变量)</li>
+<li>Watermark 在生成之后与事件数据没有直接关系，Watermark 作为一个消息，和事件数据一样在流中传递（Watermark 和StreamRecord 具有相同的父类：StreamElement）</li>
+<li>Timestamp 与 Watermark 在生成之后，会在下游window算子中做比较，判断事件数据是否是过期数据</li>
+<li>只有window算子才会用Watermark判断事件数据是否过期</li>
+</ol>
+<h3 id="assignTimestamps-extractor-TimestampExtractor-T-DataStream-T"><a href="#assignTimestamps-extractor-TimestampExtractor-T-DataStream-T" class="headerlink" title="assignTimestamps(extractor: TimestampExtractor[T]): DataStream[T]"></a>assignTimestamps(extractor: TimestampExtractor[T]): DataStream[T]</h3><p>此方法是数据流的快捷方式，其中已知元素时间戳在每个并行流中单调递增。在这种情况下，系统可以通过跟踪上升时间戳自动且完美地生成水印。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val input = env.addSource(<span class="built_in">source</span>)</span><br><span class="line">.map(json =&gt; &#123;</span><br><span class="line">        val id = json.get(<span class="string">"id"</span>).asText()</span><br><span class="line">        val createTime = json.get(<span class="string">"createTime"</span>).asText()</span><br><span class="line">        val amt = json.get(<span class="string">"amt"</span>).asText()</span><br><span class="line">        LateDataEvent(<span class="string">"key"</span>, id, createTime, amt)</span><br><span class="line">      &#125;)</span><br><span class="line">      // flink auto create timestamp &amp; watermark</span><br><span class="line">      .assignAscendingTimestamps(element =&gt; sdf.parse(element.createTime).getTime)</span><br></pre></td></tr></table></figure>
+<p>注：这种方法创建时间戳与水印最简单，返回一个long类型的数字就可以了</p>
+<h3 id="assignTimestampsAndWatermarks-assigner-AssignerWithPeriodicWatermarks-T-DataStream-T"><a href="#assignTimestampsAndWatermarks-assigner-AssignerWithPeriodicWatermarks-T-DataStream-T" class="headerlink" title="assignTimestampsAndWatermarks(assigner: AssignerWithPeriodicWatermarks[T]): DataStream[T]"></a>assignTimestampsAndWatermarks(assigner: AssignerWithPeriodicWatermarks[T]): DataStream[T]</h3><p>基于给定的水印生成器生成水印，即使没有新元素到达也会定期检查给定水印生成器的新水印，以指定允许延迟时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">val input = env.addSource(<span class="built_in">source</span>)</span><br><span class="line">      .map(json =&gt; &#123;</span><br><span class="line">        val id = json.get(<span class="string">"id"</span>).asText()</span><br><span class="line">        val createTime = json.get(<span class="string">"createTime"</span>).asText()</span><br><span class="line">        val amt = json.get(<span class="string">"amt"</span>).asText()</span><br><span class="line">        LateDataEvent(<span class="string">"key"</span>, id, createTime, amt)</span><br><span class="line">      &#125;)</span><br><span class="line">      // assign timestamp &amp; watermarks periodically(定期生成水印)</span><br><span class="line">      .assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor[LateDataEvent](Time.milliseconds(50)) &#123;</span><br><span class="line">       override def extractTimestamp(element: LateDataEvent): Long = &#123;</span><br><span class="line">         println(<span class="string">"want watermark : "</span> + sdf.parse(element.createTime).getTime)</span><br><span class="line">         sdf.parse(element.createTime).getTime</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="assignTimestampsAndWatermarks-assigner-AssignerWithPeriodicWatermarks-T-DataStream-T-1"><a href="#assignTimestampsAndWatermarks-assigner-AssignerWithPeriodicWatermarks-T-DataStream-T-1" class="headerlink" title="assignTimestampsAndWatermarks(assigner: AssignerWithPeriodicWatermarks[T]): DataStream[T]"></a>assignTimestampsAndWatermarks(assigner: AssignerWithPeriodicWatermarks[T]): DataStream[T]</h3><p>此方法仅基于流元素创建水印，对于通过[[AssignerWithPunctuatedWatermarks＃extractTimestamp（Object，long）]]处理的每个元素，<br>调用[[AssignerWithPunctuatedWatermarks＃checkAndGetNextWatermark（）]]方法，如果返回的水印值大于以前的水印，会发出新的水印，<br>此方法可以完全控制水印的生成，但是要注意，每秒生成数百个水印会影响性能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">val input = env.addSource(<span class="built_in">source</span>)</span><br><span class="line">      .map(json =&gt; &#123;</span><br><span class="line">        val id = json.get(<span class="string">"id"</span>).asText()</span><br><span class="line">        val createTime = json.get(<span class="string">"createTime"</span>).asText()</span><br><span class="line">        val amt = json.get(<span class="string">"amt"</span>).asText()</span><br><span class="line">        LateDataEvent(<span class="string">"key"</span>, id, createTime, amt)</span><br><span class="line">      &#125;)</span><br><span class="line">      // assign timestamp &amp; watermarks every event</span><br><span class="line">      .assignTimestampsAndWatermarks(new AssignerWithPunctuatedWatermarks[LateDataEvent]() &#123;</span><br><span class="line">      // check extractTimestamp emitted watermark is non-null and large than previously</span><br><span class="line">      override def checkAndGetNextWatermark(lastElement: LateDataEvent, extractedTimestamp: Long): Watermark = &#123;</span><br><span class="line">        new Watermark(extractedTimestamp)</span><br><span class="line">      &#125;</span><br><span class="line">      // generate next watermark</span><br><span class="line">      override def extractTimestamp(element: LateDataEvent, previousElementTimestamp: Long): Long = &#123;</span><br><span class="line">        val eventTime = sdf.parse(element.createTime).getTime</span><br><span class="line">        eventTime</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cnblogs.com/Springmoon-venn/p/11403665.html" target="_blank" rel="noopener">转载于</a></p>
 
       
     </div>
