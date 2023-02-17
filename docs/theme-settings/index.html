@@ -1,0 +1,116 @@
+<hr>
+<p>title: Theme Settings<br>date: 2018-02-08 18:50:03<br>description: NexT User Docs – Theme Settings</p>
+<hr>
+<p>One of the guiding principles of NexT is to hide complex details and give you a simple but flexible config, so you can use it easily.</p>
+<p>{% note info %}<br>The values given in the document are often typical allowable values rather than default values. They may be different from those in {% label primary@NexT config file %}.<br>{% endnote %}</p>
+<h3 id="NexT-Quick-Start"><a href="#NexT-Quick-Start" class="headerlink" title="NexT Quick Start"></a>NexT Quick Start</h3><h4 id="Cache-Support"><a href="#Cache-Support" class="headerlink" title="Cache Support"></a>Cache Support</h4><p>NexT v6+ allows to cache content generation. Set the value <code>enable</code> to <code>true</code> in <code>cache</code> section in {% label primary@NexT config file %} as following:</p>
+<pre><code class="yml"><span class="comment"># Allow to cache content generation.</span>
+<span class="attr">cache:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+<h4 id="Minify-Support"><a href="#Minify-Support" class="headerlink" title="Minify Support"></a>Minify Support</h4><p>NexT allows to minify Hexo generation. Set the value <code>minify</code> to <code>true</code> in {% label primary@NexT config file %} as following:</p>
+<pre><code class="yml"><span class="comment"># Remove unnecessary files after hexo generate.</span>
+<span class="attr">minify:</span> <span class="literal">true</span></code></pre>
+<h4 id="Choosing-Scheme"><a href="#Choosing-Scheme" class="headerlink" title="Choosing Scheme"></a>Choosing Scheme</h4><p>Scheme is a feature supported by NexT, by using Scheme NexT gives you different views. And nearly all config can be used by those Schemes. Till now NexT supports 4 schemes, and they are:</p>
+<ul>
+<li><strong><code>Muse</code></strong> → Default Scheme, this is the initial version of NexT. Uses black-white tone and mainly looks cleanly.</li>
+<li><code>Mist</code> → A tighter version of Muse with a tidy single-column view.</li>
+<li><code>Pisces</code> → Double-column Scheme, fresh like your neighbor’s daughter.</li>
+<li><code>Gemini</code> → Looks like Pisces, but have distinct column blocks with shadow to appear more sensitive to view.</li>
+</ul>
+<p>You can change Scheme by editing {% label primary@NexT config file %}, searching <code>scheme</code> keyword. You’ll see 4 lines of scheme settings and can enable one of them by removing it’s <code>#</code> and added <code>#</code> to previous.</p>
+<pre><code class="yml"><span class="comment">#scheme: Muse</span>
+<span class="comment">#scheme: Mist</span>
+<span class="comment">#scheme: Pisces</span>
+<span class="attr">scheme:</span> <span class="string">Gemini</span></code></pre>
+<h4 id="Dark-Mode"><a href="#Dark-Mode" class="headerlink" title="Dark Mode"></a>Dark Mode</h4><p>{% darkmode_preview %}</p>
+<p>You can enable Dark Mode by setting <code>darkmode</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">darkmode:</span> <span class="literal">true</span></code></pre>
+<p>The <code>prefers-color-scheme</code> CSS media feature is used to bring Dark Mode to all 4 schemes above, make sure your browser supports it.</p>
+<p>{% caniuse prefers-color-scheme @ current,past_1,past_2,past_3,past_4,past_5 %}</p>
+<p>Theme NexT automatically shows Dark Mode if the OS prefered theme is dark. It’s supported by macOS Mojave, iOS 13 and Android 10 or later. Relevant docs:<br><a href="https://support.apple.com/en-us/HT208976" target="_blank" rel="noopener">How to use Dark Mode on your Mac</a><br><a href="https://support.apple.com/en-us/HT210332" target="_blank" rel="noopener">Use Dark Mode on your iPhone, iPad, or iPod touch</a><br><a href="https://developer.android.com/guide/topics/ui/look-and-feel/darktheme" target="_blank" rel="noopener">Dark theme | Android Developers</a></p>
+<h4 id="Configuring-Favicon"><a href="#Configuring-Favicon" class="headerlink" title="Configuring Favicon"></a>Configuring Favicon</h4><p>By default the Hexo site use NexT favicons in <code>hexo-site/themes/next/source/images/</code> directory with different size for different device. You can replace them with your own favicons.</p>
+<p>For example, you can put your favicons in <code>hexo-site/source/images/</code> directory. Then you need to rename them and change the settings in <code>favicon</code> section in {% label primary@NexT config file %}, otherwise icons from Next will rewrite your custom icons in Hexo.</p>
+<p>You can also put custom favicons into <code>hexo-site/source/</code> directory. In this way, you <strong>must remove</strong> <code>/images</code> prefix from paths.</p>
+<p>To generate custom favicons, you can visit <a href="https://realfavicongenerator.net" target="_blank" rel="noopener">Favicon Generator</a>.</p>
+<pre><code class="yml"><span class="attr">favicon:</span>
+  <span class="attr">small:</span> <span class="string">/images/favicon-16x16-next.png</span>
+  <span class="attr">medium:</span> <span class="string">/images/favicon-32x32-next.png</span>
+  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span>
+  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo.svg</span>
+  <span class="attr">android_manifest:</span> <span class="string">/images/manifest.json</span></code></pre>
+<h4 id="Custom-Logo-Support"><a href="#Custom-Logo-Support" class="headerlink" title="Custom Logo Support"></a>Custom Logo Support</h4><p>NexT supports the site logo personalization.</p>
+<p>You can enable it by adding images’s url to <code>custom_logo</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">custom_logo:</span> <span class="string">/uploads/custom-logo.jpg</span></code></pre>
+<p>{% note danger %}<br>Scheme Mist does not support custom logo setting.<br>{% endnote %}</p>
+<h4 id="Creative-Commons"><a href="#Creative-Commons" class="headerlink" title="Creative Commons"></a>Creative Commons</h4><p>NexT supports the display of <a href="https://creativecommons.org/" target="_blank" rel="noopener">Creative Commons 4.0 International License</a> in sidebar and post including <code>by</code>, <code>by-nc</code>, <code>by-nc-nd</code>, <code>by-nc-sa</code>, <code>by-nd</code>, <code>by-sa</code> and <code>cc-zero</code>. These licenses allow creators to communicate which rights they reserve, and which rights they waive for the benefit of recipients or other creators.</p>
+<p>You can configure it by editing values in <code>creative_commons</code> section in {% label primary@NexT config file %}, for example:</p>
+<pre><code class="yml"><span class="attr">creative_commons:</span>
+  <span class="comment"># Available values: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | cc-zero</span>
+  <span class="attr">license:</span> <span class="string">by-nc-sa</span>
+  <span class="comment"># Available values: big | small</span>
+  <span class="attr">size:</span> <span class="string">small</span>
+  <span class="attr">sidebar:</span> <span class="literal">true</span>
+  <span class="attr">post:</span> <span class="literal">true</span>
+  <span class="attr">language:</span> <span class="string">deed.zh</span></code></pre>
+<p>{% note info %}<br>You can set a language value if you prefer a translated version of CC license, e.g. deed.zh<br>CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on <a href="https://creativecommons.org" target="_blank" rel="noopener">https://creativecommons.org</a><br>{% endnote %}</p>
+<h4 id="Open-Graph"><a href="#Open-Graph" class="headerlink" title="Open Graph"></a>Open Graph</h4><pre><code class="yml"><span class="attr">open_graph:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="comment"># Add pairs each line to customize</span>
+  <span class="attr">options:</span>
+    <span class="attr">type:</span> <span class="string">blog</span></code></pre>
+<h4 id="Configuring-Menu-Items"><a href="#Configuring-Menu-Items" class="headerlink" title="Configuring Menu Items"></a>Configuring Menu Items</h4><p>Menu settings items have format <code>Key: /link/ || icon</code> which contains 3 values:</p>
+<p>{% tabs menu-items %}</p>
+<!-- tab <code>Key</code> -->
+<p><code>Key</code> → is the name of menu item (<code>home</code>, <code>archives</code>, etc.).<br>If translate for this menu will be found in languages, this translate will be loaded; if not, <code>Key</code> name will be used.<br>{% note danger %}<br><code>Key</code> value is case sensitive (e.g. <code>home</code> is not same as <code>Home</code>).<br>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab <code>link</code> -->
+<p>Value before <code>||</code> delimiter (<code>/link/</code>) → is the target link to relative url inside your site.</p>
+<!-- endtab -->
+
+<!-- tab <code>icon</code> -->
+<p>Value after <code>||</code> delimiter (<code>icon</code>) → is the name of Font Awesome icon.<br>Names of that icons can be found in <a href="https://fontawesome.com" target="_blank" rel="noopener">Font Awesome</a> site.</p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<p>By default, all menu items are commented out to ensure that you can override them in the <a href="/docs/getting-started/configuration.html">Alternate Theme Config</a>.<br>To customize menu items, edit the following content in {% label primary@NexT config file %}:</p>
+<pre><code class="yml"><span class="attr">menu:</span>
+  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span>
+  <span class="comment">#about: /about/ || fa fa-user</span>
+  <span class="comment">#tags: /tags/ || fa fa-tags</span>
+  <span class="comment">#categories: /categories/ || fa fa-th</span>
+  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span>
+  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span>
+  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span>
+  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></code></pre>
+<p>{% note danger %}<br>Except <code>home</code> and <code>archives</code>, all custom pages under <code>menu</code> section need to be created manually. See <a href="/docs/theme-settings/custom-pages.html">«Custom Page Support»</a>.</p>
+<p>Besides, <a href="https://github.com/hexojs/hexo-generator-sitemap" target="_blank" rel="noopener">hexo-generator-sitemap</a> plugin is required for <code>sitemap</code> support.<br>{% endnote %}</p>
+<p>Dynamic sub-menu within hierarchy structure is also supported. Add your sub-menu items in <code>menu</code> section in {% label primary@NexT config file %} as following:</p>
+<pre><code class="yml"><span class="attr">menu:</span>
+  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span>
+  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span>
+  <span class="attr">Docs:</span>
+    <span class="attr">default:</span> <span class="string">/docs/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-book</span>
+    <span class="attr">Getting Started:</span>
+      <span class="attr">default:</span> <span class="string">/getting-started/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-flag</span>
+      <span class="attr">Installation:</span> <span class="string">/installation.html</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-download</span>
+      <span class="attr">Configuration:</span> <span class="string">/configuration.html</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-wrench</span>
+    <span class="attr">Third Party Plugins:</span>
+      <span class="attr">default:</span> <span class="string">/third-party-services/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-puzzle-piece</span>
+      <span class="attr">Math Equations:</span> <span class="string">/math-equations.html</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-square-root-alt</span>
+      <span class="attr">Comment Systems:</span> <span class="string">/comments.html</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-comment-alt</span></code></pre>
+<p>{% note danger %}<br>A <code>default</code> page is required for each sub-menu item.<br>{% endnote %}</p>
+<p>By default NexT shows the icons of menu items without badges.</p>
+<p>{% tabs menu_settings %}</p>
+<!-- tab <code>icons</code> -->
+<p>You can configure it by editing values in <code>menu_settings.icons</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">menu_settings:</span>
+  <span class="attr">icons:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>badges</code> -->
+<p>Set the value <code>badges</code> to <code>true</code> to display the count of Posts / Categories / Tags within menu items in <code>menu_settings</code> section in {% label primary@NexT config file %} as following:</p>
+<pre><code class="yml"><span class="attr">menu_settings:</span>
+  <span class="attr">badges:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<p>{% endtabs %}</p>

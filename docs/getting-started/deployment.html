@@ -1,0 +1,139 @@
+<hr>
+<p>title: Deployment<br>description: NexT User Docs – Starting to Use — Deployment</p>
+<hr>
+<h3 id="Local-Deployment"><a href="#Local-Deployment" class="headerlink" title="Local Deployment"></a>Local Deployment</h3><ol>
+<li>Modify files locally.</li>
+<li>Localization testing: <code>hexo clean &amp;&amp; hexo s</code>.</li>
+<li>Deployment: <code>hexo g -d</code>.</li>
+</ol>
+<h3 id="Continuous-Integration"><a href="#Continuous-Integration" class="headerlink" title="Continuous Integration"></a>Continuous Integration</h3><ul>
+<li>Edit the file directly online, effective immediately</li>
+<li>Automatic deployment, simultaneous deployment to multiple locations</li>
+</ul>
+<h4 id="Cloudflare-Pages"><a href="#Cloudflare-Pages" class="headerlink" title="Cloudflare Pages"></a>Cloudflare Pages</h4><p><a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a> is a JAMstack platform for frontend developers to collaborate and deploy websites. You can connect your GitHub or GitLab account with Cloudflare Pages. After that, you just need to push your blog source code to the repository, and create a new project in Cloudflare Pages. In the project’s settings, you can configure the build settings as shown below.</p>
+<p><img src="/images/cloudflare-pages.png" alt="Cloudflare Pages"></p>
+<p>Cloudflare Pages will automatically build and deploy your site.</p>
+<h4 id="Netlify"><a href="#Netlify" class="headerlink" title="Netlify"></a>Netlify</h4><p><a href="https://www.netlify.com" target="_blank" rel="noopener">Netlify</a> is an all-in-one platform for automating modern web projects. Replace your hosting infrastructure, continuous integration, and deployment pipeline with a single workflow. Integrate dynamic functionality like serverless functions, user authentication, and form handling as your projects grow.</p>
+<p>Perhaps you have already found that this website is deployed on Netlify. Checkout <code>deploy.sh</code> and <code>netlify.toml</code> in <a href="https://github.com/next-theme/theme-next-docs" target="_blank" rel="noopener">theme-next-docs</a> repository for more information.</p>
+<h4 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h4><p>This Github Action automating Hexo deployment workflow, to allow you to publish your Hexo site on Github Pages: <a href="https://github.com/sma11black/hexo-action" target="_blank" rel="noopener">hexo-action</a>.</p>
+<h4 id="Gitlab-CI"><a href="#Gitlab-CI" class="headerlink" title="Gitlab CI"></a>Gitlab CI</h4><p><a href="https://docs.gitlab.com/ee/ci/" target="_blank" rel="noopener">GitLab</a> offers a continuous integration service and pages service. If you add a <code>.gitlab-ci.yml</code> file to the root directory of your repository, and configure your GitLab project to use a Runner, then each commit or push, triggers your CI pipeline. The <code>.gitlab-ci.yml</code> file tells the GitLab runner what to do. By default it runs a pipeline with three stages: build, test, and deploy. You don’t need to use all three stages; stages with no jobs are simply ignored. And at the end, your websites will be published on GitLab Host automatically.</p>
+<ol>
+<li><p>Add <code>.gitlab-ci.yml</code> to the root directory of your repository, and configure it.</p>
+<pre><code class="yml"><span class="attr">image:</span> <span class="string">node:lts</span>
+
+<span class="attr">before_script:</span>
+  <span class="comment"># Set TimeZone, eg: Asia/Shanghai</span>
+  <span class="comment"># - export TZ='Asia/Shanghai'</span>
+  <span class="comment"># Restore last modified time</span>
+  <span class="bullet">-</span> <span class="string">"git ls-files -z | while read -d '' path; do touch -d \"$(git log -1 --format=\"@%ct\" \"$path\")\" \"$path\"; done"</span>
+
+<span class="attr">pages:</span>
+  <span class="attr">stage:</span> <span class="string">build</span>
+  <span class="attr">cache:</span>
+    <span class="attr">paths:</span>
+    <span class="bullet">-</span> <span class="string">node_modules/</span>
+  <span class="attr">script:</span>
+  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span>
+  <span class="bullet">-</span> <span class="string">npx</span> <span class="string">hexo</span> <span class="string">deploy</span>
+  <span class="attr">artifacts:</span>
+    <span class="attr">paths:</span>
+    <span class="bullet">-</span> <span class="string">public</span>
+  <span class="attr">only:</span>
+  <span class="bullet">-</span> <span class="string">master</span></code></pre>
+</li>
+<li><p>Upload <code>scaffolds</code>, <code>source</code>, <code>themes</code>, <code>.gitignore</code>, <code>.gitlab-ci.yml</code>, <code>_config.yml</code>, and <code>package.json</code> to <a href="https://gitlab.com/" target="_blank" rel="noopener">your Gitlab repository</a>.</p>
+<pre><code class="git">$ git init
+$ ssh -T git@gitlab.com
+$ git remote add origin YOUR-GITLAB-REPO-SSH-LINK
+$ git add .
+$ git commit -m &quot;COMMIT MESSAGE&quot;
+$ git push -u origin master</code></pre>
+</li>
+</ol>
+<p>Now, your static website is available at <code>https://yourname.gitlab.io/project</code> that is similar to GitHub. <a href="https://gitlab.com/help/user/project/pages/index.md" target="_blank" rel="noopener">More GitLab Pages config in here</a>.</p>
+<p>Of course, you can also publish static website on GitHub Pages or others pages service. There are two ways to configure <code>.gitlab-ci.yml</code>:</p>
+<p>{% tabs Gitlab CI %}</p>
+<!-- tab <code>HTTPS</code> -->
+
+<ul>
+<li><p>Get the Access Token: <code>Settings</code> → <code>Developer settings</code> → <code>Personal access token</code> → <code>Generate new token</code>. Set access rights according to the actual situation. It should be noted that the access token is only displayed once on this page, and it should be copied, otherwise it can only be regenerated.</p>
+</li>
+<li><p>Click <code>SETTINGS-CI/CD → Variables</code> in Gitlab, and defined access token as custom variable <code>GITHUB_ACCESS_TOKEN</code>. Or set <code>USERNAME</code> <code>PASSWORD</code> variable for coding repo.</p>
+</li>
+<li><p>Configure <code>.gitlab-ci.yml</code>: <strong>only add deploy stage at the end of this file</strong></p>
+<pre><code class="yml"><span class="attr">github:</span>
+  <span class="attr">stage:</span> <span class="string">deploy</span>
+  <span class="attr">script:</span>
+  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">./public</span>
+  <span class="bullet">-</span> <span class="string">git</span> <span class="string">init</span>
+  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">"YOUR-USER-NAME"</span>
+  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">"YOUR-EMAIL"</span>
+  <span class="bullet">-</span> <span class="string">git</span> <span class="string">add</span> <span class="string">.</span>
+  <span class="bullet">-</span> <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">"gitlab-auto-deploy"</span>
+  <span class="bullet">-</span> <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">--quiet</span> <span class="string">--set-upstream</span> <span class="string">https://$GITHUB_ACCESS_TOKEN@github.com/username/username.github.io.git</span> <span class="string">master</span> <span class="comment"># replace github_access_token</span>
+  <span class="comment"># - git config http.postBuffer 524288000</span>
+  <span class="comment"># - git push --force --quiet --set-upstream https://$USERNAME:$PASSWORD@git.coding.net/username/reponame.git master # replace username &amp; password, please escape the password</span>
+  <span class="attr">only:</span>
+  <span class="bullet">-</span> <span class="string">master</span></code></pre>
+<!-- endtab -->
+<!-- tab <code>SSH</code> -->
+<p>Deploy key is a SSH key set in your repo to grant client read-only (as well as r/w, if you want) access to your repo. This method is suitable for most public blog repositories and there are no private sub-modules in the repositories.</p>
+</li>
+<li><p>Generate a deploy key</p>
+<pre><code class="git">$ ssh-keygen -t rsa -b 4096 -C &quot;{email}&quot; -f ~/.ssh/deploy_key</code></pre>
+</li>
+<li><p>Click <code>SETTINGS-CI/CD → Variables</code> in Gitlab, copy the content of private key and defined it as custom variable <code>DEPLOY_PRIVATE_KEY</code>.</p>
+</li>
+<li><p>Configure <code>.gitlab-ci.yml</code>: <strong>only update script in <code>before_script</code></strong></p>
+<pre><code class="yml"><span class="attr">before_script:</span>
+  <span class="comment"># Set TimeZone, eg: Asia/Shanghai</span>
+  <span class="comment"># - export TZ='Asia/Shanghai'</span>
+
+  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">"YOUR-USER-NAME"</span>
+  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">"YOUR-EMAIL"</span>
+
+  <span class="comment"># Restore last modified time</span>
+  <span class="bullet">-</span> <span class="string">"git ls-files -z | while read -d '' path; do touch -d \"$(git log -1 --format=\"@%ct\" \"$path\")\" \"$path\"; done"</span>
+  <span class="comment"># Install ssh-agent if not already installed, it is required by Docker.</span>
+  <span class="comment"># (change apt-get to yum if you use a CentOS-based image)</span>
+  <span class="bullet">-</span> <span class="string">'which ssh-agent || ( apt-get update -y &amp;&amp; apt-get install openssh-client -y )'</span>
+  <span class="comment"># Run ssh-agent (inside the build environment)</span>
+  <span class="bullet">-</span> <span class="string">eval</span> <span class="string">$(ssh-agent</span> <span class="string">-s)</span>
+  <span class="comment"># Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store</span>
+  <span class="bullet">-</span> <span class="string">ssh-add</span> <span class="string">&lt;(echo</span> <span class="string">"$DEPLOY_PRIVATE_KEY"</span><span class="string">)</span>
+  <span class="comment"># For Docker builds disable host key checking. Be aware that by adding that</span>
+  <span class="comment"># you are susceptible to man-in-the-middle attacks.</span>
+  <span class="comment"># WARNING: Use this only with the Docker executor, if you use it with shell</span>
+  <span class="comment"># you will overwrite your user's SSH config.</span>
+  <span class="bullet">-</span> <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh</span>
+  <span class="bullet">-</span> <span class="string">'[[ -f /.dockerenv ]] &amp;&amp; echo -e "Host *\n\tStrictHostKeyChecking no\n\n" &gt; ~/.ssh/config'</span>
+  <span class="comment"># In order to properly check the server's host key, assuming you created the</span>
+  <span class="comment"># SSH_SERVER_HOSTKEYS variable previously, uncomment the following two lines</span>
+  <span class="comment"># instead.</span>
+  <span class="comment"># - mkdir -p ~/.ssh</span>
+  <span class="comment"># - '[[ -f /.dockerenv ]] &amp;&amp; echo "$SSH_SERVER_HOSTKEYS" &gt; ~/.ssh/known_hosts'</span>
+
+  <span class="comment"># Install pandoc, eg: v1.19.2.1</span>
+  <span class="comment"># - wget https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-1-amd64.deb</span>
+  <span class="comment"># - dpkg -i ./pandoc-1.19.2.1-1-amd64.deb</span>
+
+<span class="attr">image:</span> <span class="string">node:lts</span>
+
+<span class="attr">pages:</span>
+  <span class="attr">cache:</span>
+    <span class="attr">paths:</span>
+    <span class="bullet">-</span> <span class="string">node_modules/</span>
+  <span class="attr">script:</span>
+  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span>
+  <span class="bullet">-</span> <span class="string">npx</span> <span class="string">hexo</span> <span class="string">deploy</span>
+
+  <span class="attr">artifacts:</span>
+    <span class="attr">paths:</span>
+      <span class="bullet">-</span> <span class="string">public</span>
+  <span class="attr">only:</span>
+    <span class="bullet">-</span> <span class="string">master</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+</li>
+</ul>
+<p>{% note danger %}<br>Variables are not masked, and their values can be shown in the job logs if explicitly asked to do so. So make sure gitlab pipelines can only be viewed by yourself.<br>{% endnote %}</p>

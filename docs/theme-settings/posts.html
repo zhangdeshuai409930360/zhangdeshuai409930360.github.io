@@ -1,0 +1,212 @@
+<hr>
+<p>title: Post Settings<br>description: NexT User Docs – Theme Settings – Posts</p>
+<hr>
+<h3 id="Preamble-Text"><a href="#Preamble-Text" class="headerlink" title="Preamble Text"></a>Preamble Text</h3><p>It’s a common need to show some part of article in home page and then give a link to full article. NexT gives two ways to control how article is shown in home page. In other words, you can use following ways to show summary of articles and a <strong>Read More</strong> button.</p>
+<p>{% tabs preamble %}</p>
+<!-- tab {% label success@Tag more %} -->
+<p>Use <code>&lt;!-- more --&gt;</code> in your article to break your article manually, which is recommended by Hexo.</p>
+<!-- endtab -->
+
+<!-- tab <code>excerpt_description</code> -->
+<p>If you have added <code>description</code> and set its value to your article summary in <a href="https://hexo.io/docs/front-matter" target="_blank" rel="noopener">front-matter</a>, NexT excerpts <code>description</code> as preamble text in homepage by default. Without <code>description</code>, the full contents would be the preamble text in homepage.</p>
+<p>You can disable it by setting value <code>excerpt_description</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">excerpt_description:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<p>{% note info %}<br>It is recommended to use <code>&lt;!-- more --&gt;</code> (the first way) which can not only control what you want to show better, but also let Hexo’s plugins use it easily.<br>{% endnote %}</p>
+<h3 id="Post-Meta-Display"><a href="#Post-Meta-Display" class="headerlink" title="Post Meta Display"></a>Post Meta Display</h3><p>NexT supports post created date, post updated date and post categories display.</p>
+<p>{% tabs postmeta %}</p>
+<!-- tab <code>item_text</code> -->
+<p>By default NexT shows the description text of post meta. You can disable it by setting value <code>post_meta.item_text</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">post_meta:</span>
+  <span class="attr">item_text:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>created_at</code> -->
+<p>By default NexT shows the post created date in post meta section and created time in popup. You can disable it by setting value <code>post_meta.created_at</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">post_meta:</span>
+  <span class="attr">created_at:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>updated_at</code> -->
+
+<p>{% note warning %}<br>Make sure you set <code>use_date_for_updated</code> and <code>updated_option</code> in {% label info@Hexo config file %} correctly, otherwise this option will not take effect. See also <a href="https://hexo.io/docs/configuration#Date-Time-format" target="_blank" rel="noopener">Date / Time format</a>.<br>{% endnote %}</p>
+<p>{% subtabs postmeta1 %}</p>
+<!-- tab <code>enable</code> -->
+<p>By default NexT shows the post updated date in post meta section and updated time in popup. You can disable it by setting value <code>post_meta.updated_at.enable</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">post_meta:</span>
+  <span class="attr">updated_at:</span>
+    <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>another_day</code> -->
+<p>By default, if updated/edited date is the same as created date, edited time would be displayed in popup message. You can disable it by setting value <code>post_meta.updated_at.another_day</code> to <code>false</code> in {% label primary@NexT config file %}.<br>In other words:</p>
+<ul>
+<li>If true, show updated date label only if <code>updated date</code> is different from <code>created date</code> (post edited in another day than was created).</li>
+<li>And if post was edited in same day as created, edited time will show in popup title under created time label.</li>
+<li>If false show anyway, but if post edited in same day, show only edited time.</li>
+</ul>
+<pre><code class="yml"><span class="attr">post_meta:</span>
+  <span class="attr">updated_at:</span>
+    <span class="attr">another_day:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+<p>{% endsubtabs %}</p>
+<!-- endtab -->
+
+<!-- tab <code>categories</code> -->
+<p>By default NexT shows the post categories in post meta section. You can disable it by setting value <code>post_meta.categories</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">post_meta:</span>
+  <span class="attr">categories:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<p>{% endtabs %}</p>
+<h3 id="Post-Wordcount"><a href="#Post-Wordcount" class="headerlink" title="Post Wordcount"></a>Post Wordcount</h3><p>{% tabs wordcount %}</p>
+<!-- tab Installation → -->
+<p>Install <code>hexo-word-counter</code> by executing the following command in {% label info@site root dir %}:</p>
+<pre><code class="bash">$ npm install hexo-word-counter
+$ hexo clean</code></pre>
+<!-- endtab -->
+
+<!-- tab Hexo Config → -->
+<p>Activate this plugin in {% label info@Hexo config file %} by enabled any option:</p>
+<p>{% subtabs wordcount1 %}</p>
+<!-- tab <code>symbols</code> -->
+<p>By default NexT shows the number of post words in post meta section. You can disable it by setting value <code>symbols_count_time.symbols</code> to <code>false</code> in {% label info@Hexo config file %}.</p>
+<pre><code class="yml"><span class="attr">symbols_count_time:</span>
+  <span class="attr">symbols:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>time</code> -->
+<p>By default NexT shows the estimated reading time of post in post meta section. You can disable it by setting value <code>symbols_count_time.time</code> to <code>false</code> in {% label info@Hexo config file %}.</p>
+<pre><code class="yml"><span class="attr">symbols_count_time:</span>
+  <span class="attr">time:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>total_symbols</code> -->
+<p>By default NexT shows the number of all posts words in footer section. You can disable it by setting value <code>symbols_count_time.total_symbols</code> to <code>false</code> in {% label info@Hexo config file %}.</p>
+<pre><code class="yml"><span class="attr">symbols_count_time:</span>
+  <span class="attr">total_symbols:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>total_time</code> -->
+<p>By default NexT shows the estimated reading time of all posts in footer section. You can disable it by setting value <code>symbols_count_time.total_time</code> to <code>false</code> in {% label info@Hexo config file %}.</p>
+<pre><code class="yml"><span class="attr">symbols_count_time:</span>
+  <span class="attr">total_time:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>awl</code> -->
+<p><code>awl</code> means the average Word Length (chars count in word). You can check this <a href="https://charactercounttool.com/" target="_blank" rel="noopener">here</a>.</p>
+<pre><code class="yml"><span class="attr">symbols_count_time:</span>
+  <span class="attr">awl:</span> <span class="number">4</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>wpm</code> -->
+<p><code>wpm</code> means the average words per minute. You can check this <a href="https://wordcounter.net/" target="_blank" rel="noopener">here</a>.</p>
+<pre><code class="yml"><span class="attr">symbols_count_time:</span>
+  <span class="attr">wpm:</span> <span class="number">275</span></code></pre>
+<!-- endtab -->
+
+<p>{% endsubtabs %}</p>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>After the plugin enabled, you may adjust options in <code>symbols_count_time</code> section in {% label primary@NexT config file %}:</p>
+<p>{% subtabs wordcount2 %}</p>
+<!-- tab <code>separated_meta</code> -->
+<p>By default NexT shows the words counts and estimated reading time in a separated line. You can add them into one line by setting value <code>symbols_count_time.separated_meta</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">symbols_count_time:</span>
+  <span class="attr">separated_meta:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>item_text_total</code> -->
+<p>By default NexT doesn’t shows the text description of the words counts and estimated reading time in footer section. You can enable it by setting value <code>symbols_count_time.item_text_total</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">symbols_count_time:</span>
+  <span class="attr">item_text_total:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<p>{% endsubtabs %}</p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h3 id="Tag-Icon"><a href="#Tag-Icon" class="headerlink" title="Tag Icon"></a>Tag Icon</h3><p>By default, tags at the bottom of posts have a symbol # at there left side.</p>
+<p>If you prefer icon instead of symbol, edit {% label primary@NexT config file %} like following:</p>
+<pre><code class="yml"><span class="attr">tag_icon:</span> <span class="literal">true</span></code></pre>
+<h3 id="Donate-Settings"><a href="#Donate-Settings" class="headerlink" title="Donate Settings"></a>Donate Settings</h3><p>More and more online blogging platforms (e.g. WeChat public accounts, Jianshu, Zhihu) support donate (sponsor). To catch paid reading trends, we added donate feature, supports WeChat, Alipay and Bitcoin. What you need is:</p>
+<ol>
+<li><p>Get your WeChat / Alipay / Bitcoin receive money QRcode image(s) and put into <code>source/images</code> under {% label primary@theme directory %} or upload it(them) to an image cloud to get the absolute HTTP address(es).</p>
+</li>
+<li><p>Set needed values in  {% label primary@NexT config file %}:</p>
+<pre><code class="yml"><span class="comment"># Donate (Sponsor) settings</span>
+<span class="comment"># Front-matter variable (nonsupport animation).</span>
+<span class="attr">reward_settings:</span>
+  <span class="comment"># If true, a donate button will be displayed in every article by default.</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">animation:</span> <span class="literal">false</span>
+
+<span class="attr">reward:</span>
+  <span class="attr">wechatpay:</span> <span class="string">/images/wechatpay.png</span>
+  <span class="attr">alipay:</span> <span class="string">/images/alipay.png</span>
+  <span class="attr">bitcoin:</span> <span class="string">/images/bitcoin.png</span></code></pre>
+</li>
+</ol>
+<p>You can also add QRcode of other platforms, e.g.</p>
+<pre><code class="yml"><span class="attr">paypal:</span> <span class="string">/images/paypal.png</span>
+<span class="attr">monero:</span> <span class="string">/images/monero.png</span></code></pre>
+<h3 id="Follow-Me"><a href="#Follow-Me" class="headerlink" title="Follow Me"></a>Follow Me</h3><pre><code class="yml"><span class="comment"># Subscribe through Telegram Channel, Twitter, etc.</span>
+<span class="comment"># Usage: `Key: permalink || icon` (Font Awesome)</span>
+<span class="attr">follow_me:</span>
+  <span class="comment">#Twitter: https://twitter.com/username || fab fa-twitter</span>
+  <span class="comment">#Telegram: https://t.me/channel_name || fab fa-telegram</span>
+  <span class="comment">#WeChat: /images/wechat_channel.jpg || fab fa-weixin</span>
+  <span class="comment">#RSS: /atom.xml || fa fa-rss</span></code></pre>
+<p>You can add links of other platforms not listed here, for example:</p>
+<pre><code class="yml"><span class="attr">follow_me:</span>
+  <span class="attr">Zhihu:</span> <span class="string">https://www.zhihu.com/people/username</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-zhihu</span></code></pre>
+<h3 id="Related-Popular-Posts"><a href="#Related-Popular-Posts" class="headerlink" title="Related Popular Posts"></a>Related Popular Posts</h3><p>NexT supports the related posts functionality according to <a href="https://github.com/sergeyzwezdin/hexo-related-posts" target="_blank" rel="noopener">hexo-related-posts</a>.</p>
+<p>{% tabs related_posts %}</p>
+<!-- tab Installation → -->
+<p>Install <code>hexo-related-posts</code> by executing the following command in {% label info@site root dir %}:</p>
+<pre><code class="bash">$ npm install hexo-related-posts
+$ hexo clean</code></pre>
+<!-- endtab -->
+
+<!-- tab <code>enable</code> -->
+<p>You can enable it by setting value <code>related_posts.enable</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">related_posts:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>icon</code> -->
+<p>By default NexT shows the <code>signs-post</code> icon {% btn #,, signs-post %} before <code>title</code>. The name of icon can be found in <a href="https://fontawesome.com" target="_blank" rel="noopener">Font Awesome</a> site. You can configure it by editing value <code>icon</code> in <code>related_posts</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">related_posts:</span>
+  <span class="attr">icon:</span> <span class="string">fa</span> <span class="string">fa-signs-post</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h3 id="Post-Edit"><a href="#Post-Edit" class="headerlink" title="Post Edit"></a>Post Edit</h3><p>NexT supports the edit functionality of your posts. By enabling this feature, users can quickly browse and modify the blog’s source code on GitHub.</p>
+<p>{% tabs post_edit %}</p>
+<!-- tab <code>enable</code> -->
+<p>You can enable it by setting value <code>post_edit.enable</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">post_edit:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>url</code> -->
+<p>You should create a source repository of your post files. The <code>url</code> setting depends on the source project in github.</p>
+<ul>
+<li>For site repository<ul>
+<li>Link for view source: <code>url: https://github.com/.../tree/master/source/_posts/</code></li>
+<li>Link for fork &amp; edit: <code>url: https://github.com/.../edit/master/source/_posts/</code></li>
+</ul>
+</li>
+<li>For post repository<ul>
+<li>Link for view source: <code>url: https://github.com/.../_posts/tree/master/</code></li>
+<li>Link for fork &amp; edit: <code>url: https://github.com/.../_posts/edit/master/</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="yml"><span class="attr">post_edit:</span>
+  <span class="attr">url:</span></code></pre>
+<!-- endtab -->
+
+<p>{% endtabs %}</p>
+<h3 id="Post-Navigation"><a href="#Post-Navigation" class="headerlink" title="Post Navigation"></a>Post Navigation</h3><p>Show previous post and next post in post footer if exists.</p>
+<pre><code class="yml"><span class="attr">post_navigation:</span> <span class="string">left</span></code></pre>

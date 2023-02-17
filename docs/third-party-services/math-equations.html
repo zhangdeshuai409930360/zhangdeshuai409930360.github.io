@@ -1,0 +1,204 @@
+<hr>
+<p>title: Math Equations<br>description: NexT User Docs – Third-party Plugins Integration – Math Equations<br>mathjax: true</p>
+<hr>
+<h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><pre><code class="yml"><span class="comment"># Math Formulas Render Support</span>
+<span class="attr">math:</span>
+  <span class="comment"># Default (false) will load mathjax / katex script on demand.</span>
+  <span class="comment"># That is it only render those page which has `mathjax: true` in front-matter.</span>
+  <span class="comment"># If you set it to true, it will load mathjax / katex script EVERY PAGE.</span>
+  <span class="attr">every_page:</span> <span class="literal">false</span>
+
+  <span class="attr">mathjax:</span>
+    <span class="attr">enable:</span> <span class="literal">true</span>
+    <span class="comment"># Available values: none | ams | all</span>
+    <span class="attr">tags:</span> <span class="string">none</span>
+
+  <span class="attr">katex:</span>
+    <span class="attr">enable:</span> <span class="literal">false</span>
+    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span>
+    <span class="attr">copy_tex:</span> <span class="literal">false</span></code></pre>
+<p>The <code>every_page</code> option controls whether to render Math Equations every page.</p>
+<ul>
+<li><strong><code>false</code></strong> → Equations will be processed on demand. It will only render those posts which have <code>mathjax: true</code> in their front-matter.</li>
+<li><code>true</code> → Equations will be processed on every page. Even if they not exists on one or another page.</li>
+</ul>
+<p>{% note default <strong>Examples with <code>every_page: false</code> option</strong> %}</p>
+<ul>
+<li><p>This post will render the Math Equations</p>
+<pre><code class="md">---
+title: Will Render Math
+mathjax: true
+---</code></pre>
+</li>
+<li><p>This post will NOT render the Math Equations</p>
+<pre><code class="md">---
+title: Not Render Math
+mathjax: false
+---</code></pre>
+</li>
+<li><p>This post will NOT render the Math Equations either</p>
+<pre><code class="md">---
+title: Not Render Math Either
+---</code></pre>
+</li>
+</ul>
+<p>{% endnote %}</p>
+<p>The <code>mathjax</code> and <code>katex</code> options are used to set the rendering engine. Please read the detailed document below.</p>
+<h3 id="Render-Engines"><a href="#Render-Engines" class="headerlink" title="Render Engines"></a>Render Engines</h3><p>For now, NexT provides two rendering engines for displaying Math Equations: <a href="https://www.mathjax.org" target="_blank" rel="noopener">MathJax</a> and <a href="https://katex.org" target="_blank" rel="noopener">KaTeX</a>.</p>
+<ul>
+<li>MathJax is a JavaScript display engine for mathematics that works in all browsers. It is highly modular on input and output. Use MathML, TeX, and ASCIImath as input and produce HTML+CSS, SVG, or MathML as output.</li>
+<li><a href="https://www.intmath.com/cg5/katex-mathjax-comparison.php" target="_blank" rel="noopener">KaTeX is a faster</a> math rendering engine compared to MathJax 3. And it could survive without JavaScript. But, for now <a href="https://github.com/KaTeX/KaTeX/wiki/Things-that-KaTeX-does-not-(yet)-support" target="_blank" rel="noopener">KaTeX supports less features</a> than MathJax. Here is a list of <a href="https://katex.org/docs/supported.html" target="_blank" rel="noopener">TeX functions supported by KaTeX</a>.</li>
+</ul>
+<p>Firstly, you need to choose a rendering engine and turn on <code>enable</code> for it in {% label primary@NexT config file %}. Then you need to install the <strong>corresponding Hexo Renderer</strong> to fully support the display of Math Equations - Only turn on <code>enable</code> <strong>may not let you see the displayed equations correctly</strong>.</p>
+<p>{% tabs render-engines %}</p>
+<!-- tab MathJax -->
+<p><strong>Renderer Choosing</strong></p>
+<p>If you use MathJax to render Math Equations, you can choose one of the Markdown renderers below:</p>
+<ul>
+<li><a href="https://github.com/wzpan/hexo-renderer-pandoc" target="_blank" rel="noopener">hexo-renderer-pandoc</a></li>
+</ul>
+<p>hexo-renderer-pandoc is recommended because it can handle mathematical formulas in markdown documents perfectly.</p>
+<p>{% note warning %}<br>If you are using other renderers, such as <a href="https://github.com/hexojs/hexo-renderer-marked" target="_blank" rel="noopener">hexo-renderer-marked</a>, you need to be aware of the conflict between LaTeX and Markdown syntax. For example, an underscore (<code>_</code>) may be interpreted as the start of italic text in Markdown, or subscripted mark in TeX. To avoid syntax errors, please use escape characters (<code>\_</code>) instead:</p>
+<pre><code class="diff"><span class="deletion">-$\epsilon_0$</span>
+<span class="addition">+$\epsilon\_0$</span>
+<span class="deletion">-\begin{eqnarray*}</span>
+<span class="addition">+\begin{eqnarray\*}</span>
+<span class="deletion">-\\</span>
+<span class="addition">+\\\\</span></code></pre>
+<p>{% endnote %}</p>
+<p><strong>Installation</strong></p>
+<ol>
+<li><p>Firstly, set <code>mathjax</code> as rendering engine in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">math:</span>
+  <span class="string">...</span>
+  <span class="attr">mathjax:</span>
+    <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+</li>
+<li><p>Then you need to uninstall the original renderer <code>hexo-renderer-marked</code>, and install <code>hexo-renderer-pandoc</code>:</p>
+<pre><code class="bash">$ npm un hexo-renderer-marked
+$ npm i hexo-renderer-pandoc</code></pre>
+</li>
+<li><p><a href="https://github.com/jgm/pandoc" target="_blank" rel="noopener">pandoc</a> is required for hexo-renderer-pandoc, here’s <a href="https://github.com/jgm/pandoc/blob/master/INSTALL.md" target="_blank" rel="noopener">how to install pandoc</a>.</p>
+</li>
+</ol>
+<p><strong>Plugins</strong></p>
+<p>All extensions of MathJax are loaded automatically. For example, <code>mhchem</code> is a tool for writing beautiful chemical equations easily. It implements the <code>\ce</code> and <code>\pu</code> chemical equation macros of the LaTeX mhchem package. More information: <a href="https://mhchem.github.io/MathJax-mhchem/" target="_blank" rel="noopener">MathJax/mhchem Manual</a>.</p>
+<!-- endtab -->
+
+<!-- tab KaTeX -->
+<p><strong>Renderer Choosing</strong></p>
+<p>If you use KaTeX to render Math Equations, you can choose one of the Markdown renderers below:</p>
+<ul>
+<li><a href="https://github.com/CHENXCHEN/hexo-renderer-markdown-it-plus" target="_blank" rel="noopener">hexo-renderer-markdown-it-plus</a></li>
+<li><a href="https://github.com/hexojs/hexo-renderer-markdown-it" target="_blank" rel="noopener">hexo-renderer-markdown-it</a></li>
+</ul>
+<p><strong>Installation</strong></p>
+<ol>
+<li><p>Firstly, set <code>katex</code> as rendering engine in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">math:</span>
+  <span class="string">...</span>
+  <span class="attr">katex:</span>
+    <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+</li>
+<li><p>Then you need to uninstall the original renderer <code>hexo-renderer-marked</code> and install one of the renderer plugins:</p>
+</li>
+</ol>
+<p>{% subtabs katex-renderer %}</p>
+<!-- tab hexo-renderer-markdown-it-plus -->
+
+<pre><code class="bash">$ npm un hexo-renderer-marked
+$ npm i hexo-renderer-markdown-it-plus</code></pre>
+<!-- endtab -->
+
+<!-- tab hexo-renderer-markdown-it -->
+
+<pre><code class="bash">$ npm un hexo-renderer-marked
+$ npm i hexo-renderer-markdown-it</code></pre>
+<p>If you use <code>hexo-renderer-markdown-it</code>, you also need to install <code>markdown-it-katex</code>:</p>
+<pre><code class="bash">$ npm i markdown-it-katex</code></pre>
+<p>And then in {% label info@Hexo config file %} you need to add <code>markdown-it-katex</code> as a plugin for <code>hexo-renderer-markdown-it</code>:</p>
+<pre><code class="yml"><span class="comment"># config of hexo-renderer-markdown-it</span>
+<span class="attr">markdown:</span>
+  <span class="attr">render:</span>
+    <span class="attr">html:</span> <span class="literal">true</span>
+    <span class="attr">xhtmlOut:</span> <span class="literal">false</span>
+    <span class="attr">breaks:</span> <span class="literal">true</span>
+    <span class="attr">linkify:</span> <span class="literal">true</span>
+    <span class="attr">typographer:</span> <span class="literal">true</span>
+    <span class="attr">quotes:</span> <span class="string">'“”‘’'</span>
+  <span class="attr">plugins:</span>
+    <span class="bullet">-</span> <span class="string">markdown-it-katex</span></code></pre>
+<!-- endtab -->
+<p>{% endsubtabs %}</p>
+<p><strong>Plugins</strong></p>
+<p>Copy-tex extension for KaTeX modifies the copy/paste behavior in any browser supporting the Clipboard API so that, when selecting and copying whole KaTeX-rendered elements, the text content of the resulting clipboard renders KaTeX elements as their LaTeX source surrounded by specified delimiters. More information: <a href="https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex" target="_blank" rel="noopener">Copy-tex extension</a>.</p>
+<pre><code class="yml"><span class="attr">math:</span>
+  <span class="string">...</span>
+  <span class="attr">katex:</span>
+    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span>
+    <span class="attr">copy_tex:</span> <span class="literal">true</span></code></pre>
+<p>{% note danger %}<br><strong>Known Issues</strong></p>
+<ol>
+<li>Firstly, please check <a href="https://katex.org/docs/issues.html" target="_blank" rel="noopener">Common Issues</a> of KaTeX.</li>
+<li>Displayed Math (i.e. <code>$$...$$</code>) needs to started with new clear line.<br> In other words: you must not have any characters (except of whitespaces) <strong>before the opening <code>$$</code> and after the ending <code>$$</code></strong> (<a href="https://github.com/theme-next/hexo-theme-next/pull/32#issuecomment-357489509" target="_blank" rel="noopener">comment #32</a>).</li>
+<li>Don’t support Unicode (<a href="https://github.com/theme-next/hexo-theme-next/pull/32#issuecomment-357489509" target="_blank" rel="noopener">comment #32</a>).</li>
+<li>Inline Math (..<code>$...$</code>) must not have white spaces <strong>after the opening <code>$</code> and before the ending <code>$</code></strong> (<a href="https://github.com/theme-next/hexo-theme-next/pull/32#issuecomment-357489509" target="_blank" rel="noopener">comment #32</a>).</li>
+<li>If you use math in Heading (i.e. <code>## Heading</code>).<br> Then in corresponding TOC item it will show the related LaTeX code 3 times (<a href="https://github.com/theme-next/hexo-theme-next/pull/32#issuecomment-359018694" target="_blank" rel="noopener">comment #32</a>).</li>
+<li>If you use math in your post’s title, it will not be rendered (<a href="https://github.com/theme-next/hexo-theme-next/pull/32#issuecomment-359142879" target="_blank" rel="noopener">comment #32</a>).<br>{% endnote %}<!-- endtab -->
+{% endtabs %}</li>
+</ol>
+<p>{% note warning %}<br>After setting up the math rendering engine or installing / uninstalling the Markdown renderer, please execute <code>hexo clean</code>. Run standard Hexo generate, deploy process or start the server to test whether the plugin is working properly:</p>
+<pre><code class="bash">$ hexo clean &amp;&amp; hexo g -d
+<span class="comment"># or hexo clean &amp;&amp; hexo s</span></code></pre>
+<p>{% endnote %}</p>
+<p>{% note warning %}<br>Except for the required renderer, any other Hexo math plugins are unnecessary and there is no need to manually import any JS or CSS files. If you have installed plugins such as <code>hexo-math</code> or <code>hexo-katex</code>, they may conflict with the built-in rendering engine of NexT.<br>{% endnote %}</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>{% note info %}<br>The following examples are rendered by <code>mathjax</code> engine.<br>{% endnote %}</p>
+<h4 id="Numbering-and-Referring-Equations-in-MathJax"><a href="#Numbering-and-Referring-Equations-in-MathJax" class="headerlink" title="Numbering and Referring Equations in MathJax"></a>Numbering and Referring Equations in MathJax</h4><p>In NexT v6.3.0, we have added feature to <a href="https://docs.mathjax.org/en/latest/input/tex/eqnumbers.html" target="_blank" rel="noopener">automatic equation numbering</a> with opportunity to make reference to that equations.</p>
+<p>To enable this feature, you need to set <code>mathjax.tags</code> to <code>ams</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">math:</span>
+  <span class="attr">mathjax:</span>
+    <span class="attr">enable:</span> <span class="literal">true</span>
+    <span class="comment"># Available values: none | ams | all</span>
+    <span class="attr">tags:</span> <span class="string">ams</span></code></pre>
+<p>And to make the automatic equation numbering work, you have to wrap your LaTeX equations in <code>equation</code> environment. Using the plain old style (i.e., wrap an equation with two dollar signs in each side) will not work. How to refer to an equation? Just give a <code>\label{}</code> tag and then in your later text, use <code>\ref{}</code> or <code>\eqref{}</code> to refer it. Using <code>\eqref{}</code> is preferred since if you use <code>\ref{}</code>, there are no parentheses around the equation number. Below are some of the common scenarios for equation numbering.</p>
+<h4 id="Simple-Equations"><a href="#Simple-Equations" class="headerlink" title="Simple Equations"></a>Simple Equations</h4><p>For simple equations, use the following form to give a tag,</p>
+<pre><code class="latex">$$\begin{equation} \label{eq1}
+e=mc^2
+\end{equation}$$</code></pre>
+<p>$$\begin{equation} \label{eq1}<br>e=mc^2<br>\end{equation}$$</p>
+<p>Then, you can refer to this equation in your text easily by using something like:</p>
+<pre><code class="latex">The famous matter-energy equation $\eqref{eq1}$ proposed by Einstein...</code></pre>
+<p>The famous matter-energy equation $\eqref{eq1}$ proposed by Einstein…</p>
+<h4 id="Multi-line-Equations"><a href="#Multi-line-Equations" class="headerlink" title="Multi-line Equations"></a>Multi-line Equations</h4><p>For multi-line equations, inside the <code>equation</code> environment, you can use the <code>aligned</code> environment to split it into multiple lines:</p>
+<pre><code class="latex">$$\begin{equation} \label{eq2}
+\begin{aligned}
+a &amp;= b + c \\
+  &amp;= d + e + f + g \\
+  &amp;= h + i
+\end{aligned}
+\end{equation}$$</code></pre>
+<p>$$\begin{equation} \label{eq2}<br>\begin{aligned}<br>a &amp;= b + c \\<br>  &amp;= d + e + f + g \\<br>  &amp;= h + i<br>\end{aligned}<br>\end{equation}$$</p>
+<pre><code class="latex">Equation $\eqref{eq2}$ is a multi-line equation.</code></pre>
+<p>Equation $\eqref{eq2}$ is a multi-line equation.</p>
+<h4 id="Multiple-Aligned-Equations"><a href="#Multiple-Aligned-Equations" class="headerlink" title="Multiple Aligned Equations"></a>Multiple Aligned Equations</h4><p>We can use <code>align</code> environment to align multiple equations. Each of these equations will get its own numbers.</p>
+<pre><code class="latex">$$\begin{align}
+a &amp;= b + c \label{eq3} \\
+x &amp;= yz \label{eq4} \\
+l &amp;= m - n \label{eq5}
+\end{align}$$</code></pre>
+<p>$$\begin{align}<br>a &amp;= b + c \label{eq3} \\<br>x &amp;= yz \label{eq4} \\<br>l &amp;= m - n \label{eq5}<br>\end{align}$$</p>
+<pre><code class="latex">There are three aligned equations: equation $\eqref{eq3}$, equation $\eqref{eq4}$ and equation $\eqref{eq5}$.</code></pre>
+<p>There are three aligned equations: equation $\eqref{eq3}$, equation $\eqref{eq4}$ and equation $\eqref{eq5}$.</p>
+<p>Since <code>align</code> in and of itself is a complete equation environment (read <a href="https://tex.stackexchange.com/questions/95402/what-is-the-difference-between-aligned-in-displayed-mode-and-starred-align" target="_blank" rel="noopener">here</a> about the difference between <code>aligned</code> and <code>align</code> in LaTeX). You do not need to wrap it with <code>equation</code> environment.</p>
+<h4 id="Exclude-Equations-from-Numbering"><a href="#Exclude-Equations-from-Numbering" class="headerlink" title="Exclude Equations from Numbering"></a>Exclude Equations from Numbering</h4><p>In the <code>align</code> environment, if you do not want to number one or some equations, just use <code>\nonumber</code> right behind these equations. Like the following:</p>
+<pre><code class="latex">$$\begin{align}
+-4 + 5x &amp;= 2 + y \nonumber \\
+w + 2 &amp;= -1 + w \\
+ab &amp;= cb
+\end{align}$$</code></pre>
+<p>$$\begin{align}<br>-4 + 5x &amp;= 2 + y \nonumber \\<br>w + 2 &amp;= -1 + w \\<br>ab &amp;= cb<br>\end{align}$$</p>
+<h4 id="Use-tag-to-Tag-Equations"><a href="#Use-tag-to-Tag-Equations" class="headerlink" title="Use \tag to Tag Equations"></a>Use <code>\tag</code> to Tag Equations</h4><p>Sometimes, you want to use more «exotic» style to refer your equation. You can use <code>\tag{}</code> to achieve this. For example:</p>
+<pre><code class="latex">$$x+1\over\sqrt{1-x^2} \tag{i}\label{eq_tag}$$</code></pre>
+<p>$$x+1\over\sqrt{1-x^2} \tag{i}\label{eq_tag}$$</p>
+<pre><code class="latex">Equation $\eqref{eq_tag}$ use `\tag{}` instead of automatic numbering.</code></pre>
+<p>Equation $\eqref{eq_tag}$ use <code>\tag{}</code> instead of automatic numbering.</p>

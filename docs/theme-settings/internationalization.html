@@ -1,0 +1,162 @@
+<hr>
+<p>title: Internationalization<br>description: NexT User Docs – Starting to Use – Internationalization</p>
+<hr>
+<h3 id="Choosing-Language"><a href="#Choosing-Language" class="headerlink" title="Choosing Language"></a>Choosing Language</h3><p>Edit {% label info@Hexo config file %}, set the value of <code>language</code> to the language you need. For example, English looks like this:</p>
+<pre><code class="yml"><span class="attr">language:</span> <span class="string">en</span></code></pre>
+<p>NexT now supports following languages:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Example</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Arabic</td>
+<td>عربي</td>
+<td><code>ar</code></td>
+</tr>
+<tr>
+<td>Bengali</td>
+<td>বাংলা</td>
+<td><code>bn</code></td>
+</tr>
+<tr>
+<td>Chinese (Simplified)</td>
+<td>简体中文</td>
+<td><code>zh-CN</code></td>
+</tr>
+<tr>
+<td>Chinese (Traditional)</td>
+<td>繁體中文</td>
+<td><code>zh-TW</code></td>
+</tr>
+<tr>
+<td>Chinese (Hong Kong)</td>
+<td>繁體中文-香港</td>
+<td><code>zh-HK</code></td>
+</tr>
+<tr>
+<td>Dutch</td>
+<td>Niederländisch</td>
+<td><code>nl</code></td>
+</tr>
+<tr>
+<td>English</td>
+<td>English</td>
+<td><code>en</code></td>
+</tr>
+<tr>
+<td>French</td>
+<td>Français</td>
+<td><code>fr</code></td>
+</tr>
+<tr>
+<td>German</td>
+<td>Deutsch</td>
+<td><code>de</code></td>
+</tr>
+<tr>
+<td>Indonesian</td>
+<td>Indonesia</td>
+<td><code>id</code></td>
+</tr>
+<tr>
+<td>Italian</td>
+<td>Italiano</td>
+<td><code>it</code></td>
+</tr>
+<tr>
+<td>Japanese</td>
+<td>日本語</td>
+<td><code>ja</code></td>
+</tr>
+<tr>
+<td>Korean</td>
+<td>한국어</td>
+<td><code>ko</code></td>
+</tr>
+<tr>
+<td>Persian</td>
+<td>فارسی</td>
+<td><code>fa</code></td>
+</tr>
+<tr>
+<td>Portuguese</td>
+<td>Português</td>
+<td><code>pt</code></td>
+</tr>
+<tr>
+<td>Portuguese (Brazilian)</td>
+<td>Português (Brazilian)</td>
+<td><code>pt-BR</code></td>
+</tr>
+<tr>
+<td>Russian</td>
+<td>Русский</td>
+<td><code>ru</code></td>
+</tr>
+<tr>
+<td>Sinhala</td>
+<td>සිංහල</td>
+<td><code>si</code></td>
+</tr>
+<tr>
+<td>Spanish</td>
+<td>Español</td>
+<td><code>es</code></td>
+</tr>
+<tr>
+<td>Turkish</td>
+<td>Türk</td>
+<td><code>tr</code></td>
+</tr>
+<tr>
+<td>Turkmen</td>
+<td>Türkmençe</td>
+<td><code>tk</code></td>
+</tr>
+<tr>
+<td>Ukrainian</td>
+<td>Український</td>
+<td><code>uk</code></td>
+</tr>
+<tr>
+<td>Vietnamese</td>
+<td>Tiếng Việt</td>
+<td><code>vi</code></td>
+</tr>
+</tbody></table>
+<p>{% note primary %}<br>The files in the <code>language</code> directory are automatically generated, you do not need to modify them directly. Please submit translations via <a href="https://crowdin.com/project/hexo-theme-next" target="_blank" rel="noopener">Crowdin</a> if you would like to add or improve translation for NexT theme.<br>{% endnote %}</p>
+<h3 id="Multilingual-Switcher"><a href="#Multilingual-Switcher" class="headerlink" title="Multilingual Switcher"></a>Multilingual Switcher</h3><p>Set multiple languages in {% label info@Hexo config file %}, e.g.</p>
+<pre><code class="yml"><span class="attr">language:</span>
+  <span class="bullet">-</span> <span class="string">zh-CN</span>
+  <span class="bullet">-</span> <span class="string">en</span></code></pre>
+<p>Then turn on <code>language_switcher</code> in {% label primary@NexT config file %}:</p>
+<pre><code class="yml"><span class="comment"># Show multilingual switcher in footer.</span>
+<span class="attr">language_switcher:</span> <span class="literal">true</span></code></pre>
+<h3 id="Override-Default-Translations"><a href="#Override-Default-Translations" class="headerlink" title="Override Default Translations"></a>Override Default Translations</h3><p>If you would like to customize the default translation, you do not need to modify the translation files in the <code>languages</code> directory. You can override all translations using <a href="https://hexo.io/docs/data-files" target="_blank" rel="noopener">Data Files</a>.</p>
+<ol>
+<li><p>Create a <code>languages.yml</code> in <code>source/_data</code>.</p>
+</li>
+<li><p>Insert following codes: (be careful about the two-space indent)</p>
+<pre><code class="yml"><span class="comment"># language</span>
+<span class="attr">zh-CN:</span>
+  <span class="comment"># items</span>
+  <span class="attr">post:</span>
+    <span class="attr">copyright:</span>
+      <span class="comment"># the translation you prefer</span>
+      <span class="attr">author:</span> <span class="string">本文博主</span>
+<span class="attr">en:</span>
+  <span class="attr">menu:</span>
+    <span class="attr">schedule:</span> <span class="string">Calendar</span></code></pre>
+</li>
+</ol>
+<p>This situation is also available for off-list items. For example, Next uses <a href="/docs/advanced-settings/injects.html">Theme Inject</a> to introduce the comments systems. You can rename the returned value in chinese as followed:</p>
+<pre><code class="yml"><span class="comment"># language</span>
+<span class="attr">zh-CN:</span>
+  <span class="comment"># items</span>
+  <span class="attr">post:</span>
+    <span class="attr">comments:</span>
+      <span class="attr">disqus:</span> <span class="string">评论</span></code></pre>

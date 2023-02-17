@@ -1,0 +1,162 @@
+<hr>
+<p>title: Note (Bootstrap Callout)<br>description: NexT User Docs – NexT Supported Tags – Note</p>
+<hr>
+<h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><pre><code class="yml"><span class="attr">note:</span>
+  <span class="comment"># Note tag style values:</span>
+  <span class="comment">#  - simple    bs-callout old alert style. Default.</span>
+  <span class="comment">#  - modern    bs-callout new (v2-v3) alert style.</span>
+  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span>
+  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span>
+  <span class="attr">style:</span> <span class="string">simple</span>
+  <span class="attr">icons:</span> <span class="literal">false</span>
+  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span>
+  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span>
+  <span class="attr">light_bg_offset:</span> <span class="number">0</span></code></pre>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> [class] [no-icon] [summary] %}</span>
+<span class="xml">Any content (support inline tags too).</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<ul>
+<li><code>[class]</code>   : <em>Optional parameter.</em> Supported values: default | primary | success | info | warning | danger.</li>
+<li><code>[no-icon]</code> : <em>Optional parameter.</em> Disable icon in note.</li>
+<li><code>[summary]</code> : <em>Optional parameter.</em> Optional summary of the note.</li>
+</ul>
+<p>All parameters are optional.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> %}</span>
+<span class="xml">#### Header</span>
+<span class="xml">(without define class style)</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note %}</p>
+<h4 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h4><p>(without define class style)<br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> default %}</span>
+<span class="xml">#### Default Header</span>
+<span class="xml">Welcome to [Hexo!](https://hexo.io)</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note default %}</p>
+<h4 id="Default-Header"><a href="#Default-Header" class="headerlink" title="Default Header"></a>Default Header</h4><p>Welcome to <a href="https://hexo.io" target="_blank" rel="noopener">Hexo!</a><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> primary %}</span>
+<span class="xml">#### Primary Header</span>
+<span class="xml">**Welcome** to [Hexo!](https://hexo.io)</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note primary %}</p>
+<h4 id="Primary-Header"><a href="#Primary-Header" class="headerlink" title="Primary Header"></a>Primary Header</h4><p><strong>Welcome</strong> to <a href="https://hexo.io" target="_blank" rel="noopener">Hexo!</a><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> info %}</span>
+<span class="xml">#### Info Header</span>
+<span class="xml">**Welcome** to [Hexo!](https://hexo.io)</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note info %}</p>
+<h4 id="Info-Header"><a href="#Info-Header" class="headerlink" title="Info Header"></a>Info Header</h4><p><strong>Welcome</strong> to <a href="https://hexo.io" target="_blank" rel="noopener">Hexo!</a><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> success %}</span>
+<span class="xml">#### Success Header</span>
+<span class="xml">**Welcome** to [Hexo!](https://hexo.io)</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note success %}</p>
+<h4 id="Success-Header"><a href="#Success-Header" class="headerlink" title="Success Header"></a>Success Header</h4><p><strong>Welcome</strong> to <a href="https://hexo.io" target="_blank" rel="noopener">Hexo!</a><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> warning %}</span>
+<span class="xml">#### Warning Header</span>
+<span class="xml">**Welcome** to [Hexo!](https://hexo.io)</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note warning %}</p>
+<h4 id="Warning-Header"><a href="#Warning-Header" class="headerlink" title="Warning Header"></a>Warning Header</h4><p><strong>Welcome</strong> to <a href="https://hexo.io" target="_blank" rel="noopener">Hexo!</a><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> danger %}</span>
+<span class="xml">#### Danger Header</span>
+<span class="xml">**Welcome** to [Hexo!](https://hexo.io)</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note danger %}</p>
+<h4 id="Danger-Header"><a href="#Danger-Header" class="headerlink" title="Danger Header"></a>Danger Header</h4><p><strong>Welcome</strong> to <a href="https://hexo.io" target="_blank" rel="noopener">Hexo!</a><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> info no-icon %}</span>
+<span class="xml">#### No icon note</span>
+<span class="xml">Note **without** icon: `note info no-icon`</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note info no-icon %}</p>
+<h4 id="No-icon-note"><a href="#No-icon-note" class="headerlink" title="No icon note"></a>No icon note</h4><p>Note <strong>without</strong> icon: <code>note info no-icon</code><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> primary This is a summary %}</span>
+<span class="xml">#### Details and summary</span>
+<span class="xml">Note with summary: `note primary This is a summary`</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note primary This is a summary %}</p>
+<h4 id="Details-and-summary"><a href="#Details-and-summary" class="headerlink" title="Details and summary"></a>Details and summary</h4><p>Note with summary: <code>note primary This is a summary</code><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> info no-icon This is a summary %}</span>
+<span class="xml">#### Details and summary (No icon)</span>
+<span class="xml">Note with summary: `note info no-icon This is a summary`</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note info no-icon This is a summary %}</p>
+<h4 id="Details-and-summary-No-icon"><a href="#Details-and-summary-No-icon" class="headerlink" title="Details and summary (No icon)"></a>Details and summary (No icon)</h4><p>Note with summary: <code>note info no-icon This is a summary</code><br>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> success %}</span>
+<span class="xml">#### Codeblock in note</span>
+
+<span class="xml">```</span>
+<span class="xml">code block in note tag</span>
+<span class="xml">code block in note tag</span>
+<span class="xml">code block in note tag</span>
+<span class="xml">```</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note success %}</p>
+<h4 id="Codeblock-in-note"><a href="#Codeblock-in-note" class="headerlink" title="Codeblock in note"></a>Codeblock in note</h4><pre><code>code block in note tag
+code block in note tag
+code block in note tag</code></pre><p>{% endnote %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">note</span> default %}</span>
+<span class="xml">#### Lists in note</span>
+<span class="xml">* ul</span>
+<span class="xml">* ul</span>
+<span class="xml">    * ul</span>
+<span class="xml">    * ul</span>
+<span class="xml">* ul</span>
+
+<span class="xml">1. ol</span>
+<span class="xml">2. ol</span>
+<span class="xml">    1. ol</span>
+<span class="xml">    2. ol</span>
+<span class="xml">3. ol</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note default %}</p>
+<h4 id="Lists-in-note"><a href="#Lists-in-note" class="headerlink" title="Lists in note"></a>Lists in note</h4><ul>
+<li>ul</li>
+<li>ul<ul>
+<li>ul</li>
+<li>ul</li>
+</ul>
+</li>
+<li>ul</li>
+</ul>
+<ol>
+<li>ol</li>
+<li>ol<ol>
+<li>ol</li>
+<li>ol</li>
+</ol>
+</li>
+<li>ol<br>{% endnote %}</li>
+</ol>
+<pre><code class="jinja"><span class="xml">#### Table in Note</span>
+<span class="template-tag">{% <span class="name">note</span> default %}</span>
+<span class="xml">| 1 | 2 |</span>
+<span class="xml">| - | - |</span>
+<span class="xml">| 3 | 4 |</span>
+<span class="xml">| 5 | 6 |</span>
+<span class="xml">| 7 | 8 |</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span></code></pre>
+<p>{% note default %}</p>
+<h4 id="Table-in-note"><a href="#Table-in-note" class="headerlink" title="Table in note"></a>Table in note</h4><table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr>
+<td>{% endnote %}</td>
+<td></td>
+</tr>
+</tbody></table>

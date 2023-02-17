@@ -1,0 +1,95 @@
+<hr>
+<p>title: Custom Files<br>description: NexT User Docs – Advanced Settings - Custom Files</p>
+<hr>
+<h3 id="Custom-File-Support"><a href="#Custom-File-Support" class="headerlink" title="Custom File Support"></a>Custom File Support</h3><p><a href="https://github.com/theme-next/hexo-theme-next/pull/868" target="_blank" rel="noopener">Pull Request #868</a> has adjusted the way of customizing the layout or style, canceling the custom files (such as <code>_custom/custom.styl</code>) in the original theme directory, and only retaining the way of specifying the custom file in the {% label primary@NexT config file %}.</p>
+<p>It is a good practice to separate the custom files from the theme files, so that you can add custom content without modifying the original source code of the theme, and avoid conflicts due to <code>git merge</code>.</p>
+<p>As with <a href="https://hexo.io/docs/data-files" target="_blank" rel="noopener">Data Files</a>, you can place all custom layouts or styles in a specific location (for example: <code>hexo/source/_data</code>). Add the custom file to <code>hexo/source/_data</code> and uncomment the content under the <code>custom_file_path</code> section in the {% label primary@NexT config file %}.</p>
+<p>{% note warning %}<br>The file name and path must be the same in <code>custom_file_path</code>.<br>{% endnote %}</p>
+<pre><code class="yml"><span class="attr">custom_file_path:</span>
+  <span class="comment">#head: source/_data/head.njk</span>
+  <span class="comment">#header: source/_data/header.njk</span>
+  <span class="comment">#sidebar: source/_data/sidebar.njk</span>
+  <span class="comment">#postMeta: source/_data/post-meta.njk</span>
+  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span>
+  <span class="comment">#footer: source/_data/footer.njk</span>
+  <span class="comment">#bodyEnd: source/_data/body-end.njk</span>
+  <span class="comment">#variable: source/_data/variables.styl</span>
+  <span class="comment">#mixin: source/_data/mixins.styl</span>
+  <span class="comment">#style: source/_data/styles.styl</span></code></pre>
+<p>In addition to <code>custom_file_path</code>, we also provide a more flexible way to customize, you can read the <a href="/docs/advanced-settings/injects.html">Theme Inject</a> in documentation.</p>
+<h3 id="Examples-of-Modifying-Layout"><a href="#Examples-of-Modifying-Layout" class="headerlink" title="Examples of Modifying Layout"></a>Examples of Modifying Layout</h3><h4 id="Live2d-Widget"><a href="#Live2d-Widget" class="headerlink" title="Live2d Widget"></a>Live2d Widget</h4><p>Create and edit <code>source/_data/head.njk</code> in {% label info@site root directory %} and add the following content:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
+<p>Then uncomment <code>head</code> under the <code>custom_file_path</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">custom_file_path:</span>
+  <span class="attr">head:</span> <span class="string">source/_data/head.njk</span></code></pre>
+<h4 id="Netlify-Logo-in-Sidebar"><a href="#Netlify-Logo-in-Sidebar" class="headerlink" title="Netlify Logo in Sidebar"></a>Netlify Logo in Sidebar</h4><p>Create and edit <code>source/_data/sidebar.njk</code> in {% label info@site root directory %} and add the following content:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"cc-license animated"</span> <span class="attr">itemprop</span>=<span class="string">"sponsor"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://www.netlify.com"</span> <span class="attr">class</span>=<span class="string">"cc-opacity"</span> <span class="attr">title</span>=<span class="string">"Deploy with Netlify → https://www.netlify.com"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">"80"</span> <span class="attr">src</span>=<span class="string">"https://www.netlify.com/img/global/badges/netlify-dark.svg"</span> <span class="attr">alt</span>=<span class="string">"Netlify"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></code></pre>
+<p>Then uncomment <code>sidebar</code> under the <code>custom_file_path</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">custom_file_path:</span>
+  <span class="attr">sidebar:</span> <span class="string">source/_data/sidebar.njk</span></code></pre>
+<h3 id="Examples-of-Modifying-Style"><a href="#Examples-of-Modifying-Style" class="headerlink" title="Examples of Modifying Style"></a>Examples of Modifying Style</h3><h4 id="Tagcloud-Color"><a href="#Tagcloud-Color" class="headerlink" title="Tagcloud Color"></a>Tagcloud Color</h4><p>Create and edit <code>source/_data/variables.styl</code> in {% label info@site root directory %} and add variables:</p>
+<pre><code class="css">$tag-cloud-start      = #aaa;
+$tag-cloud-end        = #111;
+$tag-cloud-start-dark = #555;
+$tag-cloud-end-dark   = #eee;</code></pre>
+<p>Then uncomment <code>variable</code> under the <code>custom_file_path</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">custom_file_path:</span>
+  <span class="attr">variable:</span> <span class="string">source/_data/variables.styl</span></code></pre>
+<h4 id="How-to-Change-Content-Width"><a href="#How-to-Change-Content-Width" class="headerlink" title="How to Change Content Width"></a>How to Change Content Width</h4><p>By default, the content width of NexT is controlled by the following variables:</p>
+<ul>
+<li><code>$content-desktop</code> → when screen width &lt; 1200px.</li>
+<li><code>$content-desktop-large</code> → when screen width &gt;= 1200px.</li>
+<li><code>$content-desktop-largest</code> → when screen width &gt;= 1600px.</li>
+<li>In mobile / tablet devices it will use responsive width.</li>
+</ul>
+<p>You can override the default content width by editing <code>source/_data/variables.styl</code> in {% label info@site root directory %}.</p>
+<p>{% tabs change-content-width %}</p>
+<!-- tab Muse / Mist schemes -->
+<p>Default variables for both Muse and Mist schemes are defined as:</p>
+<pre><code class="styl"><span class="variable">$content</span>-desktop         = <span class="number">700px</span>
+<span class="variable">$content</span>-desktop-large   = <span class="number">800px</span>
+<span class="variable">$content</span>-desktop-largest = <span class="number">900px</span></code></pre>
+<p>For example, you may override these variables with percentage value to increase content width. Create and edit <code>source/_data/variables.styl</code> in {% label info@site root directory %} and add variables:</p>
+<pre><code class="styl"><span class="variable">$content</span>-desktop         = <span class="number">90%</span>
+<span class="variable">$content</span>-desktop-large   = <span class="number">90%</span>
+<span class="variable">$content</span>-desktop-largest = <span class="number">90%</span></code></pre>
+<p>{% note warning %}<br>If values will in percents, during opening sidebar will dynamically decrease content width to defined by you percent.<br>But in standard behaviour, sidebar must displace content from yourself.<br>To around it, you can specify content width in <code>em</code>:</p>
+<pre><code class="styl"><span class="variable">$content</span>-desktop         = <span class="number">50em</span>
+<span class="variable">$content</span>-desktop-large   = <span class="number">55em</span>
+<span class="variable">$content</span>-desktop-largest = <span class="number">60em</span></code></pre>
+<p>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab Pisces / Gemini schemes -->
+<p>Default variables for Pisces (and Gemini) scheme are defined as:</p>
+<pre><code class="styl">$content-desktop         = 'calc(100% - %s)' % unit($content-desktop-padding / 2, 'px')
+<span class="variable">$content</span>-desktop-large   = <span class="number">1160px</span>
+<span class="variable">$content</span>-desktop-largest = <span class="number">73%</span></code></pre>
+<p>{% note warning %}<br><code>$content-desktop</code> value in this schemes is auto-responsive by default. It can be changed to any value too, but for better content visibility recommended to stay it as is.<br>{% endnote %}</p>
+<p>In this schemes content width was defined on maximum and already balanced: if desktop width will be wider – content width will more narrowed for easier reading. But if you want to make more narrow content width in wider desktops, here is example. Create and edit <code>source/_data/variables.styl</code> in {% label info@site root directory %} and add variables:</p>
+<pre><code class="styl"><span class="variable">$content</span>-desktop-large   = <span class="number">65em</span>
+<span class="variable">$content</span>-desktop-largest = <span class="number">65%</span></code></pre>
+<p>{% note info %}<br>In fact, Gemini scheme is just fork of Pisces scheme with some style improvements.<br>Therefore, almost all part of variables from Pisces scheme are imported to Gemini scheme too.<br>So, the changes of these variables or styles will be applied to both Pisces and Gemini schemes.<br>{% endnote %}</p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<p>Then uncomment <code>variable</code> under the <code>custom_file_path</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">custom_file_path:</span>
+  <span class="attr">variable:</span> <span class="string">source/_data/variables.styl</span></code></pre>
+<h4 id="Hide-Sidebar-on-Mobile"><a href="#Hide-Sidebar-on-Mobile" class="headerlink" title="Hide Sidebar on Mobile"></a>Hide Sidebar on Mobile</h4><p>Create and edit <code>source/_data/styles.styl</code> in {% label info@site root directory %} and add styles:</p>
+<pre><code class="css">+<span class="selector-tag">tablet-mobile</span>() {
+  .sidebar-toggle, .sidebar {
+    <span class="selector-tag">display</span>: <span class="selector-tag">none</span>;
+  }
+}</code></pre>
+<p>Then uncomment <code>style</code> under the <code>custom_file_path</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">custom_file_path:</span>
+  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></code></pre>
+<h4 id="Hide-“Keep-on-posting”-in-Archive-Page"><a href="#Hide-“Keep-on-posting”-in-Archive-Page" class="headerlink" title="Hide “Keep on posting” in Archive Page"></a>Hide “Keep on posting” in Archive Page</h4><p>Create and edit <code>source/_data/styles.styl</code> in {% label info@site root directory %} and add styles:</p>
+<pre><code class="css"><span class="selector-class">.archive</span> <span class="selector-class">.collection-title</span> {
+  <span class="attribute">display</span>: none <span class="meta">!important</span>;
+}</code></pre>
+<p>Then uncomment <code>style</code> under the <code>custom_file_path</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">custom_file_path:</span>
+  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></code></pre>

@@ -1,0 +1,113 @@
+<hr>
+<p>title: Search Services<br>description: NexT User Docs – Third-party Plugins Integration – Search Services</p>
+<hr>
+<h3 id="Algolia-Search"><a href="#Algolia-Search" class="headerlink" title="Algolia Search"></a>Algolia Search</h3><p>NexT provides Algolia search plugin to search your Hexo website content. It should be noted that only turn on <code>enable</code> of <code>algolia_search</code> in {% label primary@NexT config file %} does not allow you to use the Algolia search correctly. You need to install the corresponding Hexo plugin to index your website on Algolia: <a href="https://github.com/oncletom/hexo-algolia" target="_blank" rel="noopener">Hexo Algolia</a> or <a href="https://github.com/LouisBarranqueiro/hexo-algoliasearch" target="_blank" rel="noopener">Hexo Algoliasearch</a>.</p>
+<p>{% note danger %}<br><strong>Known Issues</strong></p>
+<ol>
+<li>The latest version of the <a href="https://github.com/oncletom/hexo-algolia" target="_blank" rel="noopener">Hexo Algolia</a> plugin removes the content indexing feature, given Algolia’s free account limitation.</li>
+<li>The <a href="https://github.com/LouisBarranqueiro/hexo-algoliasearch" target="_blank" rel="noopener">Hexo Algoliasearch</a> plugin provides content indexing functionality. The same problem exists with <code>Record Too Big</code> for Algolia’s free account.<br>{% endnote %}</li>
+</ol>
+<p>Follow the steps described below to complete the installation of Algolia search.</p>
+<p>{% tabs algolia-search %}</p>
+<!-- tab Registration → -->
+<p>Register at <a href="https://www.algolia.com" target="_blank" rel="noopener">Algolia</a>, you can log in directly using GitHub or Google Account. Upon Customer’s initial sign-up for an Account, Customer will have a free, fourteen (14) day evaluation period (the «Evaluation Period») for the Algolia Services commencing on the Effective Date, subject to the limitations on Algolia’s website. After that, Algolia offers a free, branded version for up to 10k records and 100k operations per month.</p>
+<p>If a tutorial pops up, you can skip it. Go straight to create an <code>Index</code> which will be used later.<br><img src="/images/algolia-1.png" alt="Algolia Create Index"></p>
+<!-- endtab -->
+
+<!-- tab Algolia Config → -->
+<ol>
+<li><p>Go to the <code>API Keys</code> page and find your credentials. You will need the <code>Application ID</code> and the <code>Search-only API key</code> in the following sections. The <code>Admin API key</code> need to keep confidential. Never store your Admin API Key as <code>apiKey</code> in {% label info@Hexo config file %}: it would give full control of your Algolia index to others and you don’t want to face the consequences.<br><img src="/images/algolia-2.png" alt="Algolia API Keys"></p>
+</li>
+<li><p>In the <code>API Keys</code> page, click the <code>All API Keys</code> button to switch to the corresponding tab. Then click the <code>New API Key</code> button to activate a pop-up box where you can setup authorizations and restrictions with a great level of precision. Enter <code>addObject</code>, <code>deleteObject</code>, <code>listIndexes</code>, <code>deleteIndex</code> features in ACL permissions that will be allowed for the given API key. And then click the <code>Create</code> button. Copy this newly created key to the clipboard, we call it a <code>High-privilege API key</code>.<br><img src="/images/algolia-3.png" alt="Algolia API Keys 2"><br><img src="/images/algolia-4.png" alt="Algolia Configuring Records"></p>
+<!-- endtab -->
+
+</li>
+</ol>
+<!-- tab Algolia Plugin → -->
+<p>Algolia requires users to upload their search index data either manually or via provided APIs. You need to choose one of the following two plugins to install. Both plugins will index your site and upload selected data to Algolia.</p>
+<p>{% subtabs algolia-plugin %}</p>
+<!-- tab Hexo Algolia -->
+<p>Install and configure <a href="https://github.com/oncletom/hexo-algolia" target="_blank" rel="noopener">Hexo Algolia</a> in your Hexo directory.</p>
+<pre><code class="bash">$ <span class="built_in">cd</span> hexo-site
+$ npm install hexo-algolia</code></pre>
+<p>In your {% label info@Hexo config file %}, add the following configuration and replace the <code>Application ID</code>, <code>Search-only API key</code> and <code>indexName</code> with corresponding fields obtained at Algolia.</p>
+<pre><code class="yml"><span class="attr">algolia:</span>
+  <span class="attr">applicationID:</span> <span class="string">"Application ID"</span>
+  <span class="attr">apiKey:</span> <span class="string">"Search-only API key"</span>
+  <span class="attr">indexName:</span> <span class="string">"indexName"</span></code></pre>
+<p>Run the following command to upload index data, keep a weather eye out the output of the command.</p>
+<pre><code class="bash">$ <span class="built_in">export</span> HEXO_ALGOLIA_INDEXING_KEY=High-privilege API key <span class="comment"># Use Git Bash</span>
+<span class="comment"># set HEXO_ALGOLIA_INDEXING_KEY=High-privilege API key # Use Windows command line</span>
+$ hexo clean
+$ hexo algolia</code></pre>
+<p><img src="/images/algolia-5.png" alt="Reload Index"></p>
+<!-- endtab -->
+<!-- tab Hexo Algoliasearch -->
+<p>Install and configure <a href="https://github.com/LouisBarranqueiro/hexo-algoliasearch" target="_blank" rel="noopener">Hexo Algoliasearch</a> in your Hexo directory.</p>
+<pre><code class="bash">$ <span class="built_in">cd</span> hexo-site
+$ npm install hexo-algoliasearch</code></pre>
+<p>In your {% label info@Hexo config file %}, add the following configuration and replace the <code>Application ID</code>, <code>Search-only API key</code>, <code>High-privilege API key</code> and <code>indexName</code> with corresponding fields obtained at Algolia.</p>
+<pre><code class="yml"><span class="attr">algolia:</span>
+  <span class="attr">appId:</span> <span class="string">"Application ID"</span>
+  <span class="attr">apiKey:</span> <span class="string">"Search-only API key"</span>
+  <span class="attr">adminApiKey:</span> <span class="string">"High-privilege API key"</span>
+  <span class="attr">indexName:</span> <span class="string">"indexName"</span>
+  <span class="attr">chunkSize:</span> <span class="number">5000</span>
+  <span class="attr">fields:</span>
+    <span class="bullet">-</span> <span class="string">content:strip:truncate,0,500</span>
+    <span class="bullet">-</span> <span class="string">excerpt:strip</span>
+    <span class="bullet">-</span> <span class="string">gallery</span>
+    <span class="bullet">-</span> <span class="string">permalink</span>
+    <span class="bullet">-</span> <span class="string">photos</span>
+    <span class="bullet">-</span> <span class="string">slug</span>
+    <span class="bullet">-</span> <span class="string">tags</span>
+    <span class="bullet">-</span> <span class="string">title</span></code></pre>
+<p>Run the following command to upload index data, keep a weather eye out the output of the command.</p>
+<pre><code class="bash">$ hexo clean
+$ hexo algolia</code></pre>
+<!-- endtab -->
+<p>{% endsubtabs %}</p>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>In {% label primary@NexT config file %}, turn on <code>enable</code> of <code>algolia_search</code>. At the same time, you need to <strong>turn off other search plugins</strong> like Local Search. You can also adjust the text in <code>labels</code> according to your needs.</p>
+<pre><code class="yml"><span class="comment"># Algolia Search</span>
+<span class="attr">algolia_search:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">hits:</span>
+    <span class="attr">per_page:</span> <span class="number">10</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h3 id="Local-Search"><a href="#Local-Search" class="headerlink" title="Local Search"></a>Local Search</h3><p>Local search does not require any external 3rd-party services and can be extra indexed by search engines. This search method is recommended for most users.</p>
+<p>{% tabs local-search %}</p>
+<!-- tab Installation → -->
+<p>Install <code>hexo-generator-searchdb</code> by executing the following command in {% label info@site root dir %}:</p>
+<pre><code class="bash">$ npm install hexo-generator-searchdb</code></pre>
+<!-- endtab -->
+
+<!-- tab Hexo Config → -->
+<p>Edit {% label info@Hexo config file %} and add following content:</p>
+<pre><code class="yml"><span class="attr">search:</span>
+  <span class="attr">path:</span> <span class="string">search.xml</span>
+  <span class="attr">field:</span> <span class="string">post</span>
+  <span class="attr">content:</span> <span class="literal">true</span>
+  <span class="attr">format:</span> <span class="string">html</span></code></pre>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Edit {% label primary@NexT config file %} to enable Local Search:</p>
+<pre><code class="yml"><span class="comment"># Local search</span>
+<span class="comment"># Dependencies: https://github.com/next-theme/hexo-generator-searchdb</span>
+<span class="attr">local_search:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="comment"># If auto, trigger search by changing input.</span>
+  <span class="comment"># If manual, trigger search by pressing enter key or search button.</span>
+  <span class="attr">trigger:</span> <span class="string">auto</span>
+  <span class="comment"># Show top n results per article, show all results by setting to -1</span>
+  <span class="attr">top_n_per_article:</span> <span class="number">1</span>
+  <span class="comment"># Unescape html strings to the readable one.</span>
+  <span class="attr">unescape:</span> <span class="literal">false</span>
+  <span class="comment"># Preload the search data when the page loads.</span>
+  <span class="attr">preload:</span> <span class="literal">false</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>

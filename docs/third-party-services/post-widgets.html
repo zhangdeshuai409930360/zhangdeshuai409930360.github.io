@@ -1,0 +1,17 @@
+<hr>
+<p>title: Post Widgets<br>description: NexT User Docs – Third-party Plugins Integration – Post Widgets</p>
+<hr>
+<h3 id="AddThis"><a href="#AddThis" class="headerlink" title="AddThis"></a>AddThis</h3><p>{% tabs addthis %}</p>
+<!-- tab Sign Up → -->
+<p>Sign up in <a href="https://www.addthis.com" target="_blank" rel="noopener">AddThis</a>. You can use Google / Facebook / Twitter to login.</p>
+<!-- endtab -->
+
+<!-- tab AddThis ID → -->
+<p>Get AddThis ID in this menu: <code>Profile Settings</code> → <code>General</code> → <code>ID</code>. See example on the picture below:<br><img src="/images/add-this-id.png" alt="AddThis ID"></p>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Edit the value of <code>add_this_id</code> in the {% label primary@NexT config file %} as following:</p>
+<pre><code class="yml"><span class="attr">add_this_id:</span> <span class="string">your_add_this_id</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>

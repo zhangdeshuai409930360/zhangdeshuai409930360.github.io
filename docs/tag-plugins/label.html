@@ -1,0 +1,16 @@
+<hr>
+<p>title: Label<br>description: NexT User Docs – NexT Supported Tags – Label</p>
+<hr>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">label</span> [class]@text %}</span></code></pre>
+<ul>
+<li><code>[class]</code> : <em>Optional parameter.</em> Supported values: <code>default</code> | <code>primary</code> | <code>success</code> | <code>info</code> | <code>warning</code> | <code>danger</code>.<br>If not specified, the default style of the browser will be used, which may be different in different browsers.</li>
+<li><code>text</code>    : <code>@text</code> can be specified with or without space<br>E.g. <code>success @text</code> is the same as <code>success@text</code>.</li>
+</ul>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="jinja"><span class="xml">Lorem </span><span class="template-tag">{% <span class="name">label</span> @ipsum %}</span><span class="xml"> </span><span class="template-tag">{% <span class="name">label</span> primary@dolor sit %}</span><span class="xml"> amet, consectetur </span><span class="template-tag">{% <span class="name">label</span> success@adipiscing elit, %}</span><span class="xml"> sed </span><span class="template-tag">{% <span class="name">label</span> info@do eiusmod %}</span><span class="xml"> tempor incididunt ut labore et dolore magna aliqua.</span>
+
+<span class="xml">Ut enim *</span><span class="template-tag">{% <span class="name">label</span> warning @ad %}</span><span class="xml">* minim veniam, quis **</span><span class="template-tag">{% <span class="name">label</span> danger@nostrud %}</span><span class="xml">** exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+
+<span class="xml">Duis aute irure dolor in reprehenderit in voluptate ~~</span><span class="template-tag">{% <span class="name">label</span> default @velit %}</span><span class="xml">~~ <span class="tag">&lt;<span class="name">mark</span>&gt;</span>esse<span class="tag">&lt;/<span class="name">mark</span>&gt;</span> cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></code></pre>
+<p>Lorem {% label @ipsum %} {% label primary@dolor sit %} amet, consectetur {% label success@adipiscing elit, %} sed {% label info@do eiusmod %} tempor incididunt ut labore et dolore magna aliqua.</p>
+<p>Ut enim <em>{% label warning @ad %}</em> minim veniam, quis <strong>{% label danger@nostrud %}</strong> exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p>Duis aute irure dolor in reprehenderit in voluptate <del>{% label default @velit %}</del> <mark>esse</mark> cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

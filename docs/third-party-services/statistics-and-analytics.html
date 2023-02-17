@@ -1,0 +1,147 @@
+<hr>
+<p>title: Statistics and Analytics<br>description: NexT User Docs – Third-party Plugins Integration – Statistics and Analytics</p>
+<hr>
+<p>{% note warning %}<br>NexT will not send record to analytics service provider as long as the page’s host name does not match <code>url</code> option set in {% label info@Hexo config file %}. This will prevent local debugging from polluting analytics. Make sure you have configured <code>url</code> correctly, otherwise these statistics tools may not work as expected.<br>{% endnote %}</p>
+<h3 id="Analytics-Tools"><a href="#Analytics-Tools" class="headerlink" title="Analytics Tools"></a>Analytics Tools</h3><h4 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h4><ol>
+<li><p>Create an account and log into <a href="https://analytics.google.com" target="_blank" rel="noopener">Google Analytics</a>. <a href="https://support.google.com/analytics/?hl=en#topic=3544906" target="_blank" rel="noopener">More detailed documentation</a></p>
+</li>
+<li><p>Edit {% label primary@NexT config file %} and fill <code>tracking_id</code> under section <code>google_analytics</code> with your Google track ID. Google track ID always starts with <code>UA-</code>.</p>
+<pre><code class="yml"><span class="comment"># Google Analytics</span>
+<span class="attr">google_analytics:</span>
+  <span class="attr">tracking_id:</span> <span class="string">UA-XXXXXXXX-X</span>
+  <span class="attr">only_pageview:</span> <span class="literal">false</span></code></pre>
+</li>
+<li><p>When field <code>only_pageview</code> is set to true, NexT will only send <code>pageview</code> event to Google Analytics.<br>The benefit of using this instead of <code>only_pageview: false</code> is reduce a external script on your site, which will give you better performance but no complete analytics function.</p>
+</li>
+</ol>
+<h4 id="Baidu-Analytics-China"><a href="#Baidu-Analytics-China" class="headerlink" title="Baidu Analytics (China)"></a>Baidu Analytics (China)</h4><p>{% tabs baidu-analytics %}</p>
+<!-- tab Login → -->
+<p>Login to <a href="https://tongji.baidu.com" target="_blank" rel="noopener">Baidu Analytics</a> and locate to site code getting page.</p>
+<!-- endtab -->
+
+<!-- tab Script ID → -->
+<p>Copy the script ID after <code>hm.js?</code>, like the following picture:<br><img src="/images/analytics-baidu-id.png" alt="NexT Baidu Analytics"></p>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Edit {% label primary@NexT config file %} and change the value of <code>baidu_analytics</code> to your script ID.</p>
+<pre><code class="yml"><span class="comment"># Baidu Analytics ID</span>
+<span class="attr">baidu_analytics:</span> <span class="string">your_id</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Growingio-Analytics"><a href="#Growingio-Analytics" class="headerlink" title="Growingio Analytics"></a>Growingio Analytics</h4><p>Official documentation: <a href="https://docs.growingio.com/v3/developer-manual/sdkintegrated/web-js-sdk/latest-jssdk" target="_blank" rel="noopener">https://docs.growingio.com/v3/developer-manual/sdkintegrated/web-js-sdk/latest-jssdk</a></p>
+<p>Edit {% label primary@NexT config file %} and change the value of <code>growingio_analytics</code> to your project ID.</p>
+<pre><code class="yml"><span class="comment"># Growingio Analytics</span>
+<span class="attr">growingio_analytics:</span> <span class="comment"># &lt;project_id&gt;</span></code></pre>
+<h4 id="Cloudflare-Web-Analytics"><a href="#Cloudflare-Web-Analytics" class="headerlink" title="Cloudflare Web Analytics"></a>Cloudflare Web Analytics</h4><p>Official documentation: <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener">https://www.cloudflare.com/web-analytics/</a></p>
+<p>Edit {% label primary@NexT config file %} and change the value of <code>cloudflare_analytics</code> to your project ID.</p>
+<pre><code class="yml"><span class="comment"># Cloudflare Web Analytics</span>
+<span class="attr">cloudflare_analytics:</span></code></pre>
+<h4 id="Microsoft-Clarity-Analytics"><a href="#Microsoft-Clarity-Analytics" class="headerlink" title="Microsoft Clarity Analytics"></a>Microsoft Clarity Analytics</h4><p>Official documentation: <a href="https://clarity.microsoft.com/" target="_blank" rel="noopener">https://clarity.microsoft.com/</a></p>
+<p>Edit {% label primary@NexT config file %} and change the value of <code>clarity_analytics</code> to your project ID.</p>
+<pre><code class="yml"><span class="comment"># Microsoft Clarity Analytics</span>
+<span class="attr">clarity_analytics:</span> <span class="comment"># &lt;project_id&gt;</span></code></pre>
+<h4 id="Matomo-Analytics-Self-managed"><a href="#Matomo-Analytics-Self-managed" class="headerlink" title="Matomo Analytics (Self-managed)"></a>Matomo Analytics (Self-managed)</h4><p>Edit {% label primary@NexT config file %} and fill <code>server_url</code> and <code>site_id</code> under section <code>matomo</code> with the url of your backend server and your customized site ID.</p>
+<pre><code class="yml"><span class="comment"># Matomo Analytics</span>
+<span class="comment"># See: https://matomo.org/</span>
+<span class="attr">matomo:</span>
+  <span class="attr">enable:</span> <span class="literal">false</span>
+  <span class="attr">server_url:</span> <span class="comment"># https://www.example.com/</span>
+  <span class="attr">site_id:</span> <span class="comment"># &lt;your site id&gt;</span></code></pre>
+<h4 id="Umami-Analytics-Self-managed"><a href="#Umami-Analytics-Self-managed" class="headerlink" title="Umami Analytics (Self-managed)"></a>Umami Analytics (Self-managed)</h4><p>Umami is a self-hosted web analytics solution. Official documentation: <a href="https://umami.is/" target="_blank" rel="noopener">https://umami.is/</a></p>
+<p>Edit {% label primary@NexT config file %}. Fill <code>script_url</code> under section <code>umami</code> with your tracking script URL, and change the value of <code>website_id</code> to your website ID.</p>
+<pre><code class="yml"><span class="comment"># Umami Analytics</span>
+<span class="attr">umami:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">script_url:</span> <span class="comment"># https://umami.example.com/script.js</span>
+  <span class="attr">website_id:</span> <span class="comment"># &lt;your website id&gt;</span></code></pre>
+<h4 id="Plausible-Analytics-Self-managed"><a href="#Plausible-Analytics-Self-managed" class="headerlink" title="Plausible Analytics (Self-managed)"></a>Plausible Analytics (Self-managed)</h4><p>Opt for paid managed hosting or self-host it on your server. Official documentation: <a href="https://plausible.io/" target="_blank" rel="noopener">https://plausible.io/</a></p>
+<p>Edit {% label primary@NexT config file %}. Fill <code>script_url</code> under section <code>plausible</code> with your tracking script URL, and change the value of <code>site_domain</code> to your website domain.</p>
+<pre><code class="yml"><span class="comment"># Plausible Analytics</span>
+<span class="attr">plausible:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">script_url:</span> <span class="comment"># https://plausible.io/js/script.js</span>
+  <span class="attr">site_domain:</span> <span class="comment"># www.example.com</span></code></pre>
+<h3 id="Counting-Tools"><a href="#Counting-Tools" class="headerlink" title="Counting Tools"></a>Counting Tools</h3><h4 id="LeanCloud-China"><a href="#LeanCloud-China" class="headerlink" title="LeanCloud (China)"></a>LeanCloud (China)</h4><p>Adding article reading times counting to NexT theme. Documentation how to set the counter up and running safely aviable in <a href="https://github.com/theme-next/hexo-leancloud-counter-security" target="_blank" rel="noopener">hexo-leancloud-counter-security</a>.</p>
+<p>{% tabs leanCloud-counter %}</p>
+<!-- tab Get App Keys → -->
+<ol>
+<li>Create an account or log in to <a href="https://console.leancloud.app/login" target="_blank" rel="noopener">LeanCloud</a>, and then click the button to create an application in <a href="https://console.leancloud.app/apps" target="_blank" rel="noopener">dashboard</a>.<br> <img src="/images/valine-1.png" alt="LeanCloud"></li>
+<li>Go to the application you just created, select <code>Settings → App Keys</code> in the lower left corner, and you will see your APP ID and APP Key.<br> <img src="/images/valine-2.png" alt="LeanCloud"><!-- endtab -->
+
+</li>
+</ol>
+<!-- tab Installation → -->
+<p>Install <code>hexo-leancloud-counter-security</code> by executing the following command in {% label info@site root dir %}:</p>
+<pre><code class="bash">$ npm install hexo-leancloud-counter-security</code></pre>
+<!-- endtab -->
+
+<!-- tab Hexo Config → -->
+<p>Edit {% label info@Hexo config file %} and add following content:</p>
+<pre><code class="yml"><span class="attr">leancloud_counter_security:</span>
+  <span class="attr">enable_sync:</span> <span class="literal">true</span>
+  <span class="attr">app_id:</span> <span class="string">&lt;your</span> <span class="string">app</span> <span class="string">id&gt;</span>
+  <span class="attr">app_key:</span> <span class="string">&lt;your</span> <span class="string">app</span> <span class="string">key&gt;</span>
+  <span class="attr">username:</span> <span class="string">&lt;your</span> <span class="string">username&gt;</span> <span class="comment"># Will be asked while deploying if is left blank</span>
+  <span class="attr">password:</span> <span class="string">&lt;your</span> <span class="string">password&gt;</span> <span class="comment"># Recommmended to be left blank. Will be asked while deploying if is left blank</span></code></pre>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Edit {% label primary@NexT config file %} and fill options under <code>leancloud_visitors</code> section.</p>
+<pre><code class="yml"><span class="comment"># Show number of visitors to each article.</span>
+<span class="comment"># You can visit https://www.leancloud.cn get AppID and AppKey.</span>
+<span class="attr">leancloud_visitors:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">app_id:</span> <span class="comment">#&lt;app_id&gt;</span>
+  <span class="attr">app_key:</span> <span class="comment">#&lt;app_key&gt;</span>
+  <span class="comment"># Required for apps from CN region</span>
+  <span class="attr">server_url:</span> <span class="comment"># &lt;your server url&gt;</span>
+  <span class="comment"># Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security</span>
+  <span class="comment"># If you don't care about security in lc counter and just want to use it directly</span>
+  <span class="comment"># (without hexo-leancloud-counter-security plugin), set the `security` to `false`.</span>
+  <span class="attr">security:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Firebase"><a href="#Firebase" class="headerlink" title="Firebase"></a>Firebase</h4><p>Firebase Analytics provides the functionality of visitor statistics.</p>
+<p>{% tabs firestore %}</p>
+<!-- tab Get apiKey & projectId → -->
+<p>Login to <a href="https://console.firebase.google.com/u/0/" target="_blank" rel="noopener">Firebase</a> to get apiKey and projectId. The Web API Key gets generated once you go into the “Authentication” section for the first time.</p>
+<p><img src="/images/firebase.png" alt="Firebase"></p>
+<p><a href="https://firebase.google.com/docs/firestore/" target="_blank" rel="noopener">More detailed documentation</a></p>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Edit {% label primary@NexT config file %} and add or change <code>firestore</code> section:</p>
+<pre><code class="yml"><span class="attr">firestore:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">collection:</span> <span class="string">articles</span> <span class="comment">#required, a string collection name to access firestore database</span>
+  <span class="attr">apiKey:</span> <span class="comment">#required</span>
+  <span class="attr">projectId:</span> <span class="comment">#required</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Busuanzi-Counting-China"><a href="#Busuanzi-Counting-China" class="headerlink" title="Busuanzi Counting (China)"></a>Busuanzi Counting (China)</h4><p>{% tabs busuanzi-counting %}</p>
+<!-- tab Global Settings → -->
+<p>Edit <code>busuanzi_count</code> option in {% label primary@NexT config file %}.<br>When <code>enable: true</code>, global setting is enabled. If <code>total_visitors</code>, <code>total_views</code>, <code>post_views</code> are all <code>false</code>, Busuanzi only counts but never shows.</p>
+<!-- endtab -->
+
+<!-- tab Site UV Settings → -->
+<p>When <code>total_visitors: true</code>, it will show site UV in footer. You can also use font-awesome by setting <code>total_visitors_icon</code> to the name of the icon.</p>
+<pre><code class="yml"><span class="attr">busuanzi_count:</span>
+  <span class="attr">total_visitors:</span> <span class="literal">true</span>
+  <span class="attr">total_visitors_icon:</span> <span class="string">fa</span> <span class="string">fa-user</span></code></pre>
+<!-- endtab -->
+
+<!-- tab Site PV Settings → -->
+<p>When <code>total_views: true</code>, it will show site UV in footer. You can also use font-awesome by setting <code>total_views_icon</code> to the name of the icon.</p>
+<pre><code class="yml"><span class="attr">busuanzi_count:</span>
+  <span class="attr">total_views:</span> <span class="literal">true</span>
+  <span class="attr">total_views_icon:</span> <span class="string">fa</span> <span class="string">fa-eye</span></code></pre>
+<!-- endtab -->
+
+<!-- tab Per-page PV Settings -->
+<p>When <code>post_views: true</code>, it will show page PV in post meta. You can also use font-awesome by setting <code>post_views_icon</code> to the name of the icon.</p>
+<pre><code class="yml"><span class="attr">busuanzi_count:</span>
+  <span class="attr">post_views:</span> <span class="literal">true</span>
+  <span class="attr">post_views_icon:</span> <span class="string">far</span> <span class="string">fa-eye</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>

@@ -1,0 +1,84 @@
+<hr>
+<p>title: External Libraries<br>description: NexT User Docs – Third-party Plugins Integration – External Libraries</p>
+<hr>
+<h3 id="PJAX"><a href="#PJAX" class="headerlink" title="PJAX"></a>PJAX</h3><p><a href="https://github.com/MoOx/pjax" target="_blank" rel="noopener">Pjax</a> is a standalone JavaScript module that uses AJAX (XmlHttpRequest) and <code>pushState()</code> to deliver a fast browsing experience.</p>
+<p>It allows you to completely transform the user experience of standard websites (server-side generated or static ones) to make users feel like they are browsing an app, especially for those with low bandwidth connections.</p>
+<p>{% note warning %}<br>Please use the absolute path of the image or <a href="https://hexo.io/docs/tag-plugins#Include-Assets" target="_blank" rel="noopener">Hexo asset_img tag</a> in your posts, otherwise the images may fail to load during Pjax refresh.<br>{% endnote %}</p>
+<p>You can enable it by setting value <code>pjax</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="comment"># Easily enable fast Ajax navigation on your website.</span>
+<span class="comment"># For more information: https://github.com/next-theme/pjax</span>
+<span class="attr">pjax:</span> <span class="literal">true</span></code></pre>
+<h3 id="Fancybox"><a href="#Fancybox" class="headerlink" title="Fancybox"></a>Fancybox</h3><p>NexT supports the <a href="https://fancyapps.com/fancybox/" target="_blank" rel="noopener">fancybox</a> plugin, which is a jQuery lightbox script for displaying images, videos and more. Touch enabled, responsive and fully customizable.</p>
+<p>You can enable it by setting value <code>fancybox</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">fancybox:</span> <span class="literal">true</span></code></pre>
+<h3 id="Medium-Zoom"><a href="#Medium-Zoom" class="headerlink" title="Medium Zoom"></a>Medium Zoom</h3><p><a href="https://github.com/francoischalifour/medium-zoom" target="_blank" rel="noopener">Medium Zoom</a> is a JavaScript library for zooming images like Medium.</p>
+<p>You can enable it by setting value <code>mediumzoom</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="comment"># A JavaScript library for zooming images like Medium.</span>
+<span class="attr">mediumzoom:</span> <span class="literal">true</span></code></pre>
+<p>{% note warning %}<br>Do not enable both <code>fancybox</code> and <code>mediumzoom</code>.<br>{% endnote %}</p>
+<h3 id="Lazyload"><a href="#Lazyload" class="headerlink" title="Lazyload"></a>Lazyload</h3><p><a href="https://github.com/ApoorvSaxena/lozad.js" target="_blank" rel="noopener">Lozad.js</a> is a lazy loader plugin in modern vanilla JavaScript. It delays loading of images in long web pages. Images outside of viewport will not be loaded before user scrolls to them. This is opposite of image preloading.</p>
+<p>You can enable it by setting value <code>lazyload</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="comment"># Vanilla JavaScript plugin for lazyloading images.</span>
+<span class="attr">lazyload:</span> <span class="literal">true</span></code></pre>
+<p>Then run the following command in {% label info@site root dir %} to ensure that <code>lazyload</code> can be enabled or disabled correctly:</p>
+<pre><code class="bash">$ hexo clean</code></pre>
+<h3 id="Pangu-Autospace"><a href="#Pangu-Autospace" class="headerlink" title="Pangu Autospace"></a>Pangu Autospace</h3><p><a href="https://github.com/vinta/pangu.js" target="_blank" rel="noopener">pangu.js</a> will automatically insert a blank space between all the Chinese characters and the hexagonal English numeric symbols on the page.</p>
+<p>You can enable it by setting value <code>pangu</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="comment"># Pangu Support</span>
+<span class="attr">pangu:</span> <span class="literal">true</span></code></pre>
+<h3 id="Quicklink"><a href="#Quicklink" class="headerlink" title="Quicklink"></a>Quicklink</h3><p><a href="https://github.com/GoogleChromeLabs/quicklink" target="_blank" rel="noopener">Quicklink</a> is a JavaScript plugin that faster subsequent page-loads by prefetching in-viewport links during idle time. Chrome, Firefox, Edge are supported without polyfills.</p>
+<p>You can enable it by setting value <code>quicklink.enable</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="string">...</span>
+<span class="attr">quicklink:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">home:</span> <span class="literal">true</span>
+  <span class="attr">archive:</span> <span class="literal">true</span>
+  <span class="attr">delay:</span> <span class="literal">true</span>
+  <span class="attr">timeout:</span> <span class="number">3000</span>
+  <span class="attr">priority:</span> <span class="literal">true</span>
+<span class="string">...</span></code></pre>
+<h3 id="Animation-Effect"><a href="#Animation-Effect" class="headerlink" title="Animation Effect"></a>Animation Effect</h3><p>NexT enables animation effect by default which is supported by Anime.js and Animate.css, so it will wait for JavaScript loaded to show content.<br>If you need speed you can set the value of <code>motion.enable</code> to <code>false</code> to disable it.</p>
+<p>Edit {% label primary@NexT config file %} and set the needed values under the <code>motion</code> to fit your demand. You can preview all Transition variants here: <a href="https://theme-next.js.org/animate/" target="_blank" rel="noopener">NexT Animation Effect Preview</a>.</p>
+<pre><code class="yml"><span class="comment"># Use Animate.css to animate everything.</span>
+<span class="comment"># For more information: https://animate.style</span>
+<span class="attr">motion:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">async:</span> <span class="literal">false</span>
+  <span class="attr">transition:</span>
+    <span class="comment"># All available Transition variants: https://theme-next.js.org/animate/</span>
+    <span class="attr">post_block:</span> <span class="string">fadeIn</span>
+    <span class="attr">post_header:</span> <span class="string">fadeInDown</span>
+    <span class="attr">post_body:</span> <span class="string">fadeInDown</span>
+    <span class="attr">coll_header:</span> <span class="string">fadeInLeft</span>
+    <span class="comment"># Only for Pisces | Gemini.</span>
+    <span class="attr">sidebar:</span> <span class="string">fadeInUp</span></code></pre>
+<h3 id="Progress-Bar"><a href="#Progress-Bar" class="headerlink" title="Progress Bar"></a>Progress Bar</h3><p><a href="https://github.com/CodeByZach/pace" target="_blank" rel="noopener">Pace</a> will automatically monitor your Ajax requests, event loop lag, document ready state and elements on your page to decide on the progress.</p>
+<p>{% tabs pace %}</p>
+<!-- tab <code>pace</code> -->
+<p>You can enable it by setting value <code>pace.enable</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">pace:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+<!-- tab <code>color</code> -->
+<p>You can change the color of progress bar by setting value <code>pace.color</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">pace:</span>
+  <span class="attr">color:</span> <span class="string">orange</span></code></pre>
+<!-- endtab -->
+<!-- tab <code>theme</code> -->
+<p>Pace includes a bunch of <a href="https://codebyzach.github.io/pace/" target="_blank" rel="noopener">themes</a> to get you started. By default NexT uses <code>minimal</code> theme (pace-theme-minimal). You can configure it by editing values in <code>pace.theme</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">pace:</span>
+  <span class="attr">theme:</span> <span class="string">minimal</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h3 id="Canvas-Ribbon"><a href="#Canvas-Ribbon" class="headerlink" title="Canvas Ribbon"></a>Canvas Ribbon</h3><p><a href="https://github.com/hustcc/ribbon.js" target="_blank" rel="noopener">canvas-ribbon.js</a> is a ribbon background of website draw on canvas.</p>
+<p>You can enable it by setting value <code>canvas_ribbon</code> to <code>true</code> in {% label primary@NexT config file %}. You can also configure the ribbon setting by editing values in <code>canvas_ribbon</code> section:</p>
+<ul>
+<li>size: The width of the ribbon.</li>
+<li>alpha: The transparency of the ribbon.</li>
+<li>zIndex: The display level of the ribbon.</li>
+</ul>
+<pre><code class="yml"><span class="attr">canvas_ribbon:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="attr">size:</span> <span class="number">300</span>
+  <span class="attr">alpha:</span> <span class="number">0.6</span>
+  <span class="attr">zIndex:</span> <span class="number">-1</span></code></pre>

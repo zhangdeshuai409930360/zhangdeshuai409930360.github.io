@@ -1,0 +1,58 @@
+<hr>
+<p>title: SEO<br>description: NexT User Docs – Theme Settings – SEO</p>
+<hr>
+<h3 id="SEO-Setting"><a href="#SEO-Setting" class="headerlink" title="SEO Setting"></a>SEO Setting</h3><p>Next provides useful options for better Search Engine Optimization (SEO).</p>
+<p>{% note info %}<br>By default a canonical link tag is created in Hexo after you have set up your URL <code>url: http://example.com</code> in {% label info@Hexo config file %}. More detailed information can be found in <a href="https://support.google.com/webmasters/answer/139066" target="_blank" rel="noopener">Consolidate duplicate URLs</a>.<br>{% endnote %}</p>
+<p>Set the value of <code>index_with_subtitle</code> in {% label primary@NexT config file %} to <code>true</code> to add <code>subtitle</code> information to index page.</p>
+<pre><code class="yml"><span class="attr">index_with_subtitle:</span> <span class="literal">true</span></code></pre>
+<p>You can set <code>subtitle</code> in {% label info@Hexo config file %}.</p>
+<h3 id="Webmaster-Tools"><a href="#Webmaster-Tools" class="headerlink" title="Webmaster Tools"></a>Webmaster Tools</h3><h4 id="Google-Webmaster-Tools"><a href="#Google-Webmaster-Tools" class="headerlink" title="Google Webmaster Tools"></a>Google Webmaster Tools</h4><p>Set the verification string of <a href="https://developers.google.com/search" target="_blank" rel="noopener">Google Webmaster Tools</a> which is used in submitting sitemap.</p>
+<p>{% tabs google-webmaster-tools %}</p>
+<!-- tab Get Verification Code → -->
+<p>Login to Google Webmaster Tools and go to verification methods and choose <code>HTML Tag</code>, you will get some code:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"google-site-verification"</span> <span class="attr">content</span>=<span class="string">"XXXXXXXXXXXXXXXXXXXXXXX"</span>&gt;</span></code></pre>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key.<br>Edit {% label primary@NexT config file %} and add or change the value of <code>google_site_verification</code>:</p>
+<pre><code class="yml"><span class="attr">google_site_verification:</span> <span class="string">XXXXXXXXXXXXXXXXXXXXXXX</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Bing-Webmaster-Tools"><a href="#Bing-Webmaster-Tools" class="headerlink" title="Bing Webmaster Tools"></a>Bing Webmaster Tools</h4><p>Set the verification string of <a href="https://www.bing.com/webmasters" target="_blank" rel="noopener">Bing Webmaster Tools</a> which is used in submitting sitemap.</p>
+<p>{% tabs bing-webmaster-tools %}</p>
+<!-- tab Get Verification Code → -->
+<p>Login to Bing Webmaster Tools and go to verification methods and choose <code>HTML Tag</code>, you will get some code:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"msvalidate.01"</span> <span class="attr">content</span>=<span class="string">"XXXXXXXXXXXXXXXXXXXXXXX"</span>&gt;</span></code></pre>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key.<br>Edit {% label primary@NexT config file %} and add or change the value of <code>bing_site_verification</code>:</p>
+<pre><code class="yml"><span class="attr">bing_site_verification:</span> <span class="string">XXXXXXXXXXXXXXXXXXXXXXX</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Yandex-Webmaster-Tools"><a href="#Yandex-Webmaster-Tools" class="headerlink" title="Yandex Webmaster Tools"></a>Yandex Webmaster Tools</h4><p>Set the verification string of <a href="https://webmaster.yandex.ru/" target="_blank" rel="noopener">Yandex Webmaster Tools</a> which is used in submitting sitemap.</p>
+<p>{% tabs yandex-webmaster-tools %}</p>
+<!-- tab Get Verification Code → -->
+<p>Login to Yandex Webmaster Tools and go to verification methods and choose <code>Meta Tag</code>, you will get some code:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"yandex-verification"</span> <span class="attr">content</span>=<span class="string">"XXXXXXXXXXXXXXXXXXXXXXX"</span>&gt;</span></code></pre>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Copy <code>XXXXXXXXXXXXXXXXXXXXXXX</code> value of <code>content</code> key.<br>Edit {% label primary@NexT config file %} and add or change the value of <code>yandex_site_verification</code>:</p>
+<pre><code class="yml"><span class="attr">yandex_site_verification:</span> <span class="string">XXXXXXXXXXXXXXXXXXXXXXX</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Baidu-Webmaster-Tools"><a href="#Baidu-Webmaster-Tools" class="headerlink" title="Baidu Webmaster Tools"></a>Baidu Webmaster Tools</h4><p>Set the verification string of <a href="https://ziyuan.baidu.com/site/" target="_blank" rel="noopener">Baidu Webmaster Tools</a> which is used in submitting sitemap.</p>
+<p>{% tabs Baidu-webmaster-tools %}</p>
+<!-- tab Get Verification Code → -->
+<p>Login to Baidu Webmaster Tools and go to verification methods and choose <code>HTML Tag</code>, you will get some code:</p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"baidu-site-verification"</span> <span class="attr">content</span>=<span class="string">"code-XXXXXXXXXX"</span>&gt;</span></code></pre>
+<!-- endtab -->
+
+<!-- tab NexT Config -->
+<p>Copy <code>code-XXXXXXXXXX</code> value of <code>content</code> key.<br>Edit {% label primary@NexT config file %} and add or change the value of <code>baidu_site_verification</code>:</p>
+<pre><code class="yml"><span class="attr">baidu_site_verification:</span> <span class="string">code-XXXXXXXXXX</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<p>{% note info %}<br>By default Baidu will cache and rewrite your site to provide a webpage snapshot for mobile users. You can disable this by setting the site type.</p>
+<p><img src="/images/baidu.png" alt="Baidu Webmaster Tools"><br>{% endnote %}</p>

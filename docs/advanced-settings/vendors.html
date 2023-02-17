@@ -1,0 +1,43 @@
+<hr>
+<p>title: Vendors<br>description: NexT User Docs – Advanced Settings - Vendors</p>
+<hr>
+<h3 id="CDN-Settings"><a href="#CDN-Settings" class="headerlink" title="CDN Settings"></a>CDN Settings</h3><p>You can specify a proper CDN provider in the <code>vendors</code> section in {% label primary@NexT config file %}, which can make the static assets of plugins load faster.</p>
+<pre><code class="yml"><span class="attr">vendors:</span>
+  <span class="comment"># The CDN provider of NexT internal scripts.</span>
+  <span class="comment"># Available values: local | jsdelivr | unpkg | cdnjs | custom</span>
+  <span class="comment"># Warning: If you are using the latest master branch of NexT, please set `internal: local`</span>
+  <span class="attr">internal:</span> <span class="string">local</span>
+  <span class="comment"># The default CDN provider of third-party plugins.</span>
+  <span class="comment"># Available values: local | jsdelivr | unpkg | cdnjs | custom</span>
+  <span class="comment"># Dependencies for `plugins: local`: https://github.com/next-theme/plugins</span>
+  <span class="attr">plugins:</span> <span class="string">cdnjs</span>
+  <span class="comment"># Custom CDN URL</span>
+  <span class="comment"># For example:</span>
+  <span class="comment"># custom_cdn_url: https://cdn.jsdelivr.net/npm/${npm_name}@${version}/${minified}</span>
+  <span class="comment"># custom_cdn_url: https://cdnjs.cloudflare.com/ajax/libs/${cdnjs_name}/${version}/${cdnjs_file}</span>
+  <span class="attr">custom_cdn_url:</span></code></pre>
+<h4 id="Internal-Scripts"><a href="#Internal-Scripts" class="headerlink" title="Internal Scripts"></a>Internal Scripts</h4><p><code>internal: local</code> is used to set how to load the internal scripts, e.g. <code>source/js/utils.js</code>. These libraries are loaded from your site by default, they are required by the basic functions of NexT. Set <code>internal</code> to <code>jsdelivr</code>, <code>unpkg</code> or <code>cdnjs</code> to load them from the corresponding CDN.</p>
+<p>{% note info %}<br>If your site is deployed to any free hosting service (Github, Gitlab, etc.), CDN links are recommended for internal scripts. CDN usually has faster speeds and no traffic restrictions.<br>{% endnote %}</p>
+<p>{% note danger %}<br>If you are using the latest master branch of NexT, please set <code>internal: local</code>.<br>{% endnote %}</p>
+<h4 id="Third-party-Plugins"><a href="#Third-party-Plugins" class="headerlink" title="Third-party Plugins"></a>Third-party Plugins</h4><p><code>plugins: cdnjs</code> is used to set how to load the third-party plugins, e.g. <code>anime.js</code>. Third-party plugins are loaded from <a href="https://cdnjs.com" target="_blank" rel="noopener">CDNJS</a> CDN by default.</p>
+<p>And we also provide other optional CDNs, including the famous <a href="https://unpkg.com" target="_blank" rel="noopener">UNPKG</a> and <a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">jsDelivr</a>. These CDN providers are chosen to deliver our third-party plugins because they are fast and reliable. Set <code>plugins</code> to <code>unpkg</code> or <code>cdnjs</code> to load them from different CDN provider.</p>
+<p>{% note warning %}<br>Particularly, if you are a Chinese blogger or most of your visits come from China, please note that <strong>the CDNJS is blocked in some parts of China</strong>, don’t use it as your CDN provider.<br>{% endnote %}</p>
+<p>{% note info %}<br>If your would like to load all third-party plugins from your site, please set <code>plugins</code> to <code>local</code> and install the <code>@next-theme/plugins</code> package: <a href="https://github.com/next-theme/plugins" target="_blank" rel="noopener">https://github.com/next-theme/plugins</a><br>If your website is deployed in the local area network, then this will have a faster loading speed than CDN services.<br>{% endnote %}</p>
+<h4 id="Custom-CDN-URLs"><a href="#Custom-CDN-URLs" class="headerlink" title="Custom CDN URLs"></a>Custom CDN URLs</h4><p>Sometimes you may need to use CDNs other than <code>jsdelivr</code>, <code>unpkg</code> or <code>cdnjs</code>. For example, users can get faster loading speed in certain areas using the mirror site of jsDelivr.</p>
+<p>To enable custom CDN URL, you need to set <code>internal: custom</code> and / or <code>plugins: custom</code> in the <code>vendors</code> section, and then specify a CDN URL with the <code>custom_cdn_url</code> option.</p>
+<p>Remember to use the HTTPS protocol of CDN links when you enable HTTPS on your site.</p>
+<h5 id="jsDelivr-Mirrors"><a href="#jsDelivr-Mirrors" class="headerlink" title="jsDelivr Mirrors"></a>jsDelivr Mirrors</h5><p>jsDelivr could automatically minify the JS and CSS files, even if the package owner doesn’t publish the minified version on npm. You just need to access <code>*.min.js</code> and  <code>*.min.css</code>, instead of <code>*.js</code> and  <code>*.css</code>. For more information: <a href="https://www.jsdelivr.com/features" target="_blank" rel="noopener">https://www.jsdelivr.com/features</a></p>
+<p>In theme NexT, you can simply use the variable <code>${minified}</code> in <code>custom_cdn_url</code> to serve the minified version if you are using a mirror site of jsDelivr. NexT will automatically replace the variable <code>${minified}</code> with the path of each JS file to load from CDN.</p>
+<pre><code class="yml"><span class="attr">vendors:</span>
+  <span class="attr">custom_cdn_url:</span> <span class="string">https://fastly.jsdelivr.net/npm/${npm_name}@${version}/${minified}</span></code></pre>
+<h5 id="CDNJS-Mirrors"><a href="#CDNJS-Mirrors" class="headerlink" title="CDNJS Mirrors"></a>CDNJS Mirrors</h5><pre><code class="yml"><span class="attr">vendors:</span>
+  <span class="attr">custom_cdn_url:</span> <span class="string">https://cdnjs.cloudflare.com/ajax/libs/${cdnjs_name}/${version}/${cdnjs_file}</span></code></pre>
+<h4 id="CDN-URLs-For-Each-Library"><a href="#CDN-URLs-For-Each-Library" class="headerlink" title="CDN URLs For Each Library"></a>CDN URLs For Each Library</h4><p>Furthermore, you can configure the CDN URL of each library individually in the <code>vendors</code> section.</p>
+<p>The config is in format of <code>libname: CDN URL</code>. The <code>libname</code> is the same as in the <code>_vendors.yml</code> file. The <code>CDN URL</code> will override the default one.</p>
+<p>For example, if you want to set the CDN URL for <code>anime</code>, go to {% label primary@NexT config file %} and add a key named <code>anime</code> in the <code>vendors</code> section, and set its value to the CDN URL of anime.js:</p>
+<pre><code class="yml"><span class="attr">vendors:</span>
+  <span class="comment"># ...</span>
+  <span class="comment"># Some contents...</span>
+  <span class="comment"># ...</span>
+  <span class="attr">anime:</span> <span class="string">//fastly.jsdelivr.net/gh/juliangarnier/anime@latest/lib/anime.min.js</span></code></pre>
+<p>It’s recommended to use the same version of the library as in <code>_vendors.yml</code> to avoid potential problems.</p>

@@ -1,0 +1,189 @@
+<hr>
+<p>title: Sidebar Setting<br>description: NexT User Docs – Theme Settings – Sidebar</p>
+<hr>
+<h3 id="Sidebar-Style"><a href="#Sidebar-Style" class="headerlink" title="Sidebar Style"></a>Sidebar Style</h3><p>By default sidebar only shows in posts (have a table of content), and is placed in left side. You can change it by editing values under <code>sidebar</code> setting in {% label primary@NexT config file %}.</p>
+<p>Sidebar has several options, including <code>position</code>, <code>width</code>, <code>display</code>, <code>padding</code> and <code>offset</code>.</p>
+<p>{% tabs setting-sidebar %}</p>
+<!-- tab <code>position</code> -->
+<p>Set up sidebar position by changing the value of <code>sidebar.position</code>, which can be one of following:</p>
+<ul>
+<li><strong><code>left</code></strong> → Place at the left of the screen.</li>
+<li><code>right</code> → Place at the right of the screen.</li>
+</ul>
+<pre><code class="yml"><span class="attr">sidebar:</span>
+  <span class="attr">position:</span> <span class="string">left</span>
+  <span class="comment">#position: right</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>width</code> -->
+<p>You can change sidebar width by specify <code>sidebar.width</code> setting in pixels, for example:</p>
+<pre><code class="yml"><span class="attr">sidebar:</span>
+  <span class="attr">width:</span> <span class="number">300</span></code></pre>
+<p>{% note info %}<br>This option is commented out by default and values are:</p>
+<ul>
+<li>For Muse | Mist schemes: <code>320</code></li>
+<li>For Pisces | Gemini schemes: <code>240</code></li>
+</ul>
+<p>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab <code>display</code> -->
+<p>Set up conditions under which sidebar will show by editing <code>sidebar.display</code> value, which can be one of following:</p>
+<ul>
+<li><strong><code>post</code></strong> → Show sidebar only in posts which have index.</li>
+<li><code>always</code> → Show sidebar in all pages.</li>
+<li><code>hide</code> → Hide it in all pages (but can be opened by user manually).</li>
+<li><code>remove</code> → Remove sidebar totally.</li>
+</ul>
+<pre><code class="yml"><span class="attr">sidebar:</span>
+  <span class="attr">display:</span> <span class="string">post</span>
+  <span class="comment">#display: always</span>
+  <span class="comment">#display: hide</span>
+  <span class="comment">#display: remove</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>padding</code> -->
+<p>Set up sidebar padding in pixels by changing the value of <code>sidebar.padding</code>:</p>
+<pre><code class="yml"><span class="attr">sidebar:</span>
+  <span class="attr">padding:</span> <span class="number">18</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>offset</code> -->
+<p>Set up sidebar offset from top menubar in pixels by changing the value of <code>sidebar.offset</code>:</p>
+<pre><code class="yml"><span class="attr">sidebar:</span>
+  <span class="attr">offset:</span> <span class="number">12</span></code></pre>
+<p>{% note danger %}<br>For now only Pisces / Gemini Schemes supports <code>offset</code> setting under <strong>6.0.x</strong> version or later.<br>{% endnote %}</p>
+<!-- endtab -->
+
+<p>{% endtabs %}</p>
+<h3 id="Configuring-Avatar"><a href="#Configuring-Avatar" class="headerlink" title="Configuring Avatar"></a>Configuring Avatar</h3><p>By default NexT doesn’t show avatar in sidebar. You can configure it by editing values under <code>avatar</code> setting in {% label primary@NexT config file %}.</p>
+<p>{% tabs avatar %}</p>
+<!-- tab <code>url</code> -->
+<p>For first test you can uncomment <code>/images/avatar.gif</code> value near the <code>avatar.url</code> setting to see default avatar:</p>
+<pre><code class="yml"><span class="attr">avatar:</span>
+  <span class="attr">url:</span> <span class="string">/images/avatar.gif</span></code></pre>
+<p>Then you need to specify your own avatar. It can be done one of the ways below:</p>
+<p>{% subtabs avatar1 %}</p>
+<!-- tab {% label success@Hexo directory %} -->
+<p>Put your avatar under {% label info@site directory %} <code>source/uploads/</code> (create directory if it doesn’t exists).<br>And then change option to <code>url: /uploads/avatar.png</code>.</p>
+<!-- endtab -->
+
+<!-- tab NexT directory -->
+<p>Put your avatar under {% label primary@theme directory %} <code>source/images/</code>.<br>And then change option to <code>url: /images/avatar.png</code>.</p>
+<p>{% note info %}<br>Current site uses avatar under {% label primary@theme directory %} from file located in <code>next/source/images/apple-touch-icon-next.png</code> with following config:</p>
+<pre><code class="yml"><span class="attr">avatar:</span>
+  <span class="attr">url:</span> <span class="string">/images/apple-touch-icon-next.png</span></code></pre>
+<p>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab Absolute URL from Internet -->
+<p>You can also specify any external URL with absolute path to image: <code>http(s)://example.com/avatar.png</code></p>
+<!-- endtab -->
+<p>{% endsubtabs %}</p>
+<!-- endtab -->
+
+<!-- tab <code>rounded</code> -->
+<p>Set up rounded of avatar by changing the value of <code>avatar.rounded</code>:</p>
+<ul>
+<li><code>true</code> → Avatar will be rounded.</li>
+<li><strong><code>false</code></strong> → Avatar will be squared.</li>
+</ul>
+<pre><code class="yml"><span class="attr">avatar:</span>
+  <span class="attr">rounded:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>rotated</code> -->
+<p>Set up rotated of avatar by changing the value of <code>avatar.rotated</code>:</p>
+<ul>
+<li><code>true</code> → Avatar will be rotate under the mouse hovering.</li>
+<li><strong><code>false</code></strong> → Avatar will not rotate under the mouse hovering.</li>
+</ul>
+<pre><code class="yml"><span class="attr">avatar:</span>
+  <span class="attr">rotated:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h3 id="Sidebar-Site-State"><a href="#Sidebar-Site-State" class="headerlink" title="Sidebar Site State"></a>Sidebar Site State</h3><p>By default NexT shows the categories and counts of Posts / Categories / Tags in sidebar. You can configure it by editing value <code>site_state</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">site_state:</span> <span class="literal">true</span></code></pre>
+<h3 id="Sidebar-Social-Links"><a href="#Sidebar-Social-Links" class="headerlink" title="Sidebar Social Links"></a>Sidebar Social Links</h3><p>{% note default %}<br>Social Links have similar structure as <a href="/docs/theme-settings/#Configuring-Menu-Items">Menu Items</a>, only target link there is difference: specified link must have full url path (permalink).<br>{% endnote %}</p>
+<p>Edit the <code>social</code> section in {% label primary@NexT config file %} as following:</p>
+<pre><code class="yml"><span class="attr">social:</span>
+  <span class="attr">GitHub:</span> <span class="string">https://github.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-github</span>
+  <span class="attr">E-Mail:</span> <span class="string">mailto:yourname@gmail.com</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-envelope</span>
+  <span class="attr">Weibo:</span> <span class="string">https://weibo.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-weibo</span>
+  <span class="attr">Twitter:</span> <span class="string">https://twitter.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-twitter</span>
+  <span class="attr">FB Page:</span> <span class="string">https://www.facebook.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-facebook</span>
+  <span class="attr">StackOverflow:</span> <span class="string">https://stackoverflow.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-stack-overflow</span>
+  <span class="attr">YouTube:</span> <span class="string">https://youtube.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-youtube</span>
+  <span class="attr">Instagram:</span> <span class="string">https://instagram.com/yourname</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-instagram</span>
+  <span class="attr">Skype:</span> <span class="string">skype:yourname?call|chat</span> <span class="string">||</span> <span class="string">fab</span> <span class="string">fa-skype</span></code></pre>
+<p>By default NexT shows the icons of social links in sidebar.</p>
+<p>{% tabs social_icons %}</p>
+<!-- tab <code>enable</code> -->
+<p>You can configure it by editing value <code>enable</code> in <code>social_icons</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">social_icons:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>icons_only</code> -->
+<p>Set the value <code>icons_only</code> to <code>true</code> to display social icons without description in <code>social_icons</code> section in {% label primary@NexT config file %} as following:</p>
+<pre><code class="yml"><span class="attr">social_icons:</span>
+  <span class="attr">icons_only:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>transition</code> -->
+<p>Set the value <code>transition</code> to <code>true</code> to display social icons with transition effects in <code>social_icons</code> section in {% label primary@NexT config file %} as following:</p>
+<pre><code class="yml"><span class="attr">social_icons:</span>
+  <span class="attr">transition:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<p>{% endtabs %}</p>
+<h3 id="Sidebar-Blogrolls"><a href="#Sidebar-Blogrolls" class="headerlink" title="Sidebar Blogrolls"></a>Sidebar Blogrolls</h3><p>You can add blog rolls within sidebar in NexT.</p>
+<p>{% tabs blogrolls %}</p>
+<!-- tab <code>links_settings</code> -->
+<p>By default NexT shows the <code>globe</code> icon {% btn #,, globe %} before <code>title</code>. The name of icon can be found in <a href="https://fontawesome.com" target="_blank" rel="noopener">Font Awesome</a> site. You can configure it by editing value <code>icon</code> in <code>links_settings</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">links_settings:</span>
+  <span class="attr">icon:</span> <span class="string">fa</span> <span class="string">fa-globe</span></code></pre>
+<p>By default all blogrolls are displayed in block. You can configure it to <code>inline</code> by editing value <code>layout</code> in <code>links_settings</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">links_settings:</span>
+  <span class="attr">layout:</span> <span class="string">block</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>links</code> -->
+<p>Edit the <code>links</code> section in {% label primary@NexT config file %} and add your favorite links:</p>
+<pre><code class="yml"><span class="attr">links:</span>
+  <span class="attr">Title1:</span> <span class="string">https://example1.com/</span>
+  <span class="attr">Title2:</span> <span class="string">https://example2.com/</span></code></pre>
+<!-- endtab -->
+
+<p>{% endtabs %}</p>
+<h3 id="Sidebar-TOC"><a href="#Sidebar-TOC" class="headerlink" title="Sidebar TOC"></a>Sidebar TOC</h3><p>{% tabs toc %}</p>
+<!-- tab <code>enable</code> -->
+<p>By default NexT shows <code>Table Of Contents (TOC)</code> in the sidebar. You can disable it by setting <code>toc.enable</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">toc:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>number</code> -->
+<p>By default NexT adds list number to TOC automatically. You can disable it by setting <code>toc.number</code> to <code>false</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">toc:</span>
+  <span class="attr">number:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>wrap</code> -->
+<p>If the post header width longer than sidebar width, you can wrap the header words in next lines by setting <code>toc.wrap</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">toc:</span>
+  <span class="attr">wrap:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>expand_all</code> -->
+<p>If you want all level of TOC in a post to be displayed, rather than the activated part of it, you can set <code>toc.expand_all</code> to <code>true</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">toc:</span>
+  <span class="attr">expand_all:</span> <span class="literal">true</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>max_depth</code> -->
+<p>By default maximum heading depth of generated toc is 6. You can set it by setting <code>toc.max_depth</code> to <code>another number</code> in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">toc:</span>
+  <span class="attr">max_depth:</span> <span class="number">3</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>

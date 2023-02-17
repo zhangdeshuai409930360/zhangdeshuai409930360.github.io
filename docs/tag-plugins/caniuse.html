@@ -1,0 +1,18 @@
+<hr>
+<p>title: Caniuse<br>description: NexT User Docs – NexT Supported Tags – Caniuse</p>
+<hr>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">caniuse</span> feature @ [periods] %}</span></code></pre>
+<p>or</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">can</span> feature @ [periods] %}</span></code></pre>
+<ul>
+<li><code>feature</code>   : Search for the feature you want on <a href="https://caniuse.com" target="_blank" rel="noopener">https://caniuse.com</a>, then click on the hash sign to the left of the search result heading and you will get the unique name of this feature.</li>
+<li><code>[periods]</code> : <em>Optional parameter.</em> Select the browser versions to display. Supported values: <code>past_1</code>, <code>past_2</code>, <code>past_3</code>, <code>past_4</code>, <code>past_5</code>, <code>current</code>, <code>future_3</code>, <code>future_2</code>, <code>future_1</code>. If this value is empty, the default value <code>current</code> will be used.</li>
+</ul>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><h4 id="Caniuse-without-periods"><a href="#Caniuse-without-periods" class="headerlink" title="Caniuse without periods"></a>Caniuse without periods</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">caniuse</span> fetch %}</span></code></pre>
+<p>{% caniuse fetch %}</p>
+<h4 id="Caniuse-with-current-period"><a href="#Caniuse-with-current-period" class="headerlink" title="Caniuse with current period"></a>Caniuse with current period</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">caniuse</span> sharedarraybuffer @ current %}</span></code></pre>
+<p>{% caniuse sharedarraybuffer @ current %}</p>
+<h4 id="Caniuse-with-future-periods"><a href="#Caniuse-with-future-periods" class="headerlink" title="Caniuse with future periods"></a>Caniuse with future periods</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">caniuse</span> loading-lazy-attr @ future_3,future_2,future_1 %}</span></code></pre>
+<p>{% caniuse loading-lazy-attr @ future_3,future_2,future_1 %}</p>
+<h4 id="Caniuse-with-past-periods"><a href="#Caniuse-with-past-periods" class="headerlink" title="Caniuse with past periods"></a>Caniuse with past periods</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">caniuse</span> link-rel-modulepreload @ past_1,past_2,past_3,past_4,past_5 %}</span></code></pre>
+<p>{% caniuse link-rel-modulepreload @ past_1,past_2,past_3,past_4,past_5 %}</p>

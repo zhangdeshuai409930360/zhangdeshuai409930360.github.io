@@ -1,0 +1,47 @@
+<hr>
+<p>title: Troubleshooting<br>description: NexT User Docs – Troubleshooting</p>
+<hr>
+<h3 id="Quick-Debug-Instructions"><a href="#Quick-Debug-Instructions" class="headerlink" title="Quick Debug Instructions"></a>Quick Debug Instructions</h3><p><strong>Before submitting an Issue on GitHub, you can follow the steps below to debug:</strong></p>
+<p>If you get an error message from Hexo or your browser:</p>
+<ul>
+<li>If the error comes from a Hexo plugin, such as hexo-word-counter, please submit an Issue to its GitHub repository.</li>
+<li>If the error comes from a third-party service, such as the Gitalk comment system, please submit an Issue to its GitHub repository.</li>
+<li>Otherwise, please search in Google / Stackoverflow / GitHub Issues, or report it to us when submitting a new Issue.</li>
+</ul>
+<p>The following steps will help you determine the cause of the problem:</p>
+<ul>
+<li>Execute <code>hexo clean</code>, clear the browser cache and purge CDN cache (or disable all CDN services) - This may take some time to take effect.</li>
+<li>Disable browser plug-ins or use other devices and browsers to test, because bugs may only occur in specific browsers.</li>
+<li>Switch to another theme and check if the bug still exists (e.g. default theme landscape).</li>
+<li>Upgrade theme NexT to the latest version.</li>
+<li>Upgrade Hexo and all Hexo plugins to the latest version. You can use tools like <a href="https://www.npmjs.com/package/npm-check" target="_blank" rel="noopener">npm-check</a>.</li>
+<li>Upgrade or downgrade Node.js to the latest LTS version.</li>
+<li>Uninstall all non-essential Hexo plugins, or delete <code>node_modules</code> and then reinstall all plugins using <code>npm install --force</code>.</li>
+</ul>
+<p>If you decide to submit an Issue, please answer the following questions based on the Issue template:</p>
+<ul>
+<li>Can you reproduce the problem? Can you reliably reproduce the issue? If not, provide details about how often the problem happens and under which conditions it normally happens.</li>
+<li>Did the problem start happening recently or was this always a problem?</li>
+<li>If the problem started happening recently, can you reproduce the problem in an older version of NexT? What’s the most recent version in which the problem doesn’t happen? You can download older versions of NexT from <a href="https://github.com/next-theme/hexo-theme-next/releases" target="_blank" rel="noopener">the releases page</a>.</li>
+<li>Which version of Node, Hexo and NexT are you using? You can get the exact version by running <code>node -v</code>, <code>hexo version</code> in your terminal.</li>
+<li>Which packages do you have installed? You can get that list by copying the output from <code>npm ls --depth 0</code> in Hexo root directory.</li>
+</ul>
+<h3 id="Keep-Up-Indentation"><a href="#Keep-Up-Indentation" class="headerlink" title="Keep Up Indentation"></a>Keep Up Indentation</h3><p>When you edit any YAML configs, always need to keep up indents.<br>Currently, in all Hexo and NexT configuration files parameters uses <strong>2 spaces indents</strong> from parent option.</p>
+<p>If you encounter other yaml errors, you can also check if there is a syntax problem in the configuration file or front-matter.</p>
+<h3 id="Set-skip-render"><a href="#Set-skip-render" class="headerlink" title="Set skip_render"></a>Set <code>skip_render</code></h3><p>If you want to skip rendering for some files, you can set <code>skip_render</code> in the {% label info@Hexo config file %}.</p>
+<pre><code class="yml"><span class="attr">skip_render:</span>
+  <span class="bullet">-</span> <span class="string">robots.txt</span>
+  <span class="bullet">-</span> <span class="string">CNAME</span></code></pre>
+<h3 id="Dark-Mode-not-Working"><a href="#Dark-Mode-not-Working" class="headerlink" title="Dark Mode not Working"></a>Dark Mode not Working</h3><p>There are 3 prerequisites for Dark Mode to work:</p>
+<ol>
+<li>Enable <code>darkmode</code> in {% label primary@NexT config file %}.</li>
+<li>Your browser supports <code>prefers-color-scheme</code> media query. (Supported by most browsers released after 2020)</li>
+<li>Enable Dark Mode in your operating system settings.</li>
+</ol>
+<p>In some operating systems, such as macOS, you can configure to enable dark mode at night. In other operating systems, the default color scheme is light, so you need to turn on Dark Mode in the system settings manually.</p>
+<h3 id="TOC-Issues"><a href="#TOC-Issues" class="headerlink" title="TOC Issues"></a>TOC Issues</h3><p>Do not write a skip-level heading in the post. For example, a third-tier heading <code>###</code> followed by a <code>#####</code> is not recommended.<br>See: <a href="https://github.com/theme-next/hexo-theme-next/issues/882" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next/issues/882</a></p>
+<p>If you are using <code>hexo-renderer-markdown-it</code>, it’s recommended to install <code>markdown-it-named-headings</code> to make the TOC work correctly.</p>
+<pre><code class="bash">npm install markdown-it-named-headings</code></pre>
+<p>See: <a href="https://github.com/theme-next/hexo-theme-next/issues/1168" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next/issues/1168</a><br>Here is the <a href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/90" target="_blank" rel="noopener">Pull Request with bugfix for default config</a> of <code>hexo-renderer-markdown-it</code> plugin.</p>
+<h3 id="Favicon-Set-but-Doesn’t-Work"><a href="#Favicon-Set-but-Doesn’t-Work" class="headerlink" title="Favicon Set but Doesn’t Work"></a>Favicon Set but Doesn’t Work</h3><p>Put your <code>favicon</code> under {% label info@site’s %} <code>source</code> dir. If you find that your Favicon doesn’t work, please clean your browser’s cache first and then visit your Favicon’s URL directly, which should be <code>http(s)://your-domain.com/favicon.ico</code>.</p>
+<p>{% note warning %}<br>If your site is in a subdirectory please set it to <code>favicon: favicon.ico</code>.<br>{% endnote %}</p>

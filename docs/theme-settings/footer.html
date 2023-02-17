@@ -1,0 +1,48 @@
+<hr>
+<p>title: Footer<br>description: NexT User Docs – Theme Settings – Footer</p>
+<hr>
+<h3 id="Site-Footer-Setting"><a href="#Site-Footer-Setting" class="headerlink" title="Site Footer Setting"></a>Site Footer Setting</h3><h4 id="Site-Start-Time"><a href="#Site-Start-Time" class="headerlink" title="Site Start Time"></a>Site Start Time</h4><p>By default NexT shows current year in the footer like <code>© 2020</code>. You can configure it to show the time gap like <code>© 2015 - 2020</code> by editing values in <code>since</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">footer:</span>
+  <span class="attr">since:</span> <span class="number">2020</span></code></pre>
+<h4 id="Site-Footer-Icon"><a href="#Site-Footer-Icon" class="headerlink" title="Site Footer Icon"></a>Site Footer Icon</h4><p>By default NexT shows red <code>heart</code> icon {% btn #,, heart %} with animation between year and copyright information in the footer. You can configure it by editing values in <code>icon</code> section in {% label primary@NexT config file %}.</p>
+<p>{% tabs icon %}</p>
+<!-- tab <code>name</code> -->
+<p>The name of footer icon can be founded in <a href="https://fontawesome.com" target="_blank" rel="noopener">Font Awesome</a> site. <code>heart</code> is recommended.</p>
+<pre><code class="yml"><span class="attr">footer:</span>
+  <span class="attr">icon:</span>
+    <span class="attr">name:</span> <span class="string">fa</span> <span class="string">fa-user</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>animated</code> -->
+<p>Set up animated of footer icon by changing the value of <code>icon.animated</code>:</p>
+<ul>
+<li><strong><code>true</code></strong> → Icon will be animated.</li>
+<li><code>false</code> → Icon will not be animated.</li>
+</ul>
+<pre><code class="yml"><span class="attr">footer:</span>
+  <span class="attr">icon:</span>
+    <span class="attr">animated:</span> <span class="literal">false</span></code></pre>
+<!-- endtab -->
+
+<!-- tab <code>color</code> -->
+<p>Set up color of footer icon by changing the value of <code>icon.color</code>. Please use Hex Code, and red (#ff0000) is recommended for <code>heart</code> icon.</p>
+<pre><code class="yml"><span class="attr">footer:</span>
+  <span class="attr">icon:</span>
+    <span class="attr">color:</span> <span class="string">"#808080"</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Site-Copyright-Name"><a href="#Site-Copyright-Name" class="headerlink" title="Site Copyright Name"></a>Site Copyright Name</h4><p>By default NexT shows the name of <code>author</code> from {% label info@Hexo config file %}. You can configure it by editing values in <code>copyright</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">footer:</span>
+  <span class="attr">copyright:</span></code></pre>
+<p>{% note warning %}<br>This option will only customize the author name in the footer. The name in the Creative Commons License section at the end of each post is not affected.<br>{% endnote %}</p>
+<h4 id="Site-Platform-Information"><a href="#Site-Platform-Information" class="headerlink" title="Site Platform Information"></a>Site Platform Information</h4><p>By default NexT shows Hexo and Theme &amp; scheme information like <code>Powered by Hexo &amp; NexT.Muse</code>. You can configure it by editing <code>powered</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">footer:</span>
+  <span class="attr">powered:</span> <span class="literal">true</span></code></pre>
+<h4 id="Site-Beian-Information"><a href="#Site-Beian-Information" class="headerlink" title="Site Beian Information"></a>Site Beian Information</h4><p>Beian information is for Chinese users. By default NexT will not show the information of beian. You can configure it by editing values in <code>beian</code> section in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">footer:</span>
+  <span class="attr">beian:</span>
+    <span class="attr">enable:</span> <span class="literal">true</span>
+    <span class="attr">icp:</span> <span class="string">京ICP备</span> <span class="number">1234567890</span><span class="string">号-1</span>
+    <span class="attr">gongan_id:</span> <span class="number">1234567890</span>
+    <span class="attr">gongan_num:</span> <span class="string">京公网安备</span> <span class="number">1234567890</span><span class="string">号</span>
+    <span class="attr">gongan_icon_url:</span> <span class="string">/uploads/beian.png</span></code></pre>

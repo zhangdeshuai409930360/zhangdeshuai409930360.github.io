@@ -1,0 +1,31 @@
+<hr>
+<p>title: Group Pictures<br>description: NexT User Docs – NexT Supported Tags – Group Pictures</p>
+<hr>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">grouppicture</span> [number]-[layout] %}</span>
+<span class="template-tag">{% <span class="name">endgrouppicture</span> %}</span></code></pre>
+<p>or</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">gp</span> [number]-[layout] %}</span>
+<span class="template-tag">{% <span class="name">endgp</span> %}</span></code></pre>
+<ul>
+<li><p><code>[number]</code> : <em>Optional parameter.</em> Total number of pictures to add in the group pictures.</p>
+</li>
+<li><p><code>[layout]</code> : <em>Optional parameter.</em> The index of the layout, which can be obtained according to the figure below. For example, if you want to apply the second layout to 4 pictures, then use</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">grouppicture</span> 4-2 %}</span><span class="template-tag">{% <span class="name">endgrouppicture</span> %}</span></code></pre>
+</li>
+</ul>
+<p><img src="/images/group-picture-1.png" alt="Group Picture Layout"><br><img src="/images/group-picture-2.png" alt="Group Picture Layout"></p>
+<p>{% note info %}<br>It’s recommended to use Group Pictures with <a href="/docs/third-party-services/external-libraries.html#Fancybox">Fancybox</a> enabled.<br>{% endnote %}</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">grouppicture</span> 3-3 %}</span>
+<span class="xml">![](/images/next.svg)</span>
+<span class="xml">![](/images/next.svg)</span>
+<span class="xml">![](/images/next.svg)</span>
+<span class="template-tag">{% <span class="name">endgrouppicture</span> %}</span></code></pre>
+<p>{% grouppicture 3-3 %}<br><img src="/images/next.svg" alt=""><br><img src="/images/next.svg" alt=""><br><img src="/images/next.svg" alt=""><br>{% endgrouppicture %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">gp</span> 5-2 %}</span>
+<span class="xml">![](/images/next.svg)</span>
+<span class="xml">![](/images/next.svg)</span>
+<span class="xml">![](/images/next.svg)</span>
+<span class="xml">![](/images/next.svg)</span>
+<span class="xml">![](/images/next.svg)</span>
+<span class="template-tag">{% <span class="name">endgp</span> %}</span></code></pre>
+<p>{% gp 5-2 %}<br><img src="/images/next.svg" alt=""><br><img src="/images/next.svg" alt=""><br><img src="/images/next.svg" alt=""><br><img src="/images/next.svg" alt=""><br><img src="/images/next.svg" alt=""><br>{% endgp %}</p>

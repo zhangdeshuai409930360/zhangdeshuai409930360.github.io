@@ -1,0 +1,96 @@
+<hr>
+<p>title: Mermaid<br>description: NexT User Docs – NexT Supported Tags – Mermaid</p>
+<hr>
+<h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><pre><code class="yml"><span class="comment"># Mermaid tag</span>
+<span class="attr">mermaid:</span>
+  <span class="attr">enable:</span> <span class="literal">true</span>
+  <span class="comment"># Available themes: default | dark | forest | neutral</span>
+  <span class="attr">theme:</span>
+    <span class="attr">light:</span> <span class="string">default</span>
+    <span class="attr">dark:</span> <span class="string">dark</span></code></pre>
+<pre><code class="yml"><span class="attr">highlight:</span>
+  <span class="attr">exclude_languages:</span>
+    <span class="bullet">-</span> <span class="string">mermaid</span></code></pre>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">mermaid</span> type %}</span>
+<span class="template-tag">{% <span class="name">endmermaid</span> %}</span></code></pre>
+<p>or</p>
+<pre><code class="markdown"><span class="code">```mermaid</span>
+<span class="code">type</span>
+<span class="code"></span>
+<span class="code">```</span></code></pre>
+<ul>
+<li><code>type</code> : type of the mermaid chart, visit <a href="https://github.com/mermaid-js/mermaid" target="_blank" rel="noopener">https://github.com/mermaid-js/mermaid</a> for more information.</li>
+</ul>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">mermaid</span> graph TD %}</span>
+<span class="xml">A[Hard] --&gt;|Text| B(Round)</span>
+<span class="xml">B --&gt; C{Decision}</span>
+<span class="xml">C --&gt;|One| D[Result 1]</span>
+<span class="xml">C --&gt;|Two| E[Result 2]</span>
+<span class="template-tag">{% <span class="name">endmermaid</span> %}</span></code></pre>
+<p>{% mermaid graph TD %}<br>A[Hard] –&gt;|Text| B(Round)<br>B –&gt; C{Decision}<br>C –&gt;|One| D[Result 1]<br>C –&gt;|Two| E[Result 2]<br>{% endmermaid %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">mermaid</span> sequenceDiagram %}</span>
+<span class="xml">Alice-&gt;&gt;John: Hello John, how are you?</span>
+<span class="xml">loop Healthcheck</span>
+<span class="xml">    John-&gt;&gt;John: Fight against hypochondria</span>
+<span class="xml">end</span>
+<span class="xml">Note right of John: Rational thoughts!</span>
+<span class="xml">John--&gt;&gt;Alice: Great!</span>
+<span class="xml">John-&gt;&gt;Bob: How about you?</span>
+<span class="xml">Bob--&gt;&gt;John: Jolly good!</span>
+<span class="template-tag">{% <span class="name">endmermaid</span> %}</span></code></pre>
+<p>{% mermaid sequenceDiagram %}<br>Alice-&gt;&gt;John: Hello John, how are you?<br>loop Healthcheck<br>    John-&gt;&gt;John: Fight against hypochondria<br>end<br>Note right of John: Rational thoughts!<br>John–&gt;&gt;Alice: Great!<br>John-&gt;&gt;Bob: How about you?<br>Bob–&gt;&gt;John: Jolly good!<br>{% endmermaid %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">mermaid</span> gantt %}</span>
+<span class="xml">dateFormat  YYYY-MM-DD</span>
+<span class="xml">section Section</span>
+<span class="xml">Completed :done,    des1, 2014-01-06,2014-01-08</span>
+<span class="xml">Active        :active,  des2, 2014-01-07, 3d</span>
+<span class="xml">Parallel 1   :         des3, after des1, 1d</span>
+<span class="xml">Parallel 2   :         des4, after des1, 1d</span>
+<span class="xml">Parallel 3   :         des5, after des3, 1d</span>
+<span class="xml">Parallel 4   :         des6, after des4, 1d</span>
+<span class="template-tag">{% <span class="name">endmermaid</span> %}</span></code></pre>
+<p>{% mermaid gantt %}<br>dateFormat  YYYY-MM-DD<br>section Section<br>Completed :done,    des1, 2014-01-06,2014-01-08<br>Active        :active,  des2, 2014-01-07, 3d<br>Parallel 1   :         des3, after des1, 1d<br>Parallel 2   :         des4, after des1, 1d<br>Parallel 3   :         des5, after des3, 1d<br>Parallel 4   :         des6, after des4, 1d<br>{% endmermaid %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">mermaid</span> classDiagram %}</span>
+<span class="xml">Class01 <span class="tag">&lt;<span class="name">|--</span> <span class="attr">AveryLongClass</span> <span class="attr">:</span> <span class="attr">Cool</span></span></span>
+<span class="xml"><span class="tag">&lt;&lt;<span class="attr">interface</span>&gt;</span>&gt; Class01</span>
+<span class="xml">Class09 --&gt; C2 : Where am i?</span>
+<span class="xml">Class09 --* C3</span>
+<span class="xml">Class09 --|&gt; Class07</span>
+<span class="xml">Class07 : equals()</span>
+<span class="xml">Class07 : Object[] elementData</span>
+<span class="xml">Class01 : size()</span>
+<span class="xml">Class01 : int chimp</span>
+<span class="xml">Class01 : int gorilla</span>
+<span class="xml">class Class10 {</span>
+<span class="xml">  <span class="tag">&lt;&lt;<span class="attr">service</span>&gt;</span>&gt;</span>
+<span class="xml">  int id</span>
+<span class="xml">  size()</span>
+<span class="xml">}</span>
+<span class="template-tag">{% <span class="name">endmermaid</span> %}</span></code></pre>
+<p>{% mermaid classDiagram %}<br>Class01 &lt;|– AveryLongClass : Cool<br>&lt;<interface>&gt; Class01<br>Class09 –&gt; C2 : Where am i?<br>Class09 –* C3<br>Class09 –|&gt; Class07<br>Class07 : equals()<br>Class07 : Object[] elementData<br>Class01 : size()<br>Class01 : int chimp<br>Class01 : int gorilla<br>class Class10 {<br>  &lt;<service>&gt;<br>  int id<br>  size()<br>}<br>{% endmermaid %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">mermaid</span> stateDiagram %}</span>
+<span class="xml">[*] --&gt; Still</span>
+<span class="xml">Still --&gt; [*]</span>
+<span class="xml">Still --&gt; Moving</span>
+<span class="xml">Moving --&gt; Still</span>
+<span class="xml">Moving --&gt; Crash</span>
+<span class="xml">Crash --&gt; [*]</span>
+<span class="template-tag">{% <span class="name">endmermaid</span> %}</span></code></pre>
+<p>{% mermaid stateDiagram %}<br>[<em>] –&gt; Still<br>Still –&gt; [</em>]<br>Still –&gt; Moving<br>Moving –&gt; Still<br>Moving –&gt; Crash<br>Crash –&gt; [*]<br>{% endmermaid %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">mermaid</span> pie %}</span>
+<span class="xml">"Dogs" : 386</span>
+<span class="xml">"Cats" : 85</span>
+<span class="xml">"Rats" : 15</span>
+<span class="template-tag">{% <span class="name">endmermaid</span> %}</span></code></pre>
+<p>{% mermaid pie %}<br>“Dogs” : 386<br>“Cats” : 85<br>“Rats” : 15<br>{% endmermaid %}</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name">mermaid</span> journey %}</span>
+<span class="xml">title My working day</span>
+<span class="xml">section Go to work</span>
+<span class="xml">  Make tea: 5: Me</span>
+<span class="xml">  Go upstairs: 3: Me</span>
+<span class="xml">  Do work: 1: Me, Cat</span>
+<span class="xml">section Go home</span>
+<span class="xml">  Go downstairs: 5: Me</span>
+<span class="xml">  Sit down: 3: Me</span>
+<span class="template-tag">{% <span class="name">endmermaid</span> %}</span></code></pre>
+<p>{% mermaid journey %}<br>title My working day<br>section Go to work<br>  Make tea: 5: Me<br>  Go upstairs: 3: Me<br>  Do work: 1: Me, Cat<br>section Go home<br>  Go downstairs: 5: Me<br>  Sit down: 3: Me<br>{% endmermaid %}</p>

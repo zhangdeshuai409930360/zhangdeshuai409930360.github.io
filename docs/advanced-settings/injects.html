@@ -1,0 +1,55 @@
+<hr>
+<p>title: Injects<br>description: NexT User Docs – Advanced Settings - Injects</p>
+<hr>
+<h3 id="Injects"><a href="#Injects" class="headerlink" title="Injects"></a>Injects</h3><p>We extended the Hexo filter and added <code>theme_inject</code>, so user can add the desired custom content to any injection point.</p>
+<h4 id="Synopsis"><a href="#Synopsis" class="headerlink" title="Synopsis"></a>Synopsis</h4><pre><code class="js">hexo.extend.filter.register(<span class="string">'theme_inject'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">injects</span>) </span>{
+  <span class="comment">// ...</span>
+});</code></pre>
+<p>A injects argument will get passed into the function, so we can use it add custom code in <code>injectPoint</code> as following.</p>
+<p>For inject view:</p>
+<pre><code class="js"><span class="comment">// The name of same `injectPoint` suggest be unique. If same, it will override low priority configurations.</span>
+<span class="comment">// `locals` and `options` is the same as partial https://hexo.io/docs/helpers#partial.</span>
+<span class="comment">// `order` defines the order of injection, which by default depends on the priority of injection.</span>
+hexo.extend.filter.register(<span class="string">'theme_inject'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">injects</span>) </span>{
+  <span class="comment">// it will put code from this filePath into injectPoint.</span>
+  injects.[injectPoint].file(name, filePath, [locals, options, order]);
+  <span class="comment">// it will put raw string as code into injectPoint.</span>
+  injects.[injectPoint].raw(name, raw, [locals, options, order]);
+});</code></pre>
+<p>{% note warning %}<br>You have to note <code>filePath</code>, it must be absolute path or relative to <code>hexo_dir</code>.<br>{% endnote %}</p>
+<p>For inject style:</p>
+<pre><code class="js">hexo.extend.filter.register(<span class="string">'theme_inject'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">injects</span>) </span>{
+  <span class="comment">// it will put styleFile into injectPoint.</span>
+  injects.[injectPoint].push(styleFile);
+});</code></pre>
+<p>These are many <code>injectPoint</code>, defined in <a href="https://github.com/next-theme/hexo-theme-next/blob/master/scripts/events/lib/utils.js#L60" target="_blank" rel="noopener"><code>utils.js</code></a></p>
+<pre><code class="js"><span class="built_in">module</span>.exports = {
+  views: [<span class="string">'head'</span>, <span class="string">'header'</span>, <span class="string">'sidebar'</span>, <span class="string">'postMeta'</span>, <span class="string">'postBodyEnd'</span>, ..., <span class="string">'footer'</span>, <span class="string">'bodyEnd'</span>],
+  styles: [<span class="string">'variable'</span>, <span class="string">'mixin'</span>, <span class="string">'style'</span>]
+};</code></pre>
+<p><code>custom_file_path</code> also uses this API, see <a href="https://github.com/next-theme/hexo-theme-next/blob/master/scripts/filters/default-injects.js" target="_blank" rel="noopener"><code>default-injects.js</code></a>. It will consume <code>custom</code> name in view inject points. So if you use <code>custom_file_path</code>, please not use <code>custom</code>.</p>
+<h4 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h4><p><strong>One:</strong> load a custom script. We can add it in <code>bodyEnd</code>.</p>
+<pre><code class="js">hexo.extend.filter.register(<span class="string">'theme_inject'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">injects</span>) </span>{
+  injects.bodyEnd.raw(<span class="string">'load-custom-js'</span>, <span class="string">'&lt;script src="js-path-or-cdn.js"&gt;&lt;/script&gt;'</span>, {}, {<span class="attr">cache</span>: <span class="literal">true</span>});
+});</code></pre>
+<p><strong>Two:</strong> add a custom <code>my-favourite-food.njk</code> to sidebar.</p>
+<p>Step1: you should create <code>my-favourite-food.njk</code> in any path(e.g. <code>source/_data/</code>) as below. You can get variable from <code>hexo</code> or <code>local</code> defined in filter.</p>
+<pre><code class="jinja"><span class="template-tag">{% <span class="name"><span class="name">for</span></span> food <span class="keyword">in</span> foods %}</span>
+<span class="xml">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><span class="template-variable">{{ food }}</span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
+<span class="template-tag">{% <span class="name"><span class="name">endfor</span></span> %}</span></code></pre>
+<p>Step2: add filter to load it.</p>
+<pre><code class="js">hexo.extend.filter.register(<span class="string">'theme_inject'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">injects</span>) </span>{
+  injects.sidebar.file(<span class="string">'my-favourite-food'</span>, <span class="string">'source/_data/my-favourite-food.njk'</span>, {
+    foods: [<span class="string">'apple'</span>, <span class="string">'orange'</span>]
+  });
+});</code></pre>
+<p><strong>Three:</strong> want to have big header, put <code>big-header.styl</code> to NexT.</p>
+<p>Of course, you need to create this file first(e.g. <code>source/_data/big-header.styl</code>).</p>
+<pre><code class="css"><span class="selector-tag">h1</span> {
+  <span class="attribute">font-size</span>: <span class="number">2rem</span>;
+}</code></pre>
+<p>And then add it in filter.</p>
+<pre><code class="js">hexo.extend.filter.register(<span class="string">'theme_inject'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">injects</span>) </span>{
+  injects.style.push(<span class="string">'source/_data/big-header.styl'</span>);
+});</code></pre>
+<h4 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h4><p>We also support hexo’s plugin system, which makes it easy to extend functions without modifying the source code of the core module. You can see <a href="https://hexo.io/docs/plugins.html#Plugin" target="_blank" rel="noopener">https://hexo.io/docs/plugins.html#Plugin</a> to learn how to create a plugin.</p>

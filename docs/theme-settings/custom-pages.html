@@ -1,0 +1,156 @@
+<hr>
+<p>title: Custom Pages<br>description: NexT User Docs – Theme Settings - Custom Pages</p>
+<hr>
+<h3 id="Custom-Page-Support"><a href="#Custom-Page-Support" class="headerlink" title="Custom Page Support"></a>Custom Page Support</h3><p>Next allows users to add custom pages in menu.</p>
+<p>{% tabs adding-custom-page %}</p>
+<!-- tab Adding New Page → -->
+<p>Change to {% label info@site root directory %} in your terminal. Use <code>hexo new page custom-name</code> to create a new <code>custom-name</code> page:</p>
+<pre><code class="bash">$ <span class="built_in">cd</span> hexo-site
+$ hexo new page custom-name</code></pre>
+<!-- endtab -->
+
+<!-- tab Setting Front-matter Values → -->
+<p>Front-matter is a block of YAML or JSON at the beginning of the file that is used to configure settings for your writings. Settings front-matter values and more detailed can be found in <a href="https://hexo.io/docs/front-matter" target="_blank" rel="noopener">front-matter</a>. You can also add contents in <code>custom-name/index.md</code> if you like.</p>
+<pre><code class="md">title: custom-name
+date: 2014-12-22 12:39:04
+---</code></pre>
+<!-- endtab -->
+
+<!-- tab Editting Menu -->
+<p>Add <code>custom-name</code> to <code>menu</code> by editing {% label primary@NexT config file %}, like adding <code>about</code> page:</p>
+<pre><code class="yml"><span class="attr">menu:</span>
+  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span>
+  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span>
+  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<p>If you want to add Tags or Categories page, please continue reading.<br>Please read <a href="https://hexo.io/docs/front-matter#Categories-amp-Tags" target="_blank" rel="noopener">Hexo’s Docs of Categories &amp; Tags</a> to know how to add tags or categories for articles.<br>Following code shows you a example of article with tags:</p>
+<p>{% tabs tags-variants %}</p>
+<!-- tab Variant 1 -->
+<pre><code class="md">title: Tags Testing Article
+tags: [Testing, Another Tag]
+---</code></pre>
+<!-- endtab -->
+
+<!-- tab Variant 2 -->
+<pre><code class="md">title: Tags Testing Article
+tags:
+<span class="bullet">  - </span>Testing
+<span class="bullet">  - </span>Another Tag
+---</code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h3 id="Use-Archive-Page-as-Home-Page"><a href="#Use-Archive-Page-as-Home-Page" class="headerlink" title="Use Archive Page as Home Page"></a>Use Archive Page as Home Page</h3><p>You can configure the path of archive and index generator in {% label info@Hexo config file %}, e.g.</p>
+<pre><code class="yml"><span class="attr">archive_dir:</span> <span class="string">/</span>
+
+<span class="attr">index_generator:</span>
+  <span class="attr">path:</span> <span class="string">archives</span>
+  <span class="attr">per_page:</span> <span class="number">10</span>
+  <span class="attr">order_by:</span> <span class="string">-date</span></code></pre>
+<h3 id="Adding-«Tags»-Page"><a href="#Adding-«Tags»-Page" class="headerlink" title="Adding «Tags» Page"></a>Adding «Tags» Page</h3><p>Adding «Tags» page and show «Tags» link in menu. «Tags» page will show all tags of site. If no article has tags, this page will leave blank.</p>
+<p>{% tabs adding-tags-page %}</p>
+<!-- tab Adding New Page → -->
+<p>Change to {% label info@site root directory %} in your terminal. Use <code>hexo new page tags</code> to create a new <code>tags</code> page:</p>
+<pre><code class="bash">$ <span class="built_in">cd</span> hexo-site
+$ hexo new page tags</code></pre>
+<!-- endtab -->
+
+<!-- tab Setting Page Type → -->
+<p>Edit the new page and change the type to <code>tags</code>, theme will show tags cloud automatically in this page. Page content looks like following:</p>
+<pre><code class="md">title: Tags
+date: 2014-12-22 12:39:04
+type: tags
+---</code></pre>
+<!-- endtab -->
+
+<!-- tab Editting Menu -->
+<p>Add <code>tags</code> to <code>menu</code> by editing {% label primary@NexT config file %}, like following:</p>
+<pre><code class="yml"><span class="attr">menu:</span>
+  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span>
+  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span>
+  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<p>{% note warning %}<br>If you enable any comment system for your site, comments will be shown for all posts and pages.<br>See <a href="/docs/third-party-services/comments.html#How-to-Disable-Comments-on-Page">«How to Disable Comments on Page»</a> if you want to do it for pages like <code>tags</code> or <code>categories</code>.<br>{% endnote %}</p>
+<p>{% note warning %}<br>The default Hexo plugin <code>hexo-generator-tag</code> provides an option called <code>enable_index_page</code>, which will conflict with the «Tags» page created above. Make sure you have the option disabled.</p>
+<pre><code class="yml"><span class="attr">tag_generator:</span>
+  <span class="attr">enable_index_page:</span> <span class="literal">false</span></code></pre>
+<p>{% endnote %}</p>
+<h4 id="Tagcloud"><a href="#Tagcloud" class="headerlink" title="Tagcloud"></a>Tagcloud</h4><p>By default, NexT has setted font color and size for tagcloud in tags page.<br>From NexT v7.0.2 you can customize them, just set related values in {% label primary@NexT config file %}:</p>
+<pre><code class="yml"><span class="comment"># TagCloud settings for tags page.</span>
+<span class="attr">tagcloud:</span>
+  <span class="attr">min:</span> <span class="number">12</span> <span class="comment"># Minimum font size in px</span>
+  <span class="attr">max:</span> <span class="number">30</span> <span class="comment"># Maximum font size in px</span>
+  <span class="attr">amount:</span> <span class="number">200</span> <span class="comment"># Total amount of tags</span>
+  <span class="attr">orderby:</span> <span class="string">name</span> <span class="comment"># Order of tags</span>
+  <span class="attr">order:</span> <span class="number">1</span> <span class="comment"># Sort order</span></code></pre>
+<h3 id="Adding-«Categories»-Page"><a href="#Adding-«Categories»-Page" class="headerlink" title="Adding «Categories» Page"></a>Adding «Categories» Page</h3><p>{% note default %}<br>«Categories» page can be added in similar way as <a href="#Adding-%C2%ABTags%C2%BB-Page">«Tags» page</a>, only name there is difference: just need to replace <code>tags</code> with <code>categories</code>.<br>{% endnote %}</p>
+<h3 id="Adding-Google-Calendar-Page"><a href="#Adding-Google-Calendar-Page" class="headerlink" title="Adding Google Calendar Page"></a>Adding Google Calendar Page</h3><p>Mind that you need to make sure first you are adding a calendar that is set to public. If you are unsure, please <a href="https://docs.simplecalendar.io/make-google-calendar-public/" target="_blank" rel="noopener">follow these instructions first to set a Google calendar public</a> before adding it.</p>
+<p>More detailed documentation on creating &amp; managing a public Google calendar: <a href="https://support.google.com/calendar/answer/37083" target="_blank" rel="noopener">https://support.google.com/calendar/answer/37083</a></p>
+<p>{% tabs calendar %}</p>
+<!-- tab Setting Google Calendar → -->
+
+<p>{% subtabs calendar1 %}</p>
+<!-- tab Get Calendar ID and API KEY → -->
+<p><a href="https://docs.simplecalendar.io/find-google-calendar-id/" target="_blank" rel="noopener">Follow these instructions</a> to find your Google Calendar ID.</p>
+<p>Login to <a href="https://console.cloud.google.com/flows/enableapi?apiid=calendar" target="_blank" rel="noopener">Google developers</a> and add Google Calendar API, you will get your API KEY on the <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener">credentials page</a>.</p>
+<!-- endtab -->
+<!-- tab NexT Config -->
+<p>You can enable it by setting values in <code>calendar</code> part. Copy the value of Calendar ID and API KEY in {% label primary@NexT config file %}.</p>
+<pre><code class="yml"><span class="attr">calendar:</span>
+  <span class="attr">calendar_id:</span> <span class="string">&lt;required&gt;</span>
+  <span class="attr">api_key:</span> <span class="string">&lt;required&gt;</span>
+  <span class="attr">orderBy:</span> <span class="string">startTime</span>
+  <span class="attr">showLocation:</span> <span class="literal">false</span>
+  <span class="attr">offsetMax:</span> <span class="number">72</span>
+  <span class="attr">offsetMin:</span> <span class="number">4</span>
+  <span class="attr">showDeleted:</span> <span class="literal">false</span>
+  <span class="attr">singleEvents:</span> <span class="literal">true</span>
+  <span class="attr">maxResults:</span> <span class="number">250</span></code></pre>
+<!-- endtab -->
+<p>{% endsubtabs %}</p>
+<!-- endtab -->
+
+<!-- tab Adding Schedule Page → -->
+<p>Change to {% label info@site root directory %} in your terminal. Use <code>hexo new page schedule</code> to create a new <code>schedule</code> page:</p>
+<pre><code class="bash">$ <span class="built_in">cd</span> hexo-site
+$ hexo new page schedule</code></pre>
+<!-- endtab -->
+
+<!-- tab Setting Page Type → -->
+<p>Edit the new page and change the type to <code>schedule</code>, theme will show schedule automatically in this page. Page content looks like following:</p>
+<pre><code class="md">title: Schedule
+date: 2014-12-22 12:39:04
+type: schedule
+---</code></pre>
+<!-- endtab -->
+
+<!-- tab Editting Menu -->
+<p>Add <code>schedule</code> to <code>menu</code> by editing {% label primary@NexT config file %}:</p>
+<pre><code class="yml"><span class="attr">menu:</span>
+  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span>
+  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span>
+  <span class="attr">schedule:</span> <span class="string">/schedule/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-calendar</span></code></pre>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h3 id="Custom-404-Page"><a href="#Custom-404-Page" class="headerlink" title="Custom 404 Page"></a>Custom 404 Page</h3><p>In your terminal, change to the <code>source</code> folder of {% label info@site root directory %}. Create a new folder called <code>404</code>, then create a new page in it:</p>
+<pre><code class="bash">$ <span class="built_in">cd</span> hexo-site
+$ hexo new page 404</code></pre>
+<p>Make sure <code>relative_link</code> is disabled in {% label info@Hexo config file %}:</p>
+<pre><code class="yml"><span class="attr">relative_link:</span> <span class="literal">false</span></code></pre>
+<p>{% note warning %}<br>Whether users can be redirected to the 404 page depends on the settings of the website hosting service or web server, not Hexo. For example, if you use Nginx as the server, you also need to configure the 404 page in <code>nginx.conf</code> file.<br>{% endnote %}</p>
+<h4 id="Commonweal-404"><a href="#Commonweal-404" class="headerlink" title="Commonweal 404"></a>Commonweal 404</h4><p>If you would like to enable <code>commonweal 404</code> (A service provided by Tencent in China), Edit <code>404/index.md</code> like this:</p>
+<pre><code class="md">---
+title: '404'
+date: 2014-12-22 12:39:04
+comments: false
+---
+<span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js"</span></span></span>
+<span class="xml">        charset="utf-8" homePageUrl="/" homePageName="Back to home"&gt;</span>
+<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></code></pre>
+<p>You can also add any content you want to it.</p>
+<p>Add <code>404</code> to <code>menu</code> by editing {% label primary@NexT config file %}:</p>
+<pre><code class="yml"><span class="attr">menu:</span>
+  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span>
+  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span>
+  <span class="attr">commonweal:</span> <span class="string">/404/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-heartbeat</span></code></pre>

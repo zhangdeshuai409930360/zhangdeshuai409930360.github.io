@@ -1,0 +1,429 @@
+<hr>
+<p>title: Tabs<br>description: NexT User Docs – NexT Supported Tags – Tabs</p>
+<hr>
+<h3 id="Settings"><a href="#Settings" class="headerlink" title="Settings"></a>Settings</h3><pre><code class="yml"><span class="attr">tabs:</span>
+  <span class="comment"># Make the nav bar of tabs with long content stick to the top.</span>
+  <span class="attr">sticky:</span> <span class="literal">false</span>
+  <span class="attr">transition:</span>
+    <span class="attr">tabs:</span> <span class="literal">false</span>
+    <span class="attr">labels:</span> <span class="literal">true</span></code></pre>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">tabs</span> Unique name, [index] %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab [Tab caption] [@icon] --&gt;</span></span>
+<span class="xml">Any content (support inline tags too).</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<ul>
+<li><code>Unique name</code>   : Unique name of tabs block tag without comma.<br>Will be used in #id’s as prefix for each tab with their index numbers.<br>If there are whitespaces in name, for generate #id all whitespaces will replaced by dashes.<br>Only for current url of post/page must be unique!</li>
+<li><code>[index]</code>       : Index number of active tab.<br>If not specified, first tab (1) will be selected.<br>If index is -1, no tab will be selected. It’s will be something like spoiler.<br>Optional parameter.</li>
+<li><code>[Tab caption]</code> : Caption of current tab.<br>If not caption specified, unique name with tab index suffix will be used as caption of tab.<br>If not caption specified, but specified icon, caption will empty.<br>Optional parameter.</li>
+<li><code>[@icon]</code>       : Font Awesome icon name.<br>Can be specified with or without space; e.g. ‘Tab caption @icon’ is the same as ‘Tab caption@icon’.<br>Optional parameter.</li>
+</ul>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><pre><code class="jinja"><span class="template-tag">{% <span class="name">tabs</span> First unique name %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<p>{% tabs First unique name %}</p>
+<!-- tab -->
+<p><strong>This is Tab 1.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 2.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 3.</strong></p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Tabs-with-3rd-tab-selected"><a href="#Tabs-with-3rd-tab-selected" class="headerlink" title="Tabs with 3rd tab selected"></a>Tabs with 3rd tab selected</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">tabs</span> Second unique name, 3 %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<p>{% tabs Second unique name, 3 %}</p>
+<!-- tab -->
+<p><strong>This is Tab 1.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 2.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 3.</strong></p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Tabs-with-no-tab-selected"><a href="#Tabs-with-no-tab-selected" class="headerlink" title="Tabs with no tab selected"></a>Tabs with no tab selected</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">tabs</span> Third unique name, -1 %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<p>{% tabs Third unique name, -1 %}</p>
+<!-- tab -->
+<p><strong>This is Tab 1.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 2.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 3.</strong></p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Tabs-with-custom-labels"><a href="#Tabs-with-custom-labels" class="headerlink" title="Tabs with custom labels"></a>Tabs with custom labels</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">tabs</span> Fourth unique name %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab Solution 1 --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab Solution 2 --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab Solution 3 --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<p>{% tabs Fourth unique name %}</p>
+<!-- tab Solution 1 -->
+<p><strong>This is Tab 1.</strong></p>
+<!-- endtab -->
+
+<!-- tab Solution 2 -->
+<p><strong>This is Tab 2.</strong></p>
+<!-- endtab -->
+
+<!-- tab Solution 3 -->
+<p><strong>This is Tab 3.</strong></p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Tabs-with-icons-only"><a href="#Tabs-with-icons-only" class="headerlink" title="Tabs with icons only"></a>Tabs with icons only</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">tabs</span> Fifth unique name %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab @text-width --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab @font --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab @bold --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<p>{% tabs Fifth unique name %}</p>
+<!-- tab @text-width -->
+<p><strong>This is Tab 1.</strong></p>
+<!-- endtab -->
+
+<!-- tab @font -->
+<p><strong>This is Tab 2.</strong></p>
+<!-- endtab -->
+
+<!-- tab @bold -->
+<p><strong>This is Tab 3.</strong></p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Tabs-with-icons-and-labels"><a href="#Tabs-with-icons-and-labels" class="headerlink" title="Tabs with icons and labels"></a>Tabs with icons and labels</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">tabs</span> Sixth unique name %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab Solution 1@text-width --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab Solution 2@font --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab Solution 3@bold --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<p>{% tabs Sixth unique name %}</p>
+<!-- tab Solution 1@text-width -->
+<p><strong>This is Tab 1.</strong></p>
+<!-- endtab -->
+
+<!-- tab Solution 2@font -->
+<p><strong>This is Tab 2.</strong></p>
+<!-- endtab -->
+
+<!-- tab Solution 3@bold -->
+<p><strong>This is Tab 3.</strong></p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Tabs-permalinks-test"><a href="#Tabs-permalinks-test" class="headerlink" title="Tabs permalinks test"></a>Tabs permalinks test</h4><pre><code class="jinja"><span class="xml">Permalink for &gt; [Tab one](#tab-one).</span>
+<span class="xml">Permalink for &gt; [Tab one 1](#tab-one-1).</span>
+<span class="xml">Permalink for &gt; [Tab one 2](#tab-one-2).</span>
+<span class="xml">Permalink for &gt; [Tab one 3](#tab-one-3).</span>
+
+<span class="xml">Permalink for &gt; [Tab two](#tab-two).</span>
+<span class="xml">Permalink for &gt; [Tab two 1](#tab-two-1).</span>
+<span class="xml">Permalink for &gt; [Tab two 2](#tab-two-2).</span>
+<span class="xml">Permalink for &gt; [Tab two 3](#tab-two-3).</span>
+
+<span class="template-tag">{% <span class="name">tabs</span> Tab one %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span>
+
+<span class="template-tag">{% <span class="name">tabs</span> Tab two %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<p>Permalink for &gt; <a href="#tab-one">Tab one</a>.<br>Permalink for &gt; <a href="#tab-one-1">Tab one 1</a>.<br>Permalink for &gt; <a href="#tab-one-2">Tab one 2</a>.<br>Permalink for &gt; <a href="#tab-one-3">Tab one 3</a>.</p>
+<p>Permalink for &gt; <a href="#tab-two">Tab two</a>.<br>Permalink for &gt; <a href="#tab-two-1">Tab two 1</a>.<br>Permalink for &gt; <a href="#tab-two-2">Tab two 2</a>.<br>Permalink for &gt; <a href="#tab-two-3">Tab two 3</a>.</p>
+<p>{% tabs Tab one %}</p>
+<!-- tab -->
+<p><strong>This is Tab 1.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 2.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 3.</strong></p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<p>{% tabs Tab two %}</p>
+<!-- tab -->
+<p><strong>This is Tab 1.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 2.</strong></p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 3.</strong></p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
+<h4 id="Tabs-with-other-tags"><a href="#Tabs-with-other-tags" class="headerlink" title="Tabs with other tags"></a>Tabs with other tags</h4><pre><code class="jinja"><span class="template-tag">{% <span class="name">tabs</span> Tags %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 1.**</span>
+
+<span class="xml">1. One</span>
+<span class="xml">2. Two</span>
+<span class="xml">3. Three</span>
+
+<span class="xml">Indented code block:</span>
+
+<span class="xml">    nano /etc</span>
+
+<span class="xml">Tagged code block:</span>
+
+<span class="template-tag">{% <span class="name">code</span> %}</span>
+<span class="xml">code tag</span>
+<span class="xml">code tag</span>
+<span class="xml">code tag</span>
+<span class="template-tag">{% <span class="name">endcode</span> %}</span>
+
+<span class="template-tag">{% <span class="name">note</span> default %}</span>
+<span class="xml">Note default tag.</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 2.**</span>
+
+<span class="xml">* Five</span>
+<span class="xml">* Six</span>
+<span class="xml">* Seven</span>
+
+<span class="template-tag">{% <span class="name">note</span> primary %}</span>
+<span class="template-tag">{% <span class="name">youtube</span> Kt7u5kr_P5o %}</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Tab 3.**</span>
+
+<span class="template-tag">{% <span class="name">subtabs</span> Sub Tabs %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Sub Tab 1.**</span>
+<span class="template-tag">{% <span class="name">note</span> success %}</span>
+<span class="xml">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</span>
+
+<span class="template-tag">{% <span class="name">note</span> warning %}</span>
+<span class="xml">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+
+<span class="xml">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Sub Tab 2.**</span>
+<span class="template-tag">{% <span class="name">note</span> success %}</span>
+<span class="xml">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</span>
+
+<span class="xml">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</span>
+
+<span class="template-tag">{% <span class="name">note</span> danger %}</span>
+<span class="xml">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Sub Tab 3.**</span>
+
+<span class="template-tag">{% <span class="name">subtabs</span> Sub-Sub Tabs %}</span>
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Sub-Sub Tab 1 of Sub Tab 3.**</span>
+<span class="template-tag">{% <span class="name">note</span> success %}</span>
+<span class="xml">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</span>
+
+<span class="xml">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</span>
+
+<span class="xml">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Sub-Sub Tab 2 of Sub Tab 3.**</span>
+<span class="template-tag">{% <span class="name">note</span> success %}</span>
+<span class="xml">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</span>
+
+<span class="template-tag">{% <span class="name">note</span> warning %}</span>
+<span class="xml">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</span>
+
+<span class="xml">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+
+<span class="xml"><span class="comment">&lt;!-- tab --&gt;</span></span>
+<span class="xml">**This is Sub-Sub Tab 3 of Sub Tab 3.**</span>
+
+<span class="template-tag">{% <span class="name">note</span> success %}</span>
+<span class="xml">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</span>
+
+<span class="template-tag">{% <span class="name">note</span> warning %}</span>
+<span class="xml">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</span>
+
+<span class="template-tag">{% <span class="name">note</span> danger %}</span>
+<span class="xml">Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.</span>
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+
+<span class="template-tag">{% <span class="name">endnote</span> %}</span>
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endsubtabs</span> %}</span>
+
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endsubtabs</span> %}</span>
+
+<span class="xml"><span class="comment">&lt;!-- endtab --&gt;</span></span>
+<span class="template-tag">{% <span class="name">endtabs</span> %}</span></code></pre>
+<p>{% tabs Tags %}</p>
+<!-- tab -->
+<p><strong>This is Tab 1.</strong></p>
+<ol>
+<li>One</li>
+<li>Two</li>
+<li>Three</li>
+</ol>
+<p>Indented code block:</p>
+<pre><code>nano /etc</code></pre><p>Tagged code block:</p>
+<p>{% code %}<br>code tag<br>code tag<br>code tag<br>{% endcode %}</p>
+<p>{% note default %}<br>Note default tag.<br>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 2.</strong></p>
+<ul>
+<li>Five</li>
+<li>Six</li>
+<li>Seven</li>
+</ul>
+<p>{% note primary %}<br>{% youtube Kt7u5kr_P5o %}<br>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Tab 3.</strong></p>
+<p>{% subtabs Sub Tabs %}</p>
+<!-- tab -->
+<p><strong>This is Sub Tab 1.</strong><br>{% note success %}<br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</p>
+<p>{% note warning %}<br>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.<br>{% endnote %}</p>
+<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.<br>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Sub Tab 2.</strong><br>{% note success %}<br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</p>
+<p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+<p>{% note danger %}<br>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.<br>{% endnote %}<br>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Sub Tab 3.</strong></p>
+<p>{% subtabs Sub-Sub Tabs %}</p>
+<!-- tab -->
+<p><strong>This is Sub-Sub Tab 1 of Sub Tab 3.</strong><br>{% note success %}<br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</p>
+<p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.<br>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Sub-Sub Tab 2 of Sub Tab 3.</strong><br>{% note success %}<br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</p>
+<p>{% note warning %}<br>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.<br>{% endnote %}</p>
+<p>{% endnote %}</p>
+<!-- endtab -->
+
+<!-- tab -->
+<p><strong>This is Sub-Sub Tab 3 of Sub Tab 3.</strong></p>
+<p>{% note success %}<br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Pellentesque fermentum dolor. Aliquam quam lectus, facilisis auctor, ultrices ut, elementum vulputate, nunc.</p>
+<p>{% note warning %}<br>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+<p>{% note danger %}<br>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.<br>{% endnote %}</p>
+<p>{% endnote %}</p>
+<p>{% endnote %}</p>
+<!-- endtab -->
+<p>{% endsubtabs %}</p>
+<!-- endtab -->
+<p>{% endsubtabs %}</p>
+<!-- endtab -->
+<p>{% endtabs %}</p>
