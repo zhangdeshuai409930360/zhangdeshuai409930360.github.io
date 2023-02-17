@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Datax3.0简介 | Handsome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Datex3.0概览DataX 是一个异构数据源离线同步工具，致力于实现包括关系型数据库(MySQL、Oracle等)、HDFS、Hive、ODPS、HBase、FTP等各种异构数据源之间稳定高效的数据同步功能。（这是一个单机多任务的ETL工具）  设计理念为了解决异构数据源同步问题，DataX将复杂的网状的同步链路变成了星型数据链路，DataX作为中间传输载体负责连接各种数据源。当需要接入一个新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Datax3.0简介">
+<meta property="og:url" content="https://zhangdeshuai409930360.github.io/2020/08/04/31/index.html">
+<meta property="og:site_name" content="Handsome">
+<meta property="og:description" content="Datex3.0概览DataX 是一个异构数据源离线同步工具，致力于实现包括关系型数据库(MySQL、Oracle等)、HDFS、Hive、ODPS、HBase、FTP等各种异构数据源之间稳定高效的数据同步功能。（这是一个单机多任务的ETL工具）  设计理念为了解决异构数据源同步问题，DataX将复杂的网状的同步链路变成了星型数据链路，DataX作为中间传输载体负责连接各种数据源。当需要接入一个新">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/48.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/49.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/50.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/51.png">
+<meta property="article:published_time" content="2020-08-04T03:21:24.000Z">
+<meta property="article:modified_time" content="2023-02-17T01:11:47.154Z">
+<meta property="article:tag" content="Datax">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhangdeshuai409930360.github.io/images/48.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Handsome" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Handsome</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        <li>友情链接</li>
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/bigdata/">大数据</a></li>
+                        
+                            <li><a  href="/categories/java/">JAVA学习</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    <a target="_blank"  class="main-nav-link switch-friends-link" href="https://my.oschina.net/u/559635">oschina</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">
+                      关于博主
+简介
+90后，大数据开发工程师/JAVA工程师。
+知人不必言尽，留三分余地与人，留些口德与己。
+责人不必苛尽，留三分余地与人，留些肚量与己。
+才能不必傲尽，留三分余地与人，留些内涵与己。
+锋芒不必露尽，留三分余地与人，留些深敛与己。
+有功不必邀尽，留三分余地与人，留些谦让与己。
+2013.10-2016.03 深圳市时讯互联科技有限公司 JAVA/大数据开发工程师
+2016.03-2017.08       深圳市华阳信通发展有限公司/大数据开发工程师
+2017.08-2018.03       深圳市彩讯科技股份有限公司/大数据开发工程师
+2018.03-至今       深圳市加推科技有限公司/大数据开发工程师     
+ </div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Handsome</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Handsome</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/bigdata/">大数据</a></li>
+                
+                    <li><a href="/categories/java/">JAVA学习</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+
+     <div class="body-wrap"><article id="post-31" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/08/04/31/" class="article-date">
+      <time datetime="2020-08-04T03:21:24.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Datax3.0简介
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Datax/" rel="tag">Datax</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Datex3-0概览"><a href="#Datex3-0概览" class="headerlink" title="Datex3.0概览"></a>Datex3.0概览</h3><p>DataX 是一个异构数据源离线同步工具，致力于实现包括关系型数据库(MySQL、Oracle等)、HDFS、Hive、ODPS、HBase、FTP等各种异构数据源之间稳定高效的数据同步功能。<br>（这是一个单机多任务的ETL工具）</p>
+<p><img src="/images/48.png" alt="alt"></p>
+<h3 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h3><p>为了解决异构数据源同步问题，DataX将复杂的网状的同步链路变成了星型数据链路，DataX作为中间传输载体负责连接各种数据源。当需要接入一个新的数据源的时候，只需要将此数据源对接到DataX，便能跟已有的数据源做到无缝数据同步。</p>
+<h3 id="当前使用现状"><a href="#当前使用现状" class="headerlink" title="当前使用现状"></a>当前使用现状</h3><p>此前已经开源DataX1.0版本，此次介绍为阿里云开源全新版本DataX3.0，有了更多更强大的功能和更好的使用体验。Github主页地址：<a href="https://github.com/alibaba/DataX" target="_blank" rel="noopener">https://github.com/alibaba/DataX</a></p>
+<h3 id="DataX3-0框架设计"><a href="#DataX3-0框架设计" class="headerlink" title="DataX3.0框架设计"></a>DataX3.0框架设计</h3><p>DataX本身作为离线数据同步框架，采用Framework + plugin架构构建。将数据源读取和写入抽象成为Reader/Writer插件，纳入到整个同步框架中。</p>
+<p><img src="/images/49.png" alt="alt"><br>Reader：Reader为数据采集模块，负责采集数据源的数据，将数据发送给Framework。<br>Writer： Writer为数据写入模块，负责不断向Framework取数据，并将数据写入到目的端。<br>Framework：Framework用于连接reader和writer，作为两者的数据传输通道，并处理缓冲，流控，并发，数据转换等核心技术问题。</p>
+<h3 id="DataX3-0插件体系"><a href="#DataX3-0插件体系" class="headerlink" title="DataX3.0插件体系"></a>DataX3.0插件体系</h3><p>DataX目前已经有了比较全面的插件体系，主流的RDBMS数据库、NOSQL、大数据计算系统都已经接入，目前支持数据如下图</p>
+<p><img src="/images/50.png" alt="alt"></p>
+<h3 id="DataX3-0核心架构"><a href="#DataX3-0核心架构" class="headerlink" title="DataX3.0核心架构"></a>DataX3.0核心架构</h3><p>DataX 3.0 开源版本支持单机多线程模式完成同步作业运行，本小节按一个DataX作业生命周期的时序图，从整体架构设计非常简要说明DataX各个模块相互关系。</p>
+<p><img src="/images/51.png" alt="alt"></p>
+<p>核心模块介绍：<br>DataX完成单个数据同步的作业，我们称之为Job，DataX接受到一个Job之后，将启动一个进程来完成整个作业同步过程。DataX Job模块是单个作业的中枢管理节点，承担了数据清理、子任务切分(将单一作业计算转化为多个子Task)、TaskGroup管理等功能。</p>
+<p>DataXJob启动后，会根据不同的源端切分策略，将Job切分成多个小的Task(子任务)，以便于并发执行。Task便是DataX作业的最小单元，每一个Task都会负责一部分数据的同步工作。</p>
+<p>切分多个Task之后，DataX Job会调用Scheduler模块，根据配置的并发数据量，将拆分成的Task重新组合，组装成TaskGroup(任务组)。每一个TaskGroup负责以一定的并发运行完毕分配好的所有Task，默认单个任务组的并发数量为5。</p>
+<p>每一个Task都由TaskGroup负责启动，Task启动后，会固定启动Reader—&gt;Channel—&gt;Writer的线程来完成任务同步工作。</p>
+<p>DataX作业运行起来之后， Job监控并等待多个TaskGroup模块任务完成，等待所有TaskGroup任务完成后Job成功退出。否则，异常退出，进程退出值非0</p>
+<h3 id="DataX调度流程："><a href="#DataX调度流程：" class="headerlink" title="DataX调度流程："></a>DataX调度流程：</h3><p>举例来说，用户提交了一个DataX作业，并且配置了20个并发，目的是将一个100张分表的mysql数据同步到odps里面。 DataX的调度决策思路是：</p>
+<p>DataXJob根据分库分表切分成了100个Task。</p>
+<p>根据20个并发，DataX计算共需要分配4个TaskGroup。</p>
+<p>4个TaskGroup平分切分好的100个Task，每一个TaskGroup负责以5个并发共计运行25个Task。</p>
+<h3 id="五、DataX-3-0六大核心优势"><a href="#五、DataX-3-0六大核心优势" class="headerlink" title="五、DataX 3.0六大核心优势"></a>五、DataX 3.0六大核心优势</h3><h3 id="可靠的数据质量监控"><a href="#可靠的数据质量监控" class="headerlink" title="可靠的数据质量监控"></a>可靠的数据质量监控</h3><p>完美解决数据传输个别类型失真问题<br>DataX旧版对于部分数据类型(比如时间戳)传输一直存在毫秒阶段等数据失真情况，新版本DataX3.0已经做到支持所有的强数据类型，每一种插件都有自己的数据类型转换策略，让数据可以完整无损的传输到目的端。</p>
+<p>提供作业全链路的流量、数据量运行时监控<br>DataX3.0运行过程中可以将作业本身状态、数据流量、数据速度、执行进度等信息进行全面的展示，让用户可以实时了解作业状态。并可在作业执行过程中智能判断源端和目的端的速度对比情况，给予用户更多性能排查信息。</p>
+<p>提供脏数据探测<br>在大量数据的传输过程中，必定会由于各种原因导致很多数据传输报错(比如类型转换错误)，这种数据DataX认为就是脏数据。DataX目前可以实现脏数据精确过滤、识别、采集、展示，为用户提供多种的脏数据处理模式，让用户准确把控数据质量大关！</p>
+<h3 id="丰富的数据转换功能"><a href="#丰富的数据转换功能" class="headerlink" title="丰富的数据转换功能"></a>丰富的数据转换功能</h3><p>DataX作为一个服务于大数据的ETL工具，除了提供数据快照搬迁功能之外，还提供了丰富数据转换的功能，让数据在传输过程中可以轻松完成数据脱敏，补全，过滤等数据转换功能，另外还提供了自动groovy函数，让用户自定义转换函数。详情请看DataX3的transformer详细介绍。</p>
+<h3 id="精准的速度控制"><a href="#精准的速度控制" class="headerlink" title="精准的速度控制"></a>精准的速度控制</h3><p>还在为同步过程对在线存储压力影响而担心吗？新版本DataX3.0提供了包括通道(并发)、记录流、字节流三种流控模式，可以随意控制你的作业速度，让你的作业在库可以承受的范围内达到最佳的同步速度。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"speed"</span>: &#123;</span><br><span class="line">   <span class="string">"channel"</span>: 8,    ----并发数限速（根据自己CPU合理控制并发数）</span><br><span class="line">   <span class="string">"byte"</span>: 524288,  ----字节流限速（根据自己的磁盘和网络合理控制字节数）</span><br><span class="line">   <span class="string">"record"</span>: 10000  ----记录流限速（根据数据合理空行数）</span><br></pre></td></tr></table></figure>
+
+<h3 id="强劲的同步性能"><a href="#强劲的同步性能" class="headerlink" title="强劲的同步性能"></a>强劲的同步性能</h3><p>DataX3.0每一种读插件都有一种或多种切分策略，都能将作业合理切分成多个Task并行执行，单机多线程执行模型可以让DataX速度随并发成线性增长。在源端和目的端性能都足够的情况下，单个作业一定可以打满网卡。另外，DataX团队对所有的已经接入的插件都做了极致的性能优化，并且做了完整的性能测试</p>
+<h3 id="健壮的容错机制"><a href="#健壮的容错机制" class="headerlink" title="健壮的容错机制"></a>健壮的容错机制</h3><p>DataX作业是极易受外部因素的干扰，网络闪断、数据源不稳定等因素很容易让同步到一半的作业报错停止。因此稳定性是DataX的基本要求，在DataX 3.0的设计中，重点完善了框架和插件的稳定性。目前DataX3.0可以做到线程级别、进程级别(暂时未开放)、作业级别多层次局部/全局的重试，保证用户的作业稳定运行。<br>线程内部重试</p>
+<p>DataX的核心插件都经过团队的全盘review，不同的网络交互方式都有不同的重试策略。</p>
+<h3 id="线程级别重试"><a href="#线程级别重试" class="headerlink" title="线程级别重试"></a>线程级别重试</h3><p>目前DataX已经可以实现TaskFailover，针对于中间失败的Task，DataX框架可以做到整个Task级别的重新调度。</p>
+<p>作者：香山上的麻雀<br>链接：<a href="https://www.jianshu.com/p/f5f0dc99d5ab" target="_blank" rel="noopener">https://www.jianshu.com/p/f5f0dc99d5ab</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/08/04/31/">Datax3.0简介</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
+        <p><span>发布时间:</span>2020年08月04日 - 11时21分</p>
+        <p><span>最后更新:</span>2023年02月17日 - 09时11分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/08/04/31/" title="Datax3.0简介">https://zhangdeshuai409930360.github.io/2020/08/04/31/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangdeshuai409930360.github.io/2020/08/04/31/　　作者: " title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2020/08/27/32/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          SQL优化技巧
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2020/06/05/30/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">大数据架构师毕生所学</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Datex3-0概览"><span class="toc-number">1.</span> <span class="toc-text">Datex3.0概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设计理念"><span class="toc-number">2.</span> <span class="toc-text">设计理念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#当前使用现状"><span class="toc-number">3.</span> <span class="toc-text">当前使用现状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataX3-0框架设计"><span class="toc-number">4.</span> <span class="toc-text">DataX3.0框架设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataX3-0插件体系"><span class="toc-number">5.</span> <span class="toc-text">DataX3.0插件体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataX3-0核心架构"><span class="toc-number">6.</span> <span class="toc-text">DataX3.0核心架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataX调度流程："><span class="toc-number">7.</span> <span class="toc-text">DataX调度流程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、DataX-3-0六大核心优势"><span class="toc-number">8.</span> <span class="toc-text">五、DataX 3.0六大核心优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可靠的数据质量监控"><span class="toc-number">9.</span> <span class="toc-text">可靠的数据质量监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#丰富的数据转换功能"><span class="toc-number">10.</span> <span class="toc-text">丰富的数据转换功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#精准的速度控制"><span class="toc-number">11.</span> <span class="toc-text">精准的速度控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强劲的同步性能"><span class="toc-number">12.</span> <span class="toc-text">强劲的同步性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#健壮的容错机制"><span class="toc-number">13.</span> <span class="toc-text">健壮的容错机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程级别重试"><span class="toc-number">14.</span> <span class="toc-text">线程级别重试</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox bdshare-button-style2-24">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2020/08/27/32/" title="上一篇: SQL优化技巧">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/06/05/30/" title="下一篇: 大数据架构师毕生所学">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/02/17/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/11/35/">Apache Hudi的写时复制和读时合并</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/06/34/">Hive严格模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/33/">Apache Atlas安装数据治理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/27/32/">SQL优化技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/04/31/">Datax3.0简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/30/">大数据架构师毕生所学</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/29/">Hive内置函数速查表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/21/27/">Flink与Spark多方面区别对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/20/26/">Flink端到端状态一致性EXACTLY_ONCE实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/25/">Flink使用assignAscendingTimestamps 生成水印的三个重载方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/24/">Flink使用SQL操作几种类型的window</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/23/">AppendStreamTableSink、RetractStreamTableSink、UpsertStreamTableSink</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/27/22/">Kafka to Flink - HDFS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/21/">Druid原理和架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/20/">Kafka 是如何保证数据可靠性和一致性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/19/">Python数据质量检测</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/02/oozie/">Oozie常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/01/18/">深入理解Kafka副本机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/2/">APP数据统计-用户活跃统计周活跃，月活跃(不是按照自然周计算,每天的前７天　前３０天)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/1/">Spark FastJson 解析SDK上报日期</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/14/28/">Spark Yarn 的提交二种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/10/">ELK日志采集logstash output -> elasticsearch 数据写入性能优化。</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/23/13/">SparkStructured StreamExecution：持续查询的运转引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/5/">通过BulkLoad(MR)快速将海量数据导入到Hbase</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/02/7/">Spring mvc 框架定时刷新kerberos认证票据</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/3/">Spark Scala 获取自然日 属于每周的第一天和每周的最后一天，每月的第一天和每月的最后一天</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/8/">Spark1.X操作DataFrame示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/9/">Kafka HA Kafka一致性重要机制之ISR(kafka replica)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/02/4/">Spark scala 抽取mysql数据 导入Hive</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/16/">Kafka生产者详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/17/">Kafka消费者详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/6/">Oozie任务调度使用详细代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/12/">Apache Kylin</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/15/">Spark 累加器与广播变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/11/">python用map-reduce(IP地址库匹配省份和城市)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/14/">HDFS 常用 shell 命令</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/zhangdeshuai409930360" target="_blank">Blog</a> by handsomezhangshuai
+            </div>
+        </div>
+        
+            <div class="visit">
+            © 2015-2020 zhangdeshuai 粤ICP备15075505号
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+           </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

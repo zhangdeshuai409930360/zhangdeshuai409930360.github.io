@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Flink端到端状态一致性EXACTLY_ONCE实现 | Handsome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="状态一致性:有状态的流处理，内部每个算子任务都可以有自己的状态； 对于流处理器内部（没有接入sink）来说，所谓的状态一致性，其实就是我们所说的计算结果要保证准确； 一条数据不应该丢失，也不应该重复计算； 在遇到故障时可以恢复状态，恢复以后的重新计算，结果应该也是完全正常的 状态一致性分类：AT_MOST_ONCE（最多一次），当任务故障时最简单做法是什么都不干，既不恢复丢失状态，也不重播丢失数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flink端到端状态一致性EXACTLY_ONCE实现">
+<meta property="og:url" content="https://zhangdeshuai409930360.github.io/2020/05/20/26/index.html">
+<meta property="og:site_name" content="Handsome">
+<meta property="og:description" content="状态一致性:有状态的流处理，内部每个算子任务都可以有自己的状态； 对于流处理器内部（没有接入sink）来说，所谓的状态一致性，其实就是我们所说的计算结果要保证准确； 一条数据不应该丢失，也不应该重复计算； 在遇到故障时可以恢复状态，恢复以后的重新计算，结果应该也是完全正常的 状态一致性分类：AT_MOST_ONCE（最多一次），当任务故障时最简单做法是什么都不干，既不恢复丢失状态，也不重播丢失数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/28.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/29.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/30.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/31.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/32.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/33.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/34.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/35.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/36.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/37.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/38.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/39.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/40.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/41.png">
+<meta property="article:published_time" content="2020-05-20T03:19:24.000Z">
+<meta property="article:modified_time" content="2023-02-17T01:11:47.154Z">
+<meta property="article:tag" content="Flink">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhangdeshuai409930360.github.io/images/28.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Handsome" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Handsome</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        <li>友情链接</li>
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/bigdata/">大数据</a></li>
+                        
+                            <li><a  href="/categories/java/">JAVA学习</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    <a target="_blank"  class="main-nav-link switch-friends-link" href="https://my.oschina.net/u/559635">oschina</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">
+                      关于博主
+简介
+90后，大数据开发工程师/JAVA工程师。
+知人不必言尽，留三分余地与人，留些口德与己。
+责人不必苛尽，留三分余地与人，留些肚量与己。
+才能不必傲尽，留三分余地与人，留些内涵与己。
+锋芒不必露尽，留三分余地与人，留些深敛与己。
+有功不必邀尽，留三分余地与人，留些谦让与己。
+2013.10-2016.03 深圳市时讯互联科技有限公司 JAVA/大数据开发工程师
+2016.03-2017.08       深圳市华阳信通发展有限公司/大数据开发工程师
+2017.08-2018.03       深圳市彩讯科技股份有限公司/大数据开发工程师
+2018.03-至今       深圳市加推科技有限公司/大数据开发工程师     
+ </div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Handsome</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Handsome</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/bigdata/">大数据</a></li>
+                
+                    <li><a href="/categories/java/">JAVA学习</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+
+     <div class="body-wrap"><article id="post-26" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/20/26/" class="article-date">
+      <time datetime="2020-05-20T03:19:24.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Flink端到端状态一致性EXACTLY_ONCE实现
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="状态一致性"><a href="#状态一致性" class="headerlink" title="状态一致性:"></a>状态一致性:</h3><p><img src="/images/28.png" alt="alt"><br>有状态的流处理，内部每个算子任务都可以有自己的状态；</p>
+<p>对于流处理器内部（没有接入sink）来说，所谓的状态一致性，其实就是我们所说的计算结果要保证准确；</p>
+<p>一条数据不应该丢失，也不应该重复计算；</p>
+<p>在遇到故障时可以恢复状态，恢复以后的重新计算，结果应该也是完全正常的</p>
+<h3 id="状态一致性分类："><a href="#状态一致性分类：" class="headerlink" title="状态一致性分类："></a>状态一致性分类：</h3><p>AT_MOST_ONCE（最多一次），当任务故障时最简单做法是什么都不干，既不恢复丢失状态，也不重播丢失数据。At-most-once语义的含义是最多处理一次事件。</p>
+<p>AT_LEAST_ONCE（至少一次），在大多数真实应用场景，我们希望不丢失数据。这种类型的保障称为at-least-once，意思是所有的事件都得到了处理，而一些事件还可能被处理多次。</p>
+<p>EXACTLY_ONCE（精确一次），恰好处理一次是最严格的的保证，也是最难实现的。恰好处理一次语义不仅仅意味着没有事件丢失，还意味着针对每一个数据，内部状态仅仅更新一次。</p>
+<h3 id="一致性检查点（Checkpoints）"><a href="#一致性检查点（Checkpoints）" class="headerlink" title="一致性检查点（Checkpoints）"></a>一致性检查点（Checkpoints）</h3><p>Flink使用了一种轻量级快照机制 — 检查点（Checkpoint）来保证exactly-one语义；</p>
+<p>有状态流应用的一致检查点，其实就是：所有任务的状态，在某个时间点的一份拷贝（一份快照）。而这个时间点，应该是所有任务都恰好处理完一个相同的输入数据的时候。</p>
+<p>应用状态的一致性检查点，是Flink故障恢复机制的核心。</p>
+<p><img src="/images/29.png" alt="alt"></p>
+<h3 id="端到端（end-to-end）状态一致性"><a href="#端到端（end-to-end）状态一致性" class="headerlink" title="端到端（end-to-end）状态一致性"></a>端到端（end-to-end）状态一致性</h3><p>目前我们看到的一致性保证都是由流处理器实现的，也就是说都是在Flink流处理内部保证的；而在真实应用中，流处理应用除了流处理器以外还包含了数据源（例如kafka）和输出到持久化系统；</p>
+<p>端到端的一致性保证，意味着结果的正确性贯穿了整个流处理应用的始终，每个组件都保证了它自己的一致性；</p>
+<p>整个端到端的一致性级别取决于所有组件中一致性最弱的组件；</p>
+<h3 id="端到端exactly-once"><a href="#端到端exactly-once" class="headerlink" title="端到端exactly-once"></a>端到端exactly-once</h3><p>内部保证 — checkpoint</p>
+<p>source端 — 可重设数据的读取位置；可重新读取偏移量</p>
+<p>sink端 – 从故障恢复时，数据不会重复写入外部系统：幂等写入和事务写入；</p>
+<h3 id="幂等写入（Idempotent-Writes）："><a href="#幂等写入（Idempotent-Writes）：" class="headerlink" title="幂等写入（Idempotent Writes）："></a>幂等写入（Idempotent Writes）：</h3><p>幂等操作即一个操作可以重复执行很多次，但只导致一次结果更改，也就是说，后面再重复执行就不起作用了；</p>
+<p><img src="/images/30.png" alt="alt"></p>
+<p> 它的原理不是不重复写入而是重复写完之后结果还是一样；它的瑕疵是不能做到完全意义上exactly-once（在故障恢复时，突然把外部系统写入操作跳到之前的某个状态然后继续往里边写，故障之前发生的那一段的状态变化又重演了直到最后发生故障那一刻追上就正常了；假如中间这段又被读取了就可能会有些问题）；</p>
+<h3 id="事务写入（Transactional-Writes）"><a href="#事务写入（Transactional-Writes）" class="headerlink" title="事务写入（Transactional Writes）:"></a>事务写入（Transactional Writes）:</h3><p> 事务Transactional Writes</p>
+<p>应用程序中一系列严密的操作，所有操作必须成功完成，否则在每个操作中所作的所有更改都会被撤销；<br>具有原子性，一个事务中的一系列的操作要么全部成功，要么一个都不做。<br>实现思想：构建的事务对应着checkpoint，等到checkpoint真正完成的时候，才把所有对应的结果写入sink系统中。</p>
+<p>实现方式：预习日志和两阶段提交</p>
+<h3 id="预习日志（Write-Ahead-Log，WAL）"><a href="#预习日志（Write-Ahead-Log，WAL）" class="headerlink" title="预习日志（Write-Ahead-Log，WAL）"></a>预习日志（Write-Ahead-Log，WAL）</h3><p>把结果数据先当成状态保存，然后在收到checkpoint完成的通知时，一次性写入sink系统；</p>
+<p>简单易于实现，由于数据提前在状态后端中做了缓存，所以无论什么sink系统，都能用这种方式一批搞定；</p>
+<p>DataStream API提供了一个模板类：GenericWriteAheadSink，来实现这种事务性sink；</p>
+<p>瑕疵：<br>A. sink系统没说它支持事务，有可能出现一部分写进去了一部分没写进去（如果算失败，再写一次就写了两次了）；</p>
+<p>B. checkpoint做完了sink才去真正写入（但其实得等sink都写完checkpoint才能生效，所以WAL这个机制jobmanager确定它写完还不算真正写完，还得有一个外部系统已经确认完成的checkpoint）</p>
+<h3 id="两阶段提交（Two–Phase–Commit，2PC）–-真正能够实现exactly-once"><a href="#两阶段提交（Two–Phase–Commit，2PC）–-真正能够实现exactly-once" class="headerlink" title="两阶段提交（Two–Phase–Commit，2PC）– 真正能够实现exactly-once"></a>两阶段提交（Two–Phase–Commit，2PC）– 真正能够实现exactly-once</h3><p>对于每个checkpoint，sink任务会启动一个事务，并将接下来所有接收的数据添加到事务里；</p>
+<p>然后将这些数据写入外部sink系统，但不提交他们 – 这时只是预提交；</p>
+<p>当它收到checkpoint完成时的通知，它才正式提交事务，实现结果的真正写入；</p>
+<p>这种方式真正实现了exactly-once，它需要一个提供事务支持的外部sink系统，Flink提供了TwoPhaseCommitSinkFunction接口</p>
+<h3 id="2PC对外部sink的要求"><a href="#2PC对外部sink的要求" class="headerlink" title="2PC对外部sink的要求"></a>2PC对外部sink的要求</h3><p>外部sink系统必须事务支持，或者sink任务必须能够模拟外部系统上的事务；</p>
+<p>在checkpoint的间隔期间里，必须能够开启一个事务，并接受数据写入；</p>
+<p>在收到checkpoint完成的通知之前，事务必须是“等待提交”的状态，在故障恢复的情况下，这可能需要一些时间。如果这个时候sink系统关闭事务（例如超时了），那么未提交的数据就会丢失；</p>
+<p>sink任务必须能够在进程失败后恢复事务；</p>
+<p>提交事务必须是幂等操作；</p>
+<h3 id="不同Source和sink的一致性保证："><a href="#不同Source和sink的一致性保证：" class="headerlink" title="不同Source和sink的一致性保证："></a>不同Source和sink的一致性保证：</h3><p><img src="/images/31.png" alt="alt"></p>
+<p>Flink+kafka端到端状态一致性的保证<br>Flink和kafka天生就是一对，用kafka做为source，用kafka做完sink  &lt;===&gt;  实现端到端的一致性</p>
+<p>内部 – 利用checkpoint机制，把状态存盘，发生故障的时候可以恢复，保证内部的状态一致性；</p>
+<p>source – kafka consumer作为source，可以将偏移量保存下来，如果后续任务出现了故障，恢复的时候可以由连接器重置偏移量，重新消费数据，保证一致性；</p>
+<p>sink – kafka producer作为sink，采用两阶段提交sink，需要实现一个TwoPhaseCommitSinkFunction</p>
+<p><img src="/images/32.png" alt="alt"></p>
+<p><img src="/images/33.png" alt="alt"></p>
+<p><img src="/images/34.png" alt="alt"></p>
+<p> 默认是AT_LEAST_ONCE</p>
+<p>Exactly-once两阶段提交</p>
+<p><img src="/images/35.png" alt="alt"><br>JobManager协调各个TaskManager进行checkpoint存储；</p>
+<p>checkpoint保存在StateBackend中，默认StateBackend是内存级的，也可以改为文件级的进行持久化保存；</p>
+<p><img src="/images/36.png" alt="alt"><br>当checkpoint启动时，JobManager会将检查点分界线（barrier）注入数据流；</p>
+<p>barrier会在算子间传递下去；</p>
+<p><img src="/images/37.png" alt="alt"></p>
+<p>每个算子会对当前的状态做个快照，保存到状态后端；</p>
+<p>checkpoint机制可以保证内部的状态一致性；</p>
+<p><img src="/images/38.png" alt="alt"><br>每个内部的transform任务遇到barrier时，都会把状态存到checkpoint里；</p>
+<p>sink任务首先把数据写入外部kafka，这些数据都属于预提交的事务；遇到barrier时，把状态保存到状态后端，并开启新的预提交事务（以barrier为界之前的数据属于上一个事务，之后的数据属于下一个新的事务）；</p>
+<p><img src="/images/39.png" alt="alt"><br>当所有算子任务的快照完成，也就是这次的checkpoint完成时，JobManager会向所有任务发通知，确认这次checkpoint完成；</p>
+<p>sink任务收到确认通知，正式提交之前的事务，kafka中未确认数据改完“已确认”；</p>
+<h3 id="Exactly-once两阶段提交步骤："><a href="#Exactly-once两阶段提交步骤：" class="headerlink" title="Exactly-once两阶段提交步骤："></a>Exactly-once两阶段提交步骤：</h3><p> 第一条数据来在之后，开启一个kafka的事务（transaction），正常写入kafka分区日志但标记为未提交，这就是“预提交”；</p>
+<p> JobManagere触发checkpoint操作，barrier从source开始向下传递，遇到barrier的算子将状态存入状态后端，并通知JobManagere；</p>
+<p> sink连接器接收到barrier，保存当前状态，存入checkpoint，通知JobManager并开启下一阶段的事务，用于提交下个检查点的数据；</p>
+<p> JobManager收到所有任务的通知，发出确认信息，表示checkpoint完成；</p>
+<p> sink任务收到JobManager的确认信息，正式提交这段时间的数据；</p>
+<p> 外部kafka关闭事务，提交的数据可以正常消费了。</p>
+<p>在代码中真正实现flink和kafak的端到端exactly-once语义：</p>
+<p><img src="/images/40.png" alt="alt"></p>
+<p><img src="/images/41.png" alt="alt"></p>
+<p>A. 这里需要配置下，因为它默认的是AT_LEAST_ONCE；</p>
+<p>B. 对于外部kafka读取的消费者的隔离级别，默认是read_on_commited，如果默认是可以读未提交的数据，就相当于整个一致性还没得到保证（未提交的数据没有最终确认那边就可以读了，相当于那边已经消费数据了，事务就是假的了）  所以需要修改kafka的隔离级别；</p>
+<p>C. timeout超时问题，flink和kafka 默认sink是超时1h，而kafak集群中配置的tranctraction事务的默认超时时间是15min，flink-kafak这边的连接器的时间长，这边还在等着做操作 ，kafak那边等checkpoint等的时间太长直接关闭了。所以两边的超时时间最起码前边要比后边的小</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/05/20/26/">Flink端到端状态一致性EXACTLY_ONCE实现</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
+        <p><span>发布时间:</span>2020年05月20日 - 11时19分</p>
+        <p><span>最后更新:</span>2023年02月17日 - 09时11分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/20/26/" title="Flink端到端状态一致性EXACTLY_ONCE实现">https://zhangdeshuai409930360.github.io/2020/05/20/26/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangdeshuai409930360.github.io/2020/05/20/26/　　作者: " title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2020/05/21/27/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Flink与Spark多方面区别对比
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2020/05/13/25/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Flink使用assignAscendingTimestamps 生成水印的三个重载方法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#状态一致性"><span class="toc-number">1.</span> <span class="toc-text">状态一致性:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#状态一致性分类："><span class="toc-number">2.</span> <span class="toc-text">状态一致性分类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一致性检查点（Checkpoints）"><span class="toc-number">3.</span> <span class="toc-text">一致性检查点（Checkpoints）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端到端（end-to-end）状态一致性"><span class="toc-number">4.</span> <span class="toc-text">端到端（end-to-end）状态一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端到端exactly-once"><span class="toc-number">5.</span> <span class="toc-text">端到端exactly-once</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#幂等写入（Idempotent-Writes）："><span class="toc-number">6.</span> <span class="toc-text">幂等写入（Idempotent Writes）：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务写入（Transactional-Writes）"><span class="toc-number">7.</span> <span class="toc-text">事务写入（Transactional Writes）:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预习日志（Write-Ahead-Log，WAL）"><span class="toc-number">8.</span> <span class="toc-text">预习日志（Write-Ahead-Log，WAL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#两阶段提交（Two–Phase–Commit，2PC）–-真正能够实现exactly-once"><span class="toc-number">9.</span> <span class="toc-text">两阶段提交（Two–Phase–Commit，2PC）– 真正能够实现exactly-once</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2PC对外部sink的要求"><span class="toc-number">10.</span> <span class="toc-text">2PC对外部sink的要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不同Source和sink的一致性保证："><span class="toc-number">11.</span> <span class="toc-text">不同Source和sink的一致性保证：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exactly-once两阶段提交步骤："><span class="toc-number">12.</span> <span class="toc-text">Exactly-once两阶段提交步骤：</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox bdshare-button-style2-24">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2020/05/21/27/" title="上一篇: Flink与Spark多方面区别对比">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/05/13/25/" title="下一篇: Flink使用assignAscendingTimestamps 生成水印的三个重载方法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/02/17/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/11/35/">Apache Hudi的写时复制和读时合并</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/06/34/">Hive严格模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/33/">Apache Atlas安装数据治理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/27/32/">SQL优化技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/04/31/">Datax3.0简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/30/">大数据架构师毕生所学</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/29/">Hive内置函数速查表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/21/27/">Flink与Spark多方面区别对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/20/26/">Flink端到端状态一致性EXACTLY_ONCE实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/25/">Flink使用assignAscendingTimestamps 生成水印的三个重载方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/24/">Flink使用SQL操作几种类型的window</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/23/">AppendStreamTableSink、RetractStreamTableSink、UpsertStreamTableSink</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/27/22/">Kafka to Flink - HDFS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/21/">Druid原理和架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/20/">Kafka 是如何保证数据可靠性和一致性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/19/">Python数据质量检测</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/02/oozie/">Oozie常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/01/18/">深入理解Kafka副本机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/2/">APP数据统计-用户活跃统计周活跃，月活跃(不是按照自然周计算,每天的前７天　前３０天)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/1/">Spark FastJson 解析SDK上报日期</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/14/28/">Spark Yarn 的提交二种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/10/">ELK日志采集logstash output -> elasticsearch 数据写入性能优化。</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/23/13/">SparkStructured StreamExecution：持续查询的运转引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/5/">通过BulkLoad(MR)快速将海量数据导入到Hbase</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/02/7/">Spring mvc 框架定时刷新kerberos认证票据</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/3/">Spark Scala 获取自然日 属于每周的第一天和每周的最后一天，每月的第一天和每月的最后一天</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/8/">Spark1.X操作DataFrame示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/9/">Kafka HA Kafka一致性重要机制之ISR(kafka replica)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/02/4/">Spark scala 抽取mysql数据 导入Hive</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/16/">Kafka生产者详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/17/">Kafka消费者详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/6/">Oozie任务调度使用详细代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/12/">Apache Kylin</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/15/">Spark 累加器与广播变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/11/">python用map-reduce(IP地址库匹配省份和城市)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/14/">HDFS 常用 shell 命令</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/zhangdeshuai409930360" target="_blank">Blog</a> by handsomezhangshuai
+            </div>
+        </div>
+        
+            <div class="visit">
+            © 2015-2020 zhangdeshuai 粤ICP备15075505号
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+           </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

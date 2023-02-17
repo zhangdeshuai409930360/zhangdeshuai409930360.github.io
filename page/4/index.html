@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Handsome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Handsome">
+<meta property="og:url" content="https://zhangdeshuai409930360.github.io/page/4/index.html">
+<meta property="og:site_name" content="Handsome">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Handsome" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Handsome</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        <li>友情链接</li>
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/bigdata/">大数据</a></li>
+                        
+                            <li><a  href="/categories/java/">JAVA学习</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    <a target="_blank"  class="main-nav-link switch-friends-link" href="https://my.oschina.net/u/559635">oschina</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">
+                      关于博主
+简介
+90后，大数据开发工程师/JAVA工程师。
+知人不必言尽，留三分余地与人，留些口德与己。
+责人不必苛尽，留三分余地与人，留些肚量与己。
+才能不必傲尽，留三分余地与人，留些内涵与己。
+锋芒不必露尽，留三分余地与人，留些深敛与己。
+有功不必邀尽，留三分余地与人，留些谦让与己。
+2013.10-2016.03 深圳市时讯互联科技有限公司 JAVA/大数据开发工程师
+2016.03-2017.08       深圳市华阳信通发展有限公司/大数据开发工程师
+2017.08-2018.03       深圳市彩讯科技股份有限公司/大数据开发工程师
+2018.03-至今       深圳市加推科技有限公司/大数据开发工程师     
+ </div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Handsome</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Handsome</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/bigdata/">大数据</a></li>
+                
+                    <li><a href="/categories/java/">JAVA学习</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+
+     <div class="body-wrap">
+  
+    <article id="post-16" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/12/02/16/" class="article-date">
+      <time datetime="2018-12-02T13:01:24.000Z" itemprop="datePublished">2018-12-02</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/12/02/16/">Kafka生产者详解</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、生产者发送消息的过程"><a href="#一、生产者发送消息的过程" class="headerlink" title="一、生产者发送消息的过程"></a>一、生产者发送消息的过程</h3><p>首先介绍一下 Kafka 生产者发送消息的过程：</p>
+<p>Kafka 会将发送消息包装为 ProducerRecord 对象， ProducerRecord 对象包含了目标主题和要发送的内容，同时还可以指定键和分区。在发送 ProducerRecord 对象前，生产者会先把键和值对象序列化成字节数组，这样它们才能够在网络上传输。</p>
+<p>接下来，数据被传给分区器。如果之前已经在 ProducerRecord 对象里指定了分区，那么分区器就不会再做任何事情。如果没有指定分区 ，那么分区器会根据 ProducerRecord 对象的键来选择一个分区，紧接着，这条记录被添加到一个记录批次里，这个批次里的所有消息会被发送到相同的主题和分区上。有一个独立的线程负责把这些记录批次发送到相应的 broker 上。</p>
+<p>服务器在收到这些消息时会返回一个响应。如果消息成功写入 Kafka，就返回一个 RecordMetaData 对象，它包含了主题和分区信息，以及记录在分区里的偏移量。如果写入失败，则会返回一个错误。生产者在收到错误之后会尝试重新发送消息，如果达到指定的重试次数后还没有成功，则直接抛出异常，不再重试。</p>
+<p><img src="/images/15.png" alt="alt"></p>
+<h3 id="二、创建生产者"><a href="#二、创建生产者" class="headerlink" title="二、创建生产者"></a>二、创建生产者</h3><p>2.1 项目依赖<br>本项目采用 Maven 构建，想要调用 Kafka 生产者 API，需要导入 kafka-clients 依赖，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;kafka-clients&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.2.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.2 创建生产者<br>创建 Kafka 生产者时，以下三个属性是必须指定的：</p>
+<p>bootstrap.servers ：指定 broker 的地址清单，清单里不需要包含所有的 broker 地址，生产者会从给定的 broker 里查找 broker 的信息。不过建议至少要提供两个 broker 的信息作为容错；<br>key.serializer ：指定键的序列化器；<br>value.serializer ：指定值的序列化器。</p>
+<p>创建的示例代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class SimpleProducer &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        String topicName = <span class="string">"Hello-Kafka"</span>;</span><br><span class="line"></span><br><span class="line">        Properties props = new Properties();</span><br><span class="line">        props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"hadoop001:9092"</span>);</span><br><span class="line">        props.put(<span class="string">"key.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">        props.put(<span class="string">"value.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">        /*创建生产者*/</span><br><span class="line">        Producer&lt;String, String&gt; producer = new KafkaProducer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            ProducerRecord&lt;String, String&gt; record = new ProducerRecord&lt;&gt;(topicName, <span class="string">"hello"</span> + i, </span><br><span class="line">                                                                         <span class="string">"world"</span> + i);</span><br><span class="line">            /* 发送消息*/</span><br><span class="line">            producer.send(record);</span><br><span class="line">        &#125;</span><br><span class="line">        /*关闭生产者*/</span><br><span class="line">        producer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.3 测试</p>
+<ol>
+<li>启动Kakfa<br>Kafka 的运行依赖于 zookeeper，需要预先启动，可以启动 Kafka 内置的 zookeeper，也可以启动自己安装的：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zookeeper启动命令</span></span><br><span class="line">bin/zkServer.sh start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 内置zookeeper启动命令</span></span><br><span class="line">bin/zookeeper-server-start.sh config/zookeeper.properties</span><br></pre></td></tr></table></figure>
+
+<p>启动单节点 kafka 用于测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bin/kafka-server-start.sh config/server.properties</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建topic<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建用于测试主题</span></span><br><span class="line">bin/kafka-topics.sh --create \</span><br><span class="line">                    --bootstrap-server hadoop001:9092 \</span><br><span class="line">                     --replication-factor 1 --partitions 1 \</span><br><span class="line">                     --topic Hello-Kafka</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有主题</span></span><br><span class="line"> bin/kafka-topics.sh --list --bootstrap-server hadoop001:9092</span><br></pre></td></tr></table></figure></li>
+<li>运行项目<br>此时可以看到消费者控制台，输出如下，这里 kafka-console-consumer 只会打印出值信息，不会打印出键信息。<br><img src="/images/16.png" alt="alt"></li>
+</ol>
+<p>2.4 可能出现的问题<br>在这里可能出现的一个问题是：生产者程序在启动后，一直处于等待状态。这通常出现在你使用默认配置启动 Kafka 的情况下，此时需要对 server.properties 文件中的 listeners 配置进行更改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hadoop001 为我启动kafka服务的主机名，你可以换成自己的主机名或者ip地址</span></span><br><span class="line">listeners=PLAINTEXT://hadoop001:9092</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、发送消息"><a href="#二、发送消息" class="headerlink" title="二、发送消息"></a>二、发送消息</h3><p>上面的示例程序调用了 send 方法发送消息后没有做任何操作，在这种情况下，我们没有办法知道消息发送的结果。想要知道消息发送的结果，可以使用同步发送或者异步发送来实现。</p>
+<p>2.1 同步发送<br>在调用 send 方法后可以接着调用 get() 方法，send 方法的返回值是一个 Future<RecordMetadata>对象，RecordMetadata 里面包含了发送消息的主题、分区、偏移量等信息。改写后的代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        ProducerRecord&lt;String, String&gt; record = new ProducerRecord&lt;&gt;(topicName, <span class="string">"k"</span> + i, <span class="string">"world"</span> + i);</span><br><span class="line">        /*同步发送消息*/</span><br><span class="line">        RecordMetadata metadata = producer.send(record).get();</span><br><span class="line">        System.out.printf(<span class="string">"topic=%s, partition=%d, offset=%s \n"</span>,</span><br><span class="line">                metadata.topic(), metadata.partition(), metadata.offset());</span><br><span class="line">    &#125; catch (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时得到的输出如下：偏移量和调用次数有关，所有记录都分配到了 0 分区，这是因为在创建 Hello-Kafka 主题时候，使用 –partitions 指定其分区数为 1，即只有一个分区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">topic=Hello-Kafka, partition=0, offset=40 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=41 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=42 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=43 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=44 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=45 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=46 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=47 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=48 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=49</span><br></pre></td></tr></table></figure>
+<p>2.2 异步发送<br>通常我们并不关心发送成功的情况，更多关注的是失败的情况，因此 Kafka 提供了异步发送和回调函数。 代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">    ProducerRecord&lt;String, String&gt; record = new ProducerRecord&lt;&gt;(topicName, <span class="string">"k"</span> + i, <span class="string">"world"</span> + i);</span><br><span class="line">    /*异步发送消息，并监听回调*/</span><br><span class="line">    producer.send(record, new <span class="function"><span class="title">Callback</span></span>() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onCompletion(RecordMetadata metadata, Exception exception) &#123;</span><br><span class="line">            <span class="keyword">if</span> (exception != null) &#123;</span><br><span class="line">                System.out.println(<span class="string">"进行异常处理"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.printf(<span class="string">"topic=%s, partition=%d, offset=%s \n"</span>,</span><br><span class="line">                        metadata.topic(), metadata.partition(), metadata.offset());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、自定义分区器"><a href="#三、自定义分区器" class="headerlink" title="三、自定义分区器"></a>三、自定义分区器</h3><p>Kafka 有着默认的分区机制：</p>
+<p>如果键值为 null， 则使用轮询 (Round Robin) 算法将消息均衡地分布到各个分区上；<br>如果键值不为 null，那么 Kafka 会使用内置的散列算法对键进行散列，然后分布到各个分区上。<br>某些情况下，你可能有着自己的分区需求，这时候可以采用自定义分区器实现。这里给出一个自定义分区器的示例</p>
+<p>3.1 自定义分区器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 自定义分区器</span><br><span class="line"> */</span><br><span class="line">public class CustomPartitioner implements Partitioner &#123;</span><br><span class="line"></span><br><span class="line">    private int passLine;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void configure(Map&lt;String, ?&gt; configs) &#123;</span><br><span class="line">        /*从生产者配置中获取分数线*/</span><br><span class="line">        passLine = (Integer) configs.get(<span class="string">"pass.line"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int partition(String topic, Object key, byte[] keyBytes, Object value, </span><br><span class="line">                         byte[] valueBytes, Cluster cluster) &#123;</span><br><span class="line">        /*key 值为分数，当分数大于分数线时候，分配到 1 分区，否则分配到 0 分区*/</span><br><span class="line">        <span class="built_in">return</span> (Integer) key &gt;= passLine ? 1 : 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">close</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"分区器关闭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要在创建生产者时指定分区器，和分区器所需要的配置参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class ProducerWithPartitioner &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        String topicName = <span class="string">"Kafka-Partitioner-Test"</span>;</span><br><span class="line"></span><br><span class="line">        Properties props = new Properties();</span><br><span class="line">        props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"hadoop001:9092"</span>);</span><br><span class="line">        props.put(<span class="string">"key.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.IntegerSerializer"</span>);</span><br><span class="line">        props.put(<span class="string">"value.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line"></span><br><span class="line">        /*传递自定义分区器*/</span><br><span class="line">        props.put(<span class="string">"partitioner.class"</span>, <span class="string">"com.heibaiying.producers.partitioners.CustomPartitioner"</span>);</span><br><span class="line">        /*传递分区器所需的参数*/</span><br><span class="line">        props.put(<span class="string">"pass.line"</span>, 6);</span><br><span class="line"></span><br><span class="line">        Producer&lt;Integer, String&gt; producer = new KafkaProducer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt;= 10; i++) &#123;</span><br><span class="line">            String score = <span class="string">"score:"</span> + i;</span><br><span class="line">            ProducerRecord&lt;Integer, String&gt; record = new ProducerRecord&lt;&gt;(topicName, i, score);</span><br><span class="line">            /*异步发送消息*/</span><br><span class="line">            producer.send(record, (metadata, exception) -&gt;</span><br><span class="line">                    System.out.printf(<span class="string">"%s, partition=%d, \n"</span>, score, metadata.partition()));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        producer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.2 测试<br>需要创建一个至少有两个分区的主题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --create \</span><br><span class="line">                   --bootstrap-server hadoop001:9092 \</span><br><span class="line">                    --replication-factor 1 --partitions 2 \</span><br><span class="line">                    --topic Kafka-Partitioner-Test</span><br></pre></td></tr></table></figure>
+<p>此时输入如下，可以看到分数大于等于 6 分的都被分到 1 分区，而小于 6 分的都被分到了 0 分区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">score:6, partition=1, </span><br><span class="line">score:7, partition=1, </span><br><span class="line">score:8, partition=1, </span><br><span class="line">score:9, partition=1, </span><br><span class="line">score:10, partition=1, </span><br><span class="line">score:0, partition=0, </span><br><span class="line">score:1, partition=0, </span><br><span class="line">score:2, partition=0, </span><br><span class="line">score:3, partition=0, </span><br><span class="line">score:4, partition=0, </span><br><span class="line">score:5, partition=0, </span><br><span class="line">分区器关闭</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、生产者其他属性"><a href="#四、生产者其他属性" class="headerlink" title="四、生产者其他属性"></a>四、生产者其他属性</h3><p>上面生产者的创建都仅指定了服务地址，键序列化器、值序列化器，实际上 Kafka 的生产者还有很多可配置属性，如下：</p>
+<ol>
+<li>acks<br>acks 参数指定了必须要有多少个分区副本收到消息，生产者才会认为消息写入是成功的：</li>
+</ol>
+<p>acks=0 ： 消息发送出去就认为已经成功了，不会等待任何来自服务器的响应；<br>acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应；<br>acks=all ：只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应。<br>2. buffer.memory<br>设置生产者内存缓冲区的大小。</p>
+<ol start="3">
+<li><p>compression.type<br>默认情况下，发送的消息不会被压缩。如果想要进行压缩，可以配置此参数，可选值有 snappy，gzip，lz4。</p>
+</li>
+<li><p>retries<br>发生错误后，消息重发的次数。如果达到设定值，生产者就会放弃重试并返回错误。</p>
+</li>
+<li><p>batch.size<br>当有多个消息需要被发送到同一个分区时，生产者会把它们放在同一个批次里。该参数指定了一个批次可以使用的内存大小，按照字节数计算。</p>
+</li>
+<li><p>linger.ms<br>该参数制定了生产者在发送批次之前等待更多消息加入批次的时间。</p>
+</li>
+<li><p>clent.id<br>客户端 id,服务器用来识别消息的来源。</p>
+</li>
+<li><p>max.in.flight.requests.per.connection<br>指定了生产者在收到服务器响应之前可以发送多少个消息。它的值越高，就会占用越多的内存，不过也会提升吞吐量，把它设置为 1 可以保证消息是按照发送的顺序写入服务器，即使发生了重试。</p>
+</li>
+<li><p>timeout.ms, request.timeout.ms &amp; metadata.fetch.timeout.ms<br>timeout.ms 指定了 borker 等待同步副本返回消息的确认时间；<br>request.timeout.ms 指定了生产者在发送数据时等待服务器返回响应的时间；<br>metadata.fetch.timeout.ms 指定了生产者在获取元数据（比如分区首领是谁）时等待服务器返回响应的时间。</p>
+</li>
+<li><p>max.block.ms<br>指定了在调用 send() 方法或使用 partitionsFor() 方法获取元数据时生产者的阻塞时间。当生产者的发送缓冲区已满，或者没有可用的元数据时，这些方法会阻塞。在阻塞时间达到 max.block.ms 时，生产者会抛出超时异常。</p>
+</li>
+<li><p>max.request.size<br>该参数用于控制生产者发送的请求大小。它可以指发送的单个消息的最大值，也可以指单个请求里所有消息总的大小。例如，假设这个值为 1000K ，那么可以发送的单个最大消息为 1000K ，或者生产者可以在单个请求里发送一个批次，该批次包含了 1000 个消息，每个消息大小为 1K。</p>
+</li>
+<li><p>receive.buffer.bytes &amp; send.buffer.byte<br>这两个参数分别指定 TCP socket 接收和发送数据包缓冲区的大小，-1 代表使用操作系统的默认值。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/" rel="tag">kafka</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-17" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/12/02/17/" class="article-date">
+      <time datetime="2018-12-02T13:01:24.000Z" itemprop="datePublished">2018-12-02</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/12/02/17/">Kafka消费者详解</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、消费者和消费者群组"><a href="#一、消费者和消费者群组" class="headerlink" title="一、消费者和消费者群组"></a>一、消费者和消费者群组</h3><p>在 Kafka 中，消费者通常是消费者群组的一部分，多个消费者群组共同读取同一个主题时，彼此之间互不影响。Kafka 之所以要引入消费者群组这个概念是因为 Kafka 消费者经常会做一些高延迟的操作，比如把数据写到数据库或 HDFS ，或者进行耗时的计算，在这些情况下，单个消费者无法跟上数据生成的速度。此时可以增加更多的消费者，让它们分担负载，分别处理部分分区的消息，这就是 Kafka 实现横向伸缩的主要手段。<br><img src="/images/17.png" alt="alt"><br>需要注意的是：同一个分区只能被同一个消费者群组里面的一个消费者读取，不可能存在同一个分区被同一个消费者群里多个消费者共同读取的情况，如图：<br><img src="/images/18.png" alt="alt"></p>
+<p>可以看到即便消费者 Consumer5 空闲了，但是也不会去读取任何一个分区的数据，这同时也提醒我们在使用时应该合理设置消费者的数量，以免造成闲置和额外开销。</p>
+<h3 id="二、分区再均衡"><a href="#二、分区再均衡" class="headerlink" title="二、分区再均衡"></a>二、分区再均衡</h3><p>因为群组里的消费者共同读取主题的分区，所以当一个消费者被关闭或发生崩溃时，它就离开了群组，原本由它读取的分区将由群组里的其他消费者来读取。同时在主题发生变化时 ， 比如添加了新的分区，也会发生分区与消费者的重新分配，分区的所有权从一个消费者转移到另一个消费者，这样的行为被称为再均衡。正是因为再均衡，所以消费费者群组才能保证高可用性和伸缩性。</p>
+<p>消费者通过向群组协调器所在的 broker 发送心跳来维持它们和群组的从属关系以及它们对分区的所有权。只要消费者以正常的时间间隔发送心跳，就被认为是活跃的，说明它还在读取分区里的消息。消费者会在轮询消息或提交偏移量时发送心跳。如果消费者停止发送心跳的时间足够长，会话就会过期，群组协调器认为它已经死亡，就会触发再均衡。</p>
+<h3 id="三、创建Kafka消费者"><a href="#三、创建Kafka消费者" class="headerlink" title="三、创建Kafka消费者"></a>三、创建Kafka消费者</h3><p>在创建消费者的时候以下以下三个选项是必选的：</p>
+<p>bootstrap.servers ：指定 broker 的地址清单，清单里不需要包含所有的 broker 地址，生产者会从给定的 broker 里查找 broker 的信息。不过建议至少要提供两个 broker 的信息作为容错；<br>key.deserializer ：指定键的反序列化器；<br>value.deserializer ：指定值的反序列化器。</p>
+<p>除此之外你还需要指明你需要想订阅的主题，可以使用如下两个 API :</p>
+<p>consumer.subscribe(Collection<String> topics) ：指明需要订阅的主题的集合；<br>consumer.subscribe(Pattern pattern) ：使用正则来匹配需要订阅的集合。</p>
+<p>最后只需要通过轮询 API(poll) 向服务器定时请求数据。一旦消费者订阅了主题，轮询就会处理所有的细节，包括群组协调、分区再均衡、发送心跳和获取数据，这使得开发者只需要关注从分区返回的数据，然后进行业务处理。 示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">String topic = <span class="string">"Hello-Kafka"</span>;</span><br><span class="line">String group = <span class="string">"group1"</span>;</span><br><span class="line">Properties props = new Properties();</span><br><span class="line">props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"hadoop001:9092"</span>);</span><br><span class="line">/*指定分组 ID*/</span><br><span class="line">props.put(<span class="string">"group.id"</span>, group);</span><br><span class="line">props.put(<span class="string">"key.deserializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringDeserializer"</span>);</span><br><span class="line">props.put(<span class="string">"value.deserializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringDeserializer"</span>);</span><br><span class="line">KafkaConsumer&lt;String, String&gt; consumer = new KafkaConsumer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">/*订阅主题 (s)*/</span><br><span class="line">consumer.subscribe(Collections.singletonList(topic));</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        /*轮询获取数据*/</span><br><span class="line">        ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.of(100, ChronoUnit.MILLIS));</span><br><span class="line">        <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line">            System.out.printf(<span class="string">"topic = %s,partition = %d, key = %s, value = %s, offset = %d,\n"</span>,</span><br><span class="line">           record.topic(), record.partition(), record.key(), record.value(), record.offset());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    consumer.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、-自动提交偏移量"><a href="#三、-自动提交偏移量" class="headerlink" title="三、 自动提交偏移量"></a>三、 自动提交偏移量</h3><p>3.1 偏移量的重要性<br>Kafka 的每一条消息都有一个偏移量属性，记录了其在分区中的位置，偏移量是一个单调递增的整数。消费者通过往一个叫作 ＿consumer_offset 的特殊主题发送消息，消息里包含每个分区的偏移量。 如果消费者一直处于运行状态，那么偏移量就没有 什么用处。不过，如果有消费者退出或者新分区加入，此时就会触发再均衡。完成再均衡之后，每个消费者可能分配到新的分区，而不是之前处理的那个。为了能够继续之前的工作，消费者需要读取每个分区最后一次提交的偏移量，然后从偏移量指定的地方继续处理。 因为这个原因，所以如果不能正确提交偏移量，就可能会导致数据丢失或者重复出现消费，比如下面情况：</p>
+<p>如果提交的偏移量小于客户端处理的最后一个消息的偏移量 ，那么处于两个偏移量之间的消息就会被重复消费；<br>如果提交的偏移量大于客户端处理的最后一个消息的偏移量，那么处于两个偏移量之间的消息将会丢失。</p>
+<p>3.2 自动提交偏移量<br>Kafka 支持自动提交和手动提交偏移量两种方式。这里先介绍比较简单的自动提交：</p>
+<p>只需要将消费者的 enable.auto.commit 属性配置为 true 即可完成自动提交的配置。 此时每隔固定的时间，消费者就会把 poll() 方法接收到的最大偏移量进行提交，提交间隔由 auto.commit.interval.ms 属性进行配置，默认值是 5s。</p>
+<p>使用自动提交是存在隐患的，假设我们使用默认的 5s 提交时间间隔，在最近一次提交之后的 3s 发生了再均衡，再均衡之后，消费者从最后一次提交的偏移量位置开始读取消息。这个时候偏移量已经落后了 3s ，所以在这 3s 内到达的消息会被重复处理。可以通过修改提交时间间隔来更频繁地提交偏移量，减小可能出现重复消息的时间窗，不过这种情况是无法完全避免的。基于这个原因，Kafka 也提供了手动提交偏移量的 API，使得用户可以更为灵活的提交偏移量。</p>
+<h3 id="四、手动提交偏移量"><a href="#四、手动提交偏移量" class="headerlink" title="四、手动提交偏移量"></a>四、手动提交偏移量</h3><p>用户可以通过将 enable.auto.commit 设为 false，然后手动提交偏移量。基于用户需求手动提交偏移量可以分为两大类：<br>手动提交当前偏移量：即手动提交当前轮询的最大偏移量；<br>手动提交固定偏移量：即按照业务需求，提交某一个固定的偏移量。</p>
+<p>而按照 Kafka API，手动提交偏移量又可以分为同步提交和异步提交。<br>4.1 同步提交<br>通过调用 consumer.commitSync() 来进行同步提交，不传递任何参数时提交的是当前轮询的最大偏移量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.of(100, ChronoUnit.MILLIS));</span><br><span class="line">    <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line">        System.out.println(record);</span><br><span class="line">    &#125;</span><br><span class="line">    /*同步提交*/</span><br><span class="line">    consumer.commitSync();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果某个提交失败，同步提交还会进行重试，这可以保证数据能够最大限度提交成功，但是同时也会降低程序的吞吐量。基于这个原因，Kafka 还提供了异步提交的 API。</p>
+<p>4.2 异步提交<br>异步提交可以提高程序的吞吐量，因为此时你可以尽管请求数据，而不用等待 Broker 的响应。代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.of(100, ChronoUnit.MILLIS));</span><br><span class="line">    <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line">        System.out.println(record);</span><br><span class="line">    &#125;</span><br><span class="line">    /*异步提交并定义回调*/</span><br><span class="line">    consumer.commitAsync(new <span class="function"><span class="title">OffsetCommitCallback</span></span>() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onComplete(Map&lt;TopicPartition, OffsetAndMetadata&gt; offsets, Exception exception) &#123;</span><br><span class="line">          <span class="keyword">if</span> (exception != null) &#123;</span><br><span class="line">             System.out.println(<span class="string">"错误处理"</span>);</span><br><span class="line">             offsets.forEach((x, y) -&gt; System.out.printf(<span class="string">"topic = %s,partition = %d, offset = %s \n"</span>,</span><br><span class="line">                                                            x.topic(), x.partition(), y.offset()));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>异步提交存在的问题是，在提交失败的时候不会进行自动重试，实际上也不能进行自动重试。假设程序同时提交了 200 和 300 的偏移量，此时 200 的偏移量失败的，但是紧随其后的 300 的偏移量成功了，此时如果重试就会存在 200 覆盖 300 偏移量的可能。同步提交就不存在这个问题，因为在同步提交的情况下，300 的提交请求必须等待服务器返回 200 提交请求的成功反馈后才会发出。基于这个原因，某些情况下，需要同时组合同步和异步两种提交方式。</p>
+<p>注：虽然程序不能在失败时候进行自动重试，但是我们是可以手动进行重试的，你可以通过一个 Map&lt;TopicPartition, Integer&gt; offsets 来维护你提交的每个分区的偏移量，然后当失败时候，你可以判断失败的偏移量是否小于你维护的同主题同分区的最后提交的偏移量，如果小于则代表你已经提交了更大的偏移量请求，此时不需要重试，否则就可以进行手动重试。</p>
+<p>4.3 同步加异步提交<br>下面这种情况，在正常的轮询中使用异步提交来保证吞吐量，但是因为在最后即将要关闭消费者了，所以此时需要用同步提交来保证最大限度的提交成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.of(100, ChronoUnit.MILLIS));</span><br><span class="line">        <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line">            System.out.println(record);</span><br><span class="line">        &#125;</span><br><span class="line">        // 异步提交</span><br><span class="line">        consumer.commitAsync();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        // 因为即将要关闭消费者，所以要用同步提交保证提交成功</span><br><span class="line">        consumer.commitSync();</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        consumer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.4 提交特定偏移量<br>在上面同步和异步提交的 API 中，实际上我们都没有对 commit 方法传递参数，此时默认提交的是当前轮询的最大偏移量，如果你需要提交特定的偏移量，可以调用它们的重载方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*同步提交特定偏移量*/</span><br><span class="line">commitSync(Map&lt;TopicPartition, OffsetAndMetadata&gt; offsets) </span><br><span class="line">/*异步提交特定偏移量*/    </span><br><span class="line">commitAsync(Map&lt;TopicPartition, OffsetAndMetadata&gt; offsets, OffsetCommitCallback callback)</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，因为你可以订阅多个主题，所以 offsets 中必须要包含所有主题的每个分区的偏移量，示例代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.of(100, ChronoUnit.MILLIS));</span><br><span class="line">        <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line">            System.out.println(record);</span><br><span class="line">            /*记录每个主题的每个分区的偏移量*/</span><br><span class="line">            TopicPartition topicPartition = new TopicPartition(record.topic(), record.partition());</span><br><span class="line">            OffsetAndMetadata offsetAndMetadata = new OffsetAndMetadata(record.offset()+1, <span class="string">"no metaData"</span>);</span><br><span class="line">            /*TopicPartition 重写过 hashCode 和 equals 方法，所以能够保证同一主题和分区的实例不会被重复添加*/</span><br><span class="line">            offsets.put(topicPartition, offsetAndMetadata);</span><br><span class="line">        &#125;</span><br><span class="line">        /*提交特定偏移量*/</span><br><span class="line">        consumer.commitAsync(offsets, null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    consumer.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、监听分区再均衡"><a href="#五、监听分区再均衡" class="headerlink" title="五、监听分区再均衡"></a>五、监听分区再均衡</h3><p>因为分区再均衡会导致分区与消费者的重新划分，有时候你可能希望在再均衡前执行一些操作：比如提交已经处理但是尚未提交的偏移量，关闭数据库连接等。此时可以在订阅主题时候，调用 subscribe 的重载方法传入自定义的分区再均衡监听器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> /*订阅指定集合内的所有主题*/</span><br><span class="line">subscribe(Collection&lt;String&gt; topics, ConsumerRebalanceListener listener)</span><br><span class="line"> /*使用正则匹配需要订阅的主题*/    </span><br><span class="line">subscribe(Pattern pattern, ConsumerRebalanceListener listener)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> Map&lt;TopicPartition, OffsetAndMetadata&gt; offsets = new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">consumer.subscribe(Collections.singletonList(topic), new <span class="function"><span class="title">ConsumerRebalanceListener</span></span>() &#123;</span><br><span class="line">    /*该方法会在消费者停止读取消息之后，再均衡开始之前就调用*/</span><br><span class="line">    @Override</span><br><span class="line">    public void onPartitionsRevoked(Collection&lt;TopicPartition&gt; partitions) &#123;</span><br><span class="line">        System.out.println(<span class="string">"再均衡即将触发"</span>);</span><br><span class="line">        // 提交已经处理的偏移量</span><br><span class="line">        consumer.commitSync(offsets);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*该方法会在重新分配分区之后，消费者开始读取消息之前被调用*/</span><br><span class="line">    @Override</span><br><span class="line">    public void onPartitionsAssigned(Collection&lt;TopicPartition&gt; partitions) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.of(100, ChronoUnit.MILLIS));</span><br><span class="line">        <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line">            System.out.println(record);</span><br><span class="line">            TopicPartition topicPartition = new TopicPartition(record.topic(), record.partition());</span><br><span class="line">            OffsetAndMetadata offsetAndMetadata = new OffsetAndMetadata(record.offset() + 1, <span class="string">"no metaData"</span>);</span><br><span class="line">            /*TopicPartition 重写过 hashCode 和 equals 方法，所以能够保证同一主题和分区的实例不会被重复添加*/</span><br><span class="line">            offsets.put(topicPartition, offsetAndMetadata);</span><br><span class="line">        &#125;</span><br><span class="line">        consumer.commitAsync(offsets, null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    consumer.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="六-、退出轮询"><a href="#六-、退出轮询" class="headerlink" title="六 、退出轮询"></a>六 、退出轮询</h3><p>Kafka 提供了 consumer.wakeup() 方法用于退出轮询，它通过抛出 WakeupException 异常来跳出循环。需要注意的是，在退出线程时最好显示的调用 consumer.close() , 此时消费者会提交任何还没有提交的东西，并向群组协调器发送消息，告知自己要离开群组，接下来就会触发再均衡 ，而不需要等待会话超时。</p>
+<p>下面的示例代码为监听控制台输出，当输入 exit 时结束轮询，关闭消费者并退出程序：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/*调用 wakeup 优雅的退出*/</span><br><span class="line">final Thread mainThread = Thread.currentThread();</span><br><span class="line">new Thread(() -&gt; &#123;</span><br><span class="line">    Scanner sc = new Scanner(System.in);</span><br><span class="line">    <span class="keyword">while</span> (sc.hasNext()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">"exit"</span>.equals(sc.next())) &#123;</span><br><span class="line">            consumer.wakeup();</span><br><span class="line">            try &#123;</span><br><span class="line">                /*等待主线程完成提交偏移量、关闭消费者等操作*/</span><br><span class="line">                mainThread.join();</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        ConsumerRecords&lt;String, String&gt; records = consumer.poll(Duration.of(100, ChronoUnit.MILLIS));</span><br><span class="line">        <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; rd : records) &#123;</span><br><span class="line">            System.out.printf(<span class="string">"topic = %s,partition = %d, key = %s, value = %s, offset = %d,\n"</span>,</span><br><span class="line">                              rd.topic(), rd.partition(), rd.key(), rd.value(), rd.offset());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; catch (WakeupException e) &#123;</span><br><span class="line">    //对于 wakeup() 调用引起的 WakeupException 异常可以不必处理</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    consumer.close();</span><br><span class="line">    System.out.println(<span class="string">"consumer 关闭"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="七、独立的消费者"><a href="#七、独立的消费者" class="headerlink" title="七、独立的消费者"></a>七、独立的消费者</h3><p>因为 Kafka 的设计目标是高吞吐和低延迟，所以在 Kafka 中，消费者通常都是从属于某个群组的，这是因为单个消费者的处理能力是有限的。但是某些时候你的需求可能很简单，比如可能只需要一个消费者从一个主题的所有分区或者某个特定的分区读取数据，这个时候就不需要消费者群组和再均衡了， 只需要把主题或者分区分配给消费者，然后开始读取消息井提交偏移量即可。</p>
+<p>在这种情况下，就不需要订阅主题， 取而代之的是消费者为自己分配分区。 一个消费者可以订阅主题（井加入消费者群组），或者为自己分配分区，但不能同时做这两件事情。 分配分区的示例代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">List&lt;TopicPartition&gt; partitions = new ArrayList&lt;&gt;();</span><br><span class="line">List&lt;PartitionInfo&gt; partitionInfos = consumer.partitionsFor(topic);</span><br><span class="line"></span><br><span class="line">/*可以指定读取哪些分区 如这里假设只读取主题的 0 分区*/</span><br><span class="line"><span class="keyword">for</span> (PartitionInfo partition : partitionInfos) &#123;</span><br><span class="line">    <span class="keyword">if</span> (partition.partition()==0)&#123;</span><br><span class="line">        partitions.add(new TopicPartition(partition.topic(), partition.partition()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 为消费者指定分区</span><br><span class="line">consumer.assign(partitions);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    ConsumerRecords&lt;Integer, String&gt; records = consumer.poll(Duration.of(100, ChronoUnit.MILLIS));</span><br><span class="line">    <span class="keyword">for</span> (ConsumerRecord&lt;Integer, String&gt; record : records) &#123;</span><br><span class="line">        System.out.printf(<span class="string">"partition = %s, key = %d, value = %s\n"</span>,</span><br><span class="line">                          record.partition(), record.key(), record.value());</span><br><span class="line">    &#125;</span><br><span class="line">    consumer.commitSync();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="附录-Kafka消费者可选属性"><a href="#附录-Kafka消费者可选属性" class="headerlink" title="附录 : Kafka消费者可选属性"></a>附录 : Kafka消费者可选属性</h3><ol>
+<li><p>fetch.min.byte<br>消费者从服务器获取记录的最小字节数。如果可用的数据量小于设置值，broker 会等待有足够的可用数据时才会把它返回给消费者。</p>
+</li>
+<li><p>fetch.max.wait.ms<br>broker 返回给消费者数据的等待时间，默认是 500ms。</p>
+</li>
+<li><p>max.partition.fetch.bytes<br>该属性指定了服务器从每个分区返回给消费者的最大字节数，默认为 1MB。</p>
+</li>
+<li><p>session.timeout.ms<br>消费者在被认为死亡之前可以与服务器断开连接的时间，默认是 3s。</p>
+</li>
+<li><p>auto.offset.reset<br>该属性指定了消费者在读取一个没有偏移量的分区或者偏移量无效的情况下该作何处理：</p>
+</li>
+</ol>
+<p>latest (默认值) ：在偏移量无效的情况下，消费者将从最新的记录开始读取数据（在消费者启动之后生成的最新记录）;<br>earliest ：在偏移量无效的情况下，消费者将从起始位置读取分区的记录。<br>6. enable.auto.commit<br>是否自动提交偏移量，默认值是 true。为了避免出现重复消费和数据丢失，可以把它设置为 false。</p>
+<ol start="7">
+<li><p>client.id<br>客户端 id，服务器用来识别消息的来源。</p>
+</li>
+<li><p>max.poll.records<br>单次调用 poll() 方法能够返回的记录数量。</p>
+</li>
+<li><p>receive.buffer.bytes &amp; send.buffer.byte<br>这两个参数分别指定 TCP socket 接收和发送数据包缓冲区的大小，-1 代表使用操作系统的默认值。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/" rel="tag">kafka</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-6" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/12/02/6/" class="article-date">
+      <time datetime="2018-12-02T06:22:46.000Z" itemprop="datePublished">2018-12-02</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/12/02/6/">Oozie任务调度使用详细代码</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="job-properties"><a href="#job-properties" class="headerlink" title="job.properties"></a>job.properties</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">nameNode=hdfs://dev-bg-m01:8020</span><br><span class="line">jobTracker=dev-bg-m01:8050</span><br><span class="line">queueName=default</span><br><span class="line">oozie.use.system.libpath=<span class="literal">true</span></span><br><span class="line"><span class="comment">#oozie.libpath=/user/dmp_operator1/share/libs</span></span><br><span class="line">jdbcURL=jdbc:hive2://dev-bg-m01:10000/default</span><br><span class="line">jdbcPrincipal=hive/dev-bg-m01@DATASEA.COM</span><br><span class="line">appsDir=user/dmp_operator1/OozieApps</span><br><span class="line">dataDir=user/dmp_operator1/data</span><br><span class="line">jdbcPrincipal=hive/dev-bg-m01@DATASEA.COM</span><br><span class="line">jdbcURL=jdbc:hive2://dev-bg-m01:10000/default</span><br><span class="line">oozie.coord.application.path=<span class="variable">$&#123;nameNode&#125;</span>/<span class="variable">$&#123;appsDir&#125;</span>/shop/t_order</span><br><span class="line"><span class="comment">#oozie.wf.application.path=$&#123;nameNode&#125;/$&#123;appsDir&#125;/shop/t_order</span></span><br><span class="line">workflowAppUri=<span class="variable">$&#123;nameNode&#125;</span>/<span class="variable">$&#123;appsDir&#125;</span>/shop/t_order</span><br><span class="line">start=2018-12-14T01:00+0800</span><br><span class="line">end=2018-12-30T01:00+0800</span><br></pre></td></tr></table></figure>
+
+<h3 id="getDate-sh"><a href="#getDate-sh" class="headerlink" title="getDate.sh"></a>getDate.sh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">last_day=`date -d last-day +%Y-%m-%d`</span><br><span class="line">current_day=`date -d today +%Y-%m-%d`</span><br><span class="line"><span class="built_in">echo</span> start_day=<span class="variable">$last_day</span></span><br><span class="line"><span class="built_in">echo</span> end_day=<span class="variable">$current_day</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="coordinator-xml"><a href="#coordinator-xml" class="headerlink" title="coordinator.xml"></a>coordinator.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">       Licensed to the Apache Software Foundation (ASF) under one</span><br><span class="line">  or more contributor license agreements.  See the NOTICE file</span><br><span class="line">  distributed with this work <span class="keyword">for</span> additional information</span><br><span class="line">  regarding copyright ownership.  The ASF licenses this file</span><br><span class="line">  to you under the Apache License, Version 2.0 (the</span><br><span class="line">  <span class="string">"License"</span>); you may not use this file except <span class="keyword">in</span> compliance</span><br><span class="line">  with the License.  You may obtain a copy of the License at</span><br><span class="line">  </span><br><span class="line">       http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line">  </span><br><span class="line">  Unless required by applicable law or agreed to <span class="keyword">in</span> writing, software</span><br><span class="line">  distributed under the License is distributed on an <span class="string">"AS IS"</span> BASIS,</span><br><span class="line">  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line">  See the License <span class="keyword">for</span> the specific language governing permissions and</span><br><span class="line">  limitations under the License.</span><br><span class="line">--&gt;</span><br><span class="line">&lt;coordinator-app name=<span class="string">"t_order_sqoop"</span> frequency=<span class="string">"40 11 * * *"</span> start=<span class="string">"<span class="variable">$&#123;start&#125;</span>"</span> end=<span class="string">"<span class="variable">$&#123;end&#125;</span>"</span> timezone=<span class="string">"GMT+0800"</span></span><br><span class="line">                 xmlns=<span class="string">"uri:oozie:coordinator:0.4"</span>&gt;</span><br><span class="line">        &lt;action&gt;</span><br><span class="line">        &lt;workflow&gt;</span><br><span class="line">            &lt;app-path&gt;<span class="variable">$&#123;workflowAppUri&#125;</span>&lt;/app-path&gt;</span><br><span class="line">            &lt;configuration&gt;</span><br><span class="line">                &lt;property&gt;</span><br><span class="line">                    &lt;name&gt;jobTracker&lt;/name&gt;</span><br><span class="line">                    &lt;value&gt;<span class="variable">$&#123;jobTracker&#125;</span>&lt;/value&gt;</span><br><span class="line">                &lt;/property&gt;</span><br><span class="line">                &lt;property&gt;</span><br><span class="line">                    &lt;name&gt;nameNode&lt;/name&gt;</span><br><span class="line">                    &lt;value&gt;<span class="variable">$&#123;nameNode&#125;</span>&lt;/value&gt;</span><br><span class="line">                &lt;/property&gt;</span><br><span class="line">                &lt;property&gt;</span><br><span class="line">                    &lt;name&gt;queueName&lt;/name&gt;</span><br><span class="line">                    &lt;value&gt;<span class="variable">$&#123;queueName&#125;</span>&lt;/value&gt;</span><br><span class="line">                &lt;/property&gt;</span><br><span class="line">            &lt;/configuration&gt;</span><br><span class="line">        &lt;/workflow&gt;</span><br><span class="line">    &lt;/action&gt;</span><br><span class="line">&lt;/coordinator-app&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="workflow-xml"><a href="#workflow-xml" class="headerlink" title="workflow.xml"></a>workflow.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;&lt;!-- Licensed to the Apache Software </span><br><span class="line">        Foundation (ASF) under one or more contributor license agreements. See the </span><br><span class="line">        NOTICE file distributed with this work <span class="keyword">for</span> additional information regarding </span><br><span class="line">        copyright ownership. The ASF licenses this file to you under the Apache License, </span><br><span class="line">        Version 2.0 (the <span class="string">"License"</span>); you may not use this file except <span class="keyword">in</span> compliance </span><br><span class="line">        with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 </span><br><span class="line">        Unless required by applicable law or agreed to <span class="keyword">in</span> writing, software distributed </span><br><span class="line">        under the License is distributed on an <span class="string">"AS IS"</span> BASIS, WITHOUT WARRANTIES </span><br><span class="line">        OR CONDITIONS OF ANY KIND, either express or implied. See the License <span class="keyword">for</span> </span><br><span class="line">        the specific language governing permissions and limitations under the License. --&gt;</span><br><span class="line">&lt;workflow-app xmlns=<span class="string">"uri:oozie:workflow:0.5"</span> name=<span class="string">"dmp-base-jobs"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;credentials&gt;</span><br><span class="line">                &lt;credential name=<span class="string">"hs2-creds"</span> <span class="built_in">type</span>=<span class="string">"hive2"</span>&gt;</span><br><span class="line">                        &lt;property&gt;</span><br><span class="line">                                &lt;name&gt;hive2.server.principal&lt;/name&gt;</span><br><span class="line">                                &lt;value&gt;<span class="variable">$&#123;jdbcPrincipal&#125;</span>&lt;/value&gt;</span><br><span class="line">                        &lt;/property&gt;</span><br><span class="line">                        &lt;property&gt;</span><br><span class="line">                                &lt;name&gt;hive2.jdbc.url&lt;/name&gt;</span><br><span class="line">                                &lt;value&gt;<span class="variable">$&#123;jdbcURL&#125;</span>&lt;/value&gt;</span><br><span class="line">                        &lt;/property&gt;</span><br><span class="line">                &lt;/credential&gt;</span><br><span class="line">        &lt;/credentials&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;start to=<span class="string">"shell-date"</span> /&gt;</span><br><span class="line">        &lt;action name=<span class="string">"shell-date"</span>&gt;</span><br><span class="line">                &lt;shell xmlns=<span class="string">"uri:oozie:shell-action:0.2"</span>&gt;</span><br><span class="line">                        &lt;job-tracker&gt;<span class="variable">$&#123;jobTracker&#125;</span>&lt;/job-tracker&gt;</span><br><span class="line">                        &lt;name-node&gt;<span class="variable">$&#123;nameNode&#125;</span>&lt;/name-node&gt;</span><br><span class="line">                        &lt;configuration&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;mapred.job.queue.name&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;<span class="variable">$&#123;queueName&#125;</span>&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.mapreduce.map.memory.mb&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;2048&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.mapreduce.map.java.opts&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;-Xmx1638m&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.yarn.app.mapreduce.am.resource.mb&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;2048&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.yarn.app.mapreduce.am.command-opts&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;-Xmx1638m&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                        &lt;/configuration&gt;</span><br><span class="line">                        &lt;<span class="built_in">exec</span>&gt;getDate.sh&lt;/<span class="built_in">exec</span>&gt;</span><br><span class="line">                        &lt;file&gt;getDate.sh&lt;/file&gt;</span><br><span class="line">                        &lt;capture-output /&gt;</span><br><span class="line">                &lt;/shell&gt;</span><br><span class="line">                &lt;ok to=<span class="string">"appForkStart"</span> /&gt;</span><br><span class="line">                &lt;error to=<span class="string">"fail"</span> /&gt;</span><br><span class="line">        &lt;/action&gt;</span><br><span class="line">        &lt;fork name=<span class="string">"appForkStart"</span>&gt;</span><br><span class="line">                &lt;path start=<span class="string">"t_dynamic_info_import"</span> /&gt;</span><br><span class="line">        &lt;/fork&gt;</span><br><span class="line">         &lt;action name=<span class="string">"t_dynamic_info_import"</span>&gt;</span><br><span class="line">                &lt;sqoop xmlns=<span class="string">"uri:oozie:sqoop-action:0.2"</span>&gt;</span><br><span class="line">                        &lt;job-tracker&gt;<span class="variable">$&#123;jobTracker&#125;</span>&lt;/job-tracker&gt;</span><br><span class="line">                        &lt;name-node&gt;<span class="variable">$&#123;nameNode&#125;</span>&lt;/name-node&gt;</span><br><span class="line">                        &lt;configuration&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;mapred.job.queue.name&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;<span class="variable">$&#123;queueName&#125;</span>&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.mapreduce.map.memory.mb&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;5120&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.mapreduce.map.java.opts&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;-Xmx4096m&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.yarn.app.mapreduce.am.resource.mb&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;5120&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.yarn.app.mapreduce.am.command-opts&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;-Xmx4096m&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                        &lt;/configuration&gt;</span><br><span class="line">                        &lt;arg&gt;import&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--connect&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;jdbc:mysql://192.168.3.119/jt_ai_forum?tinyInt1isBit=<span class="literal">false</span>&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--username&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;root&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--password&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;Xingrui@DCDB123&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--driver&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;com.mysql.jdbc.Driver&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--query&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;select</span><br><span class="line">                                dynamic_id,company_id,card_id,dynamic_type,title,content,images,video_style,video_url,is_pub,is_top,pub_time,gmt_create,gmt_modified,old_db_id,programa_id</span><br><span class="line">                                from t_dynamic_info WHERE 1=1 and <span class="variable">$CONDITIONS</span></span><br><span class="line">                        &lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--hive-drop-import-delims&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--null-string&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;\\N&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--null-non-string&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;\\N&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--delete-target-dir&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--target-dir&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;/apps/hive/warehouse/ods.db/ods_t_dynamic_info/dt=<span class="variable">$&#123;(wf:actionData('shell-date')['start_date'])&#125;</span></span><br><span class="line">                        &lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;--fields-terminated-by&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;\001&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;-m&lt;/arg&gt;</span><br><span class="line">                        &lt;arg&gt;1&lt;/arg&gt;</span><br><span class="line">                &lt;/sqoop&gt;</span><br><span class="line">                &lt;ok to=<span class="string">"appForkEnd"</span> /&gt;</span><br><span class="line">                &lt;error to=<span class="string">"fail"</span> /&gt;</span><br><span class="line">        &lt;/action&gt;</span><br><span class="line"></span><br><span class="line"> &lt;join name=<span class="string">"appForkEnd"</span> to=<span class="string">"DWD_APP_USER_INCREASED_RECORD_ETL"</span> /&gt;</span><br><span class="line"></span><br><span class="line"> &lt;action name=<span class="string">"DWD_APP_USER_INCREASED_RECORD_ETL"</span>&gt;</span><br><span class="line">                &lt;shell xmlns=<span class="string">"uri:oozie:shell-action:0.2"</span>&gt;</span><br><span class="line">                        &lt;job-tracker&gt;<span class="variable">$&#123;jobTracker&#125;</span>&lt;/job-tracker&gt;</span><br><span class="line">                        &lt;name-node&gt;<span class="variable">$&#123;nameNode&#125;</span>&lt;/name-node&gt;</span><br><span class="line">                        &lt;configuration&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;mapred.job.queue.name&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;<span class="variable">$&#123;queueName&#125;</span>&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.mapreduce.map.memory.mb&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;5120&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.mapreduce.map.java.opts&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;-Xmx4096m&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.yarn.app.mapreduce.am.resource.mb&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;5120&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                                &lt;property&gt;</span><br><span class="line">                                        &lt;name&gt;oozie.launcher.yarn.app.mapreduce.am.command-opts&lt;/name&gt;</span><br><span class="line">                                        &lt;value&gt;-Xmx4096m&lt;/value&gt;</span><br><span class="line">                                &lt;/property&gt;</span><br><span class="line">                        &lt;/configuration&gt;</span><br><span class="line">                        &lt;<span class="built_in">exec</span>&gt;DWD/DWD_APP_USER_INCREASED_RECORD/DWD_APP_USER_INCREASED_RECORD_ETL.sh</span><br><span class="line">                        &lt;/<span class="built_in">exec</span>&gt;</span><br><span class="line">                        &lt;argument&gt;<span class="variable">$&#123;(wf:actionData('shell-date')['start_date'])&#125;</span>&lt;/argument&gt;</span><br><span class="line">                        &lt;argument&gt;<span class="variable">$&#123;(wf:actionData('shell-date')['end_date'])&#125;</span>&lt;/argument&gt;</span><br><span class="line">                        &lt;file&gt;DWD/DWD_APP_USER_INCREASED_RECORD/DWD_APP_USER_INCREASED_RECORD_ETL.sh</span><br><span class="line">                        &lt;/file&gt;</span><br><span class="line">                        &lt;capture-output /&gt;</span><br><span class="line">                &lt;/shell&gt;</span><br><span class="line">                &lt;ok to=<span class="string">"bdl_company_info_etl"</span> /&gt;</span><br><span class="line">                &lt;error to=<span class="string">"fail"</span> /&gt;</span><br><span class="line">        &lt;/action&gt;</span><br><span class="line">        &lt;<span class="built_in">kill</span> name=<span class="string">"fail"</span>&gt;</span><br><span class="line">                &lt;message&gt;Shell action failed, error</span><br><span class="line">                        message[<span class="variable">$&#123;wf:errorMessage(wf:lastErrorNode())&#125;</span>]&lt;/message&gt;</span><br><span class="line">        &lt;/<span class="built_in">kill</span>&gt;</span><br><span class="line">        &lt;end name=<span class="string">"end"</span> /&gt;</span><br><span class="line">&lt;/workflow-app&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oozie/" rel="tag">Oozie</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-12" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/18/12/" class="article-date">
+      <time datetime="2018-03-18T14:01:24.000Z" itemprop="datePublished">2018-03-18</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/18/12/">Apache Kylin</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、kylin解决了什么关键问题？"><a href="#一、kylin解决了什么关键问题？" class="headerlink" title="一、kylin解决了什么关键问题？"></a>一、kylin解决了什么关键问题？</h3><p>Apache Kylin的初衷就是解决千亿、万亿条记录的秒级查询问题，其中的关键就是打破查询时间随着数据量呈线性增长的这一规律。<br>大数据OLAP，我们可以注意到两个事实：<br>• 大数据查询要的一般是统计结果，是多条记录经过聚合函数计算后的统计值。原始的记录则不是必需的，或者被访问的频率和概率极低。<br>• 聚合是按维度进行的，而维度的聚合可能性是有限的，一般不随数据的膨胀而线性增长。<br>基于以上两点，我们得到一个新的思路——“预计算”。应尽量多地预先计算聚合结果，在查询时刻也尽量使用预计算的结果得出查询结果，从而避免直接扫描可能无限增长的原始记录。<br>举例来说，要用下面的SQL来查询10月1日那天销量最高的商品。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT item, SUM(sell_amount) FROM sell_details WHERE sell_date=<span class="string">'2016-10-01'</span> GROUP BY item ORDER BY SUM(sell_amount) DESC</span><br></pre></td></tr></table></figure>
+
+<p>传统的方法需要扫描所有的记录，找到10月1日的销售记录，然后按商品聚合销售额，最后排序返回。</p>
+<p>假如10月1日有1亿条交易，那么查询必需读取并累计至少1亿条记录，且查询速度会随将来销量的增加而逐步下降，如果日交易量提高至2亿条，那查询执行的时间可能会增加一倍</p>
+<p>而预计算的方法则会事先按维度[sell_date，item]计算SUM(sell_amount)并将其存储下来，在查询时找到10月1日的销售商品就可以直接排序返回了。</p>
+<p>读取的记录数最大不超过维度[sell_date，item]的组合数。显然这个数字将远远小于实际的销售记录，比如10月1日的1亿条交易包含了100万种商品，那么预计算后就只有100万条记录了，是原来的百分之一。并且这些记录是已经按商品聚合的结果，省去了运行时的聚合运算。从未来的发展来看，查询速度只会随日期和商品数目的增长而变化，与销售记录总数不再有直接联系。假如日交易量提高一倍到2亿，但只要商品总数不变，那么预计算的结果记录总数就不会变，查询的速度也不会变。</p>
+<p>“预计算”就是Kylin在“大规模并行处理”和“列式存储”之外，提供给大数据分析的第三个关键技术。</p>
+<h3 id="二、kylin工作原理"><a href="#二、kylin工作原理" class="headerlink" title="二、kylin工作原理"></a>二、kylin工作原理</h3><p>2.1 维度和度量简介<br>在说明MOLAP Cube之前，需要先介绍一下维度（dimension）和度量（measure）这两个概念。</p>
+<p>简单来讲，维度就是观察数据的角度。比如电商的销售数据，可以从时间的维度来观察（如图1-2的左图所示），也可以进一步细化从时间和地区的维度来观察（如图1-2的右图所示）。</p>
+<p>维度一般是一组离散的值，比如时间维度上的每一个独立的日期，或者商品维度上的每一件独立的商品。因此，统计时可以把维度值相同的记录聚合起来，应用聚合函数做累加、平均、去重复计数等聚合计算。</p>
+<p><img src="/images/3.png" alt="alt"></p>
+<p>度量就是被聚合的统计值，也是聚合运算的结果，它一般是连续值，如图1-2中的销售额，抑或是销售商品的总件数。通过比较和测算度量，分析师可以对数据进行评估，比如今年的销售额相比去年有多大的增长、增长的速度是否达到预期、不同商品类别的增长比例是否合理等。</p>
+<p>2.2 Cube和Cuboid<br>了解了维度和度量，就可以对数据表或者数据模型上的所有字段进行分类了，它们要么是维度，要么是度量（可以被聚合）。于是就有了根据维度、度量做预计算的Cube理论。</p>
+<p>给定一个数据模型，我们可以对其上所有维度进行组合。对于N个维度来说，所有组合的可能性有2N种。对每一种维度的组合，将度量做聚合运算，运算的结果保存为一个物化视图，称为Cuboid。将所有维度组合的Cuboid作为一个整体，被称为Cube。所以简单来说，一个Cube就是许多按维度聚合的物化视图的集合。</p>
+<p>举一个具体的例子。假定有一个电商的销售数据集，其中维度有时间（Time）、商品（Item）、地点（Location）和供应商（Supplier），度量有销售额（GMV）。那么，所有维度的组合就有24=16种（如图），比如一维度（1D）的组合有[Time][Item][Location][Supplier]四种；二维度（2D）的组合有[Time，Item][Time，Location][Time、Supplier][Item，Location][Item，Supplier][Location，Supplier]六种；三维度（3D）的组合也有四种；最后，零维度（0D）和四维度（4D）的组合各有一种，共计16种组合。</p>
+<p>计算Cuboid，就是按维度来聚合销售额（GMV）。如果用SQL来表达计算Cuboid[Time，Location]，那就是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select Time, Location, Sum(GMV) as GMV from Sales group by Time, Location</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/4.png" alt="alt"></p>
+<p>将计算的结果保存为物化视图，所有Cuboid物化视图的总称就是Cube了。</p>
+<p>2.3 工作原理<br>Apache Kylin的工作原理就是对数据模型做Cube预计算，并利用计算的结果加速查询。过程如下：</p>
+<p>（1）指定数据模型，定义维度和度量。</p>
+<p>（2）预计算Cube，计算所有Cuboid并将其保存为物化视图。</p>
+<p>（3）执行查询时，读取Cuboid，进行加工运算产生查询结果。</p>
+<p>由于Kylin的查询过程不会扫描原始记录，而是通过预计算预先完成表的关联、聚合等复杂运算，并利用预计算的结果来执行查询，因此其速度相比非预计算的查询技术一般要快一个到两个数量级。并且在超大数据集上其优势更明显。当数据集达到千亿乃至万亿级别时，Kylin的速度甚至可以超越其他非预计算技术1000倍以上。</p>
+<h3 id="三、kylin技术架构"><a href="#三、kylin技术架构" class="headerlink" title="三、kylin技术架构"></a>三、kylin技术架构</h3><p>Apache Kylin系统可以分为在线查询和离线构建两部分，其技术架构如图所示。在线查询主要由上半区组成，离线构建在下半区。</p>
+<p>先看离线构建的部分。从图1-4中可以看到，数据源在左侧，目前主要是Hadoop、Hive、Kafka和RDBMS，其中保存着待分析的用户数据。</p>
+<p>根据元数据定义，下方构建引擎从数据源中抽取数据，并构建Cube。</p>
+<p>数据以关系表的形式输入，且必须符合星形模型（Star Schema）或雪花模型（Snowflake Schema）。</p>
+<p>用户可以选择使用MapReduce或Spark进行构建。</p>
+<p>构建后的Cube保存在右侧的存储引擎中，目前HBase是默认的存储引擎。</p>
+<p><img src="/images/5.png" alt="alt"><br>完成离线构建后，用户可以从上方查询系统发送SQL来进行查询分析。Kylin提供了多样的REST API、JDBC/ODBC接口。无论从哪个接口进入，最终SQL都会来到REST服务层，再转交给查询引擎进行处理。这里需要注意的是，SQL语句是基于数据源的关系模型书写的，而不是Cube。Kylin在设计时刻意对查询用户屏蔽了Cube的概念，分析师只需要理解简单的关系模型就可以使用Kylin，没有额外的学习门槛，传统的SQL应用也更容易迁移。查询引擎解析SQL，生成基于关系表的逻辑执行计划，然后将其转译为基于Cube的物理执行计划，最后查询预计算生成的Cube产生结果。整个过程不访问原始数据源。</p>
+<p>　　注意　对于查询引擎下方的路由选择，在最初设计时考虑过将Kylin不能执行的查询引导到Hive中继续执行。但在实践后发现Hive与Kylin的执行速度差异过大，导致用户无法对查询的速度有一致的期望，大多语句很可能查询几秒就返回了，而有些要等几分钟到几十分钟，用户体验非常糟糕。最后这个路由功能在发行版中默认被关闭。</p>
+<p>Apache Kylin v1.5版本引入了“可扩展架构”的概念。图1-4所示为Rest Server、Cube Build Engine和数据源表示的抽象层。可扩展是指Kylin可以对其三个主要依赖模块——数据源、构建引擎和存储引擎，做任意的扩展和替换。在设计之初，作为Hadoop家族的一员，这三者分别是Hive、MapReduce和HBase。但随着Apache Kylin的推广和使用的深入，用户发现它们存在不足之处。</p>
+<p>比如，实时分析可能会希望从Kafka导入数据而不是从Hive；而Spark的迅速崛起，又使我们不得不考虑将MapReduce替换为Spark以提高Cube的构建速度；至于HBase，它的读性能可能不如Cassandra等。可见，是否可以将某种技术替换为另一种技术已成为一个常见的问题。于是，我们对Apache Kylin v1.5版本的系统架构进行了重构，将数据源、构建引擎、存储引擎三大主要依赖模块抽象为接口，而Hive、MapReduce、HBase只是默认实现。其他实现还有：数据源还可以是Kafka、Hadoop或RDBMS；构建引擎还可以是Spark、Flink。资深用户可以根据自己的需要做二次开发，将其中的一个或者多个技术替换为更适合自身需要的技术。</p>
+<p>这也为Kylin技术的与时俱进奠定了基础。如果将来有更先进的分布式计算技术可以取代MapReduce，或者有更高效的存储系统全面超越了HBase，Kylin可以用较小的代价将一个子系统替换掉，从而保证Kylin紧跟技术发展的最新潮流，保持最高的技术水平。</p>
+<p>可扩展架构也带来了额外的灵活性，比如，它可以允许多个引擎并存。例如，Kylin可以同时对接Hive、Kafka和其他第三方数据源；抑或用户可以为不同的Cube指定不同的构建引擎或存储引擎，以期达到极致的性能和功能定制。</p>
+<h3 id="四、kylin特点"><a href="#四、kylin特点" class="headerlink" title="四、kylin特点"></a>四、kylin特点</h3><p>Apache Kylin的主要特点包括：<br>支持SQL接口<br>支持超大数据集<br>秒级响应<br>可伸缩性<br>高吞吐率<br>BI及可视化工具集成</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kylin-olap/" rel="tag">kylin olap</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-15" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/18/15/" class="article-date">
+      <time datetime="2018-03-18T01:12:55.000Z" itemprop="datePublished">2018-03-18</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/18/15/">Spark 累加器与广播变量</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>在 Spark 中，提供了两种类型的共享变量：累加器 (accumulator) 与广播变量 (broadcast variable)：</p>
+<p>累加器：用来对信息进行聚合，主要用于累计计数等场景；<br>广播变量：主要用于在节点间高效分发大对象。</p>
+<h3 id="二、累加器"><a href="#二、累加器" class="headerlink" title="二、累加器"></a>二、累加器</h3><p>这里先看一个具体的场景，对于正常的累计求和，如果在集群模式中使用下面的代码进行计算，会发现执行结果并非预期</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var counter = 0</span><br><span class="line">val data = Array(1, 2, 3, 4, 5)</span><br><span class="line">sc.parallelize(data).foreach(x =&gt; counter += x)</span><br><span class="line"> println(counter)</span><br></pre></td></tr></table></figure>
+<p>counter 最后的结果是 0，导致这个问题的主要原因是闭包。<br><img src="/images/11.png" alt="alt"></p>
+<p> 2.1 理解闭包</p>
+<ol>
+<li>Scala 中闭包的概念</li>
+</ol>
+<p>这里先介绍一下 Scala 中关于闭包的概念：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var more = 10</span><br><span class="line">val addMore = (x: Int) =&gt; x + more</span><br></pre></td></tr></table></figure>
+
+<p>如上函数 addMore 中有两个变量 x 和 more:</p>
+<p>x : 是一个绑定变量 (bound variable)，因为其是该函数的入参，在函数的上下文中有明确的定义；<br>more : 是一个自由变量 (free variable)，因为函数字面量本生并没有给 more 赋予任何含义。<br>按照定义：在创建函数时，如果需要捕获自由变量，那么包含指向被捕获变量的引用的函数就被称为闭包函数。</p>
+<ol start="2">
+<li>Spark 中的闭包</li>
+</ol>
+<p>在实际计算时，Spark 会将对 RDD 操作分解为 Task，Task 运行在 Worker Node 上。在执行之前，Spark 会对任务进行闭包，如果闭包内涉及到自由变量，则程序会进行拷贝，并将副本变量放在闭包中，之后闭包被序列化并发送给每个执行者。因此，当在 foreach 函数中引用 counter 时，它将不再是 Driver 节点上的 counter，而是闭包中的副本 counter，默认情况下，副本 counter 更新后的值不会回传到 Driver，所以 counter 的最终值仍然为零。</p>
+<p>需要注意的是：在 Local 模式下，有可能执行 foreach 的 Worker Node 与 Diver 处在相同的 JVM，并引用相同的原始 counter，这时候更新可能是正确的，但是在集群模式下一定不正确。所以在遇到此类问题时应优先使用累加器。</p>
+<p>累加器的原理实际上很简单：就是将每个副本变量的最终值传回 Driver，由 Driver 聚合后得到最终值，并更新原始变量。<br><img src="/images/12.png" alt="alt"></p>
+<p>2.2 使用累加器<br>SparkContext 中定义了所有创建累加器的方法，需要注意的是：被中横线划掉的累加器方法在 Spark 2.0.0 之后被标识为废弃。</p>
+<p><img src="/images/13.png" alt="alt"></p>
+<p>使用示例和执行结果分别如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">val data = Array(1, 2, 3, 4, 5)</span><br><span class="line">// 定义累加器</span><br><span class="line">val accum = sc.longAccumulator(<span class="string">"My Accumulator"</span>)</span><br><span class="line">sc.parallelize(data).foreach(x =&gt; accum.add(x))</span><br><span class="line">// 获取累加器的值</span><br><span class="line">accum.value</span><br></pre></td></tr></table></figure>
+<p><img src="/images/14.png" alt="alt"></p>
+<h3 id="三、广播变量"><a href="#三、广播变量" class="headerlink" title="三、广播变量"></a>三、广播变量</h3><p>在上面介绍中闭包的过程中我们说道每个 Task 任务的闭包都会持有自由变量的副本，如果变量很大且 Task 任务很多的情况下，这必然会对网络 IO 造成压力，为了解决这个情况，Spark 提供了广播变量。</p>
+<p>广播变量的做法很简单：就是不把副本变量分发到每个 Task 中，而是将其分发到每个 Executor，Executor 中的所有 Task 共享一个副本变量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 把一个数组定义为一个广播变量</span><br><span class="line">val broadcastVar = sc.broadcast(Array(1, 2, 3, 4, 5))</span><br><span class="line">// 之后用到该数组时应优先使用广播变量，而不是原值</span><br><span class="line">sc.parallelize(broadcastVar.value).map(_ * 10).collect()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/" rel="tag">spark</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-11" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/16/11/" class="article-date">
+      <time datetime="2018-03-16T03:01:24.000Z" itemprop="datePublished">2018-03-16</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/16/11/">python用map-reduce(IP地址库匹配省份和城市)</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="IP地址库文件为city-txt大致内容如下"><a href="#IP地址库文件为city-txt大致内容如下" class="headerlink" title="IP地址库文件为city.txt大致内容如下"></a>IP地址库文件为city.txt大致内容如下</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">708104192|708112383|辽宁|葫芦岛</span><br><span class="line">708112384|708116479|辽宁|朝阳</span><br><span class="line">708116480|708124671|辽宁|营口</span><br><span class="line">708124672|708132863|辽宁|阜新</span><br><span class="line">708132864|708141055|辽宁|阜新</span><br><span class="line">708141056|708145151|辽宁|锦州</span><br><span class="line">708145152|708149247|辽宁|葫芦岛</span><br><span class="line">708149248|708153343|辽宁|葫芦岛</span><br><span class="line">708153344|708157439|辽宁|盘锦</span><br><span class="line">708157440|708161535|辽宁|盘锦</span><br><span class="line">708161536|708165631|辽宁|朝阳</span><br><span class="line">708165632|708182015|辽宁|沈阳</span><br></pre></td></tr></table></figure>
+
+<h3 id="经过数据清洗后得出真实的手机号码并插入当前hive表中"><a href="#经过数据清洗后得出真实的手机号码并插入当前hive表中" class="headerlink" title="经过数据清洗后得出真实的手机号码并插入当前hive表中"></a>经过数据清洗后得出真实的手机号码并插入当前hive表中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSERT overwrite table true_flase_phone_month select loginname,ipcount,user_ip,loginname regexp <span class="string">'^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d&#123;8&#125;$'</span>,user_ip regexp <span class="string">'^(25[0-5]|2[0-4][0-9]|[0-1]&#123;1&#125;[0-9]&#123;2&#125;|[1-9]&#123;1&#125;[0-9]&#123;1&#125;|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]&#123;1&#125;[0-9]&#123;2&#125;|[1-9]&#123;1&#125;[0-9]&#123;1&#125;|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]&#123;1&#125;[0-9]&#123;2&#125;|[1-9]&#123;1&#125;[0-9]&#123;1&#125;|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]&#123;1&#125;[0-9]&#123;2&#125;|[1-9]&#123;1&#125;[0-9]&#123;1&#125;|[0-9])$'</span> from log_login_info_desc_month;</span><br><span class="line">CREATE TABLE true_phone_month</span><br><span class="line">( </span><br><span class="line">     loginname STRING, </span><br><span class="line">     ipcount   BIGINT, </span><br><span class="line">     user_ip   STRING</span><br><span class="line">)ROW FORMAT DELIMITED FIELDS TERMINATED BY <span class="string">','</span>;</span><br><span class="line">INSERT overwrite table true_phone_month             </span><br><span class="line">select  loginname,ipcount,user_ip  from true_flase_phone_month <span class="built_in">where</span>  login_true_false=<span class="string">'true'</span> and user_ip_true_false=<span class="string">'true'</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">python中map和reduce代码如下</span><br><span class="line">---map</span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line">import sys</span><br><span class="line">import re</span><br><span class="line">import socket</span><br><span class="line">import struct</span><br><span class="line">import os  </span><br><span class="line">import gc</span><br><span class="line"></span><br><span class="line">i=1</span><br><span class="line">filepath = os.environ[<span class="string">'mapreduce_map_input_file'</span>]</span><br><span class="line">    </span><br><span class="line">filename = os.path.split(filepath)[-1]</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:</span><br><span class="line">    <span class="keyword">if</span> line.strip()==<span class="string">""</span>:</span><br><span class="line">        <span class="built_in">continue</span>    </span><br><span class="line">    <span class="keyword">if</span> filename == <span class="string">'city.txt'</span>:</span><br><span class="line">        fields = line[:-1].split(<span class="string">"|"</span>)    </span><br><span class="line">        ip_1 = fields[0]  </span><br><span class="line">        ip_2 = fields[1]  </span><br><span class="line">        prov = fields[2]  </span><br><span class="line">        area = fields[3]       </span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"%s|%s|%s|%s|%s"</span> % (ip_1,1,i,prov,area))</span><br><span class="line">        <span class="built_in">print</span> (<span class="string">"%s|%s|%s|%s|%s"</span> % (ip_2,1,i,prov,area))</span><br><span class="line">        i+=1</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        fields = line[:-1].split(<span class="string">","</span>)    </span><br><span class="line">        try:            </span><br><span class="line">            logon_no=fields[0]</span><br><span class="line">            logon_cnt=fields[1]</span><br><span class="line">            logon_ip=fields[2]</span><br><span class="line">            <span class="keyword">if</span> logon_cnt and logon_no and logon_ip:</span><br><span class="line">                ip_s=socket.ntohl(struct.unpack(<span class="string">"I"</span>,socket.inet_aton(str(logon_ip)))[0])                  </span><br><span class="line">                <span class="built_in">print</span> (<span class="string">"%s|%s|%s|%s"</span> % (ip_s,0,logon_no,logon_cnt))</span><br><span class="line">        except:</span><br><span class="line">            <span class="built_in">continue</span></span><br><span class="line">---reduce</span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line">import sys</span><br><span class="line">prov=0</span><br><span class="line">area=0</span><br><span class="line">ip_no1=0</span><br><span class="line">ip_no2=0</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:</span><br><span class="line">    <span class="keyword">if</span> line.strip()==<span class="string">""</span>:</span><br><span class="line">        <span class="built_in">continue</span></span><br><span class="line">    a=line[:-1].split(<span class="string">"|"</span>)  </span><br><span class="line">    try:</span><br><span class="line">        <span class="keyword">if</span> int(a[1])==1:            </span><br><span class="line">            ip_no1=a[2]</span><br><span class="line">            <span class="keyword">if</span> ip_no1==ip_no2:</span><br><span class="line">                prov=0</span><br><span class="line">                area=0</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prov=a[3].strip()</span><br><span class="line">                area=a[4].strip()</span><br><span class="line">            ip_no2=ip_no1</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> int(a[1])==0:</span><br><span class="line">            logon_time=a[3].strip()</span><br><span class="line">            logon_no=a[2].strip()</span><br><span class="line">            <span class="built_in">print</span> (<span class="string">"%s|%s|%s|%s|%s"</span> % (logon_time,logon_no,prov,area,a[0].strip()))</span><br><span class="line">    except:</span><br><span class="line">        pass</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar /usr/hdp/2.5.0.0-1245/hadoop-mapreduce/hadoop-streaming.jar -D mapred.output.key.comparator.class=org.apache.hadoop.mapred.lib.KeyFieldBasedComparator -D mapred.text.key.comparator.options=<span class="string">"-n"</span> -D mapred.map.tasks=10 -D mapred.reduce.tasks=1 -input /data139/ods/ip_address/city.txt -input /apps/hive/warehouse/dw_ods.db/true_phone_month/* -output /data139/bill_tmp/ip_change/<span class="variable">$&#123;month_start&#125;</span> -file /home/hdfs/ip_change_script/my_map.py -file /home/hdfs/ip_change_script/my_reduce.py -mapper <span class="string">"python my_map.py"</span> -reducer <span class="string">"python my_reduce.py"</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-14" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/03/14/14/" class="article-date">
+      <time datetime="2018-03-14T01:12:55.000Z" itemprop="datePublished">2018-03-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/03/14/14/">HDFS 常用 shell 命令</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="HDFS-常用-shell-命令"><a href="#HDFS-常用-shell-命令" class="headerlink" title="HDFS 常用 shell 命令"></a>HDFS 常用 shell 命令</h3><ol>
+<li><p>显示当前目录结构</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示当前目录结构</span></span><br><span class="line">hadoop fs -ls  &lt;path&gt;</span><br><span class="line"><span class="comment"># 递归显示当前目录结构</span></span><br><span class="line">hadoop fs -ls  -R  &lt;path&gt;</span><br><span class="line"><span class="comment"># 显示根目录下内容</span></span><br><span class="line">hadoop fs -ls  /</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line">hadoop fs -mkdir  &lt;path&gt; </span><br><span class="line"><span class="comment"># 递归创建目录</span></span><br><span class="line">hadoop fs -mkdir -p  &lt;path&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除文件</span></span><br><span class="line">hadoop fs -rm  &lt;path&gt;</span><br><span class="line"><span class="comment"># 递归删除目录和文件</span></span><br><span class="line">hadoop fs -rm -R  &lt;path&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从本地加载文件到 HDFS</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二选一执行即可</span></span><br><span class="line">hadoop fs -put  [localsrc] [dst] </span><br><span class="line">hadoop fs - copyFromLocal [localsrc] [dst]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从 HDFS 导出文件到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二选一执行即可</span></span><br><span class="line">hadoop fs -get  [dst] [localsrc] </span><br><span class="line">hadoop fs -copyToLocal [dst] [localsrc]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二选一执行即可</span></span><br><span class="line">hadoop fs -text  &lt;path&gt; </span><br><span class="line">hadoop fs -cat  &lt;path&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示文件的最后一千字节</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -tail  &lt;path&gt; </span><br><span class="line"><span class="comment"># 和Linux下一样，会持续监听文件内容变化 并显示文件的最后一千字节</span></span><br><span class="line">hadoop fs -tail -f  &lt;path&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cp [src] [dst]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mv [src] [dst]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>统计当前目录下各文件大小<br>默认单位字节</p>
+</li>
+</ol>
+<p>-s : 显示所有文件大小总和，<br>-h : 将以更友好的方式显示文件大小（例如 64.0m 而不是 67108864）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -du  &lt;path&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>合并下载多个文件</li>
+</ol>
+<p>-nl 在每个文件的末尾添加换行符（LF）<br>-skip-empty-file 跳过空文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -getmerge</span><br><span class="line"><span class="comment"># 示例 将HDFS上的hbase-policy.xml和hbase-site.xml文件合并后下载到本地的/usr/test.xml</span></span><br><span class="line">hadoop fs -getmerge -nl  /<span class="built_in">test</span>/hbase-policy.xml /<span class="built_in">test</span>/hbase-site.xml /usr/test.xml</span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li>统计文件系统的可用空间信息<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -df -h /</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/" rel="tag">hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/" rel="tag">shell</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
+  
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/zhangdeshuai409930360" target="_blank">Blog</a> by handsomezhangshuai
+            </div>
+        </div>
+        
+            <div class="visit">
+            © 2015-2020 zhangdeshuai 粤ICP备15075505号
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+           </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

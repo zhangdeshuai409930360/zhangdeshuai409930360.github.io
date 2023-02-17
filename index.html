@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Handsome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Handsome">
+<meta property="og:url" content="https://zhangdeshuai409930360.github.io/index.html">
+<meta property="og:site_name" content="Handsome">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Handsome" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Handsome</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        <li>友情链接</li>
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/bigdata/">大数据</a></li>
+                        
+                            <li><a  href="/categories/java/">JAVA学习</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    <a target="_blank"  class="main-nav-link switch-friends-link" href="https://my.oschina.net/u/559635">oschina</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">
+                      关于博主
+简介
+90后，大数据开发工程师/JAVA工程师。
+知人不必言尽，留三分余地与人，留些口德与己。
+责人不必苛尽，留三分余地与人，留些肚量与己。
+才能不必傲尽，留三分余地与人，留些内涵与己。
+锋芒不必露尽，留三分余地与人，留些深敛与己。
+有功不必邀尽，留三分余地与人，留些谦让与己。
+2013.10-2016.03 深圳市时讯互联科技有限公司 JAVA/大数据开发工程师
+2016.03-2017.08       深圳市华阳信通发展有限公司/大数据开发工程师
+2017.08-2018.03       深圳市彩讯科技股份有限公司/大数据开发工程师
+2018.03-至今       深圳市加推科技有限公司/大数据开发工程师     
+ </div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Handsome</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Handsome</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/bigdata/">大数据</a></li>
+                
+                    <li><a href="/categories/java/">JAVA学习</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+
+     <div class="body-wrap">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2023/02/17/hello-world/" class="article-date">
+      <time datetime="2023-02-17T01:11:47.156Z" itemprop="datePublished">2023-02-17</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2023/02/17/hello-world/">Hello World</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-35" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2021/05/11/35/" class="article-date">
+      <time datetime="2021-05-11T09:00:11.000Z" itemprop="datePublished">2021-05-11</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2021/05/11/35/">Apache Hudi的写时复制和读时合并</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Apache-Hudi"><a href="#Apache-Hudi" class="headerlink" title="Apache Hudi"></a>Apache Hudi</h3><p>Hudi将流处理带到大数据，提供新数据，同时比传统批处理效率高一个数量级。</p>
+<p>Hudi可以帮助你构建高效的数据湖，解决一些最复杂的底层存储管理问题，同时将数据更快地交给数据分析师，工程师和科学家。</p>
+<h3 id="Hudi不是什么"><a href="#Hudi不是什么" class="headerlink" title="Hudi不是什么"></a>Hudi不是什么</h3><p>Hudi不是针对任何OLTP案例而设计的，在这些情况下，通常你使用的是现有的NoSQL / RDBMS数据存储。Hudi无法替代你的内存分析数据库（至少现在还没有！）。Hudi支持在几分钟内实现近乎实时的摄取，从而权衡了延迟以进行有效的批处理。</p>
+<h3 id="增量处理"><a href="#增量处理" class="headerlink" title="增量处理"></a>增量处理</h3><p>增量处理仅是指以流处理方式编写微型批处理程序。典型的批处理作业每隔几个小时就会消费所有输入并重新计算所有输出。典型的流处理作业会连续/每隔几秒钟消费一些新的输入并重新计算新的/更改以输出。尽管以批处理方式重新计算所有输出可能会更简单，但这很浪费并且耗费昂贵的资源。Hudi具有以流方式编写相同批处理管道的能力，每隔几分钟运行一次。</p>
+<p>虽然可将其称为流处理，但我们更愿意称其为增量处理，以区别于使用Apache Flink，Apache Apex或Apache Kafka Streams构建的纯流处理管道。</p>
+<h3 id="Hudi基于MVCC设计"><a href="#Hudi基于MVCC设计" class="headerlink" title="Hudi基于MVCC设计"></a>Hudi基于MVCC设计</h3><p><img src="/images/56.png" alt="alt"></p>
+<h3 id="存储类型和视图"><a href="#存储类型和视图" class="headerlink" title="存储类型和视图"></a>存储类型和视图</h3><p>Hudi存储类型定义了如何在DFS上对数据进行索引和布局以及如何在这种组织之上实现上述原语和时间轴活动（即如何写入数据）。<br>反过来，视图定义了基础数据如何暴露给查询（即如何读取数据）。<br>存储类型    支持的视图<br>写时复制    读优化 + 增量<br>读时合并    读优化 + 增量 + 近实时</p>
+<h3 id="两种存储类型"><a href="#两种存储类型" class="headerlink" title="两种存储类型"></a>两种存储类型</h3><p>写时复制（copy on write）：仅使用列式文件（parquet）存储数据。在写入/更新数据时，直接同步合并原文件，生成新版本的基文件（需要重写整个列数据文件，即使只有一个字节的新数据被提交）。此存储类型下，写入数据非常昂贵，而读取的成本没有增加，所以适合频繁读的工作负载，因为数据集的最新版本在列式文件中始终可用，以进行高效的查询。</p>
+<p>读时合并（merge on read）：使用列式（parquet）与行式（avro）文件组合，进行数据存储。在更新记录时，更新到增量文件中（avro），然后进行异步（或同步）的compaction，创建列式文件（parquet）的新版本。此存储类型适合频繁写的工作负载，因为新记录是以appending 的模式写入增量文件中。但是在读取数据集时，需要将增量文件与旧文件进行合并，生成列式文件。</p>
+<h3 id="存储数据的视图（查询模式）"><a href="#存储数据的视图（查询模式）" class="headerlink" title="存储数据的视图（查询模式）"></a>存储数据的视图（查询模式）</h3><p>读优化视图（Read Optimized view）：直接query 基文件（数据集的最新快照），也就是列式文件（如parquet）。相较于非Hudi列式数据集，有相同的列式查询性能</p>
+<p>增量视图（Incremental View）：仅query新写入数据集的文件，也就是指定一个commit/compaction，query此之后的新数据。</p>
+<p>实时视图（Real-time View）：query最新基文件与增量文件。此视图通过将最新的基文件（parquet）与增量文件（avro）进行动态合并，然后进行query。可以提供近实时的数据（会有几分钟的延迟）</p>
+<h3 id="写时复制存储"><a href="#写时复制存储" class="headerlink" title="写时复制存储"></a>写时复制存储</h3><p>以下内容说明了将数据写入写时复制存储并在其上运行两个查询时，它是如何工作的：<br><img src="/images/57.png" alt="alt"></p>
+<h3 id="读时合并存储"><a href="#读时合并存储" class="headerlink" title="读时合并存储"></a>读时合并存储</h3><p>以下内容说明了存储的工作方式，并显示了对近实时表和读优化表的查询：<br><img src="/images/58.png" alt="alt"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hudi/" rel="tag">Hudi</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-34" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2021/03/06/34/" class="article-date">
+      <time datetime="2021-03-06T07:40:24.000Z" itemprop="datePublished">2021-03-06</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2021/03/06/34/">Hive严格模式</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Hive严格模式"><a href="#Hive严格模式" class="headerlink" title="Hive严格模式"></a>Hive严格模式</h3><p>Hive提供了一个严格模式，可以防止用户执行那些可能产生意向不到的不好的效果的查询。说通俗一点就是这种模式可以阻止某些查询的执行。上次面试问的我一脸懵逼</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; <span class="built_in">set</span> hive.mapred.mode=strict;</span><br></pre></td></tr></table></figure>
+<h3 id="严格模式限制条件"><a href="#严格模式限制条件" class="headerlink" title="严格模式限制条件"></a>严格模式限制条件</h3><p>1.带有分区的表的查询</p>
+<p>如果在一个分区表执行hive，除非where语句中包含分区字段过滤条件来显示数据范围，否则不允许执行。换句话说就是在严格模式下不允许用户扫描所有的分区。</p>
+<p>进行这个限制的原因是，通常分区表都拥有非常大的数据集，而且数据增加迅速。如果不进行分区限制的查询会消耗巨大的资源来处理，如下不带分区的查询语句：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; SELECT DISTINCT(planner_id) FROM fracture_ins WHERE planner_id=5;</span><br><span class="line">FAILED: Error <span class="keyword">in</span> semantic analysis: No Partition Predicate Found <span class="keyword">for</span> Alias <span class="string">"fracture_ins"</span> Table <span class="string">"fracture_ins</span></span><br></pre></td></tr></table></figure>
+<p>解决在where后面必须带分区</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; SELECT DISTINCT(planner_id) FROM fracture_ins  WHERE planner_id=5 AND hit_date=20120101;</span><br></pre></td></tr></table></figure>
+
+<p>2.带有orderby的查询<br>对于使用了orderby的查询，要求必须有limit语句。因为orderby为了执行排序过程会讲所有的结果分发到同一个reducer中<br>进行处理，强烈要求用户增加这个limit语句可以防止reducer额外执行很长一段时间：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; SELECT * FROM fracture_ins WHERE hit_date&gt;2012 ORDER BY planner_id;</span><br><span class="line">FAILED: Error <span class="keyword">in</span> semantic analysis: line 1:56 In strict mode,<span class="built_in">limit</span> must be specified <span class="keyword">if</span> ORDER BY is present planner_id</span><br></pre></td></tr></table></figure>
+
+<p>解决方案就是增加一个limit关键字：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; SELECT * FROM fracture_ins WHERE hit_date&gt;2012 ORDER BY planner_id LIMIT 100000;</span><br></pre></td></tr></table></figure>
+
+<p>3.限制笛卡尔积的查询<br>对关系型数据库非常了解的用户可能期望在执行join查询的时候不适用on语句而是使用where语句，这样关系型数据库的执行优化器就可以高效的将where语句转换成那个on语句了。不幸的是，Hive并不支持这样的优化，因为如果表非常大的话，就会出现不可控的情况，如下是不带on的语句：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hive&gt; SELECT * FROM fracture_act JOIN fracture_ads WHERE fracture_act.planner_id = fracture_ads.planner_id;</span><br><span class="line">FAILED: Error <span class="keyword">in</span> semantic analysis: In strict mode, cartesian product is not allowed. If you really want to perform the operation, +<span class="built_in">set</span> hive.mapred.mode=nonstrict+</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HIVE/" rel="tag">HIVE</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-33" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/09/22/33/" class="article-date">
+      <time datetime="2020-09-22T03:40:24.000Z" itemprop="datePublished">2020-09-22</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/09/22/33/">Apache Atlas安装数据治理</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Atlas概述"><a href="#Atlas概述" class="headerlink" title="Atlas概述"></a>Atlas概述</h3><p>Apache Atlas为组织提供开放式元数据管理和治理功能，用以构建其数据资产目录，对这些资产进行分类和管理，并为数据分析师和数据治理团队，提供围绕这些数据资产的协作功能。</p>
+<h3 id="Atlas架构原理"><a href="#Atlas架构原理" class="headerlink" title="Atlas架构原理"></a>Atlas架构原理</h3><p><img src="/images/52.png" alt="alt"></p>
+<h3 id="Atlas安装及使用"><a href="#Atlas安装及使用" class="headerlink" title="Atlas安装及使用"></a>Atlas安装及使用</h3><p>1）Atlas官网地址：<a href="https://atlas.apache.org/" target="_blank" rel="noopener">https://atlas.apache.org/</a></p>
+<p>2）文档查看地址：<a href="https://atlas.apache.org/0.8.4/index.html" target="_blank" rel="noopener">https://atlas.apache.org/0.8.4/index.html</a></p>
+<p>3）下载地址：<a href="https://www.apache.org/dyn/closer.cgi/atlas/0.8.4/apache-atlas-0.8.4-sources.tar.gz" target="_blank" rel="noopener">https://www.apache.org/dyn/closer.cgi/atlas/0.8.4/apache-atlas-0.8.4-sources.tar.gz</a></p>
+<h3 id="HDP安装Solr5-2-1"><a href="#HDP安装Solr5-2-1" class="headerlink" title="HDP安装Solr5.2.1"></a>HDP安装Solr5.2.1</h3><h3 id="HDP安装Atlas0-8-2"><a href="#HDP安装Atlas0-8-2" class="headerlink" title="HDP安装Atlas0.8.2"></a>HDP安装Atlas0.8.2</h3><pre><code class="bash">[root@hadoop101 atlas]$ bin/import-hive.sh
+Using Hive configuration directory [/opt/module/hive/conf]
+Log file <span class="keyword">for</span> import is /opt/module/atlas/logs/import-hive.log
+log4j:WARN No such property [maxFileSize] <span class="keyword">in</span> org.apache.log4j.PatternLayout.
+log4j:WARN No such property [maxBackupIndex] <span class="keyword">in</span> org.apache.log4j.PatternLayout.
+
+输入用户名：admin；输入密码：admin
+Enter username <span class="keyword">for</span> atlas :- admin
+Enter password <span class="keyword">for</span> atlas :-
+Hive Meta Data import was successful!!!</code></pre>
+<h3 id="显示所有hive-tables"><a href="#显示所有hive-tables" class="headerlink" title="显示所有hive tables"></a>显示所有hive tables</h3><p><img src="/images/53.png" alt="alt"></p>
+<h3 id="选择数据库中的表可以看到之间的血缘关系图"><a href="#选择数据库中的表可以看到之间的血缘关系图" class="headerlink" title="选择数据库中的表可以看到之间的血缘关系图"></a>选择数据库中的表可以看到之间的血缘关系图</h3><p><img src="/images/54.png" alt="alt"></p>
+<h3 id="字段的血缘关系"><a href="#字段的血缘关系" class="headerlink" title="字段的血缘关系"></a>字段的血缘关系</h3><p><img src="/images/55.png" alt="alt"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Apache Atlas为Hadoop集群提供了包括数据分类、集中策略引擎、数据血缘、安全和生命周期管理在内的元数据治理核心能力，其与Apache Falcon，Apache Ranger相互整合可以形成完整的数据治理解决方案。但是Atlas目前还是Apache孵化项目，尚未成熟，有待发展。</p>
+<p>Atlas目前还存在以下一些需要改进之处：</p>
+<p>缺乏对元数据的全局视图，对元数据的血缘追溯只能够展示具体某张表或某个SQL的生命周期(其前提是用户必须对Hadoop的元数据结构十分清楚，才能够通过Atlas的查询语句去定位自己需要了解的表)</p>
+<p>0.8以前的版本，对元数据只能进行只读操作，例如只能展示Hive的表但是不能创建新表</p>
+<p>与Hadoop各组件的集成尚待完善，例如Atlas对Hive的元数据变更操作的捕获只支持hive CLI，不支持beeline/JDBC</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Atlas/" rel="tag">Atlas</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-32" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/08/27/32/" class="article-date">
+      <time datetime="2020-08-27T07:08:24.000Z" itemprop="datePublished">2020-08-27</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/08/27/32/">SQL优化技巧</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>###<br>首先，对于MySQL层优化我一般遵从五个原则：</p>
+<p>减少数据访问：设置合理的字段类型，启用压缩，通过索引访问等减少磁盘 IO。</p>
+<p>返回更少的数据：只返回需要的字段和数据分页处理，减少磁盘 IO 及网络 IO。</p>
+<p>减少交互次数：批量 DML 操作，函数存储等减少数据连接次数。</p>
+<p>减少服务器 CPU 开销：尽量减少数据库排序操作以及全表查询，减少 CPU 内存占用。</p>
+<p>利用更多资源：使用表分区，可以增加并行操作，更大限度利用 CPU 资源。</p>
+<p>总结到 SQL 优化中，就如下三点：</p>
+<p>最大化利用索引。</p>
+<p>尽可能避免全表扫描。</p>
+<p>减少无效数据的查询。</p>
+<p>理解 SQL 优化原理 ，首先要搞清楚 SQL 执行顺序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">DISTINCT &lt;select_list&gt;</span><br><span class="line">FROM &lt;left_table&gt;</span><br><span class="line">&lt;join_type&gt; JOIN &lt;right_table&gt;</span><br><span class="line">ON &lt;join_condition&gt;</span><br><span class="line">WHERE &lt;where_condition&gt;</span><br><span class="line">GROUP BY &lt;group_by_list&gt;</span><br><span class="line">HAVING &lt;having_condition&gt;</span><br><span class="line">ORDER BY &lt;order_by_condition&gt;</span><br><span class="line">LIMIT &lt;limit_number&gt;</span><br></pre></td></tr></table></figure>
+<p>SELECT 语句，执行顺序如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">FROM</span><br><span class="line">&lt;表名&gt; <span class="comment"># 选取表，将多个表数据通过笛卡尔积变成一个表。</span></span><br><span class="line">ON</span><br><span class="line">&lt;筛选条件&gt; <span class="comment"># 对笛卡尔积的虚表进行筛选</span></span><br><span class="line">JOIN &lt;join, left join, right join...&gt; </span><br><span class="line">&lt;join表&gt; <span class="comment"># 指定join，用于添加数据到on之后的虚表中，例如left join会将左表的剩余数据添加到虚表中</span></span><br><span class="line">WHERE</span><br><span class="line">&lt;<span class="built_in">where</span>条件&gt; <span class="comment"># 对上述虚表进行筛选</span></span><br><span class="line">GROUP BY</span><br><span class="line">&lt;分组条件&gt; <span class="comment"># 分组</span></span><br><span class="line">&lt;SUM()等聚合函数&gt; <span class="comment"># 用于having子句进行判断，在书写上这类聚合函数是写在having判断里面的</span></span><br><span class="line">HAVING</span><br><span class="line">&lt;分组筛选&gt; <span class="comment"># 对分组后的结果进行聚合筛选</span></span><br><span class="line">SELECT</span><br><span class="line">&lt;返回数据列表&gt; <span class="comment"># 返回的单列必须在group by子句中，聚合函数除外</span></span><br><span class="line">DISTINCT</span><br><span class="line"><span class="comment"># 数据除重</span></span><br><span class="line">ORDER BY</span><br><span class="line">&lt;排序条件&gt; <span class="comment"># 排序</span></span><br><span class="line">LIMIT</span><br><span class="line">&lt;行数限制&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="避免不走索引的场景"><a href="#避免不走索引的场景" class="headerlink" title="避免不走索引的场景"></a>避免不走索引的场景</h3><p>①尽量避免在字段开头模糊查询，会导致数据库引擎放弃索引进行全表扫描</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE username LIKE <span class="string">'%陈%'</span></span><br></pre></td></tr></table></figure>
+<p>优化方式：尽量在字段后面使用模糊查询。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE username LIKE <span class="string">'陈%'</span></span><br></pre></td></tr></table></figure>
+<p>如果需求是要在前面使用模糊查询：</p>
+<p>使用 MySQL 内置函数 INSTR（str，substr）来匹配，作用类似于 Java 中的 indexOf()，查询字符串出现的角标位置。</p>
+<p>使用 FullText 全文索引，用 match against 检索。</p>
+<p>数据量较大的情况，建议引用 ElasticSearch、Solr，亿级数据量检索速度秒级。</p>
+<p>当表数据量较少（几千条儿那种），别整花里胡哨的，直接用 like ‘%xx%’。</p>
+<h3 id="尽量避免使用-in-和-not-in，会导致引擎走全表扫描"><a href="#尽量避免使用-in-和-not-in，会导致引擎走全表扫描" class="headerlink" title="尽量避免使用 in 和 not in，会导致引擎走全表扫描"></a>尽量避免使用 in 和 not in，会导致引擎走全表扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE id IN (2,3)</span><br></pre></td></tr></table></figure>
+<p>优化方式：如果是连续数值，可以用 between 代替</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE id BETWEEN 2 AND 3</span><br></pre></td></tr></table></figure>
+<p>如果是子查询，可以用 exists 代替。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 不走索引</span><br><span class="line">select * from A <span class="built_in">where</span> A.id <span class="keyword">in</span> (select id from B);</span><br><span class="line">-- 走索引</span><br><span class="line">select * from A <span class="built_in">where</span> exists (select * from B <span class="built_in">where</span> B.id = A.id);</span><br></pre></td></tr></table></figure>
+
+<h3 id="尽量避免使用-or，会导致数据库引擎放弃索引进行全表扫描"><a href="#尽量避免使用-or，会导致数据库引擎放弃索引进行全表扫描" class="headerlink" title="尽量避免使用 or，会导致数据库引擎放弃索引进行全表扫描"></a>尽量避免使用 or，会导致数据库引擎放弃索引进行全表扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE id = 1 OR id = 3</span><br></pre></td></tr></table></figure>
+<p>优化方式：可以用 union 代替 or。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE id = 1</span><br><span class="line">UNION</span><br><span class="line">SELECT * FROM t WHERE id = 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="尽量避免进行-null-值的判断，会导致数据库引擎放弃索引进行全表扫描"><a href="#尽量避免进行-null-值的判断，会导致数据库引擎放弃索引进行全表扫描" class="headerlink" title="尽量避免进行 null 值的判断，会导致数据库引擎放弃索引进行全表扫描"></a>尽量避免进行 null 值的判断，会导致数据库引擎放弃索引进行全表扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE score IS NULL</span><br></pre></td></tr></table></figure>
+<p>优化方式：可以给字段添加默认值 0，对 0 值进行判断。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM t WHERE score = 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="尽量避免在-where-条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描"><a href="#尽量避免在-where-条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描" class="headerlink" title="尽量避免在 where 条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描"></a>尽量避免在 where 条件中等号的左侧进行表达式、函数操作，会导致数据库引擎放弃索引进行全表扫描</h3><p>可以将表达式、函数操作移动到等号右侧，如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 全表扫描</span><br><span class="line">SELECT * FROM T WHERE score/10 = 9</span><br><span class="line">-- 走索引</span><br><span class="line">SELECT * FROM T WHERE score = 10*9</span><br></pre></td></tr></table></figure>
+
+<h3 id="当数据量大时，避免使用-where-1-1-的条件"><a href="#当数据量大时，避免使用-where-1-1-的条件" class="headerlink" title="当数据量大时，避免使用 where 1=1 的条件"></a>当数据量大时，避免使用 where 1=1 的条件</h3><p>通常为了方便拼装查询条件，我们会默认使用该条件，数据库引擎会放弃索引进行全表扫描</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 全表扫描</span><br><span class="line">SELECT username, age, sex FROM T WHERE 1=1</span><br></pre></td></tr></table></figure>
+<p>优化方式：用代码拼装 SQL 时进行判断，没 where 条件就去掉 where，有 where 条件就加 and。</p>
+<h3 id="查询条件不能用-lt-gt-或者"><a href="#查询条件不能用-lt-gt-或者" class="headerlink" title="查询条件不能用 &lt;&gt; 或者 !="></a>查询条件不能用 &lt;&gt; 或者 !=</h3><p>使用索引列作为条件进行查询时，需要避免使用&lt;&gt;或者!=等判断条件。</p>
+<p>如确实业务需要，使用到不等于符号，需要在重新评估索引建立，避免在此字段上建立索引，改由查询条件中其他索引字段代替。</p>
+<h3 id="where-条件仅包含复合索引非前置列"><a href="#where-条件仅包含复合索引非前置列" class="headerlink" title="where 条件仅包含复合索引非前置列"></a>where 条件仅包含复合索引非前置列</h3><p>如下：复合（联合）索引包含 key_part1，key_part2，key_part3 三列，但 SQL 语句没有包含索引前置列”key_part1”，按照 MySQL 联合索引的最左匹配原则，不会走联合索引</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select col1 from table <span class="built_in">where</span> key_part2=1 and key_part3=2</span><br></pre></td></tr></table></figure>
+
+<h3 id="隐式类型转换造成不使用索引"><a href="#隐式类型转换造成不使用索引" class="headerlink" title="隐式类型转换造成不使用索引"></a>隐式类型转换造成不使用索引</h3><p>如下 SQL 语句由于索引对列类型为 varchar，但给定的值为数值，涉及隐式类型转换，造成不能正确走索引。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select col1 from table <span class="built_in">where</span> col_varchar=123;</span><br></pre></td></tr></table></figure>
+
+<h3 id="order-by-条件要与-where-中条件一致，否则-order-by-不会利用索引进行排序"><a href="#order-by-条件要与-where-中条件一致，否则-order-by-不会利用索引进行排序" class="headerlink" title="order by 条件要与 where 中条件一致，否则 order by 不会利用索引进行排序"></a>order by 条件要与 where 中条件一致，否则 order by 不会利用索引进行排序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 不走age索引</span><br><span class="line">SELECT * FROM t order by age;</span><br><span class="line"></span><br><span class="line">-- 走age索引</span><br><span class="line">SELECT * FROM t <span class="built_in">where</span> age &gt; 0 order by age;</span><br></pre></td></tr></table></figure>
+
+<p>对于上面的语句，数据库的处理顺序是：</p>
+<p>第一步：根据 where 条件和统计信息生成执行计划，得到数据。</p>
+<p>第二步：将得到的数据排序。当执行处理数据（order by）时，数据库会先查看第一步的执行计划，看 order by 的字段是否在执行计划中利用了索引。如果是，则可以利用索引顺序而直接取得已经排好序的数据。如果不是，则重新进行排序操作。</p>
+<p>第三步：返回排序后的数据。</p>
+<p>当 order by 中的字段出现在 where 条件中时，才会利用索引而不再二次排序，更准确的说，order by 中的字段在执行计划中利用了索引时，不用排序操作。</p>
+<p>这个结论不仅对 order by 有效，对其他需要排序的操作也有效。比如 group by 、union 、distinct 等。</p>
+<h3 id="正确使用-hint-优化语句"><a href="#正确使用-hint-优化语句" class="headerlink" title="正确使用 hint 优化语句"></a>正确使用 hint 优化语句</h3><p>MySQL 中可以使用 hint 指定优化器在执行时选择或忽略特定的索引。</p>
+<p>一般而言，处于版本变更带来的表结构索引变化，更建议避免使用 hint，而是通过 Analyze table 多收集统计信息。</p>
+<p>但在特定场合下，指定 hint 可以排除其他索引干扰而指定更优的执行计划：</p>
+<p>USE INDEX 在你查询语句中表名的后面，添加 USE INDEX 来提供希望 MySQL 去参考的索引列表，就可以让 MySQL 不再考虑其他可用的索引。</p>
+<p>例子: SELECT col1 FROM table USE INDEX (mod_time, name)…</p>
+<p>IGNORE INDEX 如果只是单纯的想让 MySQL 忽略一个或者多个索引，可以使用 IGNORE INDEX 作为 Hint。</p>
+<p>例子: SELECT col1 FROM table IGNORE INDEX (priority) …</p>
+<p>FORCE INDEX 为强制 MySQL 使用一个特定的索引，可在查询中使用FORCE INDEX 作为 Hint。</p>
+<p>例子: SELECT col1 FROM table FORCE INDEX (mod_time) …</p>
+<p>在查询的时候，数据库系统会自动分析查询语句，并选择一个最合适的索引。但是很多时候，数据库系统的查询优化器并不一定总是能使用最优索引。</p>
+<p>如果我们知道如何选择索引，可以使用 FORCE INDEX 强制查询使用指定的索引。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM students FORCE INDEX (idx_class_id) WHERE class_id = 1 ORDER BY id DESC;</span><br></pre></td></tr></table></figure>
+<h3 id="SELECT-语句其他优化"><a href="#SELECT-语句其他优化" class="headerlink" title="SELECT 语句其他优化"></a>SELECT 语句其他优化</h3><p>①避免出现 select *</p>
+<p>首先，select * 操作在任何类型数据库中都不是一个好的 SQL 编写习惯。</p>
+<p>使用 select * 取出全部列，会让优化器无法完成索引覆盖扫描这类优化，会影响优化器对执行计划的选择，也会增加网络带宽消耗，更会带来额外的 I/O，内存和 CPU 消耗。</p>
+<p>建议提出业务实际需要的列数，将指定列名以取代 select *。具体详情见《为什么大家都说SELECT * 效率低》</p>
+<p>②避免出现不确定结果的函数</p>
+<p>特定针对主从复制这类业务场景。由于原理上从库复制的是主库执行的语句，使用如 now()、rand()、sysdate()、current_user() 等不确定结果的函数很容易导致主库与从库相应的数据不一致。</p>
+<p>另外不确定值的函数，产生的 SQL 语句无法利用 query cache。</p>
+<p>③多表关联查询时，小表在前，大表在后</p>
+<p>在 MySQL 中，执行 from 后的表关联查询是从左往右执行的（Oracle 相反），第一张表会涉及到全表扫描。</p>
+<p>所以将小表放在前面，先扫小表，扫描快效率较高，在扫描后面的大表，或许只扫描大表的前 100 行就符合返回条件并 return 了。</p>
+<p>例如：表 1 有 50 条数据，表 2 有 30 亿条数据；如果全表扫描表 2，你品，那就先去吃个饭再说吧是吧。</p>
+<p>④使用表的别名</p>
+<p>当在 SQL 语句中连接多个表时，请使用表的别名并把别名前缀于每个列名上。这样就可以减少解析的时间并减少哪些友列名歧义引起的语法错误。</p>
+<p>⑤用 where 字句替换 HAVING 字句</p>
+<p>避免使用 HAVING 字句，因为 HAVING 只会在检索出所有记录之后才对结果集进行过滤，而 where 则是在聚合前刷选记录，如果能通过 where 字句限制记录的数目，那就能减少这方面的开销。</p>
+<p>HAVING 中的条件一般用于聚合函数的过滤，除此之外，应该将条件写在 where 字句中。</p>
+<p>where 和 having 的区别：where 后面不能使用组函数。</p>
+<p>⑥调整 Where 字句中的连接顺序</p>
+<p>MySQL 采用从左往右，自上而下的顺序解析 where 子句。根据这个原理，应将过滤数据多的条件往前放，最快速度缩小结果集。</p>
+<h3 id="增删改-DML-语句优化"><a href="#增删改-DML-语句优化" class="headerlink" title="增删改 DML 语句优化"></a>增删改 DML 语句优化</h3><p>①大批量插入数据<br>如果同时执行大量的插入，建议使用多个值的 INSERT 语句（方法二）。这比使用分开 INSERT 语句快（方法一），一般情况下批量插入效率有几倍的差别。<br>方法一：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into T values(1,2); </span><br><span class="line"></span><br><span class="line">insert into T values(1,3); </span><br><span class="line"></span><br><span class="line">insert into T values(1,4);</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Insert into T values(1,2),(1,3),(1,4);</span><br></pre></td></tr></table></figure>
+
+<p>选择后一种方法的原因有三：<br>减少 SQL 语句解析的操作，MySQL 没有类似 Oracle 的 share pool，采用方法二，只需要解析一次就能进行数据的插入操作。</p>
+<p>在特定场景可以减少对 DB 连接次数。</p>
+<p>SQL 语句较短，可以减少网络传输的 IO。</p>
+<p>②适当使用 commit<br>适当使用 commit 可以释放事务占用的资源而减少消耗，commit 后能释放的资源如下：</p>
+<p>事务占用的 undo 数据块。</p>
+<p>事务在 redo log 中记录的数据块。</p>
+<p>释放事务施加的，减少锁争用影响性能。特别是在需要使用 delete 删除大量数据的时候，必须分解删除量并定期 commit。</p>
+<p>③避免重复查询更新的数据<br>针对业务中经常出现的更新行同时又希望获得改行信息的需求，MySQL 并不支持 PostgreSQL 那样的 UPDATE RETURNING 语法，在 MySQL 中可以通过变量实现。</p>
+<p>例如，更新一行记录的时间戳，同时希望查询当前记录中存放的时间戳是什么？<br>简单方法实现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Update t1 <span class="built_in">set</span> time=now() <span class="built_in">where</span> col1=1; </span><br><span class="line"></span><br><span class="line">Select time from t1 <span class="built_in">where</span> id =1;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Update t1 <span class="built_in">set</span> time=now () <span class="built_in">where</span> col1=1 and @now: = now (); </span><br><span class="line"></span><br><span class="line">Select @now;</span><br></pre></td></tr></table></figure>
+<p>前后二者都需要两次网络来回，但使用变量避免了再次访问数据表，特别是当 t1 表数据量较大时，后者比前者快很多。</p>
+<p>④查询优先还是更新（insert、update、delete）优先<br>MySQL 还允许改变语句调度的优先级，它可以使来自多个客户端的查询更好地协作，这样单个客户端就不会由于锁定而等待很长时间。改变优先级还可以确保特定类型的查询被处理得更快</p>
+<p>我们首先应该确定应用的类型，判断应用是以查询为主还是以更新为主的，是确保查询效率还是确保更新的效率，决定是查询优先还是更新优先</p>
+<p>下面我们提到的改变调度策略的方法主要是针对只存在表锁的存储引擎，比如  MyISAM 、MEMROY、MERGE，对于 Innodb 存储引擎，语句的执行是由获得行锁的顺序决定的。</p>
+<p>MySQL 的默认的调度策略可用总结如下：<br>写入操作优先于读取操作。</p>
+<p>对某张数据表的写入操作某一时刻只能发生一次，写入请求按照它们到达的次序来处理。</p>
+<p>对某张数据表的多个读取操作可以同时地进行。</p>
+<p>MySQL 提供了几个语句调节符，允许你修改它的调度策略:<br>LOW_PRIORITY 关键字应用于 DELETE、INSERT、LOAD DATA、REPLACE 和 UPDATE。</p>
+<p>HIGH_PRIORITY 关键字应用于 SELECT 和 INSERT 语句。</p>
+<p>DELAYED 关键字应用于 INSERT 和 REPLACE 语句</p>
+<p>如果写入操作是一个 LOW_PRIORITY（低优先级）请求，那么系统就不会认为它的优先级高于读取操作。</p>
+<p>在这种情况下，如果写入者在等待的时候，第二个读取者到达了，那么就允许第二个读取者插到写入者之前。</p>
+<p>只有在没有其它的读取者的时候，才允许写入者开始操作。这种调度修改可能存在 LOW_PRIORITY 写入操作永远被阻塞的情况。</p>
+<p>SELECT 查询的 HIGH_PRIORITY（高优先级）关键字也类似。它允许 SELECT 插入正在等待的写入操作之前，即使在正常情况下写入操作的优先级更高。</p>
+<p>另外一种影响是，高优先级的 SELECT 在正常的 SELECT 语句之前执行，因为这些语句会被写入操作阻塞。</p>
+<p>如果希望所有支持 LOW_PRIORITY 选项的语句都默认地按照低优先级来处理，那么请使用–low-priority-updates 选项来启动服务器。</p>
+<p>通过使用 INSERTHIGH_PRIORITY 来把 INSERT 语句提高到正常的写入优先级，可以消除该选项对单个 INSERT 语句的影响。</p>
+<h3 id="查询条件优化"><a href="#查询条件优化" class="headerlink" title="查询条件优化"></a>查询条件优化</h3><p>①对于复杂的查询，可以使用中间临时表暂存数据</p>
+<p>②优化 group by 语句</p>
+<p>默认情况下，MySQL 会对 GROUP BY 分组的所有值进行排序，如 “GROUP BY col1，col2，….;” 查询的方法如同在查询中指定 “ORDER BY col1，col2，…;” 。</p>
+<p>如果显式包括一个包含相同的列的 ORDER BY 子句，MySQL 可以毫不减速地对它进行优化，尽管仍然进行排序。</p>
+<p>因此，如果查询包括 GROUP BY 但你并不想对分组的值进行排序，你可以指定 ORDER BY NULL 禁止排序。</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT col1, col2, COUNT(*) FROM table GROUP BY col1, col2 ORDER BY NULL ;</span><br></pre></td></tr></table></figure>
+
+<p>③优化 join 语句<br>MySQL 中可以通过子查询来使用 SELECT 语句来创建一个单列的查询结果，然后把这个结果作为过滤条件用在另一个查询中。</p>
+<p>使用子查询可以一次性的完成很多逻辑上需要多个步骤才能完成的 SQL 操作，同时也可以避免事务或者表锁死，并且写起来也很容易。但是，有些情况下，子查询可以被更有效率的连接（JOIN）..替代。</p>
+<p>例子：假设要将所有没有订单记录的用户取出来，可以用下面这个查询完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT col1 FROM customerinfo WHERE CustomerID NOT <span class="keyword">in</span> (SELECT CustomerID FROM salesinfo )</span><br></pre></td></tr></table></figure>
+
+<p>如果使用连接（JOIN）..来完成这个查询工作，速度将会有所提升。</p>
+<p>尤其是当 salesinfo 表中对 CustomerID 建有索引的话，性能将会更好，查询如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT col1 FROM customerinfo </span><br><span class="line">   LEFT JOIN salesinfoON customerinfo.CustomerID=salesinfo.CustomerID </span><br><span class="line">      WHERE salesinfo.CustomerID IS NULL</span><br></pre></td></tr></table></figure>
+
+<p>连接（JOIN）..之所以更有效率一些，是因为 MySQL 不需要在内存中创建临时表来完成这个逻辑上的需要两个步骤的查询工作。</p>
+<p>④优化 union 查询</p>
+<p>MySQL 通过创建并填充临时表的方式来执行 union 查询。除非确实要消除重复的行，否则建议使用 union all。</p>
+<p>原因在于如果没有 all 这个关键词，MySQL 会给临时表加上 distinct 选项，这会导致对整个临时表的数据做唯一性校验，这样做的消耗相当高。</p>
+<p>高效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT COL1, COL2, COL3 FROM TABLE WHERE COL1 = 10 </span><br><span class="line"></span><br><span class="line">UNION ALL </span><br><span class="line"></span><br><span class="line">SELECT COL1, COL2, COL3 FROM TABLE WHERE COL3= <span class="string">'TEST'</span>;</span><br></pre></td></tr></table></figure>
+<p>低效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT COL1, COL2, COL3 FROM TABLE WHERE COL1 = 10 </span><br><span class="line"></span><br><span class="line">UNION </span><br><span class="line"></span><br><span class="line">SELECT COL1, COL2, COL3 FROM TABLE WHERE COL3= <span class="string">'TEST'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>⑤拆分复杂 SQL 为多个小 SQL，避免大事务<br>如下：<br>简单的 SQL 容易使用到 MySQL 的 QUERY CACHE。</p>
+<p>减少锁表时间特别是使用 MyISAM 存储引擎的表。</p>
+<p>可以使用多核 CPU。</p>
+<p>⑥使用 truncate 代替 delete<br>当删除全表中记录时，使用 delete 语句的操作会被记录到 undo 块中，删除记录也记录 binlog。</p>
+<p>当确认需要删除全表时，会产生很大量的 binlog 并占用大量的 undo 数据块，此时既没有很好的效率也占用了大量的资源.</p>
+<p>使用 truncate 替代，不会记录可恢复的信息，数据不能被恢复。也因此使用 truncate 操作有其极少的资源占用与极快的时间。另外，使用 truncate 可以回收表的水位，使自增字段值归零。</p>
+<p>⑦使用合理的分页方式以提高分页效率</p>
+<p>使用合理的分页方式以提高分页效率 针对展现等分页需求，合适的分页方式能够提高分页的效率。<br>案例 1：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from t <span class="built_in">where</span> thread_id = 10000 and deleted = 0 </span><br><span class="line">   order by gmt_create asc <span class="built_in">limit</span> 0, 15;</span><br></pre></td></tr></table></figure>
+
+<p>上述例子通过一次性根据过滤条件取出所有字段进行排序返回。数据访问开销=索引 IO+索引全部记录结果对应的表数据 IO。</p>
+<p>因此，该种写法越翻到后面执行效率越差，时间越长，尤其表数据量很大的时候。</p>
+<p>适用场景：当中间结果集很小（10000 行以下）或者查询条件复杂（指涉及多个不同查询字段或者多表连接）时适用。</p>
+<p>案例 2：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select t.* from (select id from t <span class="built_in">where</span> thread_id = 10000 and deleted = 0</span><br><span class="line">   order by gmt_create asc <span class="built_in">limit</span> 0, 15) a, t </span><br><span class="line">      <span class="built_in">where</span> a.id = t.id;</span><br></pre></td></tr></table></figure>
+
+<p>上述例子必须满足 t 表主键是 id 列，且有覆盖索引 secondary key：（thread_id, deleted, gmt_create）。</p>
+<p>通过先根据过滤条件利用覆盖索引取出主键 id 进行排序，再进行 join 操作取出其他字段。</p>
+<p>数据访问开销=索引 IO+索引分页后结果（例子中是 15 行）对应的表数据 IO。因此，该写法每次翻页消耗的资源和时间都基本相同，就像翻第一页一样。</p>
+<p>适用场景：当查询和排序字段（即 where 子句和 order by 子句涉及的字段）有对应覆盖索引时，且中间结果集很大的情况时适用。</p>
+<h3 id="建表优化"><a href="#建表优化" class="headerlink" title="建表优化"></a>建表优化</h3><p>①在表中建立索引，优先考虑 where、order by 使用到的字段。</p>
+<p>②尽量使用数字型字段（如性别，男：1 女：2），若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。</p>
+<p>这是因为引擎在处理查询和连接时会 逐个比较字符串中每一个字符，而对于数字型而言只需要比较一次就够了。</p>
+<p>③查询数据量大的表 会造成查询缓慢。主要的原因是扫描行数过多。这个时候可以通过程序，分段分页进行查询，循环遍历，将结果合并处理进行展示。</p>
+<p>要查询 100000 到 100050 的数据，如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY ID ASC) AS rowid,* </span><br><span class="line">   FROM infoTab)t WHERE t.rowid &gt; 100000 AND t.rowid &lt;= 100050</span><br></pre></td></tr></table></figure>
+<p>④用 varchar/nvarchar 代替 char/nchar。</p>
+<p>尽可能的使用 varchar/nvarchar 代替 char/nchar ，因为首先变长字段存储空间小，可以节省存储空间，其次对于查询来说，在一个相对较小的字段内搜索效率显然要高些。</p>
+<p>不要以为 NULL 不需要空间，比如：char(100) 型，在字段建立时，空间就固定了， 不管是否插入值（NULL 也包含在内），都是占用 100 个字符的空间的，如果是 varchar 这样的变长字段， null 不占用空间。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-31" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/08/04/31/" class="article-date">
+      <time datetime="2020-08-04T03:21:24.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/08/04/31/">Datax3.0简介</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Datex3-0概览"><a href="#Datex3-0概览" class="headerlink" title="Datex3.0概览"></a>Datex3.0概览</h3><p>DataX 是一个异构数据源离线同步工具，致力于实现包括关系型数据库(MySQL、Oracle等)、HDFS、Hive、ODPS、HBase、FTP等各种异构数据源之间稳定高效的数据同步功能。<br>（这是一个单机多任务的ETL工具）</p>
+<p><img src="/images/48.png" alt="alt"></p>
+<h3 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h3><p>为了解决异构数据源同步问题，DataX将复杂的网状的同步链路变成了星型数据链路，DataX作为中间传输载体负责连接各种数据源。当需要接入一个新的数据源的时候，只需要将此数据源对接到DataX，便能跟已有的数据源做到无缝数据同步。</p>
+<h3 id="当前使用现状"><a href="#当前使用现状" class="headerlink" title="当前使用现状"></a>当前使用现状</h3><p>此前已经开源DataX1.0版本，此次介绍为阿里云开源全新版本DataX3.0，有了更多更强大的功能和更好的使用体验。Github主页地址：<a href="https://github.com/alibaba/DataX" target="_blank" rel="noopener">https://github.com/alibaba/DataX</a></p>
+<h3 id="DataX3-0框架设计"><a href="#DataX3-0框架设计" class="headerlink" title="DataX3.0框架设计"></a>DataX3.0框架设计</h3><p>DataX本身作为离线数据同步框架，采用Framework + plugin架构构建。将数据源读取和写入抽象成为Reader/Writer插件，纳入到整个同步框架中。</p>
+<p><img src="/images/49.png" alt="alt"><br>Reader：Reader为数据采集模块，负责采集数据源的数据，将数据发送给Framework。<br>Writer： Writer为数据写入模块，负责不断向Framework取数据，并将数据写入到目的端。<br>Framework：Framework用于连接reader和writer，作为两者的数据传输通道，并处理缓冲，流控，并发，数据转换等核心技术问题。</p>
+<h3 id="DataX3-0插件体系"><a href="#DataX3-0插件体系" class="headerlink" title="DataX3.0插件体系"></a>DataX3.0插件体系</h3><p>DataX目前已经有了比较全面的插件体系，主流的RDBMS数据库、NOSQL、大数据计算系统都已经接入，目前支持数据如下图</p>
+<p><img src="/images/50.png" alt="alt"></p>
+<h3 id="DataX3-0核心架构"><a href="#DataX3-0核心架构" class="headerlink" title="DataX3.0核心架构"></a>DataX3.0核心架构</h3><p>DataX 3.0 开源版本支持单机多线程模式完成同步作业运行，本小节按一个DataX作业生命周期的时序图，从整体架构设计非常简要说明DataX各个模块相互关系。</p>
+<p><img src="/images/51.png" alt="alt"></p>
+<p>核心模块介绍：<br>DataX完成单个数据同步的作业，我们称之为Job，DataX接受到一个Job之后，将启动一个进程来完成整个作业同步过程。DataX Job模块是单个作业的中枢管理节点，承担了数据清理、子任务切分(将单一作业计算转化为多个子Task)、TaskGroup管理等功能。</p>
+<p>DataXJob启动后，会根据不同的源端切分策略，将Job切分成多个小的Task(子任务)，以便于并发执行。Task便是DataX作业的最小单元，每一个Task都会负责一部分数据的同步工作。</p>
+<p>切分多个Task之后，DataX Job会调用Scheduler模块，根据配置的并发数据量，将拆分成的Task重新组合，组装成TaskGroup(任务组)。每一个TaskGroup负责以一定的并发运行完毕分配好的所有Task，默认单个任务组的并发数量为5。</p>
+<p>每一个Task都由TaskGroup负责启动，Task启动后，会固定启动Reader—&gt;Channel—&gt;Writer的线程来完成任务同步工作。</p>
+<p>DataX作业运行起来之后， Job监控并等待多个TaskGroup模块任务完成，等待所有TaskGroup任务完成后Job成功退出。否则，异常退出，进程退出值非0</p>
+<h3 id="DataX调度流程："><a href="#DataX调度流程：" class="headerlink" title="DataX调度流程："></a>DataX调度流程：</h3><p>举例来说，用户提交了一个DataX作业，并且配置了20个并发，目的是将一个100张分表的mysql数据同步到odps里面。 DataX的调度决策思路是：</p>
+<p>DataXJob根据分库分表切分成了100个Task。</p>
+<p>根据20个并发，DataX计算共需要分配4个TaskGroup。</p>
+<p>4个TaskGroup平分切分好的100个Task，每一个TaskGroup负责以5个并发共计运行25个Task。</p>
+<h3 id="五、DataX-3-0六大核心优势"><a href="#五、DataX-3-0六大核心优势" class="headerlink" title="五、DataX 3.0六大核心优势"></a>五、DataX 3.0六大核心优势</h3><h3 id="可靠的数据质量监控"><a href="#可靠的数据质量监控" class="headerlink" title="可靠的数据质量监控"></a>可靠的数据质量监控</h3><p>完美解决数据传输个别类型失真问题<br>DataX旧版对于部分数据类型(比如时间戳)传输一直存在毫秒阶段等数据失真情况，新版本DataX3.0已经做到支持所有的强数据类型，每一种插件都有自己的数据类型转换策略，让数据可以完整无损的传输到目的端。</p>
+<p>提供作业全链路的流量、数据量运行时监控<br>DataX3.0运行过程中可以将作业本身状态、数据流量、数据速度、执行进度等信息进行全面的展示，让用户可以实时了解作业状态。并可在作业执行过程中智能判断源端和目的端的速度对比情况，给予用户更多性能排查信息。</p>
+<p>提供脏数据探测<br>在大量数据的传输过程中，必定会由于各种原因导致很多数据传输报错(比如类型转换错误)，这种数据DataX认为就是脏数据。DataX目前可以实现脏数据精确过滤、识别、采集、展示，为用户提供多种的脏数据处理模式，让用户准确把控数据质量大关！</p>
+<h3 id="丰富的数据转换功能"><a href="#丰富的数据转换功能" class="headerlink" title="丰富的数据转换功能"></a>丰富的数据转换功能</h3><p>DataX作为一个服务于大数据的ETL工具，除了提供数据快照搬迁功能之外，还提供了丰富数据转换的功能，让数据在传输过程中可以轻松完成数据脱敏，补全，过滤等数据转换功能，另外还提供了自动groovy函数，让用户自定义转换函数。详情请看DataX3的transformer详细介绍。</p>
+<h3 id="精准的速度控制"><a href="#精准的速度控制" class="headerlink" title="精准的速度控制"></a>精准的速度控制</h3><p>还在为同步过程对在线存储压力影响而担心吗？新版本DataX3.0提供了包括通道(并发)、记录流、字节流三种流控模式，可以随意控制你的作业速度，让你的作业在库可以承受的范围内达到最佳的同步速度。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"speed"</span>: &#123;</span><br><span class="line">   <span class="string">"channel"</span>: 8,    ----并发数限速（根据自己CPU合理控制并发数）</span><br><span class="line">   <span class="string">"byte"</span>: 524288,  ----字节流限速（根据自己的磁盘和网络合理控制字节数）</span><br><span class="line">   <span class="string">"record"</span>: 10000  ----记录流限速（根据数据合理空行数）</span><br></pre></td></tr></table></figure>
+
+<h3 id="强劲的同步性能"><a href="#强劲的同步性能" class="headerlink" title="强劲的同步性能"></a>强劲的同步性能</h3><p>DataX3.0每一种读插件都有一种或多种切分策略，都能将作业合理切分成多个Task并行执行，单机多线程执行模型可以让DataX速度随并发成线性增长。在源端和目的端性能都足够的情况下，单个作业一定可以打满网卡。另外，DataX团队对所有的已经接入的插件都做了极致的性能优化，并且做了完整的性能测试</p>
+<h3 id="健壮的容错机制"><a href="#健壮的容错机制" class="headerlink" title="健壮的容错机制"></a>健壮的容错机制</h3><p>DataX作业是极易受外部因素的干扰，网络闪断、数据源不稳定等因素很容易让同步到一半的作业报错停止。因此稳定性是DataX的基本要求，在DataX 3.0的设计中，重点完善了框架和插件的稳定性。目前DataX3.0可以做到线程级别、进程级别(暂时未开放)、作业级别多层次局部/全局的重试，保证用户的作业稳定运行。<br>线程内部重试</p>
+<p>DataX的核心插件都经过团队的全盘review，不同的网络交互方式都有不同的重试策略。</p>
+<h3 id="线程级别重试"><a href="#线程级别重试" class="headerlink" title="线程级别重试"></a>线程级别重试</h3><p>目前DataX已经可以实现TaskFailover，针对于中间失败的Task，DataX框架可以做到整个Task级别的重新调度。</p>
+<p>作者：香山上的麻雀<br>链接：<a href="https://www.jianshu.com/p/f5f0dc99d5ab" target="_blank" rel="noopener">https://www.jianshu.com/p/f5f0dc99d5ab</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Datax/" rel="tag">Datax</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-30" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/06/05/30/" class="article-date">
+      <time datetime="2020-06-05T07:30:24.000Z" itemprop="datePublished">2020-06-05</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/06/05/30/">大数据架构师毕生所学</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="/download/大数据架构师该做到的.pdf"">点击下载</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-29" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/06/05/29/" class="article-date">
+      <time datetime="2020-06-05T07:01:24.000Z" itemprop="datePublished">2020-06-05</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/06/05/29/">Hive内置函数速查表</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="/download/Hive内置函数速查表.pdf"">点击下载</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/" rel="tag">hive</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-27" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/21/27/" class="article-date">
+      <time datetime="2020-05-21T08:19:24.000Z" itemprop="datePublished">2020-05-21</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/21/27/">Flink与Spark多方面区别对比</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://mp.weixin.qq.com/s?__biz=MzI0NTIxNzE1Ng==&mid=2651218385&idx=1&sn=a885d40c4418d5e26df131fdda847b74&utm_source=tuicool&utm_medium=referral" target="_blank" rel="noopener" title="面试注意点">本文转载于</a><br>场景描述：Flink是标准的实时处理引擎，而且Spark的两个模块Spark Streaming和Structured Streaming都是基于微批处理的，不过现在Spark Streaming已经非常稳定基本都没有更新了，然后重点移到spark sql和structured Streaming了</p>
+<p>Flink和Spark的区别在编程模型、任务调度、时间机制、Kafka 动态分区的感知、容错及处理语义、背压等几个方面存在不同。</p>
+<h3 id="维表join和异步IO"><a href="#维表join和异步IO" class="headerlink" title="维表join和异步IO"></a>维表join和异步IO</h3><p>Structured Streaming不直接支持与维表的join操作，但是可以使用map、flatmap及udf等来实现该功能，所有的这些都是同步算子，不支持异步IO操作。但是Structured Streaming直接与静态数据集的join，可以也可以帮助实现维表的join功能，当然维表要不可变。</p>
+<p>Flink支持与维表进行join操作，除了map，flatmap这些算子之外，flink还有异步IO算子，可以用来实现维表，提升性能。</p>
+<h3 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h3><p>状态维护应该是流处理非常核心的概念了，比如join，分组，聚合等操作都需要维护历史状态。那么flink在这方面很好，structured Streaming也是可以，但是spark Streaming就比较弱了，只有个别状态维护算子upstatebykye等，大部分状态需要用户自己维护，虽然这个对用户来说有更大的可操作性和可以更精细控制但是带来了编程的麻烦。flink和Structured Streaming都支持自己完成了join及聚合的状态维护。</p>
+<p>Structured Streaming有高级的算子，用户可以完成自定义的mapGroupsWithState和flatMapGroupsWithState，可以理解类似Spark Streaming 的upstatebykey等状态算子。</p>
+<p>就拿mapGroupsWithState为例：<br>由于Flink与Structured Streaming的架构的不同，task是常驻运行的，flink不需要状态算子，只需要状态类型的数据结构。</p>
+<p>首先看一下Keyed State下，我们可以用哪些原子状态：<br>ValueState：即类型为T的单值状态。这个状态与对应的key绑定，是最简单的状态了。它可以通过update方法更新状态值，通过value()方法获取状态值。</p>
+<p>ListState：即key上的状态值为一个列表。可以通过add方法往列表中附加值；也可以通过get()方法返回一个Iterable来遍历状态值。</p>
+<p>ReducingState：这种状态通过用户传入的reduceFunction，每次调用add方法添加值的时候，会调用</p>
+<p>reduceFunction，最后合并到一个单一的状态值。</p>
+<p>FoldingState：跟ReducingState有点类似，不过它的状态值类型可以与add方法中传入的元素类型不同（这种状态将会在Flink未来版本中被删除）。</p>
+<p>MapState：即状态值为一个map。用户通过put或putAll方法添加元素。</p>
+<h3 id="Join操作"><a href="#Join操作" class="headerlink" title="Join操作"></a>Join操作</h3><p>Flink的join操作</p>
+<p>flink的join操作没有大的限制，支持种类丰富，比如：</p>
+<p>Inner Equi-join</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Orders INNER JOIN Product ONOrders.productId = Product.id</span><br></pre></td></tr></table></figure>
+
+<p>Outer Equi-join</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Orders LEFT JOIN Product ON Orders.productId =Product.id</span><br><span class="line"></span><br><span class="line">SELECT * FROM Orders RIGHT JOIN Product ON Orders.productId =Product.id</span><br><span class="line"></span><br><span class="line">SELECT * FROM Orders FULL OUTER JOIN Product ONOrders.productId = Product.id</span><br></pre></td></tr></table></figure>
+
+<p>Time-windowed Join</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM Oderso,Shipmentss WHEREo.id=s.orderIdAND o.ordertimeBETWEENs.shiptime INTERVAL<span class="string">'4'</span>HOURANDs.shiptime</span><br></pre></td></tr></table></figure>
+
+<p>Expanding arrays into a relation</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT users, tag FROM Orders CROSS JOIN UNNEST(tags) AS t (tag)</span><br></pre></td></tr></table></figure>
+
+<p>Join with Table Function</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Inner Join</span><br><span class="line"></span><br><span class="line">A row of the left (outer) table is dropped, <span class="keyword">if</span> its table <span class="keyword">function</span> call returns an empty result.</span><br><span class="line">SELECT users, tag</span><br><span class="line">FROM Orders, LATERAL TABLE(unnest_udtf(tags)) t AS tag</span><br><span class="line"></span><br><span class="line">Left Outer Join</span><br><span class="line">If a table <span class="keyword">function</span> call returns an empty result, the corresponding outer row is preserved and the result padded with null values.</span><br><span class="line"></span><br><span class="line">SELECT users, tag</span><br><span class="line">FROM Orders LEFT JOIN LATERAL TABLE(unnest_udtf(tags)) t AS tag ON TRUE</span><br></pre></td></tr></table></figure>
+
+<p>Join with Temporal Table</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT</span><br><span class="line"> o_amount, r_rate</span><br><span class="line">FROM</span><br><span class="line"> Orders,</span><br><span class="line">LATERAL TABLE (Rates(o_proctime))</span><br><span class="line">WHERE</span><br><span class="line"> r_currency = o_currency</span><br></pre></td></tr></table></figure>
+
+<p>Structured Streaming的join操作<br>Structured Streaming的join限制颇多了，限于篇幅问题在这里只讲一下join的限制<br><img src="/images/42.png" alt="alt"></p>
+<h3 id="容错机制及一致性语义"><a href="#容错机制及一致性语义" class="headerlink" title="容错机制及一致性语义"></a>容错机制及一致性语义</h3><p>Spark Streaming 保证仅一次处理</p>
+<p>对于 Spark Streaming 任务，我们可以设置 checkpoint，然后假如发生故障并重启，我们可以从上次 checkpoint 之处恢复，但是这个行为只能使得数据不丢失，可能会重复处理，不能做到恰一次处理语义。</p>
+<p>对于 Spark Streaming 与 kafka 结合的 direct Stream 可以自己维护 offset 到 zookeeper、kafka 或任何其它外部系统，每次提交完结果之后再提交 offset，这样故障恢复重启可以利用上次提交的 offset 恢复，保证数据不丢失。但是假如故障发生在提交结果之后、提交 offset 之前会导致数据多次处理，这个时候我们需要保证处理结果多次输出不影响正常的业务。</p>
+<p>由此可以分析，假设要保证数据恰一次处理语义，那么结果输出和 offset 提交必须在一个事务内完成。在这里有以下两种做法：<br>repartition(1) Spark Streaming 输出的 action 变成仅一个 partition，这样可以利用事务去做：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Dstream.foreachRDD(rdd=&gt;&#123;</span><br><span class="line">   rdd.repartition(1).foreachPartition(partition=&gt;&#123;    //    开启事务</span><br><span class="line">       partition.foreach(each=&gt;&#123;//        提交数据</span><br><span class="line">       &#125;)    //  提交事务</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+<p>将结果和 offset 一起提交</p>
+<p>也就是结果数据包含 offset。这样提交结果和提交 offset 就是一个操作完成，不会数据丢失，也不会重复处理。故障恢复的时候可以利用上次提交结果带的 offset。</p>
+<p>Flink 与 kafka 0.11 保证仅一次处理</p>
+<p>若要 sink 支持仅一次语义，必须以事务的方式写数据到 Kafka，这样当提交事务时两次 checkpoint 间的所有写入操作作为一个事务被提交。这确保了出现故障或崩溃时这些写入操作能够被回滚。</p>
+<p>在一个分布式且含有多个并发执行 sink 的应用中，仅仅执行单次提交或回滚是不够的，因为所有组件都必须对这些提交或回滚达成共识，这样才能保证得到一致性的结果。Flink 使用两阶段提交协议以及预提交(pre-commit)阶段来解决这个问题。</p>
+<p>本例中的 Flink 应用如图所示包含以下组件：</p>
+<p>一个source，从Kafka中读取数据（即KafkaConsumer）</p>
+<p>一个时间窗口化的聚会操作</p>
+<p>一个sink，将结果写回到Kafka（即KafkaProducer）</p>
+<p><img src="/images/35.png" alt="alt"><br>下面详细讲解 flink 的两段提交思路</p>
+<p><img src="/images/36.png" alt="alt"></p>
+<p>Flink checkpointing 开始时便进入到 pre-commit 阶段。具体来说，一旦 checkpoint 开始，Flink 的 JobManager 向输入流中写入一个 checkpoint barrier ，将流中所有消息分割成属于本次 checkpoint 的消息以及属于下次 checkpoint 的，barrier 也会在操作算子间流转。对于每个 operator 来说，该 barrier 会触发 operator 状态后端为该 operator 状态打快照。data source 保存了 Kafka 的 offset，之后把 checkpoint barrier 传递到后续的 operator。</p>
+<p>这种方式仅适用于 operator 仅有它的内部状态。内部状态是指 Flink state backends 保存和管理的内容（如第二个 operator 中 window 聚合算出来的 sum）。</p>
+<p>当一个进程仅有它的内部状态的时候，除了在 checkpoint 之前将需要将数据更改写入到 state backend，不需要在预提交阶段做其他的动作。在 checkpoint 成功的时候，Flink 会正确的提交这些写入，在 checkpoint 失败的时候会终止提交</p>
+<p><img src="/images/37.png" alt="alt"></p>
+<p>当结合外部系统的时候，外部系统必须要支持可与两阶段提交协议捆绑使用的事务。显然本例中的 sink 由于引入了 kafka sink，因此在预提交阶段 data sink 必须预提交外部事务。如下图<br><img src="/images/38.png" alt="alt"><br>当 barrier 在所有的算子中传递一遍，并且触发的快照写入完成，预提交阶段完成。所有的触发状态快照都被视为 checkpoint 的一部分，也可以说 checkpoint 是整个应用程序的状态快照，包括预提交外部状态。出现故障可以从 checkpoint 恢复。下一步就是通知所有的操作算子 checkpoint 成功。该阶段 jobmanager 会为每个 operator 发起 checkpoint 已完成的回调逻辑。</p>
+<p>本例中 data source 和窗口操作无外部状态，因此该阶段，这两个算子无需执行任何逻辑，但是 data sink 是有外部状态的，因此，此时我们必须提交外部事务，如下图：</p>
+<p><img src="/images/39.png" alt="alt"><br>以上就是 flink 实现恰一次处理的基本逻辑。</p>
+<h3 id="背压"><a href="#背压" class="headerlink" title="背压"></a>背压</h3><p>消费者消费的速度低于生产者生产的速度，为了使应用正常，消费者会反馈给生产者来调节生产者生产的速度，以使得消费者需要多少，生产者生产多少。</p>
+<p>Spark Streaming 的背压<br>Spark Streaming 跟 kafka 结合是存在背压机制的，目标是根据当前 job 的处理情况来调节后续批次的获取 kafka 消息的条数。为了达到这个目的，Spark Streaming 在原有的架构上加入了一个 RateController，利用的算法是 PID，需要的反馈数据是任务处理的结束时间、调度时间、处理时间、消息条数，这些数据是通过 SparkListener 体系获得，然后通过 PIDRateEsimator 的 compute 计算得到一个速率，进而可以计算得到一个 offset，然后跟限速设置最大消费条数比较得到一个最终要消费的消息最大 offset</p>
+<p>PIDRateEsimator 的 compute 方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def compute(       </span><br><span class="line">      time: Long, </span><br><span class="line">      // <span class="keyword">in</span> milliseconds  </span><br><span class="line">      numElements: Long,        </span><br><span class="line">      processingDelay: Long, </span><br><span class="line">      // <span class="keyword">in</span> milliseconds  schedulingDelay: Long </span><br><span class="line">      // <span class="keyword">in</span> milliseconds  </span><br><span class="line">      ): Option[Double] = &#123;logTrace(s<span class="string">"\ntime = <span class="variable">$time</span>, # records = <span class="variable">$numElements</span>, "</span> + s<span class="string">"processing time = <span class="variable">$processingDelay</span>, scheduling delay = <span class="variable">$schedulingDelay</span>"</span>)   </span><br><span class="line">      this.synchronized &#123;<span class="keyword">if</span> (time &gt; latestTime &amp;&amp; numElements &gt; 0 &amp;&amp; processingDelay &gt; 0) &#123;</span><br><span class="line">        val delaySinceUpdate = (time - latestTime).toDouble / 1000          </span><br><span class="line">        val processingRate = numElements.toDouble / processingDelay * 1000         </span><br><span class="line">        val error = latestRate - processingRate                 </span><br><span class="line">        val historicalError = schedulingDelay.toDouble * processingRate/ batchIntervalMillis</span><br><span class="line">        // <span class="keyword">in</span> elements/(second ^ 2)        </span><br><span class="line">        val dError = (error - latestError) / delaySinceUpdate        </span><br><span class="line">        val newRate = (latestRate - proportional * error - integral * historicalError - derivative * dError).max(minRate)        </span><br><span class="line">        logTrace(s<span class="string">""</span><span class="string">" | latestRate = <span class="variable">$latestRate</span>, error = <span class="variable">$error</span> | latestError = <span class="variable">$latestError</span>, historicalError = <span class="variable">$historicalError</span> | delaySinceUpdate = <span class="variable">$delaySinceUpdate</span>, dError = <span class="variable">$dError</span> "</span><span class="string">""</span>.stripMargin)        </span><br><span class="line">        latestTime = time                 </span><br><span class="line">        <span class="keyword">if</span> (firstRun) &#123; latestRate = processingRate latestError = 0D firstRun = <span class="literal">false</span>  logTrace(<span class="string">"First run, rate estimation skipped"</span>) None  &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123; latestRate = newRate  latestError = error logTrace(s<span class="string">"New rate = <span class="variable">$newRate</span>"</span>)  Some(newRate)       &#125;     &#125; </span><br><span class="line">      <span class="keyword">else</span> &#123;       logTrace(<span class="string">"Rate estimation skipped"</span>)               None     &#125;   &#125; &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>Flink 的背压<br>与 Spark Streaming 的背压不同的是，Flink 背压是 jobmanager 针对每一个 task 每 50ms 触发 100 次 Thread.getStackTrace() 调用，求出阻塞的占比。过程如图 16 所示：</p>
+<p><img src="/images/43.png" alt="alt"><br>阻塞占比在 web 上划分了三个等级：</p>
+<p>OK: 0 &lt;= Ratio &lt;= 0.10，表示状态良好；<br>LOW: 0.10 &lt; Ratio &lt;= 0.5，表示有待观察；<br>HIGH: 0.5 &lt; Ratio &lt;= 1，表示要处理了。</p>
+<h3 id="表管理"><a href="#表管理" class="headerlink" title="表管理"></a>表管理</h3><p>flink和structured streaming都可以讲流注册成一张表，然后使用sql进行分析，不过两者之间区别还是有些的。<br>Structured Streaming将流注册成临时表，然后用sql进行查询，操作也是很简单跟静态的dataset/dataframe一样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.createOrReplaceTempView(<span class="string">"updates"</span>)</span><br><span class="line">spark.sql(<span class="string">"select count(*) from updates"</span>)</span><br></pre></td></tr></table></figure>
+<p>其实，此处回想Spark Streaming 如何注册临时表呢？在foreachRDD里，讲rdd转换为dataset/dataframe，然后将其注册成临时表，该临时表特点是代表当前批次的数据，而不是全量数据。Structured Streaming注册的临时表就是流表，针对整个实时流的。Sparksession.sql执行结束后，返回的是一个流dataset/dataframe,当然这个很像spark sql的sql文本执行，所以为了区别一个dataframe/dataset是否是流式数据，可以df.isStreaming来判断。</p>
+<p>当然，flink也支持直接注册流表，然后写sql分析，sql文本在flink中使用有两种形式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1). tableEnv.sqlQuery(<span class="string">"SELECT product,amount FROM Orders WHERE product LIKE '%Rubber%'"</span>)</span><br><span class="line"></span><br><span class="line">2). tableEnv.sqlUpdate(</span><br><span class="line"><span class="string">"INSERT INTO RubberOrders SELECT product, amount FROM Orders WHEREproduct LIKE '%Rubber%'"</span>);</span><br></pre></td></tr></table></figure>
+
+
+<p>对于第一种形式，sqlQuery执行结束之后会返回一张表也即是Table对象,然后可以进行后续操作或者直接输出，如：result.writeAsCsv(“”);。<br>而sqlUpdate是直接将结果输出到了tablesink，所以要首先注册tablesink，方式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TableSink csvSink = newCsvTableSink(<span class="string">"/path/to/file"</span>, ...);</span><br><span class="line"></span><br><span class="line">String[] fieldNames = &#123;<span class="string">"product"</span>,<span class="string">"amount"</span>&#125;;</span><br><span class="line"></span><br><span class="line">TypeInformation[] fieldTypes =&#123;Types.STRING, Types.INT&#125;;</span><br><span class="line"></span><br><span class="line">tableEnv.registerTableSink(<span class="string">"RubberOrders"</span>,fieldNames, fieldTypes, csvSink);</span><br></pre></td></tr></table></figure>
+
+<p>flink注册表的形式比较多，直接用数据源注册表，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableEnv.registerExternalCatalog();</span><br><span class="line">tableEnv.registerTableSource();</span><br></pre></td></tr></table></figure>
+<p>也可以从datastream转换成表，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tableEnv.registerDataStream(<span class="string">"Orders"</span>,ds, <span class="string">"user, product, amount"</span>);</span><br><span class="line">Table table = tableEnv.fromDataStream(ds,<span class="string">"user, product, amount"</span>);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink-Spark/" rel="tag">Flink,Spark</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-26" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/20/26/" class="article-date">
+      <time datetime="2020-05-20T03:19:24.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/20/26/">Flink端到端状态一致性EXACTLY_ONCE实现</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="状态一致性"><a href="#状态一致性" class="headerlink" title="状态一致性:"></a>状态一致性:</h3><p><img src="/images/28.png" alt="alt"><br>有状态的流处理，内部每个算子任务都可以有自己的状态；</p>
+<p>对于流处理器内部（没有接入sink）来说，所谓的状态一致性，其实就是我们所说的计算结果要保证准确；</p>
+<p>一条数据不应该丢失，也不应该重复计算；</p>
+<p>在遇到故障时可以恢复状态，恢复以后的重新计算，结果应该也是完全正常的</p>
+<h3 id="状态一致性分类："><a href="#状态一致性分类：" class="headerlink" title="状态一致性分类："></a>状态一致性分类：</h3><p>AT_MOST_ONCE（最多一次），当任务故障时最简单做法是什么都不干，既不恢复丢失状态，也不重播丢失数据。At-most-once语义的含义是最多处理一次事件。</p>
+<p>AT_LEAST_ONCE（至少一次），在大多数真实应用场景，我们希望不丢失数据。这种类型的保障称为at-least-once，意思是所有的事件都得到了处理，而一些事件还可能被处理多次。</p>
+<p>EXACTLY_ONCE（精确一次），恰好处理一次是最严格的的保证，也是最难实现的。恰好处理一次语义不仅仅意味着没有事件丢失，还意味着针对每一个数据，内部状态仅仅更新一次。</p>
+<h3 id="一致性检查点（Checkpoints）"><a href="#一致性检查点（Checkpoints）" class="headerlink" title="一致性检查点（Checkpoints）"></a>一致性检查点（Checkpoints）</h3><p>Flink使用了一种轻量级快照机制 — 检查点（Checkpoint）来保证exactly-one语义；</p>
+<p>有状态流应用的一致检查点，其实就是：所有任务的状态，在某个时间点的一份拷贝（一份快照）。而这个时间点，应该是所有任务都恰好处理完一个相同的输入数据的时候。</p>
+<p>应用状态的一致性检查点，是Flink故障恢复机制的核心。</p>
+<p><img src="/images/29.png" alt="alt"></p>
+<h3 id="端到端（end-to-end）状态一致性"><a href="#端到端（end-to-end）状态一致性" class="headerlink" title="端到端（end-to-end）状态一致性"></a>端到端（end-to-end）状态一致性</h3><p>目前我们看到的一致性保证都是由流处理器实现的，也就是说都是在Flink流处理内部保证的；而在真实应用中，流处理应用除了流处理器以外还包含了数据源（例如kafka）和输出到持久化系统；</p>
+<p>端到端的一致性保证，意味着结果的正确性贯穿了整个流处理应用的始终，每个组件都保证了它自己的一致性；</p>
+<p>整个端到端的一致性级别取决于所有组件中一致性最弱的组件；</p>
+<h3 id="端到端exactly-once"><a href="#端到端exactly-once" class="headerlink" title="端到端exactly-once"></a>端到端exactly-once</h3><p>内部保证 — checkpoint</p>
+<p>source端 — 可重设数据的读取位置；可重新读取偏移量</p>
+<p>sink端 – 从故障恢复时，数据不会重复写入外部系统：幂等写入和事务写入；</p>
+<h3 id="幂等写入（Idempotent-Writes）："><a href="#幂等写入（Idempotent-Writes）：" class="headerlink" title="幂等写入（Idempotent Writes）："></a>幂等写入（Idempotent Writes）：</h3><p>幂等操作即一个操作可以重复执行很多次，但只导致一次结果更改，也就是说，后面再重复执行就不起作用了；</p>
+<p><img src="/images/30.png" alt="alt"></p>
+<p> 它的原理不是不重复写入而是重复写完之后结果还是一样；它的瑕疵是不能做到完全意义上exactly-once（在故障恢复时，突然把外部系统写入操作跳到之前的某个状态然后继续往里边写，故障之前发生的那一段的状态变化又重演了直到最后发生故障那一刻追上就正常了；假如中间这段又被读取了就可能会有些问题）；</p>
+<h3 id="事务写入（Transactional-Writes）"><a href="#事务写入（Transactional-Writes）" class="headerlink" title="事务写入（Transactional Writes）:"></a>事务写入（Transactional Writes）:</h3><p> 事务Transactional Writes</p>
+<p>应用程序中一系列严密的操作，所有操作必须成功完成，否则在每个操作中所作的所有更改都会被撤销；<br>具有原子性，一个事务中的一系列的操作要么全部成功，要么一个都不做。<br>实现思想：构建的事务对应着checkpoint，等到checkpoint真正完成的时候，才把所有对应的结果写入sink系统中。</p>
+<p>实现方式：预习日志和两阶段提交</p>
+<h3 id="预习日志（Write-Ahead-Log，WAL）"><a href="#预习日志（Write-Ahead-Log，WAL）" class="headerlink" title="预习日志（Write-Ahead-Log，WAL）"></a>预习日志（Write-Ahead-Log，WAL）</h3><p>把结果数据先当成状态保存，然后在收到checkpoint完成的通知时，一次性写入sink系统；</p>
+<p>简单易于实现，由于数据提前在状态后端中做了缓存，所以无论什么sink系统，都能用这种方式一批搞定；</p>
+<p>DataStream API提供了一个模板类：GenericWriteAheadSink，来实现这种事务性sink；</p>
+<p>瑕疵：<br>A. sink系统没说它支持事务，有可能出现一部分写进去了一部分没写进去（如果算失败，再写一次就写了两次了）；</p>
+<p>B. checkpoint做完了sink才去真正写入（但其实得等sink都写完checkpoint才能生效，所以WAL这个机制jobmanager确定它写完还不算真正写完，还得有一个外部系统已经确认完成的checkpoint）</p>
+<h3 id="两阶段提交（Two–Phase–Commit，2PC）–-真正能够实现exactly-once"><a href="#两阶段提交（Two–Phase–Commit，2PC）–-真正能够实现exactly-once" class="headerlink" title="两阶段提交（Two–Phase–Commit，2PC）– 真正能够实现exactly-once"></a>两阶段提交（Two–Phase–Commit，2PC）– 真正能够实现exactly-once</h3><p>对于每个checkpoint，sink任务会启动一个事务，并将接下来所有接收的数据添加到事务里；</p>
+<p>然后将这些数据写入外部sink系统，但不提交他们 – 这时只是预提交；</p>
+<p>当它收到checkpoint完成时的通知，它才正式提交事务，实现结果的真正写入；</p>
+<p>这种方式真正实现了exactly-once，它需要一个提供事务支持的外部sink系统，Flink提供了TwoPhaseCommitSinkFunction接口</p>
+<h3 id="2PC对外部sink的要求"><a href="#2PC对外部sink的要求" class="headerlink" title="2PC对外部sink的要求"></a>2PC对外部sink的要求</h3><p>外部sink系统必须事务支持，或者sink任务必须能够模拟外部系统上的事务；</p>
+<p>在checkpoint的间隔期间里，必须能够开启一个事务，并接受数据写入；</p>
+<p>在收到checkpoint完成的通知之前，事务必须是“等待提交”的状态，在故障恢复的情况下，这可能需要一些时间。如果这个时候sink系统关闭事务（例如超时了），那么未提交的数据就会丢失；</p>
+<p>sink任务必须能够在进程失败后恢复事务；</p>
+<p>提交事务必须是幂等操作；</p>
+<h3 id="不同Source和sink的一致性保证："><a href="#不同Source和sink的一致性保证：" class="headerlink" title="不同Source和sink的一致性保证："></a>不同Source和sink的一致性保证：</h3><p><img src="/images/31.png" alt="alt"></p>
+<p>Flink+kafka端到端状态一致性的保证<br>Flink和kafka天生就是一对，用kafka做为source，用kafka做完sink  &lt;===&gt;  实现端到端的一致性</p>
+<p>内部 – 利用checkpoint机制，把状态存盘，发生故障的时候可以恢复，保证内部的状态一致性；</p>
+<p>source – kafka consumer作为source，可以将偏移量保存下来，如果后续任务出现了故障，恢复的时候可以由连接器重置偏移量，重新消费数据，保证一致性；</p>
+<p>sink – kafka producer作为sink，采用两阶段提交sink，需要实现一个TwoPhaseCommitSinkFunction</p>
+<p><img src="/images/32.png" alt="alt"></p>
+<p><img src="/images/33.png" alt="alt"></p>
+<p><img src="/images/34.png" alt="alt"></p>
+<p> 默认是AT_LEAST_ONCE</p>
+<p>Exactly-once两阶段提交</p>
+<p><img src="/images/35.png" alt="alt"><br>JobManager协调各个TaskManager进行checkpoint存储；</p>
+<p>checkpoint保存在StateBackend中，默认StateBackend是内存级的，也可以改为文件级的进行持久化保存；</p>
+<p><img src="/images/36.png" alt="alt"><br>当checkpoint启动时，JobManager会将检查点分界线（barrier）注入数据流；</p>
+<p>barrier会在算子间传递下去；</p>
+<p><img src="/images/37.png" alt="alt"></p>
+<p>每个算子会对当前的状态做个快照，保存到状态后端；</p>
+<p>checkpoint机制可以保证内部的状态一致性；</p>
+<p><img src="/images/38.png" alt="alt"><br>每个内部的transform任务遇到barrier时，都会把状态存到checkpoint里；</p>
+<p>sink任务首先把数据写入外部kafka，这些数据都属于预提交的事务；遇到barrier时，把状态保存到状态后端，并开启新的预提交事务（以barrier为界之前的数据属于上一个事务，之后的数据属于下一个新的事务）；</p>
+<p><img src="/images/39.png" alt="alt"><br>当所有算子任务的快照完成，也就是这次的checkpoint完成时，JobManager会向所有任务发通知，确认这次checkpoint完成；</p>
+<p>sink任务收到确认通知，正式提交之前的事务，kafka中未确认数据改完“已确认”；</p>
+<h3 id="Exactly-once两阶段提交步骤："><a href="#Exactly-once两阶段提交步骤：" class="headerlink" title="Exactly-once两阶段提交步骤："></a>Exactly-once两阶段提交步骤：</h3><p> 第一条数据来在之后，开启一个kafka的事务（transaction），正常写入kafka分区日志但标记为未提交，这就是“预提交”；</p>
+<p> JobManagere触发checkpoint操作，barrier从source开始向下传递，遇到barrier的算子将状态存入状态后端，并通知JobManagere；</p>
+<p> sink连接器接收到barrier，保存当前状态，存入checkpoint，通知JobManager并开启下一阶段的事务，用于提交下个检查点的数据；</p>
+<p> JobManager收到所有任务的通知，发出确认信息，表示checkpoint完成；</p>
+<p> sink任务收到JobManager的确认信息，正式提交这段时间的数据；</p>
+<p> 外部kafka关闭事务，提交的数据可以正常消费了。</p>
+<p>在代码中真正实现flink和kafak的端到端exactly-once语义：</p>
+<p><img src="/images/40.png" alt="alt"></p>
+<p><img src="/images/41.png" alt="alt"></p>
+<p>A. 这里需要配置下，因为它默认的是AT_LEAST_ONCE；</p>
+<p>B. 对于外部kafka读取的消费者的隔离级别，默认是read_on_commited，如果默认是可以读未提交的数据，就相当于整个一致性还没得到保证（未提交的数据没有最终确认那边就可以读了，相当于那边已经消费数据了，事务就是假的了）  所以需要修改kafka的隔离级别；</p>
+<p>C. timeout超时问题，flink和kafka 默认sink是超时1h，而kafak集群中配置的tranctraction事务的默认超时时间是15min，flink-kafak这边的连接器的时间长，这边还在等着做操作 ，kafak那边等checkpoint等的时间太长直接关闭了。所以两边的超时时间最起码前边要比后边的小</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
+  
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/zhangdeshuai409930360" target="_blank">Blog</a> by handsomezhangshuai
+            </div>
+        </div>
+        
+            <div class="visit">
+            © 2015-2020 zhangdeshuai 粤ICP备15075505号
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+           </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

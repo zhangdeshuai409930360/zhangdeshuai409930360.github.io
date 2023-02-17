@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Druid原理和架构 | Handsome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Druid简介概念：主要是解决低延迟下实时数据摄入与查询的平台，本质是一个数据存储，但是数据仍然是保存在（hdfs、文件系统等）中。特点：① 列式存储格式：可以将列作为索引，为仅查看几列的查询提供了巨大的速度提升② 高可用、高并发：① 集群扩展、缩小、删除、宕机都不会停止服务，全天候运行② HA、sql的并行化执行、可扩展、容灾等③ 支持1000+的并发用户，并提供隔离机制支持多租户模式（多租户就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Druid原理和架构">
+<meta property="og:url" content="https://zhangdeshuai409930360.github.io/2020/04/20/21/index.html">
+<meta property="og:site_name" content="Handsome">
+<meta property="og:description" content="Druid简介概念：主要是解决低延迟下实时数据摄入与查询的平台，本质是一个数据存储，但是数据仍然是保存在（hdfs、文件系统等）中。特点：① 列式存储格式：可以将列作为索引，为仅查看几列的查询提供了巨大的速度提升② 高可用、高并发：① 集群扩展、缩小、删除、宕机都不会停止服务，全天候运行② HA、sql的并行化执行、可扩展、容灾等③ 支持1000+的并发用户，并提供隔离机制支持多租户模式（多租户就">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/26.png">
+<meta property="og:image" content="https://zhangdeshuai409930360.github.io/images/27.png">
+<meta property="article:published_time" content="2020-04-20T06:01:24.000Z">
+<meta property="article:modified_time" content="2023-02-17T01:11:47.154Z">
+<meta property="article:tag" content="Druid">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhangdeshuai409930360.github.io/images/26.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Handsome" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Handsome</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        <li>友情链接</li>
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/bigdata/">大数据</a></li>
+                        
+                            <li><a  href="/categories/java/">JAVA学习</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    <a target="_blank"  class="main-nav-link switch-friends-link" href="https://my.oschina.net/u/559635">oschina</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">
+                      关于博主
+简介
+90后，大数据开发工程师/JAVA工程师。
+知人不必言尽，留三分余地与人，留些口德与己。
+责人不必苛尽，留三分余地与人，留些肚量与己。
+才能不必傲尽，留三分余地与人，留些内涵与己。
+锋芒不必露尽，留三分余地与人，留些深敛与己。
+有功不必邀尽，留三分余地与人，留些谦让与己。
+2013.10-2016.03 深圳市时讯互联科技有限公司 JAVA/大数据开发工程师
+2016.03-2017.08       深圳市华阳信通发展有限公司/大数据开发工程师
+2017.08-2018.03       深圳市彩讯科技股份有限公司/大数据开发工程师
+2018.03-至今       深圳市加推科技有限公司/大数据开发工程师     
+ </div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Handsome</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Handsome</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/bigdata/">大数据</a></li>
+                
+                    <li><a href="/categories/java/">JAVA学习</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+
+     <div class="body-wrap"><article id="post-21" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/04/20/21/" class="article-date">
+      <time datetime="2020-04-20T06:01:24.000Z" itemprop="datePublished">2020-04-20</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Druid原理和架构
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Druid/" rel="tag">Druid</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Druid简介"><a href="#Druid简介" class="headerlink" title="Druid简介"></a>Druid简介</h3><p>概念：主要是解决低延迟下实时数据摄入与查询的平台，本质是一个数据存储，但是数据仍然是保存在（hdfs、文件系统等）中。<br>特点：<br>① 列式存储格式：<br>可以将列作为索引，为仅查看几列的查询提供了巨大的速度提升<br>② 高可用、高并发：<br>① 集群扩展、缩小、删除、宕机都不会停止服务，全天候运行<br>② HA、sql的并行化执行、可扩展、容灾等<br>③ 支持1000+的并发用户，并提供隔离机制支持多租户模式（多租户就是并发互不影响）<br>④ 低延迟<br>Druid采用了列式存储、倒排索引、位图索引等关键技术，能够在亚秒级别内完成海量数据的过滤、聚合以及多维分析等操作。<br>⑤ 存储时候聚合：<br>无论是实时数据消费还是批量数据处理，Druid在基于DataSource结构存储数据时即可选择对任意的指标列进行聚合操作<br>聚合：提前做好sum，count等操作</p>
+<h3 id="Druid架构"><a href="#Druid架构" class="headerlink" title="Druid架构"></a>Druid架构</h3><p><img src="/images/26.png" alt="alt"><br>总体可以分为：四个节点+三个依赖</p>
+<h3 id="四个节点："><a href="#四个节点：" class="headerlink" title="四个节点："></a>四个节点：</h3><h4 id="实时节点（RealtimeNode）-新版本的druid好像没有实时节点的说法了-："><a href="#实时节点（RealtimeNode）-新版本的druid好像没有实时节点的说法了-：" class="headerlink" title="实时节点（RealtimeNode）(新版本的druid好像没有实时节点的说法了)："></a>实时节点（RealtimeNode）(新版本的druid好像没有实时节点的说法了)：</h4><p>实时摄入数据，对于旧的数据周期性的生成segment数据文件，上传到deepstorage中<br>为了避免单点故障，索引服务(Indexer)的主从架构已经逐渐替代了实时节点，所以现在的实时节点，其实里面包含了很多角色:<br>作用：可以通过索引服务的API，写数据导入任务，用以新增、删除、合并Segment等。是一个主从架构：</p>
+<h5 id="统治节点（overlord）："><a href="#统治节点（overlord）：" class="headerlink" title="统治节点（overlord）："></a>统治节点（overlord）：</h5><p>类似于YarnResourceManager：负责集群资源的管理和分配<br>监视数据服务器上的MiddleManager进程，将提取任务分配给MiddleManager</p>
+<h5 id="中间管理者（middlemanager）："><a href="#中间管理者（middlemanager）：" class="headerlink" title="中间管理者（middlemanager）："></a>中间管理者（middlemanager）：</h5><p>类似于YarnNodeManager：负责单个节点资源的管理和分配<br>新数据提取到群集中的过程。他们负责从外部数据源读取并发布新的段</p>
+<h5 id="苦工（peon）："><a href="#苦工（peon）：" class="headerlink" title="苦工（peon）："></a>苦工（peon）：</h5><p>类似于Yarncontainer：负责具体任务的执行<br>Peon进程是由MiddleManagers产生的任务执行引擎。<br>每个Peon运行一个单独的JVM，并负责执行单个任务。<br>Peon总是与生成它们的MiddleManager在同一主机上运行</p>
+<h5 id="Router-路由：可选-："><a href="#Router-路由：可选-：" class="headerlink" title="Router(路由：可选)："></a>Router(路由：可选)：</h5><p>可在Druid代理，统治节点和协调器之前提供统一的API网关<br> 注：统治节点和中间管理者的通信是通过zookeeper完成的</p>
+<h4 id="历史节点（HistoricalNode）："><a href="#历史节点（HistoricalNode）：" class="headerlink" title="历史节点（HistoricalNode）："></a>历史节点（HistoricalNode）：</h4><p>加载已生成的segment数据文件，以供数据查询<br>启动或者受到协调节点通知的时候，通过druid_rules表去查找需要加载的数据，然后检查自身的本地缓存中已存在的Segment数据文件，<br>然后从DeepStorage中下载其他不在本地的Segment数据文件，后加载到内存！！！再提供查询。</p>
+<h4 id="查询节点（BrokerNode）"><a href="#查询节点（BrokerNode）" class="headerlink" title="查询节点（BrokerNode）:"></a>查询节点（BrokerNode）:</h4><p>对外提供数据查询服务，并同时从实时节点与历史节点查询数据，合并后返回给调用方<br>缓存：外部：第三方的一些缓存系统内部：在历史节点或者查询节点做缓存</p>
+<h4 id="协调节点（CoodinatorNode）"><a href="#协调节点（CoodinatorNode）" class="headerlink" title="协调节点（CoodinatorNode）:"></a>协调节点（CoodinatorNode）:</h4><p>负责历史节点的数据负载均衡，以及通过规则（Rule）管理数据的生命周期<br>① 通过从MySQL读取元数据信息，来决定深度存储上哪些数据段应该在那个历史节点中被加载，<br>② 通过ZK感知历史节点，历史节点增加，会自动分配相关的Segment，历史节点删除，会将原本在这台节点上的Segment分配给其他的历史节点<br>注：Coordinator是定期运行的，并且运行间隔可以通过配置参数配置</p>
+<h3 id="三个依赖："><a href="#三个依赖：" class="headerlink" title="三个依赖："></a>三个依赖：</h3><h5 id="1）Mysql："><a href="#1）Mysql：" class="headerlink" title="1）Mysql："></a>1）Mysql：</h5><p>存储关于Druid中的metadata，规则数据，配置数据等，<br>主要包含以下几张表：<br>“druid_config”（通常是空的）,<br>“druid_rules”（协作节点使用的一些规则信息，比如哪个segment从哪个node去load）<br>“druid_segments”（存储每个segment的metadata信息）;</p>
+<h5 id="2）Deepstorage："><a href="#2）Deepstorage：" class="headerlink" title="2）Deepstorage："></a>2）Deepstorage：</h5><p>存储segments，Druid目前已经支持本地磁盘，NFS挂载磁盘，HDFS，S3等。</p>
+<h5 id="3）ZooKeeper："><a href="#3）ZooKeeper：" class="headerlink" title="3）ZooKeeper："></a>3）ZooKeeper：</h5><p>① 查询节点通过Zk来感知实时节点和历史节点的存在，提供查询服务。<br>② 协调节点通过ZK感知历史节点，实现负载均衡<br>③ 统治节点、协调节点的lead选举</p>
+<h3 id="实时Segment数据文件的流动："><a href="#实时Segment数据文件的流动：" class="headerlink" title="实时Segment数据文件的流动："></a>实时Segment数据文件的流动：</h3><h4 id="生成"><a href="#生成" class="headerlink" title="生成:"></a>生成:</h4><p>① 实时节点（中间管理者）会周期性的将同一时间段生成的数据合并成一个Segment数据文件，并上传到DeepStorage中。<br>② Segment数据文件的相关元数据信息保存到MetaStore中（如mysql，derby等）。<br>③ 协调节点定时（默认1分钟）从MetaSotre中获取到Segment数据文件的相关元信息后，将按配置的规则分配到符合条件的历史节点中。<br>④ 协调节点会通知一个历史节点去读<br>⑤ 历史节点收到协调节点的通知后，会从DeepStorage中拉取该Segment数据文件到本地磁盘，并通过zookeeper向集群声明可以提供查询了。<br>⑥ 实时节点会丢弃该Segment数据文件，并通过zookeeper向集群声明不在提供该Sgment的查询服务。　　　　　　　　　　　　　　//其实第四步已经可以提供查询服务了<br>⑦ 而对于全局数据来说，查询节点（BrokerNode）会同时从实时节点与历史节点分别查询，对结果整合后返回用户。</p>
+<h4 id="查询："><a href="#查询：" class="headerlink" title="查询："></a>查询：</h4><p>查询首先进入Broker，按照时间进行查询划分<br>确定哪些历史记录和MiddleManager正在为这些段提供服务<br>Historical/MiddleManager进程将接受查询，对其进行处理并返回结果<br>###DataSource<br><img src="/images/27.png" alt="alt"><br>每个datasource按照时间划分。每个时间范围称为一个chunk(一般都是以天分区，则一个chunk为一天)！！！//也可以按其他属性划分<br>在chunk中数据被分为一个或多个segment，每个segment都是一个单独的文件，通常包含几百万行数据<br>注：这些segment是按照时间组织成的chunk，所以在按照时间查询数据时，效率非常高。</p>
+<h4 id="数据分区："><a href="#数据分区：" class="headerlink" title="数据分区："></a>数据分区：</h4><p>任何分布式存储/计算系统，都需要对数据进行合理的分区，从而实现存储和计算的均衡，以及数据并行化。<br>而Druid本身处理的是事件数据，每条数据都会带有一个时间戳，所以很自然的就可以使用时间进行分区。<br>为什么一个chunk中的数据包含多个segment！！！？？？？原因就是二级分区</p>
+<h4 id="二级分区："><a href="#二级分区：" class="headerlink" title="二级分区："></a>二级分区：</h4><p>很可能每个chunk的数据量是不均衡的，而Duid为了解决这种问题，提供了“二级分区”，每一个二级分区称为一个Shard(分片)<br>其实chunk、datasource都是抽象的，实际的就是每个分区就是一个Shard，每个Shard只包含一个Segment！！！，因为Segment是Shard持久化的结果<br>Druid目前支持两种Shard策略：<br>Hash(基于维值的Hash)<br>Range(基于某个维度的取值范围)<br>譬如：<br>2000-01-01，2000-01-02中的每一个分区都是一个Shard<br>2000-01-02的数据量比较多，所以有两个Shard，分为partition0、partition1。每个分区都是一个Shard<br>Shard经过持久化之后就称为了Segment，Segment是数据存储、复制、均衡(Historical的负载均衡)和计算的基本单元了。<br>Segment具有不可变性，一个Segment一旦创建完成后(MiddleManager节点发布后)就无法被修改，<br>只能通过生成一个新的Segment来代替旧版本的Segment。</p>
+<h4 id="Segment内部存储结构："><a href="#Segment内部存储结构：" class="headerlink" title="Segment内部存储结构："></a>Segment内部存储结构：</h4><p>Segment内部采用列式存储    　　　　　　　　    //并不是说每列都是一个独立的文件，而是说每列有独立的数据结构，所有列都会存储在一个文件中<br>Segment中的数据类型主要分为三种：<br>时间戳<br>维度列<br>指标列<br>对于时间戳列和指标列，实际存储是一个数组<br>对于维度列不会像指标列和时间戳这么简单，因为它需要支持filter和groupby：<br>所以Druid使用了字典编码(DictionaryEncoding)和位图索引(BitmapIndex)来存储每个维度列。每个维度列需要三个数据结构：<br>1、需要一个字典数据结构，将维值(维度列值都会被认为是字符串类型)映射成一个整数ID。<br>2、使用上面的字典编码，将该列所有维值放在一个列表中。<br>3、对于列中不同的值，使用bitmap数据结构标识哪些行包含这些值。　　　　　　//位图索引，这个需要记住<br>注：使用Bitmap位图索引可以执行快速过滤操作(找到符合条件的行号，以减少读取的数据量)<br>Druid针对维度列之所以使用这三个数据结构，是因为：<br>使用字典将字符串映射成整数ID，可以紧凑的表示结构2和结构3中的值。<br>使用Bitmap位图索引可以执行快速过滤操作(找到符合条件的行号，以减少读取的数据量)，因为Bitmap可以快速执行AND和OR操作。<br>对于groupby和TopN操作需要使用结构2中的列值列表<br>实例：<br>1.使用字典将列值映射为整数<br>{<br> “JustinBieher”:0,<br> “ke$ha”:1<br>}<br>2.使用1中的编码，将列值放到一个列表中<br>[0,0,1,1]<br>3.使用bitmap来标识不同列值<br>value=0:[1,1,0,0]//1代表该行含有该值，0标识不含有<br>value=1:[0,0,1,1]<br>因为是一个稀疏矩阵，所以比较好压缩！！<br>Druid而且运用了RoaringBitmap能够对压缩后的位图直接进行布尔运算，可以大大提高查询效率和存储效率(不需要解压缩)</p>
+<h4 id="Segment命名"><a href="#Segment命名" class="headerlink" title="Segment命名:"></a>Segment命名:</h4><p>如果一个Datasource下有几百万个Segment文件，我们又如何快速找出我们所需要的文件呢？答案就是通过文件名称快速索引查找。<br>Segment的命名包含四部分：<br>数据源(Datasource)、时间间隔(包含开始时间和结束时间两部分)、版本号和分区(Segment有分片的情况下才会有)。<br>eg：wikipedia_2015-09-12T00:00:00.000Z_2015-09-13T00:00:00.000Z_2019-09-09T10:06:02.498Z<br>wikipedia：Datasource名称<br>开始时间：2015-09-12T00:00:00.000Z//该Segment所存储最早的数据，时间格式是ISO8601<br>结束时间：2015-09-13T00:00:00.000Z//该segment所存储最晚的数据，时间格式是ISO8601<br>版本号：2019-09-09T10:06:02.498Z//此Segment的启动时间，因为Druid支持批量覆盖操作，<br>//当批量摄入与之前相同数据源、相同时间间隔数据时，数据就会被覆盖，这时候版本号就会被更新<br>分片号：从0开始，如果分区号为0，可以省略//分区的表现其实就是分目录<br>注：单机形式运行Druid，这样Druid生成的Segment文件都在${DRUID_HOME}/var/druid/segments目录下<br>注：为了保证Druid的查询效率，每个Segment文件的大小建议在300MB~700MB之间<br>注：版本号的意义：<br>在druid，如果您所做的只是追加数据，那么每个时间chunk只会有一个版本。<br>但是当您覆盖数据时，因为druid通过首先加载新数据（但不允许查询）来处理这个问题，一旦新数据全部加载，<br>切换所有新查询以使用这些新数据。然后它在几分钟后掉落旧段！！！</p>
+<h4 id="存储聚合"><a href="#存储聚合" class="headerlink" title="存储聚合"></a>存储聚合</h4><p>无论是实时数据消费还是批量数据处理，Druid在基于DataSource机构存储数据时即可选择对任意的指标列进行聚合操作：<br>1、基于维度列：相同的维度列数据会进行聚合<br>2、基于时间段：某一时间段的所有行会进行聚合，时间段可以通过queryGranularity参数指定<br>聚合：提前做好sum，count等操作</p>
+<h4 id="Segment生命周期："><a href="#Segment生命周期：" class="headerlink" title="Segment生命周期："></a>Segment生命周期：</h4><p>在元数据存储中！每个Segment都会有一个used字段，标记该段是否能用于查询</p>
+<h5 id="is-Published："><a href="#is-Published：" class="headerlink" title="is_Published："></a>is_Published：</h5><p>当Segment构建完毕，就将元数据存储在元数据存储区中，此Segment为发布状态</p>
+<h5 id="is-available"><a href="#is-available" class="headerlink" title="is_available:"></a>is_available:</h5><p>如果Segment当前可用于查询（实时任务或历史进程），则为true。</p>
+<h5 id="is-realtime"><a href="#is-realtime" class="headerlink" title="is_realtime:"></a>is_realtime:</h5><p>如果是由实时任务产生的，那么会为true，但是一段时间之后，也会变为false</p>
+<h5 id="is-overshadowed："><a href="#is-overshadowed：" class="headerlink" title="is_overshadowed："></a>is_overshadowed：</h5><p>标记该段是否已被其他段覆盖！处于此状态的段很快就会将其used标志自动设置为false。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2020/04/20/21/">Druid原理和架构</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问  的个人博客"></a></p>
+        <p><span>发布时间:</span>2020年04月20日 - 14时01分</p>
+        <p><span>最后更新:</span>2023年02月17日 - 09时11分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/04/20/21/" title="Druid原理和架构">https://zhangdeshuai409930360.github.io/2020/04/20/21/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://zhangdeshuai409930360.github.io/2020/04/20/21/　　作者: " title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2020/04/27/22/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Kafka to Flink - HDFS
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2020/04/07/20/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kafka 是如何保证数据可靠性和一致性</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Druid简介"><span class="toc-number">1.</span> <span class="toc-text">Druid简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Druid架构"><span class="toc-number">2.</span> <span class="toc-text">Druid架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四个节点："><span class="toc-number">3.</span> <span class="toc-text">四个节点：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实时节点（RealtimeNode）-新版本的druid好像没有实时节点的说法了-："><span class="toc-number">3.1.</span> <span class="toc-text">实时节点（RealtimeNode）(新版本的druid好像没有实时节点的说法了)：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#统治节点（overlord）："><span class="toc-number">3.1.1.</span> <span class="toc-text">统治节点（overlord）：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#中间管理者（middlemanager）："><span class="toc-number">3.1.2.</span> <span class="toc-text">中间管理者（middlemanager）：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#苦工（peon）："><span class="toc-number">3.1.3.</span> <span class="toc-text">苦工（peon）：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Router-路由：可选-："><span class="toc-number">3.1.4.</span> <span class="toc-text">Router(路由：可选)：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#历史节点（HistoricalNode）："><span class="toc-number">3.2.</span> <span class="toc-text">历史节点（HistoricalNode）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询节点（BrokerNode）"><span class="toc-number">3.3.</span> <span class="toc-text">查询节点（BrokerNode）:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#协调节点（CoodinatorNode）"><span class="toc-number">3.4.</span> <span class="toc-text">协调节点（CoodinatorNode）:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三个依赖："><span class="toc-number">4.</span> <span class="toc-text">三个依赖：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1）Mysql："><span class="toc-number">4.0.1.</span> <span class="toc-text">1）Mysql：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2）Deepstorage："><span class="toc-number">4.0.2.</span> <span class="toc-text">2）Deepstorage：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3）ZooKeeper："><span class="toc-number">4.0.3.</span> <span class="toc-text">3）ZooKeeper：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实时Segment数据文件的流动："><span class="toc-number">5.</span> <span class="toc-text">实时Segment数据文件的流动：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#生成"><span class="toc-number">5.1.</span> <span class="toc-text">生成:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询："><span class="toc-number">5.2.</span> <span class="toc-text">查询：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据分区："><span class="toc-number">5.3.</span> <span class="toc-text">数据分区：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二级分区："><span class="toc-number">5.4.</span> <span class="toc-text">二级分区：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Segment内部存储结构："><span class="toc-number">5.5.</span> <span class="toc-text">Segment内部存储结构：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Segment命名"><span class="toc-number">5.6.</span> <span class="toc-text">Segment命名:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储聚合"><span class="toc-number">5.7.</span> <span class="toc-text">存储聚合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Segment生命周期："><span class="toc-number">5.8.</span> <span class="toc-text">Segment生命周期：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#is-Published："><span class="toc-number">5.8.1.</span> <span class="toc-text">is_Published：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#is-available"><span class="toc-number">5.8.2.</span> <span class="toc-text">is_available:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#is-realtime"><span class="toc-number">5.8.3.</span> <span class="toc-text">is_realtime:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#is-overshadowed："><span class="toc-number">5.8.4.</span> <span class="toc-text">is_overshadowed：</span></a></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox bdshare-button-style2-24">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2020/04/27/22/" title="上一篇: Kafka to Flink - HDFS">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2020/04/07/20/" title="下一篇: Kafka 是如何保证数据可靠性和一致性">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/02/17/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/05/11/35/">Apache Hudi的写时复制和读时合并</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/06/34/">Hive严格模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/33/">Apache Atlas安装数据治理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/27/32/">SQL优化技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/04/31/">Datax3.0简介</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/30/">大数据架构师毕生所学</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/05/29/">Hive内置函数速查表</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/21/27/">Flink与Spark多方面区别对比</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/20/26/">Flink端到端状态一致性EXACTLY_ONCE实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/25/">Flink使用assignAscendingTimestamps 生成水印的三个重载方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/24/">Flink使用SQL操作几种类型的window</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/23/">AppendStreamTableSink、RetractStreamTableSink、UpsertStreamTableSink</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/27/22/">Kafka to Flink - HDFS</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/21/">Druid原理和架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/07/20/">Kafka 是如何保证数据可靠性和一致性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/19/">Python数据质量检测</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/02/oozie/">Oozie常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/01/18/">深入理解Kafka副本机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/14/2/">APP数据统计-用户活跃统计周活跃，月活跃(不是按照自然周计算,每天的前７天　前３０天)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/1/">Spark FastJson 解析SDK上报日期</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/14/28/">Spark Yarn 的提交二种方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/07/14/10/">ELK日志采集logstash output -> elasticsearch 数据写入性能优化。</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/23/13/">SparkStructured StreamExecution：持续查询的运转引擎</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/5/">通过BulkLoad(MR)快速将海量数据导入到Hbase</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/05/02/7/">Spring mvc 框架定时刷新kerberos认证票据</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/3/">Spark Scala 获取自然日 属于每周的第一天和每周的最后一天，每月的第一天和每月的最后一天</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/8/">Spark1.X操作DataFrame示例</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/02/9/">Kafka HA Kafka一致性重要机制之ISR(kafka replica)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/02/4/">Spark scala 抽取mysql数据 导入Hive</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/16/">Kafka生产者详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/17/">Kafka消费者详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/02/6/">Oozie任务调度使用详细代码</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/12/">Apache Kylin</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/18/15/">Spark 累加器与广播变量</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/16/11/">python用map-reduce(IP地址库匹配省份和城市)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/14/14/">HDFS 常用 shell 命令</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/zhangdeshuai409930360" target="_blank">Blog</a> by handsomezhangshuai
+            </div>
+        </div>
+        
+            <div class="visit">
+            © 2015-2020 zhangdeshuai 粤ICP备15075505号
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+           </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

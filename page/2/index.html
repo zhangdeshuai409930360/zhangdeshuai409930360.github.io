@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Handsome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Handsome">
+<meta property="og:url" content="https://zhangdeshuai409930360.github.io/page/2/index.html">
+<meta property="og:site_name" content="Handsome">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Handsome" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Handsome</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        <li>友情链接</li>
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/bigdata/">大数据</a></li>
+                        
+                            <li><a  href="/categories/java/">JAVA学习</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    <a target="_blank"  class="main-nav-link switch-friends-link" href="https://my.oschina.net/u/559635">oschina</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">
+                      关于博主
+简介
+90后，大数据开发工程师/JAVA工程师。
+知人不必言尽，留三分余地与人，留些口德与己。
+责人不必苛尽，留三分余地与人，留些肚量与己。
+才能不必傲尽，留三分余地与人，留些内涵与己。
+锋芒不必露尽，留三分余地与人，留些深敛与己。
+有功不必邀尽，留三分余地与人，留些谦让与己。
+2013.10-2016.03 深圳市时讯互联科技有限公司 JAVA/大数据开发工程师
+2016.03-2017.08       深圳市华阳信通发展有限公司/大数据开发工程师
+2017.08-2018.03       深圳市彩讯科技股份有限公司/大数据开发工程师
+2018.03-至今       深圳市加推科技有限公司/大数据开发工程师     
+ </div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Handsome</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Handsome</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/bigdata/">大数据</a></li>
+                
+                    <li><a href="/categories/java/">JAVA学习</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/zhangdeshuai409930360" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/3077230927/home?wvr=5" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+
+     <div class="body-wrap">
+  
+    <article id="post-25" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/13/25/" class="article-date">
+      <time datetime="2020-05-13T06:12:55.000Z" itemprop="datePublished">2020-05-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/13/25/">Flink使用assignAscendingTimestamps 生成水印的三个重载方法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="先简单介绍一下Timestamp-和Watermark-的概念"><a href="#先简单介绍一下Timestamp-和Watermark-的概念" class="headerlink" title="先简单介绍一下Timestamp 和Watermark 的概念:"></a>先简单介绍一下Timestamp 和Watermark 的概念:</h3><ol>
+<li>Timestamp和Watermark都是基于事件的时间字段生成的</li>
+<li>Timestamp和Watermark是两个不同的东西，并且一旦生成都跟事件数据没有关系了（所有即使事件中不再包含生成Timestamp和Watermark的字段也没关系）</li>
+<li>事件数据和 Timestamp 一一对应（事件在流中传递以StreamRecord对象表示，value 和 timestamp 是它的两个成员变量)</li>
+<li>Watermark 在生成之后与事件数据没有直接关系，Watermark 作为一个消息，和事件数据一样在流中传递（Watermark 和StreamRecord 具有相同的父类：StreamElement）</li>
+<li>Timestamp 与 Watermark 在生成之后，会在下游window算子中做比较，判断事件数据是否是过期数据</li>
+<li>只有window算子才会用Watermark判断事件数据是否过期</li>
+</ol>
+<h3 id="assignTimestamps-extractor-TimestampExtractor-T-DataStream-T"><a href="#assignTimestamps-extractor-TimestampExtractor-T-DataStream-T" class="headerlink" title="assignTimestamps(extractor: TimestampExtractor[T]): DataStream[T]"></a>assignTimestamps(extractor: TimestampExtractor[T]): DataStream[T]</h3><p>此方法是数据流的快捷方式，其中已知元素时间戳在每个并行流中单调递增。在这种情况下，系统可以通过跟踪上升时间戳自动且完美地生成水印。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val input = env.addSource(<span class="built_in">source</span>)</span><br><span class="line">.map(json =&gt; &#123;</span><br><span class="line">        val id = json.get(<span class="string">"id"</span>).asText()</span><br><span class="line">        val createTime = json.get(<span class="string">"createTime"</span>).asText()</span><br><span class="line">        val amt = json.get(<span class="string">"amt"</span>).asText()</span><br><span class="line">        LateDataEvent(<span class="string">"key"</span>, id, createTime, amt)</span><br><span class="line">      &#125;)</span><br><span class="line">      // flink auto create timestamp &amp; watermark</span><br><span class="line">      .assignAscendingTimestamps(element =&gt; sdf.parse(element.createTime).getTime)</span><br></pre></td></tr></table></figure>
+<p>注：这种方法创建时间戳与水印最简单，返回一个long类型的数字就可以了</p>
+<h3 id="assignTimestampsAndWatermarks-assigner-AssignerWithPeriodicWatermarks-T-DataStream-T"><a href="#assignTimestampsAndWatermarks-assigner-AssignerWithPeriodicWatermarks-T-DataStream-T" class="headerlink" title="assignTimestampsAndWatermarks(assigner: AssignerWithPeriodicWatermarks[T]): DataStream[T]"></a>assignTimestampsAndWatermarks(assigner: AssignerWithPeriodicWatermarks[T]): DataStream[T]</h3><p>基于给定的水印生成器生成水印，即使没有新元素到达也会定期检查给定水印生成器的新水印，以指定允许延迟时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">val input = env.addSource(<span class="built_in">source</span>)</span><br><span class="line">      .map(json =&gt; &#123;</span><br><span class="line">        val id = json.get(<span class="string">"id"</span>).asText()</span><br><span class="line">        val createTime = json.get(<span class="string">"createTime"</span>).asText()</span><br><span class="line">        val amt = json.get(<span class="string">"amt"</span>).asText()</span><br><span class="line">        LateDataEvent(<span class="string">"key"</span>, id, createTime, amt)</span><br><span class="line">      &#125;)</span><br><span class="line">      // assign timestamp &amp; watermarks periodically(定期生成水印)</span><br><span class="line">      .assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor[LateDataEvent](Time.milliseconds(50)) &#123;</span><br><span class="line">       override def extractTimestamp(element: LateDataEvent): Long = &#123;</span><br><span class="line">         println(<span class="string">"want watermark : "</span> + sdf.parse(element.createTime).getTime)</span><br><span class="line">         sdf.parse(element.createTime).getTime</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="assignTimestampsAndWatermarks-assigner-AssignerWithPeriodicWatermarks-T-DataStream-T-1"><a href="#assignTimestampsAndWatermarks-assigner-AssignerWithPeriodicWatermarks-T-DataStream-T-1" class="headerlink" title="assignTimestampsAndWatermarks(assigner: AssignerWithPeriodicWatermarks[T]): DataStream[T]"></a>assignTimestampsAndWatermarks(assigner: AssignerWithPeriodicWatermarks[T]): DataStream[T]</h3><p>此方法仅基于流元素创建水印，对于通过[[AssignerWithPunctuatedWatermarks＃extractTimestamp（Object，long）]]处理的每个元素，<br>调用[[AssignerWithPunctuatedWatermarks＃checkAndGetNextWatermark（）]]方法，如果返回的水印值大于以前的水印，会发出新的水印，<br>此方法可以完全控制水印的生成，但是要注意，每秒生成数百个水印会影响性能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">val input = env.addSource(<span class="built_in">source</span>)</span><br><span class="line">      .map(json =&gt; &#123;</span><br><span class="line">        val id = json.get(<span class="string">"id"</span>).asText()</span><br><span class="line">        val createTime = json.get(<span class="string">"createTime"</span>).asText()</span><br><span class="line">        val amt = json.get(<span class="string">"amt"</span>).asText()</span><br><span class="line">        LateDataEvent(<span class="string">"key"</span>, id, createTime, amt)</span><br><span class="line">      &#125;)</span><br><span class="line">      // assign timestamp &amp; watermarks every event</span><br><span class="line">      .assignTimestampsAndWatermarks(new AssignerWithPunctuatedWatermarks[LateDataEvent]() &#123;</span><br><span class="line">      // check extractTimestamp emitted watermark is non-null and large than previously</span><br><span class="line">      override def checkAndGetNextWatermark(lastElement: LateDataEvent, extractedTimestamp: Long): Watermark = &#123;</span><br><span class="line">        new Watermark(extractedTimestamp)</span><br><span class="line">      &#125;</span><br><span class="line">      // generate next watermark</span><br><span class="line">      override def extractTimestamp(element: LateDataEvent, previousElementTimestamp: Long): Long = &#123;</span><br><span class="line">        val eventTime = sdf.parse(element.createTime).getTime</span><br><span class="line">        eventTime</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.cnblogs.com/Springmoon-venn/p/11403665.html" target="_blank" rel="noopener">转载于</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-24" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/11/24/" class="article-date">
+      <time datetime="2020-05-11T09:12:55.000Z" itemprop="datePublished">2020-05-11</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/11/24/">Flink使用SQL操作几种类型的window</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Flink SQL 支持三种窗口类型, 分别为 Tumble Windows / HOP Windows 和 Session Windows. 其中 HOP windows 对应 Table API 中的 Sliding Window, 同时每种窗口分别有相应的使用场景和方法</p>
+<p>Tumble Window（翻转窗口）<br>Hop Window（滑动窗口）<br>Session Window（会话窗口）</p>
+<h3 id="HOPWindowExample"><a href="#HOPWindowExample" class="headerlink" title="HOPWindowExample"></a>HOPWindowExample</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">package sql.window;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeHint;</span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeInformation;</span><br><span class="line">import org.apache.flink.api.java.tuple.Tuple3;</span><br><span class="line">import org.apache.flink.streaming.api.TimeCharacteristic;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;</span><br><span class="line">import org.apache.flink.table.api.Table;</span><br><span class="line">import org.apache.flink.table.api.java.StreamTableEnvironment;</span><br><span class="line"></span><br><span class="line">import java.sql.Timestamp;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class HOPWindowExample &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        // 获取 environment</span><br><span class="line">        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">        // 指定系统时间概念为 event time</span><br><span class="line">        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);</span><br><span class="line"></span><br><span class="line">        StreamTableEnvironment tEnv = StreamTableEnvironment.create(env);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        // 初始数据</span><br><span class="line">        DataStream&lt;Tuple3&lt;Long, String,Integer&gt;&gt; <span class="built_in">log</span> = env.fromCollection(Arrays.asList(</span><br><span class="line">                //时间 14:53:00</span><br><span class="line">                new Tuple3&lt;&gt;(1572591180_000L,<span class="string">"xiao_ming"</span>,300),</span><br><span class="line">                //时间 14:53:09</span><br><span class="line">                new Tuple3&lt;&gt;(1572591189_000L,<span class="string">"zhang_san"</span>,303),</span><br><span class="line">                //时间 14:53:12</span><br><span class="line">                new Tuple3&lt;&gt;(1572591192_000L, <span class="string">"xiao_li"</span>,204),</span><br><span class="line">                //时间 14:53:21</span><br><span class="line">                new Tuple3&lt;&gt;(1572591201_000L,<span class="string">"li_si"</span>, 208)</span><br><span class="line">        ));</span><br><span class="line"></span><br><span class="line">        // 指定时间戳</span><br><span class="line">        SingleOutputStreamOperator&lt;Tuple3&lt;Long, String, Integer&gt;&gt; logWithTime = log.assignTimestampsAndWatermarks(new AscendingTimestampExtractor&lt;Tuple3&lt;Long, String, Integer&gt;&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public long extractAscendingTimestamp(Tuple3&lt;Long, String, Integer&gt; element) &#123;</span><br><span class="line">                <span class="built_in">return</span> element.f0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        // 转换为 Table</span><br><span class="line">        Table logT = tEnv.fromDataStream(logWithTime, <span class="string">"t.rowtime, name, v"</span>);</span><br><span class="line"></span><br><span class="line">        // HOP(time_attr, interval1, interval2)</span><br><span class="line">        // interval1 滑动长度</span><br><span class="line">        // interval2 窗口长度</span><br><span class="line">        Table result = tEnv.sqlQuery(<span class="string">"SELECT HOP_START(t, INTERVAL '5' SECOND, INTERVAL '10' SECOND) AS window_start,"</span> +</span><br><span class="line">                <span class="string">"HOP_END(t, INTERVAL '5' SECOND, INTERVAL '10' SECOND) AS window_end, SUM(v) FROM "</span></span><br><span class="line">                + logT + <span class="string">" GROUP BY HOP(t, INTERVAL '5' SECOND, INTERVAL '10' SECOND)"</span>);</span><br><span class="line"></span><br><span class="line">        TypeInformation&lt;Tuple3&lt;Timestamp,Timestamp,Integer&gt;&gt; tpinf = new TypeHint&lt;Tuple3&lt;Timestamp,Timestamp,Integer&gt;&gt;()&#123;&#125;.getTypeInfo();</span><br><span class="line">        tEnv.toAppendStream(result, tpinf).<span class="built_in">print</span>();</span><br><span class="line"></span><br><span class="line">        env.execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="TumbleWindowExample"><a href="#TumbleWindowExample" class="headerlink" title="TumbleWindowExample"></a>TumbleWindowExample</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">package sql.window;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeHint;</span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeInformation;</span><br><span class="line">import org.apache.flink.api.java.tuple.Tuple3;</span><br><span class="line">import org.apache.flink.streaming.api.TimeCharacteristic;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;</span><br><span class="line">import org.apache.flink.table.api.Table;</span><br><span class="line">import org.apache.flink.table.api.java.StreamTableEnvironment;</span><br><span class="line"></span><br><span class="line">import java.sql.Timestamp;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class TumbleWindowExample &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        // 获取 environment</span><br><span class="line">        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">        // 指定系统时间概念为 event time</span><br><span class="line">        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);</span><br><span class="line"></span><br><span class="line">        StreamTableEnvironment tEnv = StreamTableEnvironment.create(env);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        // 初始数据</span><br><span class="line">        DataStream&lt;Tuple3&lt;Long, String,Integer&gt;&gt; <span class="built_in">log</span> = env.fromCollection(Arrays.asList(</span><br><span class="line">                //时间 14:53:00</span><br><span class="line">                new Tuple3&lt;&gt;(1572591180_000L,<span class="string">"xiao_ming"</span>,300),</span><br><span class="line">                //时间 14:53:09</span><br><span class="line">                new Tuple3&lt;&gt;(1572591189_000L,<span class="string">"zhang_san"</span>,303),</span><br><span class="line">                //时间 14:53:12</span><br><span class="line">                new Tuple3&lt;&gt;(1572591192_000L, <span class="string">"xiao_li"</span>,204),</span><br><span class="line">                //时间 14:53:21</span><br><span class="line">                new Tuple3&lt;&gt;(1572591201_000L,<span class="string">"li_si"</span>, 208)</span><br><span class="line">                ));</span><br><span class="line"></span><br><span class="line">        // 指定时间戳</span><br><span class="line">        SingleOutputStreamOperator&lt;Tuple3&lt;Long, String, Integer&gt;&gt; logWithTime = log.assignTimestampsAndWatermarks(new AscendingTimestampExtractor&lt;Tuple3&lt;Long, String, Integer&gt;&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public long extractAscendingTimestamp(Tuple3&lt;Long, String, Integer&gt; element) &#123;</span><br><span class="line">                <span class="built_in">return</span> element.f0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        // 转换为 Table</span><br><span class="line">        Table logT = tEnv.fromDataStream(logWithTime, <span class="string">"t.rowtime, name, v"</span>);</span><br><span class="line"></span><br><span class="line">        Table result = tEnv.sqlQuery(<span class="string">"SELECT TUMBLE_START(t, INTERVAL '10' SECOND) AS window_start,"</span> +</span><br><span class="line">                <span class="string">"TUMBLE_END(t, INTERVAL '10' SECOND) AS window_end, SUM(v) FROM "</span></span><br><span class="line">                + logT + <span class="string">" GROUP BY TUMBLE(t, INTERVAL '10' SECOND)"</span>);</span><br><span class="line"></span><br><span class="line">        TypeInformation&lt;Tuple3&lt;Timestamp,Timestamp,Integer&gt;&gt; tpinf = new TypeHint&lt;Tuple3&lt;Timestamp,Timestamp,Integer&gt;&gt;()&#123;&#125;.getTypeInfo();</span><br><span class="line">        tEnv.toAppendStream(result, tpinf).<span class="built_in">print</span>();</span><br><span class="line"></span><br><span class="line">        env.execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SessionWindowExample"><a href="#SessionWindowExample" class="headerlink" title="SessionWindowExample"></a>SessionWindowExample</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">package sql.window;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeHint;</span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeInformation;</span><br><span class="line">import org.apache.flink.api.java.tuple.Tuple3;</span><br><span class="line">import org.apache.flink.streaming.api.TimeCharacteristic;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;</span><br><span class="line">import org.apache.flink.table.api.Table;</span><br><span class="line">import org.apache.flink.table.api.java.StreamTableEnvironment;</span><br><span class="line"></span><br><span class="line">import java.sql.Timestamp;</span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class SessionWindowExample &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        // 获取 environment</span><br><span class="line">        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">        // 指定系统时间概念为 event time</span><br><span class="line">        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);</span><br><span class="line"></span><br><span class="line">        StreamTableEnvironment tEnv = StreamTableEnvironment.create(env);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        // 初始数据</span><br><span class="line">        DataStream&lt;Tuple3&lt;Long, String,Integer&gt;&gt; <span class="built_in">log</span> = env.fromCollection(Arrays.asList(</span><br><span class="line">                //时间 14:53:00</span><br><span class="line">                new Tuple3&lt;&gt;(1572591180_000L,<span class="string">"xiao_ming"</span>,300),</span><br><span class="line"></span><br><span class="line">                /*    Start Session   */</span><br><span class="line">                //时间 14:53:09</span><br><span class="line">                new Tuple3&lt;&gt;(1572591189_000L,<span class="string">"zhang_san"</span>,303),</span><br><span class="line">                //时间 14:53:12</span><br><span class="line">                new Tuple3&lt;&gt;(1572591192_000L, <span class="string">"xiao_li"</span>,204),</span><br><span class="line"></span><br><span class="line">                /*    Start Session   */</span><br><span class="line">                //时间 14:53:21</span><br><span class="line">                new Tuple3&lt;&gt;(1572591201_000L,<span class="string">"li_si"</span>, 208)</span><br><span class="line">        ));</span><br><span class="line"></span><br><span class="line">        // 指定时间戳</span><br><span class="line">        SingleOutputStreamOperator&lt;Tuple3&lt;Long, String, Integer&gt;&gt; logWithTime = log.assignTimestampsAndWatermarks(new AscendingTimestampExtractor&lt;Tuple3&lt;Long, String, Integer&gt;&gt;() &#123;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public long extractAscendingTimestamp(Tuple3&lt;Long, String, Integer&gt; element) &#123;</span><br><span class="line">                <span class="built_in">return</span> element.f0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        // 转换为 Table</span><br><span class="line">        Table logT = tEnv.fromDataStream(logWithTime, <span class="string">"t.rowtime, name, v"</span>);</span><br><span class="line"></span><br><span class="line">        // SESSION(time_attr, interval)</span><br><span class="line">        // interval 表示两条数据触发session的最大间隔</span><br><span class="line">        Table result = tEnv.sqlQuery(<span class="string">"SELECT SESSION_START(t, INTERVAL '5' SECOND) AS window_start,"</span> +</span><br><span class="line">                <span class="string">"SESSION_END(t, INTERVAL '5' SECOND) AS window_end, SUM(v) FROM "</span></span><br><span class="line">                + logT + <span class="string">" GROUP BY SESSION(t, INTERVAL '5' SECOND)"</span>);</span><br><span class="line"></span><br><span class="line">        TypeInformation&lt;Tuple3&lt;Timestamp,Timestamp,Integer&gt;&gt; tpinf = new TypeHint&lt;Tuple3&lt;Timestamp,Timestamp,Integer&gt;&gt;()&#123;&#125;.getTypeInfo();</span><br><span class="line">        tEnv.toAppendStream(result, tpinf).<span class="built_in">print</span>();</span><br><span class="line"></span><br><span class="line">        env.execute();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-23" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/05/08/23/" class="article-date">
+      <time datetime="2020-05-08T07:12:55.000Z" itemprop="datePublished">2020-05-08</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/05/08/23/">AppendStreamTableSink、RetractStreamTableSink、UpsertStreamTableSink</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Flink-Table-amp-SQL-StreamTableSink有三类接口-AppendStreamTableSink、UpsertStreamTableSink、RetractStreamTableSink。"><a href="#Flink-Table-amp-SQL-StreamTableSink有三类接口-AppendStreamTableSink、UpsertStreamTableSink、RetractStreamTableSink。" class="headerlink" title="Flink Table &amp; SQL StreamTableSink有三类接口: AppendStreamTableSink、UpsertStreamTableSink、RetractStreamTableSink。"></a>Flink Table &amp; SQL StreamTableSink有三类接口: AppendStreamTableSink、UpsertStreamTableSink、RetractStreamTableSink。</h3><p>AppendStreamTableSink: 可将动态表转换为Append流。适用于动态表只有Insert的场景。</p>
+<p>RetractStreamTableSink: 可将动态表转换为Retract流。适用于动态表有Insert、Delete、Update的场景。</p>
+<p>UpsertStreamTableSink: 可将动态表转换为Upsert流。适用于动态表有Insert、Delete、Update的场景。</p>
+<p>注意:</p>
+<p>RetractStreamTableSink中: Insert被编码成一条Add消息; Delete被编码成一条Retract消息;Update被编码成两条消息(先是一条Retract消息，再是一条Add消息)，即先删除再增加。</p>
+<p>UpsertStreamTableSink: Insert和Update均被编码成一条消息(Upsert消息); Delete被编码成一条Delete消息。</p>
+<p>UpsertStreamTableSink和RetractStreamTableSink最大的不同在于Update编码成一条消息，效率上比RetractStreamTableSink高。</p>
+<p>上述说的编码指的是动态表转换为DataStream时，表的增删改如何体现到DataStream上。</p>
+<h3 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_1"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:00"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_1"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:02"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_1"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:06"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_2"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:10"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_2"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:06"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_3"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:06"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_3"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:12"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_4"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:06"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_5"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:06"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_1"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:15"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_1"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:02:16"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br><span class="line">&#123;<span class="string">"userID"</span>: <span class="string">"user_1"</span>, <span class="string">"eventTime"</span>: <span class="string">"2016-01-01 10:03:16"</span>, <span class="string">"eventType"</span>: <span class="string">"browse"</span>, <span class="string">"productID"</span>: <span class="string">"product_5"</span>, <span class="string">"productPrice"</span>: 20&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="AppendStreamTableSink-示例"><a href="#AppendStreamTableSink-示例" class="headerlink" title="AppendStreamTableSink 示例"></a>AppendStreamTableSink 示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">package com.shuai.test;</span><br><span class="line"></span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.time.OffsetDateTime;</span><br><span class="line">import java.time.ZoneOffset;</span><br><span class="line">import java.time.format.DateTimeFormatter;</span><br><span class="line">import java.util.Properties;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.serialization.SimpleStringSchema;</span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeInformation;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStreamSink;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.streaming.api.functions.ProcessFunction;</span><br><span class="line">import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;</span><br><span class="line">import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.table.api.DataTypes;</span><br><span class="line">import org.apache.flink.table.api.EnvironmentSettings;</span><br><span class="line">import org.apache.flink.table.api.TableSchema;</span><br><span class="line">import org.apache.flink.table.api.java.StreamTableEnvironment;</span><br><span class="line">import org.apache.flink.table.sinks.TableSink;</span><br><span class="line">import org.apache.flink.table.types.DataType;</span><br><span class="line">import org.apache.flink.types.Row;</span><br><span class="line">import org.apache.flink.util.Collector;</span><br><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import com.shuai.test.model.UserBrowseLog;</span><br><span class="line"></span><br><span class="line">public class AppendStreamTableSink &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">		// 设置运行环境</span><br><span class="line">		EnvironmentSettings environmentSettings = EnvironmentSettings.newInstance().useBlinkPlanner().build();</span><br><span class="line"></span><br><span class="line">		StreamExecutionEnvironment streamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">		StreamTableEnvironment tableEnvironment = StreamTableEnvironment.create(streamExecutionEnvironment,environmentSettings);</span><br><span class="line"></span><br><span class="line">		Properties props = new Properties();</span><br><span class="line">		props.setProperty(<span class="string">"bootstrap.servers"</span>, <span class="string">"localhost:9092"</span>);</span><br><span class="line">//		props.setProperty(<span class="string">"bootstrap.servers"</span>, <span class="string">"192.168.3.122:9092"</span>);</span><br><span class="line">		props.setProperty(<span class="string">"group.id"</span>, <span class="string">"test"</span>);</span><br><span class="line">//		props.setProperty(<span class="string">"connector.version"</span>, <span class="string">"universal"</span>);</span><br><span class="line">//		DataStream&lt;UserBrowseLog&gt; browseStream = streamExecutionEnvironment</span><br><span class="line">//				.addSource(new FlinkKafkaConsumer011&lt;&gt;(<span class="string">"demo"</span>, new SimpleStringSchema(), props))</span><br><span class="line">//				.process(new BrowseKafkaProcessFunction());</span><br><span class="line"></span><br><span class="line">//	       DataStream&lt;UserBrowseLog&gt; browseStream=streamExecutionEnvironment</span><br><span class="line">//	                .addSource(new FlinkKafkaConsumer010&lt;&gt;(<span class="string">"demo"</span>, new SimpleStringSchema(), props))</span><br><span class="line">//	                .process(new BrowseKafkaProcessFunction());</span><br><span class="line"></span><br><span class="line">		FlinkKafkaConsumer&lt;String&gt; consumer = new FlinkKafkaConsumer&lt;&gt;(<span class="string">"demo"</span>, new SimpleStringSchema(), props);</span><br><span class="line"></span><br><span class="line">		DataStream&lt;UserBrowseLog&gt; browseStream = streamExecutionEnvironment.addSource(consumer)</span><br><span class="line">				.process(new BrowseKafkaProcessFunction()).setParallelism(1);</span><br><span class="line"></span><br><span class="line">		tableEnvironment.registerDataStream(<span class="string">"source_kafka_browse_log"</span>, browseStream,</span><br><span class="line">				<span class="string">"userID,eventTime,eventType,productID,productPrice,eventTimeTimestamp"</span>);</span><br><span class="line"></span><br><span class="line">		// 4、注册AppendStreamTableSink</span><br><span class="line">		String[] sinkFieldNames = &#123; <span class="string">"userID"</span>, <span class="string">"eventTime"</span>, <span class="string">"eventType"</span>, <span class="string">"productID"</span>, <span class="string">"productPrice"</span>,</span><br><span class="line">				<span class="string">"eventTimeTimestamp"</span> &#125;;</span><br><span class="line">		DataType[] sinkFieldTypes = &#123; DataTypes.STRING(), DataTypes.STRING(), DataTypes.STRING(), DataTypes.STRING(),</span><br><span class="line">				DataTypes.INT(), DataTypes.BIGINT() &#125;;</span><br><span class="line">		TableSink&lt;Row&gt; myAppendStreamTableSink = new MyAppendStreamTableSink(sinkFieldNames, sinkFieldTypes);</span><br><span class="line">		tableEnvironment.registerTableSink(<span class="string">"sink_stdout"</span>, myAppendStreamTableSink);</span><br><span class="line"></span><br><span class="line">		// 5、连续查询</span><br><span class="line"></span><br><span class="line">		String sql = <span class="string">"insert into sink_stdout select userID,eventTime,eventType,productID,productPrice,eventTimeTimestamp from source_kafka_browse_log where userID='user_1'"</span>;</span><br><span class="line">		tableEnvironment.sqlUpdate(sql);</span><br><span class="line"></span><br><span class="line">		tableEnvironment.execute(AppendStreamTableSink.class.getSimpleName());</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static class BrowseKafkaProcessFunction extends ProcessFunction&lt;String, UserBrowseLog&gt; &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public void processElement(String value, ProcessFunction&lt;String, UserBrowseLog&gt;.Context ctx,</span><br><span class="line">				Collector&lt;UserBrowseLog&gt; out) throws Exception &#123;</span><br><span class="line">			UserBrowseLog browseLog = JSON.parseObject(value, UserBrowseLog.class);</span><br><span class="line">			// 增加一个long类型的时间戳</span><br><span class="line">			// 指定eventTime为yyyy-MM-dd HH:mm:ss格式的北京时间</span><br><span class="line">			java.time.format.DateTimeFormatter format = DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">			OffsetDateTime eventTime = LocalDateTime.parse(browseLog.getEventTime(), format)</span><br><span class="line">					.atOffset(ZoneOffset.of(<span class="string">"+08:00"</span>));</span><br><span class="line">			// 转换成毫秒时间戳</span><br><span class="line">			long eventTimeTimestamp = eventTime.toInstant().toEpochMilli();</span><br><span class="line">			browseLog.setEventTimeTimestamp(eventTimeTimestamp);</span><br><span class="line"></span><br><span class="line">			out.collect(browseLog);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static class MyAppendStreamTableSink implements org.apache.flink.table.sinks.AppendStreamTableSink&lt;Row&gt; &#123;</span><br><span class="line"></span><br><span class="line">		private TableSchema tableSchema;</span><br><span class="line"></span><br><span class="line">		public MyAppendStreamTableSink(String[] fieldNames, DataType[] fieldTypes) &#123;</span><br><span class="line">			this.tableSchema = TableSchema.builder().fields(fieldNames, fieldTypes).build();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public TableSchema <span class="function"><span class="title">getTableSchema</span></span>() &#123;</span><br><span class="line">			<span class="built_in">return</span> tableSchema;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public DataType <span class="function"><span class="title">getConsumedDataType</span></span>() &#123;</span><br><span class="line">			<span class="built_in">return</span> tableSchema.toRowDataType();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// 已过时</span><br><span class="line">		@Override</span><br><span class="line">		public TableSink&lt;Row&gt; configure(String[] fieldNames, TypeInformation&lt;?&gt;[] fieldTypes) &#123;</span><br><span class="line">			<span class="built_in">return</span> null;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// 已过时</span><br><span class="line">		@Override</span><br><span class="line">		public void emitDataStream(DataStream&lt;Row&gt; dataStream) &#123;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public DataStreamSink&lt;Row&gt; consumeDataStream(DataStream&lt;Row&gt; dataStream) &#123;</span><br><span class="line">			<span class="built_in">return</span> dataStream.addSink(new SinkFunction());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		private static class SinkFunction extends RichSinkFunction&lt;Row&gt; &#123;</span><br><span class="line">			public <span class="function"><span class="title">SinkFunction</span></span>() &#123;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void invoke(Row value, Context context) throws Exception &#123;</span><br><span class="line">				System.out.println(value);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user_1,2016-01-01 10:02:00,browse,product_5,20,1451613720000</span><br><span class="line">user_1,2016-01-01 10:02:16,browse,product_5,20,1451613736000</span><br><span class="line">user_1,2016-01-01 10:02:15,browse,product_5,20,1451613735000</span><br><span class="line">user_1,2016-01-01 10:02:02,browse,product_5,20,1451613722000</span><br><span class="line">user_1,2016-01-01 10:02:06,browse,product_5,20,1451613726000</span><br><span class="line">user_1,2016-01-01 10:03:16,browse,product_5,20,1451613796000</span><br></pre></td></tr></table></figure>
+
+<h3 id="RetractStreamTableSink-示例"><a href="#RetractStreamTableSink-示例" class="headerlink" title="RetractStreamTableSink 示例"></a>RetractStreamTableSink 示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line">package com.shuai.test;</span><br><span class="line"></span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.time.OffsetDateTime;</span><br><span class="line">import java.time.ZoneOffset;</span><br><span class="line">import java.time.format.DateTimeFormatter;</span><br><span class="line">import java.util.Properties;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.serialization.SimpleStringSchema;</span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeInformation;</span><br><span class="line">import org.apache.flink.api.java.tuple.Tuple2;</span><br><span class="line">import org.apache.flink.api.java.typeutils.RowTypeInfo;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStreamSink;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.streaming.api.functions.ProcessFunction;</span><br><span class="line">import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;</span><br><span class="line">import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;</span><br><span class="line">import org.apache.flink.table.api.DataTypes;</span><br><span class="line">import org.apache.flink.table.api.EnvironmentSettings;</span><br><span class="line">import org.apache.flink.table.api.TableSchema;</span><br><span class="line">import org.apache.flink.table.api.java.StreamTableEnvironment;</span><br><span class="line">import org.apache.flink.table.sinks.TableSink;</span><br><span class="line">import org.apache.flink.table.types.DataType;</span><br><span class="line">import org.apache.flink.types.Row;</span><br><span class="line">import org.apache.flink.util.Collector;</span><br><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import com.shuai.test.model.UserBrowseLog;</span><br><span class="line"></span><br><span class="line">public class RetractStreamTableSink &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		// 设置运行环境</span><br><span class="line">		EnvironmentSettings environmentSettings = EnvironmentSettings.newInstance().useBlinkPlanner().build();</span><br><span class="line"></span><br><span class="line">		StreamExecutionEnvironment streamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">		StreamTableEnvironment tableEnvironment = StreamTableEnvironment.create(streamExecutionEnvironment,</span><br><span class="line">				environmentSettings);</span><br><span class="line"></span><br><span class="line">		Properties props = new Properties();</span><br><span class="line">		props.setProperty(<span class="string">"bootstrap.servers"</span>, <span class="string">"localhost:9092"</span>);</span><br><span class="line">		props.setProperty(<span class="string">"group.id"</span>, <span class="string">"test"</span>);</span><br><span class="line"></span><br><span class="line">		FlinkKafkaConsumer&lt;String&gt; consumer = new FlinkKafkaConsumer&lt;&gt;(<span class="string">"demo"</span>, new SimpleStringSchema(), props);</span><br><span class="line"></span><br><span class="line">		DataStream&lt;UserBrowseLog&gt; browseStream = streamExecutionEnvironment.addSource(consumer)</span><br><span class="line">				.process(new BrowseKafkaProcessFunction()).setParallelism(1);</span><br><span class="line"></span><br><span class="line">		tableEnvironment.registerDataStream(<span class="string">"source_kafka_browse_log"</span>, browseStream,</span><br><span class="line">				<span class="string">"userID,eventTime,eventType,productID,productPrice,eventTimeTimestamp"</span>);</span><br><span class="line"></span><br><span class="line">		// 4、注册AppendStreamTableSink</span><br><span class="line">		String[] sinkFieldNames = &#123; <span class="string">"userID"</span>, <span class="string">"browseNumber"</span> &#125;;</span><br><span class="line">		DataType[] sinkFieldTypes = &#123; DataTypes.STRING(), DataTypes.BIGINT() &#125;;</span><br><span class="line">		org.apache.flink.table.sinks.RetractStreamTableSink&lt;Row&gt; retractStreamTableSink = new MyRetractStreamTableSink(</span><br><span class="line">				sinkFieldNames, sinkFieldTypes);</span><br><span class="line">		tableEnvironment.registerTableSink(<span class="string">"sink_stdout"</span>,retractStreamTableSink);</span><br><span class="line">		</span><br><span class="line">        //5、连续查询</span><br><span class="line">        //统计每个Uid的浏览次数</span><br><span class="line">        String sql=<span class="string">"insert into sink_stdout select userID,count(1) as browseNumber from source_kafka_browse_log where userID in ('user_1','user_2') group by userID "</span>;</span><br><span class="line">        tableEnvironment.sqlUpdate(sql);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //6、开始执行</span><br><span class="line">        tableEnvironment.execute(RetractStreamTableSink.class.getSimpleName());</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static class BrowseKafkaProcessFunction extends ProcessFunction&lt;String, UserBrowseLog&gt; &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public void processElement(String value, ProcessFunction&lt;String, UserBrowseLog&gt;.Context ctx,</span><br><span class="line">				Collector&lt;UserBrowseLog&gt; out) throws Exception &#123;</span><br><span class="line">			UserBrowseLog browseLog = JSON.parseObject(value, UserBrowseLog.class);</span><br><span class="line">			// 增加一个long类型的时间戳</span><br><span class="line">			// 指定eventTime为yyyy-MM-dd HH:mm:ss格式的北京时间</span><br><span class="line">			java.time.format.DateTimeFormatter format = DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">			OffsetDateTime eventTime = LocalDateTime.parse(browseLog.getEventTime(), format)</span><br><span class="line">					.atOffset(ZoneOffset.of(<span class="string">"+08:00"</span>));</span><br><span class="line">			// 转换成毫秒时间戳</span><br><span class="line">			long eventTimeTimestamp = eventTime.toInstant().toEpochMilli();</span><br><span class="line">			browseLog.setEventTimeTimestamp(eventTimeTimestamp);</span><br><span class="line"></span><br><span class="line">			out.collect(browseLog);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	 * 自定义RetractStreamTableSink</span><br><span class="line">	 *</span><br><span class="line">	 * Table在内部被转换成具有Add(增加)和Retract(撤消/删除)的消息流，最终交由DataStream的SinkFunction处理。</span><br><span class="line">	 * DataStream里的数据格式是Tuple2类型,如Tuple2&lt;Boolean, Row&gt;。</span><br><span class="line">	 * Boolean是Add(增加)或Retract(删除)的flag(标识)。Row是真正的数据类型。</span><br><span class="line">	 * Table中的Insert被编码成一条Add消息。如Tuple2&lt;True, Row&gt;。</span><br><span class="line">	 * Table中的Update被编码成两条消息。一条删除消息Tuple2&lt;False, Row&gt;，一条增加消息Tuple2&lt;True, Row&gt;。</span><br><span class="line">	 */</span><br><span class="line">	private static class MyRetractStreamTableSink implements org.apache.flink.table.sinks.RetractStreamTableSink&lt;Row&gt; &#123;</span><br><span class="line"></span><br><span class="line">		private TableSchema tableSchema;</span><br><span class="line"></span><br><span class="line">		public MyRetractStreamTableSink(String[] fieldNames, DataType[] fieldTypes) &#123;</span><br><span class="line">			this.tableSchema = TableSchema.builder().fields(fieldNames, fieldTypes).build();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public TableSchema <span class="function"><span class="title">getTableSchema</span></span>() &#123;</span><br><span class="line">			<span class="built_in">return</span> tableSchema;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// 已过时</span><br><span class="line">		public TableSink&lt;Tuple2&lt;Boolean, Row&gt;&gt; configure(String[] fieldNames, TypeInformation&lt;?&gt;[] fieldTypes) &#123;</span><br><span class="line">			<span class="built_in">return</span> null;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// 已过时</span><br><span class="line">		public void emitDataStream(DataStream&lt;Tuple2&lt;Boolean, Row&gt;&gt; dataStream) &#123;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// 最终会转换成DataStream处理</span><br><span class="line">		public DataStreamSink&lt;Tuple2&lt;Boolean, Row&gt;&gt; consumeDataStream(DataStream&lt;Tuple2&lt;Boolean, Row&gt;&gt; dataStream) &#123;</span><br><span class="line">			<span class="built_in">return</span> dataStream.addSink(new SinkFunction());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		public TypeInformation&lt;Row&gt; <span class="function"><span class="title">getRecordType</span></span>() &#123;</span><br><span class="line">			<span class="built_in">return</span> new RowTypeInfo(tableSchema.getFieldTypes(), tableSchema.getFieldNames());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		private static class SinkFunction extends RichSinkFunction&lt;Tuple2&lt;Boolean, Row&gt;&gt; &#123;</span><br><span class="line">			public <span class="function"><span class="title">SinkFunction</span></span>() &#123;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			@Override</span><br><span class="line">			public void invoke(Tuple2&lt;Boolean, Row&gt; value, Context context) throws Exception &#123;</span><br><span class="line">				Boolean flag = value.f0;</span><br><span class="line">				<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">					System.out.println(<span class="string">"增加... "</span> + value);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					System.out.println(<span class="string">"删除... "</span> + value);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">增加... (<span class="literal">true</span>,user_2,1)</span><br><span class="line">删除... (<span class="literal">false</span>,user_2,1)</span><br><span class="line">增加... (<span class="literal">true</span>,user_2,2)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,1)</span><br><span class="line">删除... (<span class="literal">false</span>,user_1,1)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,2)</span><br><span class="line">删除... (<span class="literal">false</span>,user_1,2)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,3)</span><br><span class="line">删除... (<span class="literal">false</span>,user_1,3)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,4)</span><br><span class="line">删除... (<span class="literal">false</span>,user_1,4)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,5)</span><br><span class="line">删除... (<span class="literal">false</span>,user_1,5)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,6)</span><br></pre></td></tr></table></figure>
+
+<h3 id="UpsertStreamTableSink示例"><a href="#UpsertStreamTableSink示例" class="headerlink" title="UpsertStreamTableSink示例"></a>UpsertStreamTableSink示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line">package com.shuai.test;</span><br><span class="line"></span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line">import java.time.OffsetDateTime;</span><br><span class="line">import java.time.ZoneOffset;</span><br><span class="line">import java.time.format.DateTimeFormatter;</span><br><span class="line">import java.util.Properties;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.api.common.serialization.SimpleStringSchema;</span><br><span class="line">import org.apache.flink.api.common.typeinfo.TypeInformation;</span><br><span class="line">import org.apache.flink.api.java.tuple.Tuple2;</span><br><span class="line">import org.apache.flink.api.java.typeutils.RowTypeInfo;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStreamSink;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.streaming.api.functions.ProcessFunction;</span><br><span class="line">import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;</span><br><span class="line">import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;</span><br><span class="line">import org.apache.flink.table.api.DataTypes;</span><br><span class="line">import org.apache.flink.table.api.EnvironmentSettings;</span><br><span class="line">import org.apache.flink.table.api.TableSchema;</span><br><span class="line">import org.apache.flink.table.api.java.StreamTableEnvironment;</span><br><span class="line">import org.apache.flink.table.sinks.TableSink;</span><br><span class="line">import org.apache.flink.table.types.DataType;</span><br><span class="line">import org.apache.flink.types.Row;</span><br><span class="line">import org.apache.flink.util.Collector;</span><br><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import com.shuai.test.RetractStreamTableSink.BrowseKafkaProcessFunction;</span><br><span class="line">import com.shuai.test.model.UserBrowseLog;</span><br><span class="line"></span><br><span class="line">public class UpsertStreamTableSink &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		// 设置运行环境</span><br><span class="line">		EnvironmentSettings environmentSettings = EnvironmentSettings.newInstance().useBlinkPlanner().build();</span><br><span class="line"></span><br><span class="line">		StreamExecutionEnvironment streamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line"></span><br><span class="line">		StreamTableEnvironment tableEnvironment = StreamTableEnvironment.create(streamExecutionEnvironment,</span><br><span class="line">				environmentSettings);</span><br><span class="line"></span><br><span class="line">		Properties props = new Properties();</span><br><span class="line">		props.setProperty(<span class="string">"bootstrap.servers"</span>, <span class="string">"localhost:9092"</span>);</span><br><span class="line">		props.setProperty(<span class="string">"group.id"</span>, <span class="string">"test"</span>);</span><br><span class="line"></span><br><span class="line">		FlinkKafkaConsumer&lt;String&gt; consumer = new FlinkKafkaConsumer&lt;&gt;(<span class="string">"demo"</span>, new SimpleStringSchema(), props);</span><br><span class="line"></span><br><span class="line">		DataStream&lt;UserBrowseLog&gt; browseStream = streamExecutionEnvironment.addSource(consumer)</span><br><span class="line">				.process(new BrowseKafkaProcessFunction()).setParallelism(1);</span><br><span class="line"></span><br><span class="line">		tableEnvironment.registerDataStream(<span class="string">"source_kafka_browse_log"</span>, browseStream,</span><br><span class="line">				<span class="string">"userID,eventTime,eventType,productID,productPrice,eventTimeTimestamp"</span>);</span><br><span class="line"></span><br><span class="line">		// 4、注册AppendStreamTableSink</span><br><span class="line">		String[] sinkFieldNames = &#123; <span class="string">"userID"</span>, <span class="string">"browseNumber"</span> &#125;;</span><br><span class="line">		DataType[] sinkFieldTypes = &#123; DataTypes.STRING(), DataTypes.BIGINT() &#125;;</span><br><span class="line">		org.apache.flink.table.sinks.UpsertStreamTableSink&lt;Row&gt; retractStreamTableSink = new MyUpsertStreamTableSink(</span><br><span class="line">				sinkFieldNames, sinkFieldTypes);</span><br><span class="line">		tableEnvironment.registerTableSink(<span class="string">"sink_stdout"</span>,retractStreamTableSink);</span><br><span class="line">		</span><br><span class="line">        //5、连续查询</span><br><span class="line">        //统计每个Uid的浏览次数</span><br><span class="line">        String sql=<span class="string">"insert into sink_stdout select userID,count(1) as browseNumber from source_kafka_browse_log where userID in ('user_1','user_2') group by userID "</span>;</span><br><span class="line">        tableEnvironment.sqlUpdate(sql);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //6、开始执行</span><br><span class="line">        tableEnvironment.execute(RetractStreamTableSink.class.getSimpleName());</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static class BrowseKafkaProcessFunction extends ProcessFunction&lt;String, UserBrowseLog&gt; &#123;</span><br><span class="line"></span><br><span class="line">		@Override</span><br><span class="line">		public void processElement(String value, ProcessFunction&lt;String, UserBrowseLog&gt;.Context ctx,</span><br><span class="line">				Collector&lt;UserBrowseLog&gt; out) throws Exception &#123;</span><br><span class="line">			UserBrowseLog browseLog = JSON.parseObject(value, UserBrowseLog.class);</span><br><span class="line">			// 增加一个long类型的时间戳</span><br><span class="line">			// 指定eventTime为yyyy-MM-dd HH:mm:ss格式的北京时间</span><br><span class="line">			java.time.format.DateTimeFormatter format = DateTimeFormatter.ofPattern(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);</span><br><span class="line">			OffsetDateTime eventTime = LocalDateTime.parse(browseLog.getEventTime(), format)</span><br><span class="line">					.atOffset(ZoneOffset.of(<span class="string">"+08:00"</span>));</span><br><span class="line">			// 转换成毫秒时间戳</span><br><span class="line">			long eventTimeTimestamp = eventTime.toInstant().toEpochMilli();</span><br><span class="line">			browseLog.setEventTimeTimestamp(eventTimeTimestamp);</span><br><span class="line"></span><br><span class="line">			out.collect(browseLog);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	/**</span><br><span class="line">     * 自定义UpsertStreamTableSink</span><br><span class="line">     * Table在内部被转换成具有Add(增加)和Retract(撤消/删除)的消息流，最终交由DataStream的SinkFunction处理。</span><br><span class="line">     * Boolean是Add(增加)或Retract(删除)的flag(标识)。Row是真正的数据类型。</span><br><span class="line">     * Table中的Insert被编码成一条Add消息。如Tuple2&lt;True, Row&gt;。</span><br><span class="line">     * Table中的Update被编码成一条Add消息。如Tuple2&lt;True, Row&gt;。</span><br><span class="line">     * 在SortLimit(即order by ... <span class="built_in">limit</span> ...)的场景下，被编码成两条消息。一条删除消息Tuple2&lt;False, Row&gt;，一条增加消息Tuple2&lt;True, Row&gt;。</span><br><span class="line">     */</span><br><span class="line">    @SuppressWarnings(<span class="string">"unused"</span>)</span><br><span class="line">	private static class MyUpsertStreamTableSink implements org.apache.flink.table.sinks.UpsertStreamTableSink&lt;Row&gt; &#123;</span><br><span class="line"></span><br><span class="line">        private TableSchema tableSchema;</span><br><span class="line"></span><br><span class="line">        @SuppressWarnings(<span class="string">"unused"</span>)</span><br><span class="line">		public MyUpsertStreamTableSink(String[] fieldNames, DataType[] fieldTypes) &#123;</span><br><span class="line">            this.tableSchema = TableSchema.builder().fields(fieldNames,fieldTypes).build();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public TableSchema <span class="function"><span class="title">getTableSchema</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> tableSchema;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        // 设置Unique Key</span><br><span class="line">        // 如上SQL中有GroupBy，则这里的唯一键会自动被推导为GroupBy的字段</span><br><span class="line">        @Override</span><br><span class="line">        public void setKeyFields(String[] keys) &#123;&#125;</span><br><span class="line"></span><br><span class="line">        // 是否只有Insert</span><br><span class="line">        // 如上SQL场景，需要Update，则这里被推导为isAppendOnly=<span class="literal">false</span></span><br><span class="line">        @Override</span><br><span class="line">        public void setIsAppendOnly(Boolean isAppendOnly) &#123;&#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public TypeInformation&lt;Row&gt; <span class="function"><span class="title">getRecordType</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> new RowTypeInfo(tableSchema.getFieldTypes(),tableSchema.getFieldNames());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 已过时</span><br><span class="line">        public void emitDataStream(DataStream&lt;Tuple2&lt;Boolean, Row&gt;&gt; dataStream) &#123;&#125;</span><br><span class="line"></span><br><span class="line">        // 最终会转换成DataStream处理</span><br><span class="line"> </span><br><span class="line">        public DataStreamSink&lt;Tuple2&lt;Boolean, Row&gt;&gt; consumeDataStream(DataStream&lt;Tuple2&lt;Boolean, Row&gt;&gt; dataStream) &#123;</span><br><span class="line">            <span class="built_in">return</span> dataStream.addSink(new SinkFunction());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line">        public TableSink&lt;Tuple2&lt;Boolean, Row&gt;&gt; configure(String[] fieldNames, TypeInformation&lt;?&gt;[] fieldTypes) &#123;</span><br><span class="line">            <span class="built_in">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private static class SinkFunction extends RichSinkFunction&lt;Tuple2&lt;Boolean, Row&gt;&gt; &#123;</span><br><span class="line">            /**</span><br><span class="line">			 * </span><br><span class="line">			 */</span><br><span class="line">			private static final long serialVersionUID = 1L;</span><br><span class="line"></span><br><span class="line">			public <span class="function"><span class="title">SinkFunction</span></span>() &#123;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void invoke(Tuple2&lt;Boolean, Row&gt; value, Context context) throws Exception &#123;</span><br><span class="line">                Boolean flag = value.f0;</span><br><span class="line">                <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                    System.out.println(<span class="string">"增加... "</span>+value);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"删除... "</span>+value);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">增加... (<span class="literal">true</span>,user_1,1)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,2)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,3)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,4)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,5)</span><br><span class="line">增加... (<span class="literal">true</span>,user_1,6)</span><br><span class="line">增加... (<span class="literal">true</span>,user_2,1)</span><br><span class="line">增加... (<span class="literal">true</span>,user_2,2)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-22" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/04/27/22/" class="article-date">
+      <time datetime="2020-04-27T02:01:24.000Z" itemprop="datePublished">2020-04-27</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/04/27/22/">Kafka to Flink - HDFS</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="kafka制造数据"><a href="#kafka制造数据" class="headerlink" title="kafka制造数据"></a>kafka制造数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package com.flink.etl;</span><br><span class="line"></span><br><span class="line">import lombok.AllArgsConstructor;</span><br><span class="line">import lombok.ToString;</span><br><span class="line"></span><br><span class="line">@lombok.Data</span><br><span class="line">@ToString</span><br><span class="line"></span><br><span class="line">public class Data &#123;</span><br><span class="line">	</span><br><span class="line">	public long <span class="function"><span class="title">getTimestamp</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> timestamp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setTimestamp(long timestamp) &#123;</span><br><span class="line">		this.timestamp = timestamp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getEvent</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> event;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setEvent(String event) &#123;</span><br><span class="line">		this.event = event;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getUuid</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> uuid;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUuid(String uuid) &#123;</span><br><span class="line">		this.uuid = uuid;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private long timestamp;</span><br><span class="line">	private String event;</span><br><span class="line">	private String uuid;</span><br><span class="line"> </span><br><span class="line">	public Data(long timestamp, String event, String uuid) &#123;</span><br><span class="line">		</span><br><span class="line">		this.timestamp=timestamp;</span><br><span class="line">		this.event=event;</span><br><span class="line">		this.uuid=uuid;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">package com.flink.etl;</span><br><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Properties;</span><br><span class="line">import java.util.Random;</span><br><span class="line">import java.util.UUID;</span><br><span class="line"></span><br><span class="line">import org.apache.kafka.clients.producer.KafkaProducer;</span><br><span class="line">import org.apache.kafka.clients.producer.ProducerRecord;</span><br><span class="line">import org.apache.kafka.common.serialization.StringSerializer;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class DataGenerator &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Properties properties = new Properties();</span><br><span class="line">        properties.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"192.168.3.122:9092"</span>);</span><br><span class="line">        properties.put(<span class="string">"key.serializer"</span>, StringSerializer.class.getName());</span><br><span class="line">        properties.put(<span class="string">"value.serializer"</span>, StringSerializer.class.getName());</span><br><span class="line">        KafkaProducer&lt;String, String&gt; producer = new KafkaProducer&lt;String, String&gt;(properties);</span><br><span class="line">        List&lt;String&gt; events = Arrays.asList(<span class="string">"page_view"</span>, <span class="string">"adv_click"</span>, <span class="string">"thumbs_up"</span>);</span><br><span class="line">        Random random = new Random();</span><br><span class="line">        Data data = null;</span><br><span class="line">        ProducerRecord&lt;String, String&gt; record = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">                long timestamp = System.currentTimeMillis();</span><br><span class="line">                String event = events.get(random.nextInt(events.size()));</span><br><span class="line">                String uuid = UUID.randomUUID().toString();</span><br><span class="line">                data = new Data(timestamp, event, uuid);</span><br><span class="line">                record = new ProducerRecord&lt;&gt;(<span class="string">"data-collection-topic"</span>, JSON.toJSONString(data));</span><br><span class="line">                producer.send(record);</span><br><span class="line">                Thread.sleep(3000);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            producer.flush();</span><br><span class="line">            producer.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="StreamingJob"><a href="#StreamingJob" class="headerlink" title="StreamingJob"></a>StreamingJob</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">package com.flink.etl;</span><br><span class="line">import org.apache.flink.api.common.serialization.SimpleStringEncoder;</span><br><span class="line">import org.apache.flink.api.common.serialization.SimpleStringSchema;</span><br><span class="line">import org.apache.flink.core.fs.Path;</span><br><span class="line">import org.apache.flink.runtime.state.StateBackend;</span><br><span class="line">import org.apache.flink.runtime.state.filesystem.FsStateBackend;</span><br><span class="line">import org.apache.flink.streaming.api.datastream.DataStream;</span><br><span class="line">import org.apache.flink.streaming.api.environment.CheckpointConfig;</span><br><span class="line">import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;</span><br><span class="line">import org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink;</span><br><span class="line">import org.apache.flink.streaming.api.functions.sink.filesystem.rollingpolicies.DefaultRollingPolicy;</span><br><span class="line">import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;</span><br><span class="line">import java.util.Properties;</span><br><span class="line">import java.util.concurrent.TimeUnit;</span><br><span class="line">public class StreamingJob &#123;</span><br><span class="line">	public static void main(String[] args) throws Exception &#123;</span><br><span class="line">		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();</span><br><span class="line">		Properties props = new Properties();</span><br><span class="line">		props.setProperty(<span class="string">"bootstrap.servers"</span>, <span class="string">"192.168.3.122:9092"</span>);</span><br><span class="line">		props.setProperty(<span class="string">"group.id"</span>, <span class="string">"test"</span>);</span><br><span class="line">		FlinkKafkaConsumer010&lt;String&gt; consumer = new FlinkKafkaConsumer010&lt;&gt;(</span><br><span class="line">				<span class="string">"data-collection-topic"</span>, new SimpleStringSchema(), props);</span><br><span class="line">		DataStream&lt;String&gt; stream = env.addSource(consumer);</span><br><span class="line">		DefaultRollingPolicy rollingPolicy = DefaultRollingPolicy</span><br><span class="line">				.create()</span><br><span class="line">				.withMaxPartSize(1024*1024*128) // 设置每个文件的最大大小 ,默认是128M。这里设置为128M</span><br><span class="line">				.withRolloverInterval(TimeUnit.MINUTES.toMillis(86400)) // 滚动写入新文件的时间，默认60s。这里设置为无限大</span><br><span class="line">				.withInactivityInterval(TimeUnit.MINUTES.toMillis(60)) // 60s空闲，就滚动写入新的文件</span><br><span class="line">				.build();</span><br><span class="line">		StreamingFileSink&lt;String&gt; sink = StreamingFileSink</span><br><span class="line">				.forRowFormat(new Path(<span class="string">"hdfs://DATASEA/home/dmp_operator1/bpointdata"</span>), new SimpleStringEncoder&lt;String&gt;())</span><br><span class="line">				.withBucketAssigner(new EventTimeBucketAssigner()).withRollingPolicy(rollingPolicy).build();</span><br><span class="line">		stream.addSink(sink);</span><br><span class="line">		env.enableCheckpointing(10_000);</span><br><span class="line">		env.setParallelism(1);</span><br><span class="line">		env.setStateBackend((StateBackend) new FsStateBackend(<span class="string">"hdfs://DATASEA/home/dmp_operator1/flink/checkpoints"</span>));</span><br><span class="line">		env.getCheckpointConfig().enableExternalizedCheckpoints(</span><br><span class="line">		CheckpointConfig.ExternalizedCheckpointCleanup.DELETE_ON_CANCELLATION);</span><br><span class="line">		// execute program</span><br><span class="line">		env.execute(<span class="string">"Flink Streaming Java API Skeleton"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="EventTimeBucketAssigner"><a href="#EventTimeBucketAssigner" class="headerlink" title="EventTimeBucketAssigner"></a>EventTimeBucketAssigner</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package com.flink.etl;</span><br><span class="line"></span><br><span class="line">import org.apache.flink.core.io.SimpleVersionedSerializer;</span><br><span class="line">import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.JsonNode;</span><br><span class="line">import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line">import org.apache.flink.streaming.api.functions.sink.filesystem.BucketAssigner;</span><br><span class="line">import org.apache.flink.streaming.api.functions.sink.filesystem.bucketassigners.SimpleVersionedStringSerializer;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.text.SimpleDateFormat;</span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">public class EventTimeBucketAssigner implements BucketAssigner&lt;String, String&gt; &#123;</span><br><span class="line">	private ObjectMapper mapper = new ObjectMapper();</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String getBucketId(String element, Context context) &#123;</span><br><span class="line">		JsonNode node = null;</span><br><span class="line">		long date = System.currentTimeMillis();</span><br><span class="line">		try &#123;</span><br><span class="line">			node = mapper.readTree(element);</span><br><span class="line">//			date = (long) (node.path(<span class="string">"timestamp"</span>).floatValue() * 1000);</span><br><span class="line">			date = (long) (node.path(<span class="string">"timestamp"</span>).floatValue());</span><br><span class="line">		&#125; catch (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">//		String partitionValue = new SimpleDateFormat(<span class="string">"yyyyMMddHHmm"</span>).format(new Date(date)); </span><br><span class="line">		String partitionValue = new SimpleDateFormat(<span class="string">"yyyyMMdd"</span>).format(new Date(date));</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"dt="</span> + partitionValue;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public SimpleVersionedSerializer&lt;String&gt; <span class="function"><span class="title">getSerializer</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> SimpleVersionedStringSerializer.INSTANCE;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flink/" rel="tag">Flink</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-21" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/04/20/21/" class="article-date">
+      <time datetime="2020-04-20T06:01:24.000Z" itemprop="datePublished">2020-04-20</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/04/20/21/">Druid原理和架构</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Druid简介"><a href="#Druid简介" class="headerlink" title="Druid简介"></a>Druid简介</h3><p>概念：主要是解决低延迟下实时数据摄入与查询的平台，本质是一个数据存储，但是数据仍然是保存在（hdfs、文件系统等）中。<br>特点：<br>① 列式存储格式：<br>可以将列作为索引，为仅查看几列的查询提供了巨大的速度提升<br>② 高可用、高并发：<br>① 集群扩展、缩小、删除、宕机都不会停止服务，全天候运行<br>② HA、sql的并行化执行、可扩展、容灾等<br>③ 支持1000+的并发用户，并提供隔离机制支持多租户模式（多租户就是并发互不影响）<br>④ 低延迟<br>Druid采用了列式存储、倒排索引、位图索引等关键技术，能够在亚秒级别内完成海量数据的过滤、聚合以及多维分析等操作。<br>⑤ 存储时候聚合：<br>无论是实时数据消费还是批量数据处理，Druid在基于DataSource结构存储数据时即可选择对任意的指标列进行聚合操作<br>聚合：提前做好sum，count等操作</p>
+<h3 id="Druid架构"><a href="#Druid架构" class="headerlink" title="Druid架构"></a>Druid架构</h3><p><img src="/images/26.png" alt="alt"><br>总体可以分为：四个节点+三个依赖</p>
+<h3 id="四个节点："><a href="#四个节点：" class="headerlink" title="四个节点："></a>四个节点：</h3><h4 id="实时节点（RealtimeNode）-新版本的druid好像没有实时节点的说法了-："><a href="#实时节点（RealtimeNode）-新版本的druid好像没有实时节点的说法了-：" class="headerlink" title="实时节点（RealtimeNode）(新版本的druid好像没有实时节点的说法了)："></a>实时节点（RealtimeNode）(新版本的druid好像没有实时节点的说法了)：</h4><p>实时摄入数据，对于旧的数据周期性的生成segment数据文件，上传到deepstorage中<br>为了避免单点故障，索引服务(Indexer)的主从架构已经逐渐替代了实时节点，所以现在的实时节点，其实里面包含了很多角色:<br>作用：可以通过索引服务的API，写数据导入任务，用以新增、删除、合并Segment等。是一个主从架构：</p>
+<h5 id="统治节点（overlord）："><a href="#统治节点（overlord）：" class="headerlink" title="统治节点（overlord）："></a>统治节点（overlord）：</h5><p>类似于YarnResourceManager：负责集群资源的管理和分配<br>监视数据服务器上的MiddleManager进程，将提取任务分配给MiddleManager</p>
+<h5 id="中间管理者（middlemanager）："><a href="#中间管理者（middlemanager）：" class="headerlink" title="中间管理者（middlemanager）："></a>中间管理者（middlemanager）：</h5><p>类似于YarnNodeManager：负责单个节点资源的管理和分配<br>新数据提取到群集中的过程。他们负责从外部数据源读取并发布新的段</p>
+<h5 id="苦工（peon）："><a href="#苦工（peon）：" class="headerlink" title="苦工（peon）："></a>苦工（peon）：</h5><p>类似于Yarncontainer：负责具体任务的执行<br>Peon进程是由MiddleManagers产生的任务执行引擎。<br>每个Peon运行一个单独的JVM，并负责执行单个任务。<br>Peon总是与生成它们的MiddleManager在同一主机上运行</p>
+<h5 id="Router-路由：可选-："><a href="#Router-路由：可选-：" class="headerlink" title="Router(路由：可选)："></a>Router(路由：可选)：</h5><p>可在Druid代理，统治节点和协调器之前提供统一的API网关<br> 注：统治节点和中间管理者的通信是通过zookeeper完成的</p>
+<h4 id="历史节点（HistoricalNode）："><a href="#历史节点（HistoricalNode）：" class="headerlink" title="历史节点（HistoricalNode）："></a>历史节点（HistoricalNode）：</h4><p>加载已生成的segment数据文件，以供数据查询<br>启动或者受到协调节点通知的时候，通过druid_rules表去查找需要加载的数据，然后检查自身的本地缓存中已存在的Segment数据文件，<br>然后从DeepStorage中下载其他不在本地的Segment数据文件，后加载到内存！！！再提供查询。</p>
+<h4 id="查询节点（BrokerNode）"><a href="#查询节点（BrokerNode）" class="headerlink" title="查询节点（BrokerNode）:"></a>查询节点（BrokerNode）:</h4><p>对外提供数据查询服务，并同时从实时节点与历史节点查询数据，合并后返回给调用方<br>缓存：外部：第三方的一些缓存系统内部：在历史节点或者查询节点做缓存</p>
+<h4 id="协调节点（CoodinatorNode）"><a href="#协调节点（CoodinatorNode）" class="headerlink" title="协调节点（CoodinatorNode）:"></a>协调节点（CoodinatorNode）:</h4><p>负责历史节点的数据负载均衡，以及通过规则（Rule）管理数据的生命周期<br>① 通过从MySQL读取元数据信息，来决定深度存储上哪些数据段应该在那个历史节点中被加载，<br>② 通过ZK感知历史节点，历史节点增加，会自动分配相关的Segment，历史节点删除，会将原本在这台节点上的Segment分配给其他的历史节点<br>注：Coordinator是定期运行的，并且运行间隔可以通过配置参数配置</p>
+<h3 id="三个依赖："><a href="#三个依赖：" class="headerlink" title="三个依赖："></a>三个依赖：</h3><h5 id="1）Mysql："><a href="#1）Mysql：" class="headerlink" title="1）Mysql："></a>1）Mysql：</h5><p>存储关于Druid中的metadata，规则数据，配置数据等，<br>主要包含以下几张表：<br>“druid_config”（通常是空的）,<br>“druid_rules”（协作节点使用的一些规则信息，比如哪个segment从哪个node去load）<br>“druid_segments”（存储每个segment的metadata信息）;</p>
+<h5 id="2）Deepstorage："><a href="#2）Deepstorage：" class="headerlink" title="2）Deepstorage："></a>2）Deepstorage：</h5><p>存储segments，Druid目前已经支持本地磁盘，NFS挂载磁盘，HDFS，S3等。</p>
+<h5 id="3）ZooKeeper："><a href="#3）ZooKeeper：" class="headerlink" title="3）ZooKeeper："></a>3）ZooKeeper：</h5><p>① 查询节点通过Zk来感知实时节点和历史节点的存在，提供查询服务。<br>② 协调节点通过ZK感知历史节点，实现负载均衡<br>③ 统治节点、协调节点的lead选举</p>
+<h3 id="实时Segment数据文件的流动："><a href="#实时Segment数据文件的流动：" class="headerlink" title="实时Segment数据文件的流动："></a>实时Segment数据文件的流动：</h3><h4 id="生成"><a href="#生成" class="headerlink" title="生成:"></a>生成:</h4><p>① 实时节点（中间管理者）会周期性的将同一时间段生成的数据合并成一个Segment数据文件，并上传到DeepStorage中。<br>② Segment数据文件的相关元数据信息保存到MetaStore中（如mysql，derby等）。<br>③ 协调节点定时（默认1分钟）从MetaSotre中获取到Segment数据文件的相关元信息后，将按配置的规则分配到符合条件的历史节点中。<br>④ 协调节点会通知一个历史节点去读<br>⑤ 历史节点收到协调节点的通知后，会从DeepStorage中拉取该Segment数据文件到本地磁盘，并通过zookeeper向集群声明可以提供查询了。<br>⑥ 实时节点会丢弃该Segment数据文件，并通过zookeeper向集群声明不在提供该Sgment的查询服务。　　　　　　　　　　　　　　//其实第四步已经可以提供查询服务了<br>⑦ 而对于全局数据来说，查询节点（BrokerNode）会同时从实时节点与历史节点分别查询，对结果整合后返回用户。</p>
+<h4 id="查询："><a href="#查询：" class="headerlink" title="查询："></a>查询：</h4><p>查询首先进入Broker，按照时间进行查询划分<br>确定哪些历史记录和MiddleManager正在为这些段提供服务<br>Historical/MiddleManager进程将接受查询，对其进行处理并返回结果<br>###DataSource<br><img src="/images/27.png" alt="alt"><br>每个datasource按照时间划分。每个时间范围称为一个chunk(一般都是以天分区，则一个chunk为一天)！！！//也可以按其他属性划分<br>在chunk中数据被分为一个或多个segment，每个segment都是一个单独的文件，通常包含几百万行数据<br>注：这些segment是按照时间组织成的chunk，所以在按照时间查询数据时，效率非常高。</p>
+<h4 id="数据分区："><a href="#数据分区：" class="headerlink" title="数据分区："></a>数据分区：</h4><p>任何分布式存储/计算系统，都需要对数据进行合理的分区，从而实现存储和计算的均衡，以及数据并行化。<br>而Druid本身处理的是事件数据，每条数据都会带有一个时间戳，所以很自然的就可以使用时间进行分区。<br>为什么一个chunk中的数据包含多个segment！！！？？？？原因就是二级分区</p>
+<h4 id="二级分区："><a href="#二级分区：" class="headerlink" title="二级分区："></a>二级分区：</h4><p>很可能每个chunk的数据量是不均衡的，而Duid为了解决这种问题，提供了“二级分区”，每一个二级分区称为一个Shard(分片)<br>其实chunk、datasource都是抽象的，实际的就是每个分区就是一个Shard，每个Shard只包含一个Segment！！！，因为Segment是Shard持久化的结果<br>Druid目前支持两种Shard策略：<br>Hash(基于维值的Hash)<br>Range(基于某个维度的取值范围)<br>譬如：<br>2000-01-01，2000-01-02中的每一个分区都是一个Shard<br>2000-01-02的数据量比较多，所以有两个Shard，分为partition0、partition1。每个分区都是一个Shard<br>Shard经过持久化之后就称为了Segment，Segment是数据存储、复制、均衡(Historical的负载均衡)和计算的基本单元了。<br>Segment具有不可变性，一个Segment一旦创建完成后(MiddleManager节点发布后)就无法被修改，<br>只能通过生成一个新的Segment来代替旧版本的Segment。</p>
+<h4 id="Segment内部存储结构："><a href="#Segment内部存储结构：" class="headerlink" title="Segment内部存储结构："></a>Segment内部存储结构：</h4><p>Segment内部采用列式存储    　　　　　　　　    //并不是说每列都是一个独立的文件，而是说每列有独立的数据结构，所有列都会存储在一个文件中<br>Segment中的数据类型主要分为三种：<br>时间戳<br>维度列<br>指标列<br>对于时间戳列和指标列，实际存储是一个数组<br>对于维度列不会像指标列和时间戳这么简单，因为它需要支持filter和groupby：<br>所以Druid使用了字典编码(DictionaryEncoding)和位图索引(BitmapIndex)来存储每个维度列。每个维度列需要三个数据结构：<br>1、需要一个字典数据结构，将维值(维度列值都会被认为是字符串类型)映射成一个整数ID。<br>2、使用上面的字典编码，将该列所有维值放在一个列表中。<br>3、对于列中不同的值，使用bitmap数据结构标识哪些行包含这些值。　　　　　　//位图索引，这个需要记住<br>注：使用Bitmap位图索引可以执行快速过滤操作(找到符合条件的行号，以减少读取的数据量)<br>Druid针对维度列之所以使用这三个数据结构，是因为：<br>使用字典将字符串映射成整数ID，可以紧凑的表示结构2和结构3中的值。<br>使用Bitmap位图索引可以执行快速过滤操作(找到符合条件的行号，以减少读取的数据量)，因为Bitmap可以快速执行AND和OR操作。<br>对于groupby和TopN操作需要使用结构2中的列值列表<br>实例：<br>1.使用字典将列值映射为整数<br>{<br> “JustinBieher”:0,<br> “ke$ha”:1<br>}<br>2.使用1中的编码，将列值放到一个列表中<br>[0,0,1,1]<br>3.使用bitmap来标识不同列值<br>value=0:[1,1,0,0]//1代表该行含有该值，0标识不含有<br>value=1:[0,0,1,1]<br>因为是一个稀疏矩阵，所以比较好压缩！！<br>Druid而且运用了RoaringBitmap能够对压缩后的位图直接进行布尔运算，可以大大提高查询效率和存储效率(不需要解压缩)</p>
+<h4 id="Segment命名"><a href="#Segment命名" class="headerlink" title="Segment命名:"></a>Segment命名:</h4><p>如果一个Datasource下有几百万个Segment文件，我们又如何快速找出我们所需要的文件呢？答案就是通过文件名称快速索引查找。<br>Segment的命名包含四部分：<br>数据源(Datasource)、时间间隔(包含开始时间和结束时间两部分)、版本号和分区(Segment有分片的情况下才会有)。<br>eg：wikipedia_2015-09-12T00:00:00.000Z_2015-09-13T00:00:00.000Z_2019-09-09T10:06:02.498Z<br>wikipedia：Datasource名称<br>开始时间：2015-09-12T00:00:00.000Z//该Segment所存储最早的数据，时间格式是ISO8601<br>结束时间：2015-09-13T00:00:00.000Z//该segment所存储最晚的数据，时间格式是ISO8601<br>版本号：2019-09-09T10:06:02.498Z//此Segment的启动时间，因为Druid支持批量覆盖操作，<br>//当批量摄入与之前相同数据源、相同时间间隔数据时，数据就会被覆盖，这时候版本号就会被更新<br>分片号：从0开始，如果分区号为0，可以省略//分区的表现其实就是分目录<br>注：单机形式运行Druid，这样Druid生成的Segment文件都在${DRUID_HOME}/var/druid/segments目录下<br>注：为了保证Druid的查询效率，每个Segment文件的大小建议在300MB~700MB之间<br>注：版本号的意义：<br>在druid，如果您所做的只是追加数据，那么每个时间chunk只会有一个版本。<br>但是当您覆盖数据时，因为druid通过首先加载新数据（但不允许查询）来处理这个问题，一旦新数据全部加载，<br>切换所有新查询以使用这些新数据。然后它在几分钟后掉落旧段！！！</p>
+<h4 id="存储聚合"><a href="#存储聚合" class="headerlink" title="存储聚合"></a>存储聚合</h4><p>无论是实时数据消费还是批量数据处理，Druid在基于DataSource机构存储数据时即可选择对任意的指标列进行聚合操作：<br>1、基于维度列：相同的维度列数据会进行聚合<br>2、基于时间段：某一时间段的所有行会进行聚合，时间段可以通过queryGranularity参数指定<br>聚合：提前做好sum，count等操作</p>
+<h4 id="Segment生命周期："><a href="#Segment生命周期：" class="headerlink" title="Segment生命周期："></a>Segment生命周期：</h4><p>在元数据存储中！每个Segment都会有一个used字段，标记该段是否能用于查询</p>
+<h5 id="is-Published："><a href="#is-Published：" class="headerlink" title="is_Published："></a>is_Published：</h5><p>当Segment构建完毕，就将元数据存储在元数据存储区中，此Segment为发布状态</p>
+<h5 id="is-available"><a href="#is-available" class="headerlink" title="is_available:"></a>is_available:</h5><p>如果Segment当前可用于查询（实时任务或历史进程），则为true。</p>
+<h5 id="is-realtime"><a href="#is-realtime" class="headerlink" title="is_realtime:"></a>is_realtime:</h5><p>如果是由实时任务产生的，那么会为true，但是一段时间之后，也会变为false</p>
+<h5 id="is-overshadowed："><a href="#is-overshadowed：" class="headerlink" title="is_overshadowed："></a>is_overshadowed：</h5><p>标记该段是否已被其他段覆盖！处于此状态的段很快就会将其used标志自动设置为false。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Druid/" rel="tag">Druid</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-20" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/04/07/20/" class="article-date">
+      <time datetime="2020-04-07T06:01:24.000Z" itemprop="datePublished">2020-04-07</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/04/07/20/">Kafka 是如何保证数据可靠性和一致性</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="数据可靠性"><a href="#数据可靠性" class="headerlink" title="数据可靠性"></a>数据可靠性</h3><p>Kafka 作为一个商业级消息中间件，消息可靠性的重要性可想而知。本文从 Producter 往 Broker 发送消息、Topic 分区副本以及 Leader 选举几个角度介绍数据的可靠性。</p>
+<h3 id="Topic-分区副本"><a href="#Topic-分区副本" class="headerlink" title="Topic 分区副本"></a>Topic 分区副本</h3><p>在 Kafka 0.8.0 之前，Kafka 是没有副本的概念的，那时候人们只会用 Kafka 存储一些不重要的数据，因为没有副本，数据很可能会丢失。但是随着业务的发展，支持副本的功能越来越强烈，所以为了保证数据的可靠性，Kafka 从 0.8.0 版本开始引入了分区副本（详情请参见 KAFKA-50）。也就是说每个分区可以人为的配置几个副本（比如创建主题的时候指定 replication-factor，也可以在 Broker 级别进行配置 default.replication.factor），一般会设置为3。</p>
+<p>Kafka 可以保证单个分区里的事件是有序的，分区可以在线（可用），也可以离线（不可用）。在众多的分区副本里面有一个副本是 Leader，其余的副本是 follower，所有的读写操作都是经过 Leader 进行的，同时 follower 会定期地去 leader 上的复制数据。当 Leader 挂了的时候，其中一个 follower 会重新成为新的 Leader。通过分区副本，引入了数据冗余，同时也提供了 Kafka 的数据可靠性。</p>
+<p>Kafka 的分区多副本架构是 Kafka 可靠性保证的核心，把消息写入多个副本可以使 Kafka 在发生崩溃时仍能保证消息的持久性。</p>
+<h3 id="Producer-往-Broker-发送消息"><a href="#Producer-往-Broker-发送消息" class="headerlink" title="Producer 往 Broker 发送消息"></a>Producer 往 Broker 发送消息</h3><p>如果我们要往 Kafka 对应的主题发送消息，我们需要通过 Producer 完成。前面我们讲过 Kafka 主题对应了多个分区，每个分区下面又对应了多个副本；为了让用户设置数据可靠性， Kafka 在 Producer 里面提供了消息确认机制。也就是说我们可以通过配置来决定消息发送到对应分区的几个副本才算消息发送成功。可以在定义 Producer 时通过 acks 参数指定（在 0.8.2.X 版本之前是通过 request.required.acks 参数设置的，详见 KAFKA-3043）。这个参数支持以下三种值：</p>
+<p>acks = 0：意味着如果生产者能够通过网络把消息发送出去，那么就认为消息已成功写入 Kafka 。在这种情况下还是有可能发生错误，比如发送的对象无能被序列化或者网卡发生故障，但如果是分区离线或整个集群长时间不可用，那就不会收到任何错误。在 acks=0 模式下的运行速度是非常快的（这就是为什么很多基准测试都是基于这个模式），你可以得到惊人的吞吐量和带宽利用率，不过如果选择了这种模式， 一定会丢失一些消息。</p>
+<p>acks = 1：意味若 Leader 在收到消息并把它写入到分区数据文件（不一定同步到磁盘上）时会返回确认或错误响应。在这个模式下，如果发生正常的 Leader 选举，生产者会在选举时收到一个 LeaderNotAvailableException 异常，如果生产者能恰当地处理这个错误，它会重试发送悄息，最终消息会安全到达新的 Leader 那里。不过在这个模式下仍然有可能丢失数据，比如消息已经成功写入 Leader，但在消息被复制到 follower 副本之前 Leader发生崩溃。</p>
+<p>acks = all（这个和 request.required.acks = -1 含义一样）：意味着 Leader 在返回确认或错误响应之前，会等待所有同步副本都收到悄息。如果和 min.insync.replicas 参数结合起来，就可以决定在返回确认前至少有多少个副本能够收到悄息，生产者会一直重试直到消息被成功提交。不过这也是最慢的做法，因为生产者在继续发送其他消息之前需要等待所有副本都收到当前的消息。</p>
+<p>根据实际的应用场景，我们设置不同的 acks，以此保证数据的可靠性。<br>另外，Producer 发送消息还可以选择同步（默认，通过 producer.type=sync 配置） 或者异步（producer.type=async）模式。如果设置成异步，虽然会极大的提高消息发送的性能，但是这样会增加丢失数据的风险。如果需要确保消息的可靠性，必须将 producer.type 设置为 sync。</p>
+<h3 id="Leader-选举"><a href="#Leader-选举" class="headerlink" title="Leader 选举"></a>Leader 选举</h3><p>在介绍 Leader 选举之前，让我们先来了解一下 ISR（in-sync replicas）列表。每个分区的 leader 会维护一个 ISR 列表，ISR 列表里面就是 follower 副本的 Borker 编号，只有跟得上 Leader 的 follower 副本才能加入到 ISR 里面，这个是通过 replica.lag.time.max.ms 参数配置的，具体可以参见《图文了解 Kafka 的副本复制机制》。只有 ISR 里的成员才有被选为 leader 的可能。</p>
+<p>所以当 Leader 挂掉了，而且 unclean.leader.election.enable=false 的情况下，Kafka 会从 ISR 列表中选择第一个 follower 作为新的 Leader，因为这个分区拥有最新的已经 committed 的消息。通过这个可以保证已经 committed 的消息的数据可靠性。</p>
+<p>综上所述，为了保证数据的可靠性，我们最少需要配置一下几个参数：</p>
+<p>producer 级别：acks=all（或者 request.required.acks=-1），同时发生模式为同步 producer.type=sync<br>topic 级别：设置 replication.factor&gt;=3，并且 min.insync.replicas&gt;=2；<br>broker 级别：关闭不完全的 Leader 选举，即 unclean.leader.election.enable=false；</p>
+<h3 id="数据一致性"><a href="#数据一致性" class="headerlink" title="数据一致性"></a>数据一致性</h3><p>这里介绍的数据一致性主要是说不论是老的 Leader 还是新选举的 Leader，Consumer 都能读到一样的数据。那么 Kafka 是如何实现的呢？</p>
+<p>假设分区的副本为3，其中副本0是 Leader，副本1和副本2是 follower，并且在 ISR 列表里面。虽然副本0已经写入了 Message4，但是 Consumer 只能读取到 Message2。因为所有的 ISR 都同步了 Message2，只有 High Water Mark 以上的消息才支持 Consumer 读取，而 High Water Mark 取决于 ISR 列表里面偏移量最小的分区，对应于上图的副本2，这个很类似于木桶原理。</p>
+<p>这样做的原因是还没有被足够多副本复制的消息被认为是“不安全”的，如果 Leader 发生崩溃，另一个副本成为新 Leader，那么这些消息很可能丢失了。如果我们允许消费者读取这些消息，可能就会破坏一致性。试想，一个消费者从当前 Leader（副本0） 读取并处理了 Message4，这个时候 Leader 挂掉了，选举了副本1为新的 Leader，这时候另一个消费者再去从新的 Leader 读取消息，发现这个消息其实并不存在，这就导致了数据不一致性问题。</p>
+<p>当然，引入了 High Water Mark 机制，会导致 Broker 间的消息复制因为某些原因变慢，那么消息到达消费者的时间也会随之变长（因为我们会先等待消息复制完毕）。延迟时间可以通过参数 replica.lag.time.max.ms 参数配置，它指定了副本在复制消息时可被允许的最大延迟时间。</p>
+<h3 id="Kafka-生产者分区策略"><a href="#Kafka-生产者分区策略" class="headerlink" title="Kafka 生产者分区策略"></a>Kafka 生产者分区策略</h3><p>1）分区的原因<br>  1）方便在集群中扩展，每个 Partition 可以通过调整以适应它所在的机器，而一个 topic<br>又可以有多个 Partition 组成，因此整个集群就可以适应任意大小的数据了；<br>（2）可以提高并发，因为可以以 Partition 为单位读写了。<br>2）分区的原则<br>我们需要将 producer 发送的数据封装成一个 ProducerRecord 对象。<br>（1）指明 partition 的情况下，直接将指明的值直接作为 partiton 值；<br>（2）没有指明 partition 值但有 key 的情况下，将 key 的 hash 值与 topic 的 partition<br>数进行取余得到 partition 值；<br>（3）既没有 partition 值又没有 key 值的情况下，第一次调用时随机生成一个整数（后<br>面每次调用在这个整数上自增），将这个值与 topic 可用的 partition 总数取余得到 partition<br>值，也就是常说的 round-robin 算法。</p>
+<h3 id="消费者分区分配策略"><a href="#消费者分区分配策略" class="headerlink" title="消费者分区分配策略"></a>消费者分区分配策略</h3><p>Range 范围分区(默认的)</p>
+<p>假如有10个分区，3个消费者，把分区按照序号排列0，1，2，3，4，5，6，7，8，9；消费者为C1,C2,C3，那么用分区数除以消费者数来决定每个Consumer消费几个Partition，除不尽的前面几个消费者将会多消费一个<br>最后分配结果如下</p>
+<p>C1：0，1，2，3<br>C2：4，5，6<br>C3：7，8，9</p>
+<p>如果有11个分区将会是：</p>
+<p>C1：0，1，2，3<br>C2：4，5，6，7<br>C3：8，9，10</p>
+<p>假如我们有两个主题T1,T2，分别有10个分区，最后的分配结果将会是这样：</p>
+<p>C1：T1（0，1，2，3） T2（0，1，2，3）<br>C2：T1（4，5，6） T2（4，5，6）<br>C3：T1（7，8，9） T2（7，8，9）</p>
+<p>在这种情况下，C1多消费了两个分区</p>
+<p>RoundRobin 轮询分区</p>
+<p>把所有的partition和consumer列出来，然后轮询consumer和partition，尽可能的让把partition均匀的分配给consumer</p>
+<p>假如有3个Topic T0（三个分区P0-0，P0-1,P0-2），T1(两个分区P1-0,P1-1)，T2(四个分区P2-0，P2-1，P2-2，P2-3)</p>
+<p>有三个消费者：C0(订阅了T0，T1),C1（订阅了T1，T2），C2(订阅了T0,T2)</p>
+<p>分区将会按照一定的顺序排列起来，消费者将会组成一个环状的结构，然后开始轮询。<br>P0-0分配给C0<br>P0-1分配给C1但是C1并没订阅T0，于是跳过C1把P0-1分配给C2,<br>P0-2分配给C0<br>P1-0分配给C1,<br>P1-1分配给C0,<br>P2-0分配给C1，<br>P2-1分配给C2,<br>P2-2分配给C1,<br>p2-3分配给C2</p>
+<p>C0: P0-0，P0-2，P1-1<br>C1：P1-0，P2-0，P2-2<br>C2：P0-1，P2-1，P2-3</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/" rel="tag">kafka</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-19" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/01/13/19/" class="article-date">
+      <time datetime="2020-01-13T13:01:24.000Z" itemprop="datePublished">2020-01-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/01/13/19/">Python数据质量检测</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="1-重复值检查"><a href="#1-重复值检查" class="headerlink" title="1. 重复值检查"></a>1. 重复值检查</h3><p>1.1 什么是重复值<br>重复值的检查首先要明确一点，即重复值的定义。对于一份二维表形式的数据集来说，什么是重复值？主要有两个层次：<br>① 关键字段出现重复记录，比如主索引字段出现重复；<br>② 所有字段出现重复记录。<br>第一个层次是否是重复，必须从这份数据的业务含义进行确定。比如一张表，从业务上讲，一个用户应该只会有一条记录，那么如果某个用户出现了超过一条的记录，那么这就是重复值。第二个层次，就一定是重复值了。<br>1.2 重复值产生的原因<br>重复值的产生主要有两个原因，一是上游源数据造成的，二是数据准备脚本中的数据关联造成的。从数据准备角度来看，首先检查数据准备的脚本，判断使用的源表是否有重复记录，同时检查关联语句的正确性和严谨性，比如关联条件是否合理、是否有限定数据周期等等。<br>比如：检查源表数据是否重复的SQL：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT MON_ID,COUNT(*),COUNT(DISTINCT USER_ID)</span><br><span class="line">FROM TABLE_NAME</span><br><span class="line">GROUP BY MON_ID;</span><br></pre></td></tr></table></figure>
+<p>如果是上游源数据出现重复，那么应该及时反映给上游进行修正；如果是脚本关联造成的，修改脚本，重新生成数据即可。<br>还有一份情况，这份数据集是一份单独的数据集，并不是在数据仓库中开发得到的数据，既没有上游源数据，也不存在生成数据的脚本，比如公开数据集，那么如何处理其中的重复值？一般的处理方式就是直接删除重复值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">dataset = pd.read_excel(<span class="string">"/labcenter/python/dataset.xlsx"</span>)</span><br><span class="line"><span class="comment">#判断重复数据</span></span><br><span class="line">dataset.duplicated()    <span class="comment">#全部字段重复是重复数据</span></span><br><span class="line">dataset.duplicated([<span class="string">'col2'</span>])    <span class="comment">#col2字段重复是重复数据</span></span><br><span class="line"><span class="comment">#删除重复数据</span></span><br><span class="line">dataset.drop_duplicates()     <span class="comment">#全部字段重复是重复数据</span></span><br><span class="line">dataset.drop_duplicates([<span class="string">'col2'</span>])   <span class="comment">#col2字段重复是重复数据</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-缺失值检查"><a href="#2-缺失值检查" class="headerlink" title="2. 缺失值检查"></a>2. 缺失值检查</h3><p>缺失值主要是指数据集中部分记录存在部分字段的信息缺失。</p>
+<p>2.1 缺失值出现的原因<br>出现趋势值主要有三种原因：<br>① 上游源系统因为技术或者成本原因无法完全获取到这一信息，比如对用户手机APP上网记录的解析；<br>② 从业务上讲，这一信息本来就不存在，比如一个学生的收入，一个未婚者的配偶姓名；<br>③ 数据准备脚本开发中的错误造成的。<br>第一种原因，短期内无法解决；第二种原因，数据的缺失并不是错误，无法避免；第三种原因，则只需通过查证修改脚本即可。<br>缺失值的存在既代表了某一部分信息的丢失，也影响了挖掘分析结论的可靠性与稳定性，因此，必须对缺失值进行处理。<br>如果缺失值记录数超过了全部记录数的50%，则应该从数据集中直接剔除掉该字段，尝试从业务上寻找替代字段；<br>如果缺失值记录数没有超过50%，则应该首先看这个字段在业务上是否有替代字段，如果有，则直接剔除掉该字段，如果没有，则必须对其进行处理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##查看哪些字段有缺失值   </span></span><br><span class="line">dataset.isnull().any()    <span class="comment">#获取含有NaN的字段</span></span><br><span class="line"><span class="comment">##统计各字段的缺失值个数</span></span><br><span class="line">dataset.isnull().apply(pd.value_counts)</span><br><span class="line"><span class="comment">##删除含有缺失值的字段</span></span><br><span class="line">nan_col = dataset.isnull().any()</span><br><span class="line">dataset.drop(nan_col[nan_col].index,axis=1)</span><br></pre></td></tr></table></figure>
+<p>2.2 缺失值的处理<br>缺失值的处理主要有两种方式：过滤和填充。</p>
+<p>（1）缺失值的过滤<br>直接删除含有缺失值的记录，总体上会影响样本个数，如果删除样本过多或者数据集本来就是小数据集时，这种方式并不建议采用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##删除含有缺失值的记录</span></span><br><span class="line">dataset.dropna()</span><br></pre></td></tr></table></figure>
+<p>(2)缺失值的填充<br>缺失值的填充主要三种方法：<br>① 方法一：使用特定值填充<br>使用缺失值字段的平均值、中位数、众数等统计量填充。<br>优点：简单、快速<br>缺点：容易产生数据倾斜<br>② 方法二：使用算法预测填充<br>将缺失值字段作为因变量，将没有缺失值字段作为自变量，使用决策树、随机森林、KNN、回归等预测算法进行缺失值的预测，用预测结果进行填充。<br>优点：相对精确<br>缺点：效率低，如果缺失值字段与其他字段相关性不大，预测效果差<br>③ 方法三：将缺失值单独作为一个分组，指定值进行填充<br>从业务上选择一个单独的值进行填充，使缺失值区别于其他值而作为一个分组，从而不影响算法计算。<br>优点：简单，实用<br>缺点：效率低</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##使用Pandas进行特定值填充</span></span><br><span class="line">dataset.fillna(0)   <span class="comment">##不同字段的缺失值都用0填充</span></span><br><span class="line">dataset.fillna(&#123;<span class="string">'col2'</span>:20,<span class="string">'col5'</span>:0&#125;)    <span class="comment">##不同字段使用不同的填充值</span></span><br><span class="line">dataset.fillna(dataset.mean())   <span class="comment">##分别使用各字段的平均值填充</span></span><br><span class="line">dataset.fillna(dataset.median())     <span class="comment">##分别使用个字段的中位数填充</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">##使用sklearn中的预处理方法进行缺失值填充(只适用于连续型字段)</span></span><br><span class="line">from sklearn.preprocessing import Imputer</span><br><span class="line">dataset2 = dataset.drop([<span class="string">'col4'</span>],axis=1)</span><br><span class="line">colsets = dataset2.columns</span><br><span class="line">nan_rule1 = Imputer(missing_values=<span class="string">'NaN'</span>,strategy=<span class="string">'mean'</span>,axis=0)    <span class="comment">##创建填充规则(平均值填充)</span></span><br><span class="line">pd.DataFrame(nan_rule1.fit_transform(dataset2),columns=colsets)    <span class="comment">##应用规则</span></span><br><span class="line">nan_rule2 = Imputer(missing_values=<span class="string">'median'</span>,strategy=<span class="string">'mean'</span>,axis=0) <span class="comment">##创建填充规则(中位数填充)</span></span><br><span class="line">pd.DataFrame(nan_rule2.fit_transform(dataset2),columns=colsets)    <span class="comment">##应用规则</span></span><br><span class="line">nan_rule3 = Imputer(missing_values=<span class="string">'most_frequent'</span>,strategy=<span class="string">'mean'</span>,axis=0)  <span class="comment">##创建填充规则(众数填充)</span></span><br><span class="line">pd.DataFrame(nan_rule3.fit_transform(dataset2),columns=colsets)    <span class="comment">##应用规则</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-oozie" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/01/02/oozie/" class="article-date">
+      <time datetime="2020-01-02T13:01:24.000Z" itemprop="datePublished">2020-01-02</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/01/02/oozie/">Oozie常用命令</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Oozie任务重试"><a href="#Oozie任务重试" class="headerlink" title="Oozie任务重试"></a>Oozie任务重试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oozie job -rerun 0000000-191106143754176-oozie-oozi-W  -D oozie.wf.rerun.failnodes=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="检查xml格式"><a href="#检查xml格式" class="headerlink" title="检查xml格式"></a>检查xml格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmllint -noout hive-site.xml</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看coordinator状态"><a href="#查看coordinator状态" class="headerlink" title="查看coordinator状态"></a>查看coordinator状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oozie <span class="built_in">jobs</span> -jobtype coordinator  -filter status=RUNNING</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看执行错误的workflow-xml"><a href="#查看执行错误的workflow-xml" class="headerlink" title="查看执行错误的workflow.xml"></a>查看执行错误的workflow.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">[root@dlbdn3 ~]<span class="comment"># oozie job -info 0000027-181203143359779-oozie-oozi-C -oozie http://localhost:11000/oozie -order=desc -timezone='Asia/Shanghai' -filter status=KILLED AND FAILED</span></span><br><span class="line">Job ID : 0000027-181203143359779-oozie-oozi-C</span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">Job Name    : PG-LANDING-JOB-Coordinator</span><br><span class="line">App Path    : hdfs://dlbdn3:8020/user/hue/oozie/deployments/_ericsson_-oozie-13-1543825800.46</span><br><span class="line">Status      : KILLED</span><br><span class="line">Start Time  : 2018-09-13 00:00 CST</span><br><span class="line">End Time    : 2040-09-01 15:15 CST</span><br><span class="line">Pause Time  : -</span><br><span class="line">Concurrency : 1</span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">ID                                         Status    Ext ID                               Err Code  Created              Nominal Time         </span><br><span class="line">0000027-181203143359779-oozie-oozi-C@30    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 02:25 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@29    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 02:20 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@28    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 02:15 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@27    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 02:10 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@26    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 02:05 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@25    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 02:00 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@24    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 01:55 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@23    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 01:50 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@22    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 01:45 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@21    KILLED    -                                    -         2018-12-03 16:39 CST 2018-09-13 01:40 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@20    KILLED    -                                    -         2018-12-03 16:34 CST 2018-09-13 01:35 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@19    KILLED    -                                    -         2018-12-03 16:34 CST 2018-09-13 01:30 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@18    KILLED    -                                    -         2018-12-03 16:34 CST 2018-09-13 01:25 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@17    KILLED    -                                    -         2018-12-03 16:34 CST 2018-09-13 01:20 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@16    KILLED    -                                    -         2018-12-03 16:34 CST 2018-09-13 01:15 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@15    KILLED    -                                    -         2018-12-03 16:34 CST 2018-09-13 01:10 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@14    KILLED    -                                    -         2018-12-03 16:34 CST 2018-09-13 01:05 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@13    KILLED    -                                    -         2018-12-03 16:34 CST 2018-09-13 01:00 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000027-181203143359779-oozie-oozi-C@12    KILLED    0000039-181203143359779-oozie-oozi-W -         2018-12-03 16:34 CST 2018-09-13 00:55 CST </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看一个具体的workflow信息"><a href="#查看一个具体的workflow信息" class="headerlink" title="查看一个具体的workflow信息"></a>查看一个具体的workflow信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@dlbdn3 ~]<span class="comment"># oozie job --oozie http://localhost:11000/oozie -info 0000039-181203143359779-oozie-oozi-W -localtime</span></span><br><span class="line">Job ID : 0000039-181203143359779-oozie-oozi-W</span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">Workflow Name : PG-LANDING-JOB</span><br><span class="line">App Path      : hdfs://dlbdn3:8020/user/hue/oozie/workspaces/hue-oozie-1535681485.06</span><br><span class="line">Status        : KILLED</span><br><span class="line">Run           : 0</span><br><span class="line">User          : ericsson</span><br><span class="line">Group         : -</span><br><span class="line">Created       : 2018-12-03 16:42 CST</span><br><span class="line">Started       : 2018-12-03 16:42 CST</span><br><span class="line">Last Modified : 2018-12-03 16:43 CST</span><br><span class="line">Ended         : 2018-12-03 16:43 CST</span><br><span class="line">CoordAction ID: 0000027-181203143359779-oozie-oozi-C@12</span><br><span class="line"></span><br><span class="line">Actions</span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">ID                                                                            Status    Ext ID                 Ext Status Err Code  </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000039-181203143359779-oozie-oozi-W@:start:                                  OK        -                      OK         -         </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000039-181203143359779-oozie-oozi-W@spark-23f2                               KILLED    job_1543800485319_0062 KILLED     -         </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看当前运行的workflow有哪些"><a href="#查看当前运行的workflow有哪些" class="headerlink" title="查看当前运行的workflow有哪些"></a>查看当前运行的workflow有哪些</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@dlbdn3 ~]<span class="comment"># oozie jobs -oozie http://localhost:11000/oozie -jobtype wf  -filter status=RUNNING</span></span><br><span class="line">No Jobs match your criteria!</span><br><span class="line">[root@dlbdn3 ~]<span class="comment"># oozie jobs -oozie http://localhost:11000/oozie -jobtype wf  -filter status=RUNNING</span></span><br><span class="line">Job ID                                   App Name     Status    User      Group     Started                 Ended                   </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000041-181203143359779-oozie-oozi-W     PG-LANDING-JOBRUNNING   ericsson  -         2018-12-03 08:50 GMT    -                       </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">[root@dlbdn3 ~]<span class="comment"># oozie jobs -oozie http://localhost:11000/oozie -jobtype wf  -filter status=RUNNING -localtime</span></span><br><span class="line">Job ID                                   App Name     Status    User      Group     Started                 Ended                   </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">0000041-181203143359779-oozie-oozi-W     PG-LANDING-JOBRUNNING   ericsson  -         2018-12-03 16:50 CST    -                       </span><br><span class="line">------------------------------------------------------------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oozie/" rel="tag">Oozie</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-18" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2020/01/01/18/" class="article-date">
+      <time datetime="2020-01-01T13:01:24.000Z" itemprop="datePublished">2020-01-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2020/01/01/18/">深入理解Kafka副本机制</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、Kafka集群"><a href="#一、Kafka集群" class="headerlink" title="一、Kafka集群"></a>一、Kafka集群</h3><p>Kafka 使用 Zookeeper 来维护集群成员 (brokers) 的信息。每个 broker 都有一个唯一标识 broker.id，用于标识自己在集群中的身份，可以在配置文件 server.properties 中进行配置，或者由程序自动生成。下面是 Kafka brokers 集群自动创建的过程：</p>
+<p>每一个 broker 启动的时候，它会在 Zookeeper 的 /brokers/ids 路径下创建一个 临时节点，并将自己的 broker.id 写入，从而将自身注册到集群；</p>
+<p>当有多个 broker 时，所有 broker 会竞争性地在 Zookeeper 上创建 /controller 节点，由于 Zookeeper 上的节点不会重复，所以必然只会有一个 broker 创建成功，此时该 broker 称为 controller broker。它除<br>了具备其他 broker 的功能外，还负责管理主题分区及其副本的状态。</p>
+<p>当 broker 出现宕机或者主动退出从而导致其持有的 Zookeeper 会话超时时，会触发注册在 Zookeeper 上的 watcher 事件，此时 Kafka 会进行相应的容错处理；如果宕机的是 controller broker 时，还会触发新的controller 选举。</p>
+<h3 id="二、副本机制"><a href="#二、副本机制" class="headerlink" title="二、副本机制"></a>二、副本机制</h3><p>为了保证高可用，kafka 的分区是多副本的，如果一个副本丢失了，那么还可以从其他副本中获取分区数据。但是这要求对应副本的数据必须是完整的，这是 Kafka 数据一致性的基础，所以才需要使用 controller broker 来进行专门的管理。下面将详解介绍 Kafka 的副本机制。</p>
+<p>2.1 分区和副本<br>Kafka 的主题被分为多个分区 ，分区是 Kafka 最基本的存储单位。每个分区可以有多个副本 (可以在创建主题时使用 replication-factor 参数进行指定)。其中一个副本是首领副本 (Leader replica)，所有的事件都直接发送给首领副本；其他副本是跟随者副本 (Follower replica)，需要通过复制来保持与首领副本数据一致，当首领副本不可用时，其中一个跟随者副本将成为新首领。<br><img src="/images/19.png" alt="alt"></p>
+<p>2.2 ISR机制<br>每个分区都有一个 ISR(in-sync Replica) 列表，用于维护所有同步的、可用的副本。首领副本必然是同步副本，而对于跟随者副本来说，它需要满足以下条件才能被认为是同步副本：</p>
+<p>与 Zookeeper 之间有一个活跃的会话，即必须定时向 Zookeeper 发送心跳；<br>在规定的时间内从首领副本那里低延迟地获取过消息。</p>
+<p>如果副本不满足上面条件的话，就会被从 ISR 列表中移除，直到满足条件才会被再次加入。</p>
+<p>这里给出一个主题创建的示例：使用 –replication-factor 指定副本系数为 3，创建成功后使用 –describe 命令可以看到分区 0 的有 0,1,2 三个副本，且三个副本都在 ISR 列表中，其中 1 为首领副本。<br><img src="/images/20.png" alt="alt"></p>
+<p>2.3 不完全的首领选举<br>对于副本机制，在 broker 级别有一个可选的配置参数 unclean.leader.election.enable，默认值为 fasle，代表禁止不完全的首领选举。这是针对当首领副本挂掉且 ISR 中没有其他可用副本时，是否允许某个不完全同步的副本成为首领副本，这可能会导致数据丢失或者数据不一致，在某些对数据一致性要求较高的场景 (如金融领域)，这可能无法容忍的，所以其默认值为 false，如果你能够允许部分数据不一致的话，可以配置为 true。</p>
+<p>2.4 最少同步副本<br>ISR 机制的另外一个相关参数是 min.insync.replicas , 可以在 broker 或者主题级别进行配置，代表 ISR 列表中至少要有几个可用副本。这里假设设置为 2，那么当可用副本数量小于该值时，就认为整个分区处于不可用状态。此时客户端再向分区写入数据时候就会抛出异常 org.apache.kafka.common.errors.NotEnoughReplicasExceptoin: Messages are rejected since there are fewer in-sync replicas than required。</p>
+<p>2.5 发送确认<br>Kafka 在生产者上有一个可选的参数 ack，该参数指定了必须要有多少个分区副本收到消息，生产者才会认为消息写入成功：<br>acks=0 ：消息发送出去就认为已经成功了，不会等待任何来自服务器的响应；<br>acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应；<br>acks=all ：只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应。</p>
+<h3 id="三、数据请求"><a href="#三、数据请求" class="headerlink" title="三、数据请求"></a>三、数据请求</h3><p>3.1 元数据请求机制<br>在所有副本中，只有领导副本才能进行消息的读写处理。由于不同分区的领导副本可能在不同的 broker 上，如果某个 broker 收到了一个分区请求，但是该分区的领导副本并不在该 broker 上，那么它就会向客户端返回一个 Not a Leader for Partition 的错误响应。 为了解决这个问题，Kafka 提供了元数据请求机制。</p>
+<p>首先集群中的每个 broker 都会缓存所有主题的分区副本信息，客户端会定期发送发送元数据请求，然后将获取的元数据进行缓存。定时刷新元数据的时间间隔可以通过为客户端配置 metadata.max.age.ms 来进行指定。有了元数据信息后，客户端就知道了领导副本所在的 broker，之后直接将读写请求发送给对应的 broker 即可。</p>
+<p>如果在定时请求的时间间隔内发生的分区副本的选举，则意味着原来缓存的信息可能已经过时了，此时还有可能会收到 Not a Leader for Partition 的错误响应，这种情况下客户端会再次求发出元数据请求，然后刷新本地缓存，之后再去正确的 broker 上执行对应的操作，过程如下图：<br><img src="/images/21.png" alt="alt"></p>
+<p>3.2 数据可见性<br>需要注意的是，并不是所有保存在分区首领上的数据都可以被客户端读取到，为了保证数据一致性，只有被所有同步副本 (ISR 中所有副本) 都保存了的数据才能被客户端读取到。<br><img src="/images/22.png" alt="alt"></p>
+<p>3.3 零拷贝<br>Kafka 所有数据的写入和读取都是通过零拷贝来实现的。传统拷贝与零拷贝的区别如下<br>传统模式下的四次拷贝与四次上下文切换<br>以将磁盘文件通过网络发送为例。传统模式下，一般使用如下伪代码所示的方法先将文件数据读入内存，然后通过 Socket 将内存中的数据发送出去。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">buffer = File.read</span><br><span class="line">Socket.send(buffer)</span><br></pre></td></tr></table></figure>
+
+<p>这一过程实际上发生了四次数据拷贝。首先通过系统调用将文件数据读入到内核态 Buffer（DMA 拷贝），然后应用程序将内存态 Buffer 数据读入到用户态 Buffer（CPU 拷贝），接着用户程序通过 Socket 发送数据时将用户态 Buffer 数据拷贝到内核态 Buffer（CPU 拷贝），最后通过 DMA 拷贝将数据拷贝到 NIC Buffer。同时，还伴随着四次上下文切换，如下图所示：<br><img src="/images/23.png" alt="alt"></p>
+<p>sendfile和transferTo实现零拷贝<br>Linux 2.4+ 内核通过 sendfile 系统调用，提供了零拷贝。数据通过 DMA 拷贝到内核态 Buffer 后，直接通过 DMA 拷贝到 NIC Buffer，无需 CPU 拷贝。这也是零拷贝这一说法的来源。除了减少数据拷贝外，因为整个读文件到网络发送由一个 sendfile 调用完成，整个过程只有两次上下文切换，因此大大提高了性能。零拷贝过程如下图所示：<br><img src="/images/24.png" alt="alt"></p>
+<p>从具体实现来看，Kafka 的数据传输通过 TransportLayer 来完成，其子类 PlaintextTransportLayer 的 transferFrom 方法通过调用 Java NIO 中 FileChannel 的 transferTo 方法实现零拷贝，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public long transferFrom(FileChannel fileChannel, long position, long count) throws IOException &#123;</span><br><span class="line">    <span class="built_in">return</span> fileChannel.transferTo(position, count, socketChannel);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注： transferTo 和 transferFrom 并不保证一定能使用零拷贝。实际上是否能使用零拷贝与操作系统相关，如果操作系统提供 sendfile 这样的零拷贝系统调用，则这两个方法会通过这样的系统调用充分利用零拷贝的优势，否则并不能通过这两个方法本身实现零拷贝。</p>
+<h3 id="四、物理存储"><a href="#四、物理存储" class="headerlink" title="四、物理存储"></a>四、物理存储</h3><p>4.1 分区分配<br>在创建主题时，Kafka 会首先决定如何在 broker 间分配分区副本，它遵循以下原则：</p>
+<p>在所有 broker 上均匀地分配分区副本；<br>确保分区的每个副本分布在不同的 broker 上；<br>如果使用了 broker.rack 参数为 broker 指定了机架信息，那么会尽可能的把每个分区的副本分配到不同机架的 broker 上，以避免一个机架不可用而导致整个分区不可用。</p>
+<p>基于以上原因，如果你在一个单节点上创建一个 3 副本的主题，通常会抛出下面的异常：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error <span class="keyword">while</span> executing topic <span class="built_in">command</span> : org.apache.kafka.common.errors.InvalidReplicationFactor   </span><br><span class="line">Exception: Replication factor: 3 larger than available brokers: 1.</span><br></pre></td></tr></table></figure>
+
+<p>4.2 分区数据保留规则<br>保留数据是 Kafka 的一个基本特性， 但是 Kafka 不会一直保留数据，也不会等到所有消费者都读取了消息之后才删除消息。相反， Kafka 为每个主题配置了数据保留期限，规定数据被删除之前可以保留多长时间，或者清理数据之前可以保留的数据量大小。分别对应以下四个参数：</p>
+<p>log.retention.bytes ：删除数据前允许的最大数据量；默认值-1，代表没有限制；<br>log.retention.ms：保存数据文件的毫秒数，如果未设置，则使用 log.retention.minutes 中的值，默认为 null；<br>log.retention.minutes：保留数据文件的分钟数，如果未设置，则使用 log.retention.hours 中的值，默认为 null；<br>log.retention.hours：保留数据文件的小时数，默认值为 168，也就是一周。<br>因为在一个大文件里查找和删除消息是很费时的，也很容易出错，所以 Kafka 把分区分成若干个片段，当前正在写入数据的片段叫作活跃片段。活动片段永远不会被删除。如果按照默认值保留数据一周，而且每天使用一个新片段，那么你就会看到，在每天使用一个新片段的同时会删除一个最老的片段，所以大部分时间该分区会有 7 个片段存在。</p>
+<p>4.3 文件格式<br>通常保存在磁盘上的数据格式与生产者发送过来消息格式是一样的。 如果生产者发送的是压缩过的消息，那么同一个批次的消息会被压缩在一起，被当作“包装消息”进行发送 (格式如下所示) ，然后保存到磁盘上。之后消费者读取后再自己解压这个包装消息，获取每条消息的具体信息。<br><img src="/images/25.png" alt="alt"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/" rel="tag">kafka</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2019/11/14/2/" class="article-date">
+      <time datetime="2019-11-14T02:23:44.000Z" itemprop="datePublished">2019-11-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2019/11/14/2/">APP数据统计-用户活跃统计周活跃，月活跃(不是按照自然周计算,每天的前７天　前３０天)</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              有东西被加密了, 请输入密码查看.
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/" rel="tag">spark</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a   href="/2019/11/14/2/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    </nav>
+  
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2023 
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/zhangdeshuai409930360" target="_blank">Blog</a> by handsomezhangshuai
+            </div>
+        </div>
+        
+            <div class="visit">
+            © 2015-2020 zhangdeshuai 粤ICP备15075505号
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+           </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
