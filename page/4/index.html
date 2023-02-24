@@ -195,7 +195,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
+                        <a href="/tags/Atlas/" style="font-size: 10px;">Atlas</a> <a href="/tags/Datax/" style="font-size: 10px;">Datax</a> <a href="/tags/Druid/" style="font-size: 10px;">Druid</a> <a href="/tags/ELK/" style="font-size: 10px;">ELK</a> <a href="/tags/Flink/" style="font-size: 17.5px;">Flink</a> <a href="/tags/Flink-Spark/" style="font-size: 10px;">Flink,Spark</a> <a href="/tags/HIVE/" style="font-size: 10px;">HIVE</a> <a href="/tags/Hbase/" style="font-size: 10px;">Hbase</a> <a href="/tags/Hudi/" style="font-size: 10px;">Hudi</a> <a href="/tags/Oozie/" style="font-size: 12.5px;">Oozie</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/hadoop/" style="font-size: 12.5px;">hadoop</a> <a href="/tags/hive/" style="font-size: 10px;">hive</a> <a href="/tags/kafka/" style="font-size: 15px;">kafka</a> <a href="/tags/kerberos/" style="font-size: 10px;">kerberos</a> <a href="/tags/kylin-olap/" style="font-size: 10px;">kylin olap</a> <a href="/tags/python/" style="font-size: 12.5px;">python</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/spark/" style="font-size: 20px;">spark</a> <a href="/tags/spark-Structured/" style="font-size: 10px;">spark Structured</a> <a href="/tags/surveymonkey/" style="font-size: 10px;">surveymonkey</a> <a href="/tags/%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">架构</a>
                     </div>
                 </section>
                 
@@ -281,6 +281,146 @@
 </nav>
 
      <div class="body-wrap">
+  
+    <article id="post-16" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2018/12/02/16/" class="article-date">
+      <time datetime="2018-12-02T13:01:24.000Z" itemprop="datePublished">2018-12-02</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2018/12/02/16/">Kafka生产者详解</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、生产者发送消息的过程"><a href="#一、生产者发送消息的过程" class="headerlink" title="一、生产者发送消息的过程"></a>一、生产者发送消息的过程</h3><p>首先介绍一下 Kafka 生产者发送消息的过程：</p>
+<p>Kafka 会将发送消息包装为 ProducerRecord 对象， ProducerRecord 对象包含了目标主题和要发送的内容，同时还可以指定键和分区。在发送 ProducerRecord 对象前，生产者会先把键和值对象序列化成字节数组，这样它们才能够在网络上传输。</p>
+<p>接下来，数据被传给分区器。如果之前已经在 ProducerRecord 对象里指定了分区，那么分区器就不会再做任何事情。如果没有指定分区 ，那么分区器会根据 ProducerRecord 对象的键来选择一个分区，紧接着，这条记录被添加到一个记录批次里，这个批次里的所有消息会被发送到相同的主题和分区上。有一个独立的线程负责把这些记录批次发送到相应的 broker 上。</p>
+<p>服务器在收到这些消息时会返回一个响应。如果消息成功写入 Kafka，就返回一个 RecordMetaData 对象，它包含了主题和分区信息，以及记录在分区里的偏移量。如果写入失败，则会返回一个错误。生产者在收到错误之后会尝试重新发送消息，如果达到指定的重试次数后还没有成功，则直接抛出异常，不再重试。</p>
+<p><img src="/images/15.png" alt="alt"></p>
+<h3 id="二、创建生产者"><a href="#二、创建生产者" class="headerlink" title="二、创建生产者"></a>二、创建生产者</h3><p>2.1 项目依赖<br>本项目采用 Maven 构建，想要调用 Kafka 生产者 API，需要导入 kafka-clients 依赖，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;kafka-clients&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.2.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.2 创建生产者<br>创建 Kafka 生产者时，以下三个属性是必须指定的：</p>
+<p>bootstrap.servers ：指定 broker 的地址清单，清单里不需要包含所有的 broker 地址，生产者会从给定的 broker 里查找 broker 的信息。不过建议至少要提供两个 broker 的信息作为容错；<br>key.serializer ：指定键的序列化器；<br>value.serializer ：指定值的序列化器。</p>
+<p>创建的示例代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class SimpleProducer &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        String topicName = <span class="string">"Hello-Kafka"</span>;</span><br><span class="line"></span><br><span class="line">        Properties props = new Properties();</span><br><span class="line">        props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"hadoop001:9092"</span>);</span><br><span class="line">        props.put(<span class="string">"key.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">        props.put(<span class="string">"value.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line">        /*创建生产者*/</span><br><span class="line">        Producer&lt;String, String&gt; producer = new KafkaProducer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            ProducerRecord&lt;String, String&gt; record = new ProducerRecord&lt;&gt;(topicName, <span class="string">"hello"</span> + i, </span><br><span class="line">                                                                         <span class="string">"world"</span> + i);</span><br><span class="line">            /* 发送消息*/</span><br><span class="line">            producer.send(record);</span><br><span class="line">        &#125;</span><br><span class="line">        /*关闭生产者*/</span><br><span class="line">        producer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.3 测试</p>
+<ol>
+<li>启动Kakfa<br>Kafka 的运行依赖于 zookeeper，需要预先启动，可以启动 Kafka 内置的 zookeeper，也可以启动自己安装的：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zookeeper启动命令</span></span><br><span class="line">bin/zkServer.sh start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 内置zookeeper启动命令</span></span><br><span class="line">bin/zookeeper-server-start.sh config/zookeeper.properties</span><br></pre></td></tr></table></figure>
+
+<p>启动单节点 kafka 用于测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bin/kafka-server-start.sh config/server.properties</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建topic<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建用于测试主题</span></span><br><span class="line">bin/kafka-topics.sh --create \</span><br><span class="line">                    --bootstrap-server hadoop001:9092 \</span><br><span class="line">                     --replication-factor 1 --partitions 1 \</span><br><span class="line">                     --topic Hello-Kafka</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有主题</span></span><br><span class="line"> bin/kafka-topics.sh --list --bootstrap-server hadoop001:9092</span><br></pre></td></tr></table></figure></li>
+<li>运行项目<br>此时可以看到消费者控制台，输出如下，这里 kafka-console-consumer 只会打印出值信息，不会打印出键信息。<br><img src="/images/16.png" alt="alt"></li>
+</ol>
+<p>2.4 可能出现的问题<br>在这里可能出现的一个问题是：生产者程序在启动后，一直处于等待状态。这通常出现在你使用默认配置启动 Kafka 的情况下，此时需要对 server.properties 文件中的 listeners 配置进行更改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hadoop001 为我启动kafka服务的主机名，你可以换成自己的主机名或者ip地址</span></span><br><span class="line">listeners=PLAINTEXT://hadoop001:9092</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、发送消息"><a href="#二、发送消息" class="headerlink" title="二、发送消息"></a>二、发送消息</h3><p>上面的示例程序调用了 send 方法发送消息后没有做任何操作，在这种情况下，我们没有办法知道消息发送的结果。想要知道消息发送的结果，可以使用同步发送或者异步发送来实现。</p>
+<p>2.1 同步发送<br>在调用 send 方法后可以接着调用 get() 方法，send 方法的返回值是一个 Future<RecordMetadata>对象，RecordMetadata 里面包含了发送消息的主题、分区、偏移量等信息。改写后的代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        ProducerRecord&lt;String, String&gt; record = new ProducerRecord&lt;&gt;(topicName, <span class="string">"k"</span> + i, <span class="string">"world"</span> + i);</span><br><span class="line">        /*同步发送消息*/</span><br><span class="line">        RecordMetadata metadata = producer.send(record).get();</span><br><span class="line">        System.out.printf(<span class="string">"topic=%s, partition=%d, offset=%s \n"</span>,</span><br><span class="line">                metadata.topic(), metadata.partition(), metadata.offset());</span><br><span class="line">    &#125; catch (InterruptedException | ExecutionException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时得到的输出如下：偏移量和调用次数有关，所有记录都分配到了 0 分区，这是因为在创建 Hello-Kafka 主题时候，使用 –partitions 指定其分区数为 1，即只有一个分区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">topic=Hello-Kafka, partition=0, offset=40 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=41 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=42 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=43 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=44 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=45 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=46 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=47 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=48 </span><br><span class="line">topic=Hello-Kafka, partition=0, offset=49</span><br></pre></td></tr></table></figure>
+<p>2.2 异步发送<br>通常我们并不关心发送成功的情况，更多关注的是失败的情况，因此 Kafka 提供了异步发送和回调函数。 代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">    ProducerRecord&lt;String, String&gt; record = new ProducerRecord&lt;&gt;(topicName, <span class="string">"k"</span> + i, <span class="string">"world"</span> + i);</span><br><span class="line">    /*异步发送消息，并监听回调*/</span><br><span class="line">    producer.send(record, new <span class="function"><span class="title">Callback</span></span>() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onCompletion(RecordMetadata metadata, Exception exception) &#123;</span><br><span class="line">            <span class="keyword">if</span> (exception != null) &#123;</span><br><span class="line">                System.out.println(<span class="string">"进行异常处理"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.printf(<span class="string">"topic=%s, partition=%d, offset=%s \n"</span>,</span><br><span class="line">                        metadata.topic(), metadata.partition(), metadata.offset());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、自定义分区器"><a href="#三、自定义分区器" class="headerlink" title="三、自定义分区器"></a>三、自定义分区器</h3><p>Kafka 有着默认的分区机制：</p>
+<p>如果键值为 null， 则使用轮询 (Round Robin) 算法将消息均衡地分布到各个分区上；<br>如果键值不为 null，那么 Kafka 会使用内置的散列算法对键进行散列，然后分布到各个分区上。<br>某些情况下，你可能有着自己的分区需求，这时候可以采用自定义分区器实现。这里给出一个自定义分区器的示例</p>
+<p>3.1 自定义分区器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 自定义分区器</span><br><span class="line"> */</span><br><span class="line">public class CustomPartitioner implements Partitioner &#123;</span><br><span class="line"></span><br><span class="line">    private int passLine;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void configure(Map&lt;String, ?&gt; configs) &#123;</span><br><span class="line">        /*从生产者配置中获取分数线*/</span><br><span class="line">        passLine = (Integer) configs.get(<span class="string">"pass.line"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int partition(String topic, Object key, byte[] keyBytes, Object value, </span><br><span class="line">                         byte[] valueBytes, Cluster cluster) &#123;</span><br><span class="line">        /*key 值为分数，当分数大于分数线时候，分配到 1 分区，否则分配到 0 分区*/</span><br><span class="line">        <span class="built_in">return</span> (Integer) key &gt;= passLine ? 1 : 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void <span class="function"><span class="title">close</span></span>() &#123;</span><br><span class="line">        System.out.println(<span class="string">"分区器关闭"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要在创建生产者时指定分区器，和分区器所需要的配置参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class ProducerWithPartitioner &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        String topicName = <span class="string">"Kafka-Partitioner-Test"</span>;</span><br><span class="line"></span><br><span class="line">        Properties props = new Properties();</span><br><span class="line">        props.put(<span class="string">"bootstrap.servers"</span>, <span class="string">"hadoop001:9092"</span>);</span><br><span class="line">        props.put(<span class="string">"key.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.IntegerSerializer"</span>);</span><br><span class="line">        props.put(<span class="string">"value.serializer"</span>, <span class="string">"org.apache.kafka.common.serialization.StringSerializer"</span>);</span><br><span class="line"></span><br><span class="line">        /*传递自定义分区器*/</span><br><span class="line">        props.put(<span class="string">"partitioner.class"</span>, <span class="string">"com.heibaiying.producers.partitioners.CustomPartitioner"</span>);</span><br><span class="line">        /*传递分区器所需的参数*/</span><br><span class="line">        props.put(<span class="string">"pass.line"</span>, 6);</span><br><span class="line"></span><br><span class="line">        Producer&lt;Integer, String&gt; producer = new KafkaProducer&lt;&gt;(props);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt;= 10; i++) &#123;</span><br><span class="line">            String score = <span class="string">"score:"</span> + i;</span><br><span class="line">            ProducerRecord&lt;Integer, String&gt; record = new ProducerRecord&lt;&gt;(topicName, i, score);</span><br><span class="line">            /*异步发送消息*/</span><br><span class="line">            producer.send(record, (metadata, exception) -&gt;</span><br><span class="line">                    System.out.printf(<span class="string">"%s, partition=%d, \n"</span>, score, metadata.partition()));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        producer.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.2 测试<br>需要创建一个至少有两个分区的主题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-topics.sh --create \</span><br><span class="line">                   --bootstrap-server hadoop001:9092 \</span><br><span class="line">                    --replication-factor 1 --partitions 2 \</span><br><span class="line">                    --topic Kafka-Partitioner-Test</span><br></pre></td></tr></table></figure>
+<p>此时输入如下，可以看到分数大于等于 6 分的都被分到 1 分区，而小于 6 分的都被分到了 0 分区。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">score:6, partition=1, </span><br><span class="line">score:7, partition=1, </span><br><span class="line">score:8, partition=1, </span><br><span class="line">score:9, partition=1, </span><br><span class="line">score:10, partition=1, </span><br><span class="line">score:0, partition=0, </span><br><span class="line">score:1, partition=0, </span><br><span class="line">score:2, partition=0, </span><br><span class="line">score:3, partition=0, </span><br><span class="line">score:4, partition=0, </span><br><span class="line">score:5, partition=0, </span><br><span class="line">分区器关闭</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、生产者其他属性"><a href="#四、生产者其他属性" class="headerlink" title="四、生产者其他属性"></a>四、生产者其他属性</h3><p>上面生产者的创建都仅指定了服务地址，键序列化器、值序列化器，实际上 Kafka 的生产者还有很多可配置属性，如下：</p>
+<ol>
+<li>acks<br>acks 参数指定了必须要有多少个分区副本收到消息，生产者才会认为消息写入是成功的：</li>
+</ol>
+<p>acks=0 ： 消息发送出去就认为已经成功了，不会等待任何来自服务器的响应；<br>acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应；<br>acks=all ：只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应。<br>2. buffer.memory<br>设置生产者内存缓冲区的大小。</p>
+<ol start="3">
+<li><p>compression.type<br>默认情况下，发送的消息不会被压缩。如果想要进行压缩，可以配置此参数，可选值有 snappy，gzip，lz4。</p>
+</li>
+<li><p>retries<br>发生错误后，消息重发的次数。如果达到设定值，生产者就会放弃重试并返回错误。</p>
+</li>
+<li><p>batch.size<br>当有多个消息需要被发送到同一个分区时，生产者会把它们放在同一个批次里。该参数指定了一个批次可以使用的内存大小，按照字节数计算。</p>
+</li>
+<li><p>linger.ms<br>该参数制定了生产者在发送批次之前等待更多消息加入批次的时间。</p>
+</li>
+<li><p>clent.id<br>客户端 id,服务器用来识别消息的来源。</p>
+</li>
+<li><p>max.in.flight.requests.per.connection<br>指定了生产者在收到服务器响应之前可以发送多少个消息。它的值越高，就会占用越多的内存，不过也会提升吞吐量，把它设置为 1 可以保证消息是按照发送的顺序写入服务器，即使发生了重试。</p>
+</li>
+<li><p>timeout.ms, request.timeout.ms &amp; metadata.fetch.timeout.ms<br>timeout.ms 指定了 borker 等待同步副本返回消息的确认时间；<br>request.timeout.ms 指定了生产者在发送数据时等待服务器返回响应的时间；<br>metadata.fetch.timeout.ms 指定了生产者在获取元数据（比如分区首领是谁）时等待服务器返回响应的时间。</p>
+</li>
+<li><p>max.block.ms<br>指定了在调用 send() 方法或使用 partitionsFor() 方法获取元数据时生产者的阻塞时间。当生产者的发送缓冲区已满，或者没有可用的元数据时，这些方法会阻塞。在阻塞时间达到 max.block.ms 时，生产者会抛出超时异常。</p>
+</li>
+<li><p>max.request.size<br>该参数用于控制生产者发送的请求大小。它可以指发送的单个消息的最大值，也可以指单个请求里所有消息总的大小。例如，假设这个值为 1000K ，那么可以发送的单个最大消息为 1000K ，或者生产者可以在单个请求里发送一个批次，该批次包含了 1000 个消息，每个消息大小为 1K。</p>
+</li>
+<li><p>receive.buffer.bytes &amp; send.buffer.byte<br>这两个参数分别指定 TCP socket 接收和发送数据包缓冲区的大小，-1 代表使用操作系统的默认值。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/bigdata/">bigdata</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/" rel="tag">kafka</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-17" class="article article-type-post" itemscope itemprop="blogPost">
   
